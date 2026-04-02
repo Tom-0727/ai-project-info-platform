@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.chanjing",
+      "canonicalName": "蝉镜",
+      "aliases": [
+        "蝉镜AI",
+        "蝉镜数字人"
+      ],
+      "slug": "chanjing",
+      "discoveredSeq": 22,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI数字人口播与带货视频工具",
+      "targetCustomers": "中小商家、内容创作者、短视频操盘手、培训讲师、本地生活商家",
+      "painPoint": "真人出镜拍摄和剪辑成本高，短视频口播、电商讲解和培训视频需要持续高频产出，个人或小团队难以长期稳定制作。",
+      "monetization": "会员套餐 + 蝉豆等额度权益 + 企业/API合作。",
+      "barriers": "数字人形象与声音克隆、口型同步、批量视频生成、内容安全审核与深度合成合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方价格说明",
+          "官方产品教程",
+          "官方开放平台文档"
+        ],
+        "note": "场景非常贴近小商家和内容副业，但公开价格主要来自官方价格说明页而非标准化购买页，因此按medium入库。"
+      },
+      "benchmarks": [
+        "有言",
+        "HeyGen"
+      ],
+      "sources": [
+        "https://www.chanjing.cc/",
+        "https://www.chanjing.cc/docs/product-updates/156.html",
+        "https://doc.chanjing.cc/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向商家和创作者的AI数字人口播视频工具，主要靠会员套餐、额度权益和企业合作变现。",
+          "update": "补充适合带货和内容副业场景的小型AI数字人应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.picwish-cn",
       "canonicalName": "佐糖",
       "aliases": [
