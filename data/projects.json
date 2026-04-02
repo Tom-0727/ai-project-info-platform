@@ -860,6 +860,50 @@
           "update": "补充应用层思维导图与知识整理案例。"
         }
       ]
+    },
+    {
+      "id": "proj.iflyrec",
+      "canonicalName": "讯飞听见",
+      "aliases": [
+        "iFLYTEK 听见",
+        "iFLYREC"
+      ],
+      "slug": "iflyrec",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI语音转写与会议纪要平台",
+      "targetCustomers": "记者、律师、研究员、销售、咨询顾问、企业会议与培训团队",
+      "painPoint": "录音、会议和访谈内容难以快速转成结构化文本，跨语种场景和多人发言整理成本高，会后纪要与待办提炼效率低。",
+      "monetization": "畅享包/会记权益包/时长卡等个人付费权益 + 企业SaaS方案 + 私有化或定制化合作。",
+      "barriers": "语音识别准确率、说话人区分、多语种翻译、AI纪要与知识提炼能力，以及录音文本数据安全和合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "官方权益包说明",
+          "企业SaaS与定制化合作流程"
+        ],
+        "note": "官方已明确个人权益包和企业合作路径，但公开价格透明度不如标准化SaaS，因此按medium入库。"
+      },
+      "benchmarks": [
+        "Otter.ai",
+        "Notta"
+      ],
+      "sources": [
+        "https://www.iflyrec.com/",
+        "https://www.iflyrec.com/helpCenter_rights_xftj/helpCenter_rights_xftj.html",
+        "https://www.iflyrec.com/html/products/apiv1.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是个人权益包与企业合作路径都已公开，商业模式较清楚。",
+          "update": "补充应用层语音转写与会议纪要案例。"
+        }
+      ]
     }
   ]
 }
