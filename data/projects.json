@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.pixcake",
+      "canonicalName": "像素蛋糕",
+      "aliases": [
+        "PixCake",
+        "像素蛋糕AI"
+      ],
+      "slug": "pixcake",
+      "discoveredSeq": 29,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI摄影精修与批量修图工具",
+      "targetCustomers": "摄影师、婚纱跟拍团队、人像工作室、修图师、内容创作者",
+      "painPoint": "人像精修和批量修图耗时长，摄影团队在交片高峰期很难兼顾效率、风格统一和交付质量。",
+      "monetization": "月度/年度会员订阅 + 移动端订阅会员 + 后续专业功能增值。",
+      "barriers": "人像修图算法、色彩与风格一致性、批量同步与工作流效率、版权与人像数据处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品站点",
+          "官方App Store订阅价格",
+          "官方应用描述"
+        ],
+        "note": "官方站点和官方应用商店都能直接看到产品能力与订阅价格，摄影工作流也很明确。"
+      },
+      "benchmarks": [
+        "佐糖",
+        "Adobe Lightroom"
+      ],
+      "sources": [
+        "https://www.pixcakeai.com/",
+        "https://apps.apple.com/cn/app/%E5%83%8F%E7%B4%A0%E8%9B%8B%E7%B3%95-%E4%B8%93%E4%B8%9A%E7%BA%A7ai%E4%BF%AE%E5%9B%BE%E8%BD%AF%E4%BB%B6/id6743614900?platform=ipad"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向摄影师和工作室的AI批量修图工具，主要靠月度和年度会员订阅变现。",
+          "update": "补充适合摄影接单和高频交片场景的AI修图应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.biaoxiaozhi",
       "canonicalName": "标小智",
       "aliases": [
