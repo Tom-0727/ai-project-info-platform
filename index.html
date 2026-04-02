@@ -30,13 +30,13 @@
       </header>
 
       <main class="layout">
-        <section class="panel panel-wide">
+        <section class="panel panel-main">
           <div class="panel-heading">
             <div>
               <p class="panel-label">Daily Feed</p>
               <h2>每日新增与更新</h2>
             </div>
-            <p class="panel-hint">同名、同 slug、同主来源链接会在校验脚本中被拦截。</p>
+            <p class="panel-hint">每张卡片只保留可读摘要，点击后在右侧查看完整详情。</p>
           </div>
           <div class="filters">
             <label class="filter-field">
@@ -71,15 +71,17 @@
           <div id="daily-feed" class="daily-feed"></div>
         </section>
 
-        <section class="panel">
+        <aside class="panel panel-side panel-sticky">
           <div class="panel-heading">
             <div>
-              <p class="panel-label">Project Index</p>
-              <h2>项目索引</h2>
+              <p class="panel-label">Project Detail</p>
+              <h2>项目详情</h2>
             </div>
+            <p class="panel-hint">默认展示当前选中的最新项目。</p>
           </div>
-          <div id="project-grid" class="project-grid"></div>
-        </section>
+          <div id="detail-empty" class="detail-empty">在左侧点击任一项目卡片，右侧会展开完整信息。</div>
+          <div id="detail-view" class="detail-view" hidden></div>
+        </aside>
       </main>
     </div>
 
@@ -104,7 +106,7 @@
     </template>
 
     <template id="feed-item-template">
-      <article class="feed-item">
+      <button class="feed-item feed-card" type="button">
         <div class="feed-item-top">
           <div>
             <p class="feed-type"></p>
@@ -113,13 +115,12 @@
           <span class="feed-tag"></span>
         </div>
         <p class="feed-summary"></p>
-        <ul class="feed-meta"></ul>
-        <div class="source-links"></div>
-      </article>
+        <div class="feed-meta"></div>
+      </button>
     </template>
 
-    <template id="project-template">
-      <article class="project-card">
+    <template id="detail-template">
+      <article class="detail-card">
         <div class="project-top">
           <div>
             <p class="project-form"></p>
@@ -127,7 +128,8 @@
           </div>
           <span class="project-status"></span>
         </div>
-        <p class="project-pain"></p>
+        <p class="detail-intro"></p>
+        <div class="detail-note"></div>
         <dl class="project-detail-list"></dl>
         <div class="source-links"></div>
       </article>

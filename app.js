@@ -2,8 +2,9 @@ const dataUrl = "./data/projects.json";
 
 const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
-const projectGrid = document.querySelector("#project-grid");
 const resultsHint = document.querySelector("#results-hint");
+const detailEmpty = document.querySelector("#detail-empty");
+const detailView = document.querySelector("#detail-view");
 const searchInput = document.querySelector("#search-input");
 const evidenceFilter = document.querySelector("#evidence-filter");
 const formFilter = document.querySelector("#form-filter");
@@ -12,7 +13,7 @@ const sortFilter = document.querySelector("#sort-filter");
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
 const feedItemTemplate = document.querySelector("#feed-item-template");
-const projectTemplate = document.querySelector("#project-template");
+const detailTemplate = document.querySelector("#detail-template");
 
 const formatCount = (value) => String(value).padStart(2, "0");
 const evidenceLevelLabel = {
@@ -51,6 +52,31 @@ const renderSourceLinks = (container, sources) => {
   });
 };
 
+const shortList = (value, count = 2) => value.split("、").filter(Boolean).slice(0, count).join("、");
+
+const firstClause = (value) => value.split(/[，。；;]/)[0].trim();
+
+const buildFeedIntro = (project) => {
+  const audience = shortList(project.targetCustomers, 2);
+  const pain = firstClause(project.painPoint);
+  return `${project.productForm}，面向${audience}，解决${pain}。`;
+};
+
+const getLatestNote = (project) => project.dailyNotes[0];
+
+const renderFeedMeta = (container, project) => {
+  [
+    `变现：${firstClause(project.monetization)}`,
+    `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
+    `客群：${shortList(project.targetCustomers, 2)}`,
+  ].forEach((text) => {
+    const item = document.createElement("span");
+    item.className = "feed-pill";
+    item.textContent = text;
+    container.appendChild(item);
+  });
+};
+
 const renderMetrics = (projects) => {
   heroMetrics.innerHTML = "";
   const dailyEntries = projects.flatMap((project) => project.dailyNotes);
@@ -74,7 +100,7 @@ const renderMetrics = (projects) => {
   });
 };
 
-const renderDailyFeed = (projects) => {
+const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
   dailyFeed.innerHTML = "";
   const entries = projects.flatMap((project) =>
     project.dailyNotes.map((note) => ({
@@ -86,6 +112,8 @@ const renderDailyFeed = (projects) => {
       evidenceQuality: project.evidenceQuality,
       sources: project.sources,
       slug: project.slug,
+      projectId: project.id,
+      feedIntro: project.feedIntro ?? buildFeedIntro(project),
     }))
   );
 
@@ -107,23 +135,16 @@ const renderDailyFeed = (projects) => {
 
       items.forEach((item) => {
         const itemNode = feedItemTemplate.content.firstElementChild.cloneNode(true);
+        itemNode.dataset.projectId = item.projectId;
+        itemNode.setAttribute("aria-pressed", String(item.projectId === selectedProjectId));
+        itemNode.setAttribute("aria-label", `${item.canonicalName}，${item.feedIntro}`);
         itemNode.querySelector(".feed-type").textContent = item.kind;
         itemNode.querySelector(".feed-name").textContent = item.canonicalName;
         itemNode.querySelector(".feed-tag").textContent = item.productForm;
-        itemNode.querySelector(".feed-summary").textContent = item.summary;
+        itemNode.querySelector(".feed-summary").textContent = item.feedIntro;
         const meta = itemNode.querySelector(".feed-meta");
-        [
-          `变现模式：${item.monetization}`,
-          `证据等级：${evidenceLevelLabel[item.evidenceQuality.level]}`,
-          `营销风险：${riskLabel[item.evidenceQuality.marketingRisk]}`,
-          `更新说明：${item.update}`,
-          `唯一标识：${item.slug}`,
-        ].forEach((text) => {
-          const li = document.createElement("li");
-          li.textContent = text;
-          meta.appendChild(li);
-        });
-        renderSourceLinks(itemNode.querySelector(".source-links"), item.sources);
+        renderFeedMeta(meta, item);
+        itemNode.addEventListener("click", () => onSelectProject(item.projectId));
         itemContainer.appendChild(itemNode);
       });
 
@@ -135,41 +156,55 @@ const renderDailyFeed = (projects) => {
   }
 };
 
-const renderProjectIndex = (projects) => {
-  projectGrid.innerHTML = "";
-  projects.forEach((project) => {
-    const node = projectTemplate.content.firstElementChild.cloneNode(true);
-    node.querySelector(".project-form").textContent = project.productForm;
-    node.querySelector(".project-name").textContent = project.canonicalName;
-    node.querySelector(".project-status").textContent =
-      project.status === "active" ? "持续跟踪" : "观察中";
-    node.querySelector(".project-pain").textContent = `核心痛点：${project.painPoint}`;
-    node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
+const renderDetailView = (project) => {
+  if (!project) {
+    detailEmpty.hidden = false;
+    detailView.hidden = true;
+    detailView.innerHTML = "";
+    return;
+  }
 
-    const detailList = node.querySelector(".project-detail-list");
-    [
-      ["目标客群", project.targetCustomers],
-      ["变现模式", project.monetization],
-      ["证据强度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
-      ["证据信号", project.evidenceQuality.signals.join(" / ")],
-      ["判断说明", project.evidenceQuality.note],
-      ["技术与合规门槛", project.barriers],
-      ["真实对标", project.benchmarks.join(" / ")],
-    ].forEach(([label, value]) => {
-      const dt = document.createElement("dt");
-      dt.textContent = label;
-      const dd = document.createElement("dd");
-      dd.textContent = value;
-      detailList.append(dt, dd);
-    });
+  detailEmpty.hidden = true;
+  detailView.hidden = false;
+  detailView.innerHTML = "";
+  const node = detailTemplate.content.firstElementChild.cloneNode(true);
+  node.querySelector(".project-form").textContent = project.productForm;
+  node.querySelector(".project-name").textContent = project.canonicalName;
+  node.querySelector(".project-status").textContent = project.status === "active" ? "持续跟踪" : "观察中";
+  node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
+  node.querySelector(".detail-intro").textContent = buildFeedIntro(project);
 
-    renderSourceLinks(node.querySelector(".source-links"), project.sources);
-    projectGrid.appendChild(node);
+  const latestNote = getLatestNote(project);
+  const noteBlock = node.querySelector(".detail-note");
+  noteBlock.innerHTML = "";
+  const noteTitle = document.createElement("p");
+  noteTitle.className = "detail-note-label";
+  noteTitle.textContent = "最新动态";
+  const noteText = document.createElement("p");
+  noteText.className = "detail-note-text";
+  noteText.textContent = latestNote ? latestNote.update : "暂无动态。";
+  noteBlock.append(noteTitle, noteText);
+
+  const detailList = node.querySelector(".project-detail-list");
+  [
+    ["目标客群", project.targetCustomers],
+    ["核心痛点", project.painPoint],
+    ["变现模式", project.monetization],
+    ["证据强度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
+    ["证据信号", project.evidenceQuality.signals.join(" / ")],
+    ["判断说明", project.evidenceQuality.note],
+    ["技术与合规门槛", project.barriers],
+    ["真实对标", project.benchmarks.join(" / ")],
+  ].forEach(([label, value]) => {
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    detailList.append(dt, dd);
   });
 
-  if (projectGrid.childElementCount === 0) {
-    projectGrid.innerHTML = "<p>当前筛选条件下没有匹配的项目。</p>";
-  }
+  renderSourceLinks(node.querySelector(".source-links"), project.sources);
+  detailView.appendChild(node);
 };
 
 const state = {
@@ -177,6 +212,7 @@ const state = {
   evidence: "all",
   form: "all",
   sort: "discovered",
+  selectedProjectId: null,
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
@@ -211,7 +247,7 @@ const projectMatches = (project) => {
 };
 
 const renderResultsHint = (visibleProjects, allProjects) => {
-  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目`;
+  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，点击左侧卡片在右侧查看完整详情。`;
 };
 
 const sortProjects = (projects) => {
@@ -241,9 +277,15 @@ const sortProjects = (projects) => {
 
 const renderApp = (projects) => {
   const visibleProjects = sortProjects(projects.filter(projectMatches));
+  const selectedProject =
+    visibleProjects.find((project) => project.id === state.selectedProjectId) ?? visibleProjects[0] ?? null;
+  state.selectedProjectId = selectedProject?.id ?? null;
   renderMetrics(visibleProjects);
-  renderDailyFeed(visibleProjects);
-  renderProjectIndex(visibleProjects);
+  renderDailyFeed(visibleProjects, state.selectedProjectId, (projectId) => {
+    state.selectedProjectId = projectId;
+    renderApp(projects);
+  });
+  renderDetailView(selectedProject);
   renderResultsHint(visibleProjects, projects);
 };
 

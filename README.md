@@ -5,15 +5,15 @@ Static web frontend for daily AI project scouting.
 ## Goal
 
 Track China-market AI software projects with explicit monetization paths, publish daily additions, and avoid duplicates before publishing to GitHub Pages.
-The UI also surfaces evidence strength, marketing risk, and source links so each entry can be audited quickly.
+The UI now uses a summary-first layout: Daily Feed cards show concise intros, and the right-hand detail panel expands the selected project.
 Projects are displayed by discovery order descending by default, so the newest scoped item stays at the top.
 
 ## Structure
 
 - `index.html`: static entry page for GitHub Pages.
 - `styles.css`: visual system and responsive layout.
-- `app.js`: renders daily feed and project index from JSON data.
-  Includes client-side search and filters for case browsing.
+- `app.js`: renders daily feed and the selected project detail from JSON data.
+  Includes client-side search, filters, click-through detail selection, and newest-first ordering.
 - `data/projects.json`: source of truth for tracked projects.
   Includes `discoveredSeq`, which is the stable ordering key for newest-first display.
 - `scripts/add-project.mjs`: add a new project with its first daily note.
