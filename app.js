@@ -54,6 +54,21 @@ const renderSourceLinks = (container, sources) => {
   });
 };
 
+const normalizeLookupKey = (value) => normalizeText(value ?? "");
+
+const buildProjectLookup = (projects) => {
+  const lookup = new Map();
+  projects.forEach((project) => {
+    [project.canonicalName, ...(project.aliases ?? [])].forEach((name) => {
+      const key = normalizeLookupKey(name);
+      if (key) {
+        lookup.set(key, project);
+      }
+    });
+  });
+  return lookup;
+};
+
 const shortList = (value, count = 2) => {
   if (!value) {
     return "未标注";
@@ -171,7 +186,33 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
   }
 };
 
-const renderDetailView = (project) => {
+const renderBenchmarkLinks = (container, project, projects) => {
+  const projectLookup = buildProjectLookup(projects);
+
+  (project.benchmarks ?? []).forEach((benchmark) => {
+    const match = projectLookup.get(normalizeLookupKey(benchmark));
+    if (match && match.id !== project.id) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "benchmark-chip benchmark-chip-link";
+      button.textContent = benchmark;
+      button.addEventListener("click", () => {
+        state.selectedProjectId = match.id;
+        renderApp(window.__projectsCache__);
+        focusDetailPanel();
+      });
+      container.appendChild(button);
+      return;
+    }
+
+    const tag = document.createElement("span");
+    tag.className = "benchmark-chip";
+    tag.textContent = benchmark;
+    container.appendChild(tag);
+  });
+};
+
+const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
     detailView.hidden = true;
@@ -209,7 +250,6 @@ const renderDetailView = (project) => {
     ["证据信号", project.evidenceQuality.signals.join(" / ")],
     ["判断说明", project.evidenceQuality.note],
     ["技术与合规门槛", project.barriers],
-    ["真实对标", project.benchmarks.join(" / ")],
   ].forEach(([label, value]) => {
     const dt = document.createElement("dt");
     dt.textContent = label;
@@ -217,6 +257,13 @@ const renderDetailView = (project) => {
     dd.textContent = value;
     detailList.append(dt, dd);
   });
+
+  const benchmarkTitle = document.createElement("dt");
+  benchmarkTitle.textContent = "真实对标";
+  const benchmarkValue = document.createElement("dd");
+  benchmarkValue.className = "benchmark-links";
+  renderBenchmarkLinks(benchmarkValue, project, projects);
+  detailList.append(benchmarkTitle, benchmarkValue);
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
   detailView.appendChild(node);
@@ -415,7 +462,7 @@ const renderApp = (projects) => {
     renderApp(projects);
     focusDetailPanel();
   });
-  renderDetailView(selectedProject);
+  renderDetailView(selectedProject, projects);
   renderResultsHint(visibleProjects, projects);
 };
 

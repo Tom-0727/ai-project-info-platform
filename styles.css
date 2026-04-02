@@ -407,6 +407,13 @@ button.summary-card:focus-visible {
   margin-top: 16px;
 }
 
+.benchmark-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+}
+
 .source-chip {
   display: inline-flex;
   align-items: center;
@@ -427,6 +434,41 @@ button.summary-card:focus-visible {
   transform: translateY(-1px);
   background: rgba(188, 75, 39, 0.08);
   border-color: rgba(188, 75, 39, 0.24);
+}
+
+.benchmark-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(29, 26, 22, 0.08);
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.benchmark-chip-link {
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.benchmark-chip-link:hover,
+.benchmark-chip-link:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(188, 75, 39, 0.08);
+  border-color: rgba(188, 75, 39, 0.24);
+  box-shadow: 0 10px 22px rgba(64, 40, 7, 0.08);
+}
+
+.benchmark-chip-link:focus-visible {
+  outline: 2px solid rgba(188, 75, 39, 0.32);
+  outline-offset: 2px;
 }
 
 .feed-meta {
