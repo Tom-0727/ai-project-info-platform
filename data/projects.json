@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.baimiao",
+      "canonicalName": "白描",
+      "aliases": [
+        "白描OCR",
+        "白描App"
+      ],
+      "slug": "baimiao",
+      "discoveredSeq": 31,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI OCR识别与扫描工具",
+      "targetCustomers": "学生、自由职业者、办公室白领、资料整理团队、需要高频处理纸质文档的小团队",
+      "painPoint": "图片转文字、票据整理、纸质文件电子化和扫描归档耗时长，个人或小团队难以低成本完成高频文档处理。",
+      "monetization": "多端会员订阅 + 高级OCR与扫描功能付费。",
+      "barriers": "OCR识别准确率、多语种和手写识别、文档扫描增强、隐私与文件数据处理合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官网产品页",
+          "官方关于页",
+          "官方应用商店订阅信号"
+        ],
+        "note": "产品和会员订阅路径可确认，但公开价格信息更多依赖应用商店，因此按medium入库。"
+      },
+      "benchmarks": [
+        "扫描全能王",
+        "像素蛋糕"
+      ],
+      "sources": [
+        "https://baimiao.uzero.cn/",
+        "https://baimiao.uzero.cn/aboutbaimiao.html",
+        "https://apps.apple.com/us/app/%E7%99%BD%E6%8F%8F-ocr%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB%E4%B8%8E%E6%96%87%E4%BB%B6%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E5%A4%84%E7%90%86/id1249901692?l=zh"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向学生和小团队的AI OCR识别与扫描工具，主要靠多端会员订阅和高级功能付费变现。",
+          "update": "补充适合资料整理和文档处理接单场景的AI OCR应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.piccopilot",
       "canonicalName": "Pic Copilot",
       "aliases": [
