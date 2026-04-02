@@ -1,0 +1,104 @@
+{
+  "projects": [
+    {
+      "id": "proj.meitu-design-studio",
+      "canonicalName": "美图设计室",
+      "aliases": ["Meitu X-Design", "X-Design"],
+      "slug": "meitu-design-studio",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "电商商家、内容营销团队、品牌运营",
+      "painPoint": "商品图、营销素材和内容视觉生产成本高，响应速度慢。",
+      "monetization": "订阅会员 + 企业版，依托 AI 设计与影像生产工具持续付费。",
+      "barriers": "图像生成与编辑工作流、模板资产沉淀、电商场景适配、素材版权与商用合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": ["官方收入披露", "官方产品矩阵", "付费订阅驱动"],
+        "note": "官方披露口径清楚，商业模式透明度高于多数内容型AI工具。"
+      },
+      "benchmarks": ["Canva可画", "创客贴"],
+      "sources": [
+        "https://www.meitu.com/hk/media/395",
+        "https://corp-static.meitu.com/corp-new/20251008/2023%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是有官方收入披露与 AI 功能订阅驱动的清晰信号。",
+          "update": "首轮建立卡片与跟踪基线。"
+        }
+      ]
+    },
+    {
+      "id": "proj.aippt",
+      "canonicalName": "AiPPT",
+      "aliases": ["AiPPT.cn"],
+      "slug": "aippt",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI PPT生成工具",
+      "targetCustomers": "职场用户、销售、培训、教育与轻量企业团队",
+      "painPoint": "演示文档结构搭建慢、模板整理成本高、内容转 PPT 效率低。",
+      "monetization": "会员权益体系 + 插件分发 + 企业解决方案，定价透明度仍需继续补证。",
+      "barriers": "长文档结构化、模板引擎、与 PowerPoint/WPS 的适配，以及企业文档处理合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": ["官方产品页", "插件分发", "会员体系存在"],
+        "note": "产品形态明确，但价格透明度和企业成交证据还需补强。"
+      },
+      "benchmarks": ["讯飞智文", "WPS AI"],
+      "sources": [
+        "https://www.aippt.cn/about-us/",
+        "https://www.aippt.cn/plugin/download",
+        "https://www.aippt.cn/plugin/help/article/50"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，确认产品形态、插件渠道和会员体系存在。",
+          "update": "后续需继续补齐会员价格与企业成交案例。"
+        }
+      ]
+    },
+    {
+      "id": "proj.deepseek-api",
+      "canonicalName": "DeepSeek API",
+      "aliases": ["DeepSeek Platform"],
+      "slug": "deepseek-api",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "大模型API服务",
+      "targetCustomers": "开发者、AI 应用团队、企业技术团队",
+      "painPoint": "高质量推理能力成本高，模型接入门槛和调用费用难平衡。",
+      "monetization": "按 token 计费，可直接对接开发者与企业调用量。",
+      "barriers": "模型能力、推理成本控制、服务稳定性、输出安全与数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": ["官方价格页", "公开成本/收入测算", "API直接计费"],
+        "note": "定价公开且商业化链路直接，验证强度高。"
+      },
+      "benchmarks": ["OpenAI API", "通义千问 API"],
+      "sources": [
+        "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+        "https://www.36kr.com/p/3189676494987396"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，理由是官方计费透明，且公开报道给出成本与收入测算信号。",
+          "update": "后续可追加模型版本变更和价格调整跟踪。"
+        }
+      ]
+    }
+  ]
+}

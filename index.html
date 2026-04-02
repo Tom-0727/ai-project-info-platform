@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Project Scout</title>
+    <meta
+      name="description"
+      content="持续整理中国市场内具备明确变现路径的 AI Project，每日新增与更新统一汇总。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI Project Scout</p>
+          <h1>每天只看真正有变现路径的新 AI Project</h1>
+          <p class="hero-text">
+            聚焦中国市场，记录项目名称、产品形态、目标客群、痛点、变现模式、技术与合规门槛，并对每日新增做去重整理。
+          </p>
+        </div>
+        <div class="hero-metrics" id="hero-metrics"></div>
+      </header>
+
+      <main class="layout">
+        <section class="panel panel-wide">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">Daily Feed</p>
+              <h2>每日新增与更新</h2>
+            </div>
+            <p class="panel-hint">同名、同 slug、同主来源链接会在校验脚本中被拦截。</p>
+          </div>
+          <div id="daily-feed" class="daily-feed"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">Project Index</p>
+              <h2>项目索引</h2>
+            </div>
+          </div>
+          <div id="project-grid" class="project-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="metric-template">
+      <article class="metric-card">
+        <span class="metric-value"></span>
+        <span class="metric-label"></span>
+      </article>
+    </template>
+
+    <template id="day-template">
+      <article class="day-card">
+        <div class="day-header">
+          <div>
+            <p class="day-date"></p>
+            <h3 class="day-title"></h3>
+          </div>
+          <span class="day-count"></span>
+        </div>
+        <div class="day-items"></div>
+      </article>
+    </template>
+
+    <template id="feed-item-template">
+      <article class="feed-item">
+        <div class="feed-item-top">
+          <div>
+            <p class="feed-type"></p>
+            <h4 class="feed-name"></h4>
+          </div>
+          <span class="feed-tag"></span>
+        </div>
+        <p class="feed-summary"></p>
+        <ul class="feed-meta"></ul>
+        <div class="source-links"></div>
+      </article>
+    </template>
+
+    <template id="project-template">
+      <article class="project-card">
+        <div class="project-top">
+          <div>
+            <p class="project-form"></p>
+            <h3 class="project-name"></h3>
+          </div>
+          <span class="project-status"></span>
+        </div>
+        <p class="project-pain"></p>
+        <dl class="project-detail-list"></dl>
+        <div class="source-links"></div>
+      </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
