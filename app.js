@@ -223,31 +223,46 @@ const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   renderApp(window.__projectsCache__);
 };
 
-const renderRelatedProjects = (container, project, projects) => {
-  const related = projects
-    .filter(
-      (candidate) =>
-        candidate.id !== project.id && summarizeScenario(candidate) === summarizeScenario(project)
-    )
-    .sort((left, right) => {
-      const formDelta = Number(right.productForm === project.productForm) - Number(left.productForm === project.productForm);
-      if (formDelta !== 0) {
-        return formDelta;
+const sortComparableProjects = (project) => (left, right) => {
+  const formDelta = Number(right.productForm === project.productForm) - Number(left.productForm === project.productForm);
+  if (formDelta !== 0) {
+    return formDelta;
+  }
+
+  const evidenceDelta = evidenceWeight[right.evidenceQuality.level] - evidenceWeight[left.evidenceQuality.level];
+  if (evidenceDelta !== 0) {
+    return evidenceDelta;
+  }
+
+  return right.discoveredSeq - left.discoveredSeq;
+};
+
+const getRelatedProjects = (project, projects, mode) => {
+  const scenario = summarizeScenario(project);
+
+  return projects
+    .filter((candidate) => {
+      if (candidate.id === project.id) {
+        return false;
       }
 
-      const evidenceDelta = evidenceWeight[right.evidenceQuality.level] - evidenceWeight[left.evidenceQuality.level];
-      if (evidenceDelta !== 0) {
-        return evidenceDelta;
+      if (mode === "same-form") {
+        return candidate.productForm === project.productForm;
       }
 
-      return right.discoveredSeq - left.discoveredSeq;
+      return (
+        summarizeScenario(candidate) === scenario && candidate.productForm !== project.productForm
+      );
     })
+    .sort(sortComparableProjects(project))
     .slice(0, 4);
+};
 
+const renderRelatedProjects = (container, related, emptyText) => {
   if (related.length === 0) {
     const empty = document.createElement("p");
     empty.className = "related-empty";
-    empty.textContent = "当前库里还没有更多同场景项目。";
+    empty.textContent = emptyText;
     container.appendChild(empty);
     return;
   }
@@ -356,13 +371,30 @@ const renderDetailView = (project, projects) => {
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
 
+  const sameFormSection = document.createElement("section");
+  sameFormSection.className = "related-section";
+  sameFormSection.innerHTML = `
+    <p class="detail-note-label">同形态项目</p>
+    <div class="related-projects"></div>
+  `;
+  renderRelatedProjects(
+    sameFormSection.querySelector(".related-projects"),
+    getRelatedProjects(project, projects, "same-form"),
+    "当前库里还没有更多同形态项目。"
+  );
+  node.appendChild(sameFormSection);
+
   const relatedSection = document.createElement("section");
   relatedSection.className = "related-section";
   relatedSection.innerHTML = `
     <p class="detail-note-label">同场景项目</p>
     <div class="related-projects"></div>
   `;
-  renderRelatedProjects(relatedSection.querySelector(".related-projects"), project, projects);
+  renderRelatedProjects(
+    relatedSection.querySelector(".related-projects"),
+    getRelatedProjects(project, projects, "same-scenario"),
+    "当前库里还没有更多同场景项目。"
+  );
   node.appendChild(relatedSection);
 
   detailView.appendChild(node);
