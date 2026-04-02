@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.pigai-ai-writing-grading",
+      "canonicalName": "AI批改网",
+      "aliases": [
+        "作文批改网",
+        "批改网"
+      ],
+      "slug": "pigai-ai-writing-grading",
+      "discoveredSeq": 55,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI中英文写作批改系统",
+      "targetCustomers": "中小学到雅思托福考生、英语教师、培训机构，以及需要批量写作批改反馈的学校",
+      "painPoint": "英语和中英文写作训练最难的是高频、低成本、可解释的反馈，学生等不及老师批改，老师也难以长期承担大量作文逐篇讲评。",
+      "monetization": "免费体验引流 + App Store月度/年度会员订阅 + 学校与机构合作。",
+      "barriers": "英语与中英文作文评分模型、分年级和考试标准适配、批量批改稳定性、教师工作流融入能力，以及教育数据与未成年人合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官网产品页",
+          "官方App Store页",
+          "教育场景说明"
+        ],
+        "note": "官网能清楚说明它在做中英文写作批改，并覆盖学生和教师场景；App Store页直接公开了每月28元、每年68元的会员订阅，因此商业化路径明确。但公开证据里学校端价格和更完整的官方定价页仍不够充分，所以按medium入库。"
+      },
+      "benchmarks": [
+        "墨灵 InkCraft",
+        "校稿郎"
+      ],
+      "sources": [
+        "https://www.pigai.cn/",
+        "https://apps.apple.com/cl/app/%E4%BD%9C%E6%96%87%E6%89%B9%E6%94%B9%E7%BD%91/id6755881494"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生和教师的AI中英文写作批改系统，主要靠会员订阅和学校机构合作变现。",
+          "update": "补充适合学生、教师和培训机构的AI中英文写作批改系统案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.immersive-translate-bilingual-reading",
       "canonicalName": "沉浸式翻译",
       "aliases": [
