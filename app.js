@@ -17,9 +17,9 @@ const detailTemplate = document.querySelector("#detail-template");
 
 const formatCount = (value) => String(value).padStart(2, "0");
 const evidenceLevelLabel = {
-  strong: "强证据",
-  medium: "中证据",
-  weak: "弱证据",
+  strong: "商业化清楚",
+  medium: "商业化部分清楚",
+  weak: "商业化待补证",
 };
 const riskLabel = {
   low: "低营销风险",
@@ -100,7 +100,7 @@ const renderMetrics = (projects) => {
     { value: formatCount(projects.filter((project) => project.status === "active").length), label: "活跃样本" },
     {
       value: formatCount(projects.filter((project) => project.evidenceQuality.level === "strong").length),
-      label: "强证据项目",
+      label: "商业化清楚",
     },
   ];
 
@@ -203,7 +203,7 @@ const renderDetailView = (project) => {
     ["目标客群", project.targetCustomers],
     ["核心痛点", project.painPoint],
     ["变现模式", project.monetization],
-    ["证据强度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
+    ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
     ["证据信号", project.evidenceQuality.signals.join(" / ")],
     ["判断说明", project.evidenceQuality.note],
     ["技术与合规门槛", project.barriers],

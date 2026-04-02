@@ -164,8 +164,7 @@ h1 {
 }
 
 .panel-sticky {
-  position: sticky;
-  top: 24px;
+  position: static;
 }
 
 .panel-heading,
