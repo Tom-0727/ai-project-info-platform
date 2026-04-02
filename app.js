@@ -97,7 +97,7 @@ const renderMetrics = (projects) => {
   const metrics = [
     { value: formatCount(projects.length), label: "已整理项目" },
     { value: formatCount(newestCount), label: "当日动态" },
-    { value: formatCount(projects.filter((project) => project.status === "active").length), label: "持续跟踪中" },
+    { value: formatCount(projects.filter((project) => project.status === "active").length), label: "活跃样本" },
     {
       value: formatCount(projects.filter((project) => project.evidenceQuality.level === "strong").length),
       label: "强证据项目",
@@ -183,7 +183,7 @@ const renderDetailView = (project) => {
   const node = detailTemplate.content.firstElementChild.cloneNode(true);
   node.querySelector(".project-form").textContent = project.productForm;
   node.querySelector(".project-name").textContent = project.canonicalName;
-  node.querySelector(".project-status").textContent = project.status === "active" ? "持续跟踪" : "观察中";
+  node.querySelector(".project-status").textContent = project.status === "active" ? "已收录" : "观察中";
   node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
   node.querySelector(".detail-intro").textContent = buildFeedIntro(project);
 
