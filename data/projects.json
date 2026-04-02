@@ -428,6 +428,49 @@
           "update": "补充AI法务赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.tungee",
+      "canonicalName": "探迹",
+      "aliases": [
+        "探迹智能销售",
+        "Tungee"
+      ],
+      "slug": "tungee",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI销售SaaS",
+      "targetCustomers": "B2B销售团队、企服公司、需要获客与销售线索管理的企业",
+      "painPoint": "销售获客分散、线索筛选效率低、销售过程难标准化，AI能力难嵌入日常销售动作。",
+      "monetization": "企业订阅/席位制SaaS + 增值服务，公开价格透明度较弱。",
+      "barriers": "企业画像与线索挖掘能力、销售流程嵌入、CRM协同、数据合规与企业采购门槛。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "官方客户案例",
+          "企业销售数字化定位"
+        ],
+        "note": "产品定位和企业客群清晰，但公开定价不如API和标准SaaS透明，因此按中等证据纳入。"
+      },
+      "benchmarks": [
+        "销售易",
+        "HubSpot Sales Hub"
+      ],
+      "sources": [
+        "https://www.tungee.com/",
+        "https://www.tungee.com/product/sdr"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI销售赛道需要代表案例，且探迹的企业销售产品化路径较清楚。",
+          "update": "补充AI销售赛道案例。"
+        }
+      ]
     }
   ]
 }
