@@ -7,6 +7,7 @@ const resultsHint = document.querySelector("#results-hint");
 const searchInput = document.querySelector("#search-input");
 const evidenceFilter = document.querySelector("#evidence-filter");
 const formFilter = document.querySelector("#form-filter");
+const sortFilter = document.querySelector("#sort-filter");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -173,9 +174,11 @@ const state = {
   query: "",
   evidence: "all",
   form: "all",
+  sort: "updated",
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
+const evidenceWeight = { strong: 3, medium: 2, weak: 1 };
 
 const populateFormFilter = (projects) => {
   [...new Set(projects.map((project) => project.productForm))]
@@ -209,8 +212,28 @@ const renderResultsHint = (visibleProjects, allProjects) => {
   resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目`;
 };
 
+const sortProjects = (projects) => {
+  const copy = [...projects];
+
+  if (state.sort === "evidence") {
+    copy.sort((left, right) => {
+      const evidenceDelta = evidenceWeight[right.evidenceQuality.level] - evidenceWeight[left.evidenceQuality.level];
+      return evidenceDelta || right.lastUpdated.localeCompare(left.lastUpdated);
+    });
+    return copy;
+  }
+
+  if (state.sort === "name") {
+    copy.sort((left, right) => left.canonicalName.localeCompare(right.canonicalName, "zh-CN"));
+    return copy;
+  }
+
+  copy.sort((left, right) => right.lastUpdated.localeCompare(left.lastUpdated));
+  return copy;
+};
+
 const renderApp = (projects) => {
-  const visibleProjects = projects.filter(projectMatches);
+  const visibleProjects = sortProjects(projects.filter(projectMatches));
   renderMetrics(visibleProjects);
   renderDailyFeed(visibleProjects);
   renderProjectIndex(visibleProjects);
@@ -234,6 +257,11 @@ const bootstrap = async () => {
 
   formFilter.addEventListener("change", (event) => {
     state.form = event.target.value;
+    renderApp(projects);
+  });
+
+  sortFilter.addEventListener("change", (event) => {
+    state.sort = event.target.value;
     renderApp(projects);
   });
 
