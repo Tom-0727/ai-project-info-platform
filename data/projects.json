@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.yixiao-ai",
+      "canonicalName": "易销AI",
+      "aliases": [
+        "易销AI文案",
+        "易销AI营销工具",
+        "yixiaoai"
+      ],
+      "slug": "yixiao-ai",
+      "discoveredSeq": 38,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI跨境营销文案工具",
+      "targetCustomers": "跨境电商卖家、独立站运营者、小型出海团队、需要批量生成广告与商品文案的工作室",
+      "painPoint": "跨境卖家在商品标题、Listing、广告文案和站外营销内容上需要高频试错，人工写作和本地化调整成本高，难以持续规模化产出。",
+      "monetization": "免费体验 + 基础版/专业版/高阶版按月订阅收费。",
+      "barriers": "跨境电商场景理解、多语言营销文案质量、平台规则适配、行业模板沉淀，以及广告与商品内容的合规风险控制。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方首页",
+          "官方价格方案页",
+          "官方营销文案工具页"
+        ],
+        "note": "官网首页明确写的是跨境电商营销工具，价格页公开免费、基础、专业和高阶分层及使用次数，产品与变现边界都比较清楚，因此按strong入库。"
+      },
+      "benchmarks": [
+        "Jasper",
+        "白瓜AI"
+      ],
+      "sources": [
+        "https://yixiaoai.com/",
+        "https://yixiaoai.com/pricing/",
+        "https://yixiaoai.com/google-ad-generator/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向跨境电商卖家和小型出海团队的AI营销文案工具，主要靠分层订阅套餐变现。",
+          "update": "补充适合商品Listing、广告文案和跨境营销内容批量生产场景的AI文案应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.reccloud-ai",
       "canonicalName": "录咖",
       "aliases": [
