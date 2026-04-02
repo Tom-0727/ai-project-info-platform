@@ -557,6 +557,49 @@
           "update": "补充百度系AI coding案例。"
         }
       ]
+    },
+    {
+      "id": "proj.gaoding-design",
+      "canonicalName": "稿定设计",
+      "aliases": [
+        "稿定",
+        "稿定AI"
+      ],
+      "slug": "gaoding-design",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "品牌营销团队、电商商家、内容运营、需要视觉物料生产的中小企业",
+      "painPoint": "营销物料与视觉内容产出成本高，设计协作与版权合规难统一，AI能力需要嵌入实际创作流程。",
+      "monetization": "个人会员 + 团队版席位收费 + 稿豆增值消耗。",
+      "barriers": "模板与素材生态、AI生成与编辑能力、团队协作流程、正版素材与版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "团队版席位收费",
+          "AI功能稿豆增值"
+        ],
+        "note": "公开价格、团队套餐和AI相关增值消耗都很明确，且属于典型应用层产品。"
+      },
+      "benchmarks": [
+        "创客贴",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://m.gaoding.com/pricing",
+        "https://www.gaoding.com/article/gaodou_Introduction"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它更符合应用层灵感导向，且商业模式与AI增值路径都比较清晰。",
+          "update": "按用户新偏好补充应用层AI设计案例。"
+        }
+      ]
     }
   ]
 }
