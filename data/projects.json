@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.offerin-ai-interview-copilot",
+      "canonicalName": "Offer IN",
+      "aliases": [
+        "OfferIN",
+        "Offerin AI"
+      ],
+      "slug": "offerin-ai-interview-copilot",
+      "discoveredSeq": 47,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI面试实时辅助与笔试陪跑工具",
+      "targetCustomers": "参加线上技术面试和笔试的求职者、转岗工程师、校招生，以及希望在高压求职场景中获得实时辅助的个人用户",
+      "painPoint": "线上面试和笔试时需要快速组织回答、理解题目和检索信息，临场压力大，很多求职者希望在答题和面试过程中获得实时提示与辅助。",
+      "monetization": "注册赠送免费额度 + 按功能与模型按次计费；语音识别、AI快答、悬浮窗模式和不同模型单独收费。",
+      "barriers": "实时读屏与题目理解、多模型协同、语音识别与低延迟返回、跨端配合，以及极高的合规与平台风控风险。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "high",
+        "signals": [
+          "官方首页",
+          "官方定价文档",
+          "官方使用文档"
+        ],
+        "note": "官网首页直接说明这是线上面试与笔试辅助产品；定价文档公开了免费额度、语音识别按分钟计费、AI快答按次计费、悬浮窗模式按次计费和不同模型单价，因此商业化信号足够明确，但营销表述激进、合规风险高。"
+      },
+      "benchmarks": [
+        "Final Round AI",
+        "Interview Coder"
+      ],
+      "sources": [
+        "https://www.offerin.cn/",
+        "https://doc.offerin.cn/",
+        "https://doc.offerin.cn/pricing"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向线上面试和笔试场景的AI实时辅助工具，主要靠免费额度后按次计费和模型计费变现。",
+          "update": "补充求职赛道里更偏实时辅助、而非训练闭环的AI面试工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.gank-interview",
       "canonicalName": "Gank Interview",
       "aliases": [
