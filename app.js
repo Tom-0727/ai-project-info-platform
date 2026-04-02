@@ -416,6 +416,53 @@ const state = {
   selectedProjectId: null,
 };
 
+const writeStateToUrl = () => {
+  const params = new URLSearchParams();
+
+  if (state.query) {
+    params.set("q", state.query);
+  }
+
+  if (state.evidence !== "all") {
+    params.set("evidence", state.evidence);
+  }
+
+  if (state.form !== "all") {
+    params.set("form", state.form);
+  }
+
+  if (state.scenario !== "all") {
+    params.set("scenario", state.scenario);
+  }
+
+  if (state.sort !== "discovered") {
+    params.set("sort", state.sort);
+  }
+
+  if (state.selectedProjectId) {
+    params.set("project", state.selectedProjectId);
+  }
+
+  const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+  window.history.replaceState({}, "", nextUrl);
+};
+
+const hydrateStateFromUrl = (projects) => {
+  const params = new URLSearchParams(window.location.search);
+  const scenarioOptions = new Set(["all", ...projects.map((project) => summarizeScenario(project))]);
+  const formOptions = new Set(["all", ...projects.map((project) => project.productForm)]);
+  const evidenceOptions = new Set(["all", "strong", "medium", "weak"]);
+  const sortOptions = new Set(["discovered", "evidence", "name"]);
+  const projectIds = new Set(projects.map((project) => project.id));
+
+  state.query = params.get("q") ?? "";
+  state.evidence = evidenceOptions.has(params.get("evidence")) ? params.get("evidence") : "all";
+  state.form = formOptions.has(params.get("form")) ? params.get("form") : "all";
+  state.scenario = scenarioOptions.has(params.get("scenario")) ? params.get("scenario") : "all";
+  state.sort = sortOptions.has(params.get("sort")) ? params.get("sort") : "discovered";
+  state.selectedProjectId = projectIds.has(params.get("project")) ? params.get("project") : null;
+};
+
 const syncFilterControls = () => {
   searchInput.value = state.query;
   evidenceFilter.value = state.evidence;
@@ -639,6 +686,7 @@ const renderApp = (projects) => {
   renderDetailView(selectedProject, projects);
   renderResultsHint(visibleProjects, projects);
   syncFilterControls();
+  writeStateToUrl();
 };
 
 const bootstrap = async () => {
@@ -647,6 +695,7 @@ const bootstrap = async () => {
   window.__projectsCache__ = projects;
   populateFormFilter(projects);
   populateScenarioFilter(projects);
+  hydrateStateFromUrl(projects);
 
   searchInput.addEventListener("input", (event) => {
     state.query = event.target.value;
