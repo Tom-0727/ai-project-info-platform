@@ -238,6 +238,39 @@ h1 {
   border: 1px solid rgba(29, 26, 22, 0.08);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.58);
+  text-align: left;
+}
+
+button.summary-card {
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease,
+    box-shadow 140ms ease;
+}
+
+button.summary-card:hover,
+button.summary-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(188, 75, 39, 0.28);
+  background: rgba(255, 248, 238, 0.92);
+  box-shadow: 0 14px 28px rgba(64, 40, 7, 0.08);
+}
+
+button.summary-card:focus-visible {
+  outline: 2px solid rgba(188, 75, 39, 0.32);
+  outline-offset: 2px;
+}
+
+.summary-card-active {
+  border-color: rgba(188, 75, 39, 0.4);
+  background: rgba(255, 244, 234, 0.96);
+  box-shadow: 0 14px 30px rgba(188, 75, 39, 0.12);
 }
 
 .summary-label {

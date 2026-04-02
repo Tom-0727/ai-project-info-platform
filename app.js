@@ -234,6 +234,7 @@ const state = {
   evidence: "all",
   form: "all",
   sort: "discovered",
+  scenario: "all",
   selectedProjectId: null,
 };
 
@@ -295,30 +296,47 @@ const renderStructureSummary = (projects) => {
   const cards = [
     {
       label: "当前最密集场景",
+      scenario: topScenarios[0]?.[0] ?? null,
       value: topScenarios[0] ? `${topScenarios[0][0]} · ${topScenarios[0][1]}个` : "暂无",
-      note: "方便快速判断样本池现在更偏哪类工作流。",
+      note: "点击只看这个场景。",
     },
     {
       label: "第二密集场景",
+      scenario: topScenarios[1]?.[0] ?? null,
       value: topScenarios[1] ? `${topScenarios[1][0]} · ${topScenarios[1][1]}个` : "暂无",
-      note: "避免案例库被单一类型工具主导。",
+      note: "点击切到第二主场景。",
     },
     {
       label: "商业化清晰度结构",
+      scenario: null,
       value: `${strongCount} 强 / ${mediumCount} 中 / ${weakCount} 待补证`,
       note: "直接看当前筛选结果里证据强弱分布。",
     },
   ];
 
   cards.forEach((card) => {
-    const article = document.createElement("article");
-    article.className = "summary-card";
-    article.innerHTML = `
+    const isInteractive = Boolean(card.scenario);
+    const element = document.createElement(isInteractive ? "button" : "article");
+    element.className = "summary-card";
+    if (isInteractive) {
+      element.type = "button";
+      element.dataset.scenario = card.scenario;
+      element.setAttribute("aria-pressed", String(state.scenario === card.scenario));
+      if (state.scenario === card.scenario) {
+        element.classList.add("summary-card-active");
+      }
+      element.addEventListener("click", () => {
+        state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
+        renderApp(window.__projectsCache__);
+      });
+    }
+
+    element.innerHTML = `
       <p class="summary-label">${card.label}</p>
       <h3 class="summary-value">${card.value}</h3>
       <p class="summary-note">${card.note}</p>
     `;
-    summaryStrip.appendChild(article);
+    summaryStrip.appendChild(element);
   });
 };
 
@@ -333,7 +351,7 @@ const populateFormFilter = (projects) => {
     });
 };
 
-const projectMatches = (project) => {
+const projectMatchesBase = (project) => {
   const haystack = normalizeText(
     [
       project.canonicalName,
@@ -350,8 +368,13 @@ const projectMatches = (project) => {
   return matchesQuery && matchesEvidence && matchesForm;
 };
 
+const projectMatches = (project) =>
+  projectMatchesBase(project) &&
+  (state.scenario === "all" || summarizeScenario(project) === state.scenario);
+
 const renderResultsHint = (visibleProjects, allProjects) => {
-  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，点击左侧卡片在右侧查看完整详情。`;
+  const scenarioText = state.scenario === "all" ? "全部场景" : `当前场景：${state.scenario}`;
+  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，${scenarioText}。点击左侧卡片在右侧查看完整详情。`;
 };
 
 const sortProjects = (projects) => {
@@ -380,12 +403,13 @@ const sortProjects = (projects) => {
 };
 
 const renderApp = (projects) => {
+  const baseProjects = sortProjects(projects.filter(projectMatchesBase));
   const visibleProjects = sortProjects(projects.filter(projectMatches));
   const selectedProject =
     visibleProjects.find((project) => project.id === state.selectedProjectId) ?? visibleProjects[0] ?? null;
   state.selectedProjectId = selectedProject?.id ?? null;
   renderMetrics(visibleProjects);
-  renderStructureSummary(visibleProjects);
+  renderStructureSummary(baseProjects);
   renderDailyFeed(visibleProjects, state.selectedProjectId, (projectId) => {
     state.selectedProjectId = projectId;
     renderApp(projects);
@@ -398,6 +422,7 @@ const renderApp = (projects) => {
 const bootstrap = async () => {
   const response = await fetch(dataUrl);
   const { projects } = await response.json();
+  window.__projectsCache__ = projects;
   populateFormFilter(projects);
 
   searchInput.addEventListener("input", (event) => {
