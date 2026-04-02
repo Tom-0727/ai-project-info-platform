@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.startai-ps-plugin",
+      "canonicalName": "StartAI",
+      "aliases": [
+        "PS插件StartAI",
+        "StartAI Photoshop插件"
+      ],
+      "slug": "startai-ps-plugin",
+      "discoveredSeq": 44,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI图像处理与电商精修插件",
+      "targetCustomers": "电商设计师、修图工作室、摄影后期团队、需要在Photoshop里高频处理商品图和人像图的小团队",
+      "painPoint": "电商精修、抠图、去水印、换背景和模特换装这类图像处理步骤重复且耗时，设计师在网页工具和Photoshop之间来回切换效率低。",
+      "monetization": "免费会员 + 普通会员/高级会员/团队会员分层收费，商用授权和团队使用权益作为主要付费点。",
+      "barriers": "与Photoshop工作流深度集成、图像分割与修复效果、批量处理稳定性、不同版本兼容，以及商用图像处理的授权与合规边界。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方首页",
+          "官方会员价格页",
+          "官方下载页"
+        ],
+        "note": "官网首页明确把StartAI定义为Photoshop AI图像处理插件，并列出AI抠图、去水印、产品精修等具体场景；会员页说明了免费会员、普通会员、高级会员和团队会员的套餐结构，但公开数值价格提取不如标准SaaS清晰，因此按medium入库。"
+      },
+      "benchmarks": [
+        "像素蛋糕",
+        "Pic Copilot"
+      ],
+      "sources": [
+        "https://istarry.com.cn/",
+        "https://istarry.com.cn/member.html",
+        "https://istarry.com.cn/download.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个嵌在Photoshop里的AI图像处理插件，主要面向电商设计和修图工作流，靠分层会员和团队授权变现。",
+          "update": "补充适合电商设计师和修图工作室的AI图像处理插件案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.picdoc-ai",
       "canonicalName": "PicDoc",
       "aliases": [
