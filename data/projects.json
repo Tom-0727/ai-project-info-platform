@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.biling-ai",
+      "canonicalName": "笔灵AI",
+      "aliases": [
+        "笔灵AI写作",
+        "笔灵AI写作助手"
+      ],
+      "slug": "biling-ai",
+      "discoveredSeq": 20,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI写作与文案工作台",
+      "targetCustomers": "个人创作者、学生、写作工作室、内容代写团队、中小商家营销人员",
+      "painPoint": "长文、营销文案、小说和论文类内容写作耗时长，结构搭建、改写润色和批量交付效率低，个人或小团队难以低成本承接更多内容需求。",
+      "monetization": "个人会员/字数额度付费 + 面向写作工作室和中小机构的批量采购 + API接口合作。",
+      "barriers": "长文结构生成、改写降重与降AI痕迹能力、垂直模板覆盖、内容合规审核，以及用户文本与学术场景数据安全。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方站点",
+          "商务采购页",
+          "官方分发市场价格信号"
+        ],
+        "note": "更适合副业和小团队使用，变现路径清楚，但官网公开价格透明度仍弱于标准SaaS，因此按medium入库。"
+      },
+      "benchmarks": [
+        "秘塔写作猫",
+        "Jasper"
+      ],
+      "sources": [
+        "https://ibiling.cn/",
+        "https://ibiling.cn/customize",
+        "https://qianfanmarket.baidu.com/product/detail/217ed46d-b5ae-43c7-aca2-f9430105ec8f"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它更贴近个人和小团队副业场景，且批量采购与分发市场价格信号都存在。",
+          "update": "补充适合副业场景的小型AI写作应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.edrawmax",
       "canonicalName": "万兴图示",
       "aliases": [
