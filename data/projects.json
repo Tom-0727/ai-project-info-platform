@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.younews-ai-news-tracker",
+      "canonicalName": "YouNews",
+      "aliases": [
+        "AI新闻速递",
+        "YouNews AI"
+      ],
+      "slug": "younews-ai-news-tracker",
+      "discoveredSeq": 62,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI新闻与主题追踪工具",
+      "targetCustomers": "产品经理、投资研究员、行业分析师、内容创作者，以及需要持续追踪赛道动态的小团队",
+      "painPoint": "行业信息和新闻更新频繁，靠人工盯多个网站和社媒很容易漏关键信号，也很难持续把碎片新闻整理成可复用的趋势判断。",
+      "monetization": "免费体验引流 + 会员订阅与自动续费 + 高级追踪与提醒权益。",
+      "barriers": "信息源抓取与去重能力、主题聚合与摘要质量、趋势追踪准确率、个性化提醒体验，以及新闻内容版权与数据合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方会员页",
+          "官方App Store页",
+          "新闻追踪工作流说明"
+        ],
+        "note": "官方会员页能确认它存在付费会员体系，App Store页能确认这是持续更新的AI新闻追踪产品；但当前公开抓取里稳定可见的官方价格数字仍不完整，因此按medium入库。"
+      },
+      "benchmarks": [
+        "语鲸",
+        "Get笔记"
+      ],
+      "sources": [
+        "https://www.younews.cn/membership.html",
+        "https://apps.apple.com/us/app/ainews-track-what-matters/id6738381718"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向知识工作者的AI新闻与主题追踪工具，主要靠会员订阅和自动续费变现。",
+          "update": "补充适合产品经理、研究员和内容分析场景的AI新闻与主题追踪工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.lingowhale-ai-reading-digest",
       "canonicalName": "语鲸",
       "aliases": [
