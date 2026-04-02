@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.piccopilot",
+      "canonicalName": "Pic Copilot",
+      "aliases": [
+        "PicCopilot",
+        "Pic Copilot Pro"
+      ],
+      "slug": "piccopilot",
+      "discoveredSeq": 30,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI电商商品图与营销素材工具",
+      "targetCustomers": "跨境卖家、电商商家、小品牌团队、内容设计师、营销工作室",
+      "painPoint": "商品图、模特图和详情页素材制作周期长，电商团队很难低成本高频产出适配不同渠道的营销视觉。",
+      "monetization": "Pro订阅会员 + AI设计定制服务 + 后续高阶工具增值。",
+      "barriers": "商品图理解与场景生成、模特与版式质量、电商转化场景适配、商用图片版权与品牌素材合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品站点",
+          "官方中文价格页",
+          "官方AI设计服务页"
+        ],
+        "note": "官方中文站直接给出Pro价格和定制设计服务，买家、场景和收费方式都比较清楚。"
+      },
+      "benchmarks": [
+        "佐糖",
+        "PhotoRoom"
+      ],
+      "sources": [
+        "https://www.piccopilot.com/zh",
+        "https://www.piccopilot.com/zh/pricing/",
+        "https://www.piccopilot.com/zh/ai-design-service"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向跨境卖家和电商团队的AI商品图与营销素材工具，主要靠Pro订阅和定制设计服务变现。",
+          "update": "补充适合电商素材制作和视觉代运营场景的AI营销设计应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.pixcake",
       "canonicalName": "像素蛋糕",
       "aliases": [
