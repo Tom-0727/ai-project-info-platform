@@ -3,6 +3,7 @@ const dataUrl = "./data/projects.json";
 const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
 const resultsHint = document.querySelector("#results-hint");
+const summaryStrip = document.querySelector("#summary-strip");
 const detailEmpty = document.querySelector("#detail-empty");
 const detailView = document.querySelector("#detail-view");
 const detailPanel = document.querySelector(".panel-side");
@@ -239,6 +240,88 @@ const state = {
 const normalizeText = (value) => value.toLowerCase().trim();
 const evidenceWeight = { strong: 3, medium: 2, weak: 1 };
 
+const summarizeScenario = (project) => {
+  const text = [
+    project.productForm,
+    project.targetCustomers,
+    project.painPoint,
+    project.monetization,
+  ].join(" ");
+
+  if (/(电商|跨境|营销|客服|销售|listing|广告)/i.test(text)) {
+    return "卖家增长";
+  }
+
+  if (/(字幕|配音|转写|语音|视频|音频|翻译|口播)/i.test(text)) {
+    return "音视频处理";
+  }
+
+  if (/(pdf|ocr|文档|知识|协作|白板|思维导图|反馈|问卷|原型)/i.test(text)) {
+    return "办公与知识";
+  }
+
+  if (/(logo|设计|海报|修图|写真|图片|商品图)/i.test(text)) {
+    return "视觉创作";
+  }
+
+  if (/(编程|开发|代码)/i.test(text)) {
+    return "开发提效";
+  }
+
+  return "通用效率";
+};
+
+const renderStructureSummary = (projects) => {
+  summaryStrip.innerHTML = "";
+
+  if (projects.length === 0) {
+    return;
+  }
+
+  const strongCount = projects.filter((project) => project.evidenceQuality.level === "strong").length;
+  const mediumCount = projects.filter((project) => project.evidenceQuality.level === "medium").length;
+  const weakCount = projects.filter((project) => project.evidenceQuality.level === "weak").length;
+
+  const topScenarios = Object.entries(
+    projects.reduce((accumulator, project) => {
+      const bucket = summarizeScenario(project);
+      accumulator[bucket] = (accumulator[bucket] ?? 0) + 1;
+      return accumulator;
+    }, {})
+  )
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 2);
+
+  const cards = [
+    {
+      label: "当前最密集场景",
+      value: topScenarios[0] ? `${topScenarios[0][0]} · ${topScenarios[0][1]}个` : "暂无",
+      note: "方便快速判断样本池现在更偏哪类工作流。",
+    },
+    {
+      label: "第二密集场景",
+      value: topScenarios[1] ? `${topScenarios[1][0]} · ${topScenarios[1][1]}个` : "暂无",
+      note: "避免案例库被单一类型工具主导。",
+    },
+    {
+      label: "商业化清晰度结构",
+      value: `${strongCount} 强 / ${mediumCount} 中 / ${weakCount} 待补证`,
+      note: "直接看当前筛选结果里证据强弱分布。",
+    },
+  ];
+
+  cards.forEach((card) => {
+    const article = document.createElement("article");
+    article.className = "summary-card";
+    article.innerHTML = `
+      <p class="summary-label">${card.label}</p>
+      <h3 class="summary-value">${card.value}</h3>
+      <p class="summary-note">${card.note}</p>
+    `;
+    summaryStrip.appendChild(article);
+  });
+};
+
 const populateFormFilter = (projects) => {
   [...new Set(projects.map((project) => project.productForm))]
     .sort((left, right) => left.localeCompare(right))
@@ -302,6 +385,7 @@ const renderApp = (projects) => {
     visibleProjects.find((project) => project.id === state.selectedProjectId) ?? visibleProjects[0] ?? null;
   state.selectedProjectId = selectedProject?.id ?? null;
   renderMetrics(visibleProjects);
+  renderStructureSummary(visibleProjects);
   renderDailyFeed(visibleProjects, state.selectedProjectId, (projectId) => {
     state.selectedProjectId = projectId;
     renderApp(projects);

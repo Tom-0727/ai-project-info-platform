@@ -226,6 +226,41 @@ h1 {
   font-size: 0.92rem;
 }
 
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.summary-card {
+  padding: 16px;
+  border: 1px solid rgba(29, 26, 22, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.summary-label {
+  margin: 0;
+  color: var(--signal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summary-value {
+  margin-top: 8px;
+  font-size: 1.08rem;
+}
+
+.summary-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .day-card,
 .detail-card {
   padding: 18px;
@@ -459,6 +494,10 @@ h1 {
   }
 
   .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-strip {
     grid-template-columns: 1fr;
   }
 }
