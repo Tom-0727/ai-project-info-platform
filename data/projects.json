@@ -686,6 +686,49 @@
           "update": "补充AI图表与知识整理赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.chuangkit",
+      "canonicalName": "创客贴",
+      "aliases": [
+        "创客贴AI",
+        "Chuangkit"
+      ],
+      "slug": "chuangkit",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "中小商家、营销团队、内容运营、需要快速产出视觉物料的个人与团队",
+      "painPoint": "设计物料、视频和营销内容生产门槛高，模板、版权和团队协作难统一管理。",
+      "monetization": "会员订阅 + 协作版/旗舰版团队收费 + 企业服务与开放平台。",
+      "barriers": "模板与素材生态、AI设计功能、团队协作体验、商业授权与版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "团队版矩阵",
+          "AI工具与企业服务"
+        ],
+        "note": "会员专享服务矩阵、团队版和企业服务都公开，且AI设计能力已进入核心卖点。"
+      },
+      "benchmarks": [
+        "稿定设计",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://www.chuangkit.com/price",
+        "https://www.chuangkit.com/templatebatch"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它是更成熟的应用层设计生产对照样本。",
+          "update": "按应用层偏好补充AI设计赛道对照案例。"
+        }
+      ]
     }
   ]
 }
