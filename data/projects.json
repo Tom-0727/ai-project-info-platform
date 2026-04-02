@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.moyingongfang",
+      "canonicalName": "魔音工坊",
+      "aliases": [
+        "魔音工坊AI",
+        "VoiceMaker"
+      ],
+      "slug": "moyingongfang",
+      "discoveredSeq": 25,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI配音与音频创作工具",
+      "targetCustomers": "短视频创作者、有声书制作者、广告营销团队、培训课件团队、小型音频工作室",
+      "painPoint": "配音、音色选择、声音克隆和批量音频制作依赖人工录制与后期处理，个人或小团队很难低成本稳定交付。",
+      "monetization": "个人会员订阅 + 声音克隆等增值包 + 团队版/企业版 + API与定制服务。",
+      "barriers": "高拟真语音合成、声音克隆、音频编辑工作流、版权与声纹授权、生成内容合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品站点",
+          "官方定价页",
+          "官方关于页"
+        ],
+        "note": "变现路径和价格能看到，但站点营销色彩偏重，因此按medium入库而不是strong。"
+      },
+      "benchmarks": [
+        "ElevenLabs",
+        "讯飞听见"
+      ],
+      "sources": [
+        "https://moyincn.com/",
+        "https://www.moyincn.com/price.html",
+        "https://moyincn.com/about.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向创作者和音频工作室的AI配音工具，主要靠会员订阅、增值包和企业服务变现。",
+          "update": "补充适合短视频配音和音频接单场景的小型AI音频应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.yizhenmiaochuang",
       "canonicalName": "一帧秒创",
       "aliases": [
