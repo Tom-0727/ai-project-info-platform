@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.picwish-cn",
+      "canonicalName": "佐糖",
+      "aliases": [
+        "PicWish"
+      ],
+      "slug": "picwish-cn",
+      "discoveredSeq": 21,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI电商修图与抠图工具",
+      "targetCustomers": "电商商家、二手卖家、内容创作者、小型摄影工作室、跨境卖家",
+      "painPoint": "商品图去背、精修、批量换背景和证件照处理耗时长，小团队难以低成本批量产出可直接上架或投放的图片素材。",
+      "monetization": "Pro订阅会员 + 点数包/按量付费 + 图像处理API计费 + 批量采购与商务合作。",
+      "barriers": "图像分割与精修效果、批量处理稳定性、电商素材工作流适配、API可用性，以及商用图片与用户上传数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品页",
+          "官方订阅价格页",
+          "官方API价格页"
+        ],
+        "note": "非常贴近副业和小商家场景，且会员、点数与API价格都能从官方页面直接验证。"
+      },
+      "benchmarks": [
+        "PhotoRoom",
+        "remove.bg"
+      ],
+      "sources": [
+        "https://picwish.cn/ai-product-retouching",
+        "https://picwish.com/pricing",
+        "https://picwish.com/api-pricing"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它兼具副业友好场景和清晰的官方订阅/API定价。",
+          "update": "补充适合电商与个人接单场景的小型AI图像应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.biling-ai",
       "canonicalName": "笔灵AI",
       "aliases": [
