@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.gitmind-ai-mindmap-doc-analysis",
+      "canonicalName": "GitMind",
+      "aliases": [
+        "GitMind思乎AI助理"
+      ],
+      "slug": "gitmind-ai-mindmap-doc-analysis",
+      "discoveredSeq": 53,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI思维导图与文档分析工具",
+      "targetCustomers": "学生、知识工作者、产品经理、咨询顾问，以及需要把长文档快速拆解为脑图的小团队",
+      "painPoint": "信息整理和结构化表达很耗时，用户常常需要把零散资料、网页和长文档快速提炼成脑图，但通用AI对持续整理和导图协作支持不够。",
+      "monetization": "免费版引流 + 月度/年度会员订阅 + 算粒充值 + 教育优惠与批量采购。",
+      "barriers": "脑图生成质量、文档解析稳定性、协作与导出体验、算粒计费设计、长文档理解能力，以及企业与教育场景的数据安全要求。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "官方功能说明",
+          "官方退款与批量采购入口"
+        ],
+        "note": "官方价格页直接公开免费版、月度会员、年度会员和算粒充值方案，并详细列出AI功能消耗、退款政策和批量采购入口；产品讲述也围绕脑图生成、文档分析和AI助理展开，因此可按strong入库。"
+      },
+      "benchmarks": [
+        "Xmind",
+        "ProcessOn"
+      ],
+      "sources": [
+        "https://gitmind.cn/pricing"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生和知识工作者的AI思维导图与文档分析工具，主要靠会员订阅、算粒充值和批量采购变现。",
+          "update": "补充适合学生、知识工作者和小团队的AI思维导图与文档分析工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.jiaogaolang-ai-proofreading",
       "canonicalName": "校稿郎",
       "aliases": [
