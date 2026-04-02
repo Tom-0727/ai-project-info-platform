@@ -471,6 +471,49 @@
           "update": "补充AI销售赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.moka-eva",
+      "canonicalName": "Moka Eva",
+      "aliases": [
+        "Moka AI 招聘助手",
+        "Moka HR SaaS"
+      ],
+      "slug": "moka-eva",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI招聘SaaS",
+      "targetCustomers": "企业招聘团队、HR 团队、需要招聘流程自动化的组织",
+      "painPoint": "招聘流程长、筛选效率低、面试安排与候选人沟通成本高，AI能力难嵌入标准招聘流程。",
+      "monetization": "企业招聘SaaS订阅 + AI能力商业化，公开价格透明度较弱。",
+      "barriers": "招聘流程产品化、候选人匹配能力、企业工作流整合、数据隐私与雇佣合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI产品页",
+          "商业化表述",
+          "企业招聘SaaS定位"
+        ],
+        "note": "官方已明确Eva商业化与企业招聘场景，但公开价格信息弱于强证据类目，因此按中等证据入库。"
+      },
+      "benchmarks": [
+        "北森招聘云",
+        "牛客AI面试"
+      ],
+      "sources": [
+        "https://www.mokahr.com/eva",
+        "https://www.mokahr.com/about"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI招聘赛道需要代表案例，且Moka Eva的产品化与商业化路径已较清晰。",
+          "update": "补充AI招聘赛道案例。"
+        }
+      ]
     }
   ]
 }
