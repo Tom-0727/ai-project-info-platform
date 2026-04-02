@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.mixdesk-ai",
+      "canonicalName": "Mixdesk",
+      "aliases": [
+        "Mixdesk AI",
+        "Mixdesk客服",
+        "Mixdesk营销客服"
+      ],
+      "slug": "mixdesk-ai",
+      "discoveredSeq": 39,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI跨境客服与营销协同平台",
+      "targetCustomers": "跨境电商卖家、出海品牌团队、海外客服团队、需要多渠道客服与营销协同的小型出海组织",
+      "painPoint": "跨境团队在WhatsApp、Facebook、Instagram、Email等多个渠道上分散服务客户，人工客服和营销协同效率低，难以稳定扩展全球业务。",
+      "monetization": "按方案订阅收费，面向AI客服、全渠道接入和营销协同提供分层报价。",
+      "barriers": "全渠道消息整合、多语言客服质量、营销自动化流程、AI Agent稳定性，以及跨境客户数据和隐私合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方首页",
+          "官方价格方案页",
+          "官方AI Agent产品页"
+        ],
+        "note": "首页和AI Agent页能清楚说明它做跨境客服与营销协同，价格页也明确存在产品方案与报价，但公开价格展示不如标准SaaS购买页直观，因此按medium入库。"
+      },
+      "benchmarks": [
+        "SaleSmartly",
+        "Intercom"
+      ],
+      "sources": [
+        "https://www.mixdesk.net/",
+        "https://mixdesk.com/zh/pricing",
+        "https://www.mixdesk.net/ai-agent"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向跨境卖家和出海团队的AI客服与营销协同平台，主要靠分层方案订阅收费变现。",
+          "update": "补充适合多渠道客服、跨境营销协同和出海团队服务流程场景的AI客服应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.yixiao-ai",
       "canonicalName": "易销AI",
       "aliases": [
