@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.caiyun-xiaoyi",
+      "canonicalName": "彩云小译",
+      "aliases": [
+        "彩云小译App",
+        "小译",
+        "ColorfulClouds Xiaoyi"
+      ],
+      "slug": "caiyun-xiaoyi",
+      "discoveredSeq": 33,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI翻译与双语阅读工具",
+      "targetCustomers": "跨境从业者、学生、研究人员、外语学习者、自由译者、需要处理外文资料的小团队",
+      "painPoint": "网页、文档、图片和语音翻译分散在不同工具里，外文阅读和跨语种资料处理效率低，个人用户很难低成本保持高质量翻译工作流。",
+      "monetization": "VIP/SVIP连续包月、包季、包年订阅收费。",
+      "barriers": "多语种上下文翻译质量、双语排版与文档还原、图片与屏幕识别、跨场景稳定性，以及用户内容与翻译数据处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品官网",
+          "官方App Store订阅价格",
+          "官方会员协议"
+        ],
+        "note": "官网能确认产品形态和使用场景，App Store直接公开VIP与SVIP订阅价格，官方会员协议也补足了规则边界，因此按strong入库。"
+      },
+      "benchmarks": [
+        "有道翻译官",
+        "DeepL"
+      ],
+      "sources": [
+        "https://caiyunapp.com/index.html",
+        "https://apps.apple.com/cn/app/id1187138321",
+        "https://caiyunapp.com/xiaoyi/vipprotocal.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向学生、研究和跨境场景的AI翻译与双语阅读工具，主要靠VIP和SVIP订阅会员变现。",
+          "update": "补充适合外文阅读、跨语种资料处理和学习工作流的AI翻译应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.super-resume-ai",
       "canonicalName": "超级简历 AI",
       "aliases": [
