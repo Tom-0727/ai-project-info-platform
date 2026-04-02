@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.biaoxiaozhi",
+      "canonicalName": "标小智",
+      "aliases": [
+        "标小智Logo",
+        "Logo设计神器"
+      ],
+      "slug": "biaoxiaozhi",
+      "discoveredSeq": 28,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI Logo与品牌设计工具",
+      "targetCustomers": "创业者、个体商家、自媒体账号、小型设计工作室、需要快速建品牌的团队",
+      "painPoint": "品牌Logo和基础视觉资产制作门槛高、沟通成本大，小团队很难低成本快速拿到可商用的设计方案。",
+      "monetization": "Logo套餐购买 + Logo设计API收费 + 字体授权等增值服务。",
+      "barriers": "智能Logo生成算法、风格与行业适配、可商用字体与版权授权、批量生成稳定性与API交付能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品站点",
+          "官方套餐说明",
+          "官方API计费说明"
+        ],
+        "note": "官方站点直接给出套餐差异和API计费方式，创业与小商家场景也很明确，商业模式透明度高。"
+      },
+      "benchmarks": [
+        "Looka",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://www.logosc.cn/",
+        "https://www.logosc.cn/logo-packages",
+        "https://www.logosc.cn/logo-api"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向创业者和小商家的AI Logo设计工具，主要靠Logo套餐购买和API收费变现。",
+          "update": "补充适合品牌起盘和小型设计接单场景的AI品牌设计应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.baigua-ai",
       "canonicalName": "白瓜AI",
       "aliases": [
