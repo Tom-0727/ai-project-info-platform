@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.immersive-translate-bilingual-reading",
+      "canonicalName": "沉浸式翻译",
+      "aliases": [
+        "Immersive Translate"
+      ],
+      "slug": "immersive-translate-bilingual-reading",
+      "discoveredSeq": 54,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI双语网页与PDF翻译工具",
+      "targetCustomers": "学生、研究者、跨境从业者、程序员，以及需要高频阅读外文网页和PDF的小团队",
+      "painPoint": "外文网页、论文PDF和视频字幕的阅读门槛很高，传统整页翻译会破坏原文结构，通用翻译工具又难以兼顾双语对照、术语一致和复杂PDF版式。",
+      "monetization": "免费版引流 + 会员订阅 + App Store自动续费 + 高额度翻译与高级模型访问等付费权益。",
+      "barriers": "双语排版体验、复杂PDF和字幕翻译质量、多翻译引擎集成稳定性、浏览器与移动端兼容性，以及跨境内容处理与用户数据合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "官方浏览器插件文档",
+          "官方App Store页"
+        ],
+        "note": "官方价格页和会员条款能确认它有持续付费会员服务、退款政策和高级翻译权益，App Store页也明确存在自动续费订阅；但当前公开抓取结果对具体价格数字不够稳定，因此按medium入库而不是strong。"
+      },
+      "benchmarks": [
+        "彩云小译",
+        "Doclingo"
+      ],
+      "sources": [
+        "https://immersivetranslate.com/zh-Hans/pricing/",
+        "https://immersivetranslate.com/zh-Hans/docs/browserExtensionIntegration/",
+        "https://apps.apple.com/cn/app/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%BF%BB%E8%AF%91-1000%E4%B8%87%E7%94%A8%E6%88%B7%E9%80%89%E6%8B%A9%E7%9A%84ai%E7%BF%BB%E8%AF%91%E7%A5%9E%E5%99%A8/id6447957425"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向外文阅读场景的AI双语网页与PDF翻译工具，主要靠会员订阅和自动续费变现。",
+          "update": "补充适合学生、研究者和跨境从业者的AI双语网页与PDF翻译工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.gitmind-ai-mindmap-doc-analysis",
       "canonicalName": "GitMind",
       "aliases": [
