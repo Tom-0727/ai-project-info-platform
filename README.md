@@ -12,6 +12,7 @@ The UI also surfaces evidence strength, marketing risk, and source links so each
 - `index.html`: static entry page for GitHub Pages.
 - `styles.css`: visual system and responsive layout.
 - `app.js`: renders daily feed and project index from JSON data.
+  Includes client-side search and filters for case browsing.
 - `data/projects.json`: source of truth for tracked projects.
 - `scripts/add-project.mjs`: add a new project with its first daily note.
 - `scripts/add-daily-note.mjs`: append a daily update to an existing project.

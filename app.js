@@ -3,6 +3,10 @@ const dataUrl = "./data/projects.json";
 const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
 const projectGrid = document.querySelector("#project-grid");
+const resultsHint = document.querySelector("#results-hint");
+const searchInput = document.querySelector("#search-input");
+const evidenceFilter = document.querySelector("#evidence-filter");
+const formFilter = document.querySelector("#form-filter");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -47,9 +51,10 @@ const renderSourceLinks = (container, sources) => {
 };
 
 const renderMetrics = (projects) => {
+  heroMetrics.innerHTML = "";
   const dailyEntries = projects.flatMap((project) => project.dailyNotes);
   const newestDay = [...new Set(dailyEntries.map((entry) => entry.date))].sort().at(-1);
-  const newestCount = dailyEntries.filter((entry) => entry.date === newestDay).length;
+  const newestCount = newestDay ? dailyEntries.filter((entry) => entry.date === newestDay).length : 0;
   const metrics = [
     { value: formatCount(projects.length), label: "已整理项目" },
     { value: formatCount(newestCount), label: "当日动态" },
@@ -69,6 +74,7 @@ const renderMetrics = (projects) => {
 };
 
 const renderDailyFeed = (projects) => {
+  dailyFeed.innerHTML = "";
   const entries = projects.flatMap((project) =>
     project.dailyNotes.map((note) => ({
       ...note,
@@ -120,9 +126,14 @@ const renderDailyFeed = (projects) => {
 
       dailyFeed.appendChild(node);
     });
+
+  if (dailyFeed.childElementCount === 0) {
+    dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的动态。</p>";
+  }
 };
 
 const renderProjectIndex = (projects) => {
+  projectGrid.innerHTML = "";
   projects.forEach((project) => {
     const node = projectTemplate.content.firstElementChild.cloneNode(true);
     node.querySelector(".project-form").textContent = project.productForm;
@@ -152,14 +163,81 @@ const renderProjectIndex = (projects) => {
     renderSourceLinks(node.querySelector(".source-links"), project.sources);
     projectGrid.appendChild(node);
   });
+
+  if (projectGrid.childElementCount === 0) {
+    projectGrid.innerHTML = "<p>当前筛选条件下没有匹配的项目。</p>";
+  }
+};
+
+const state = {
+  query: "",
+  evidence: "all",
+  form: "all",
+};
+
+const normalizeText = (value) => value.toLowerCase().trim();
+
+const populateFormFilter = (projects) => {
+  [...new Set(projects.map((project) => project.productForm))]
+    .sort((left, right) => left.localeCompare(right))
+    .forEach((form) => {
+      const option = document.createElement("option");
+      option.value = form;
+      option.textContent = form;
+      formFilter.appendChild(option);
+    });
+};
+
+const projectMatches = (project) => {
+  const haystack = normalizeText(
+    [
+      project.canonicalName,
+      ...(project.aliases ?? []),
+      ...(project.benchmarks ?? []),
+      project.productForm,
+      project.targetCustomers,
+    ].join(" ")
+  );
+
+  const matchesQuery = !state.query || haystack.includes(normalizeText(state.query));
+  const matchesEvidence = state.evidence === "all" || project.evidenceQuality.level === state.evidence;
+  const matchesForm = state.form === "all" || project.productForm === state.form;
+  return matchesQuery && matchesEvidence && matchesForm;
+};
+
+const renderResultsHint = (visibleProjects, allProjects) => {
+  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目`;
+};
+
+const renderApp = (projects) => {
+  const visibleProjects = projects.filter(projectMatches);
+  renderMetrics(visibleProjects);
+  renderDailyFeed(visibleProjects);
+  renderProjectIndex(visibleProjects);
+  renderResultsHint(visibleProjects, projects);
 };
 
 const bootstrap = async () => {
   const response = await fetch(dataUrl);
   const { projects } = await response.json();
-  renderMetrics(projects);
-  renderDailyFeed(projects);
-  renderProjectIndex(projects);
+  populateFormFilter(projects);
+
+  searchInput.addEventListener("input", (event) => {
+    state.query = event.target.value;
+    renderApp(projects);
+  });
+
+  evidenceFilter.addEventListener("change", (event) => {
+    state.evidence = event.target.value;
+    renderApp(projects);
+  });
+
+  formFilter.addEventListener("change", (event) => {
+    state.form = event.target.value;
+    renderApp(projects);
+  });
+
+  renderApp(projects);
 };
 
 bootstrap().catch((error) => {

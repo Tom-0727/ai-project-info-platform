@@ -38,6 +38,28 @@
             </div>
             <p class="panel-hint">同名、同 slug、同主来源链接会在校验脚本中被拦截。</p>
           </div>
+          <div class="filters">
+            <label class="filter-field">
+              <span>搜索项目</span>
+              <input id="search-input" type="search" placeholder="输入项目名、别名、对标或客群关键词" />
+            </label>
+            <label class="filter-field">
+              <span>证据等级</span>
+              <select id="evidence-filter">
+                <option value="all">全部</option>
+                <option value="strong">强证据</option>
+                <option value="medium">中证据</option>
+                <option value="weak">弱证据</option>
+              </select>
+            </label>
+            <label class="filter-field">
+              <span>产品形态</span>
+              <select id="form-filter">
+                <option value="all">全部</option>
+              </select>
+            </label>
+          </div>
+          <p class="results-hint" id="results-hint"></p>
           <div id="daily-feed" class="daily-feed"></div>
         </section>
 
