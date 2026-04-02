@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.gank-interview",
+      "canonicalName": "Gank Interview",
+      "aliases": [
+        "Gank Interview AI面试助手",
+        "Gank Interview面试助手"
+      ],
+      "slug": "gank-interview",
+      "discoveredSeq": 46,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI模拟面试与求职训练平台",
+      "targetCustomers": "准备技术面试的求职者、应届生、转岗工程师、程序员和需要系统训练笔试面试能力的小团队或学习社群",
+      "painPoint": "技术岗求职者在笔试、模拟面试、简历优化和题库训练上通常要分散使用多种工具，准备周期长，真实面试反馈少，容易在高频练习和复盘上断层。",
+      "monetization": "免费版引流 + 专业版/月订阅 + 旗舰版/月订阅；按月/按年计费，并通过更高阶AI模型、更多模拟面试次数和简历优化能力升级变现。",
+      "barriers": "面试场景理解、题库与岗位知识组织、实时语音交互与评估、求职训练闭环设计，以及面试数据与简历内容的隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方定价页",
+          "官方功能页"
+        ],
+        "note": "官网首页明确给出AI笔面助手、AI模拟面试和AI简历优化定位；定价页直接公开免费版、专业版和旗舰版，以及月度价格、免费试用、功能配额和退款说明，因此商业化边界足够清楚，可按strong入库。"
+      },
+      "benchmarks": [
+        "Interviewing.io",
+        "Pramp"
+      ],
+      "sources": [
+        "https://www.gankinterview.cn/",
+        "https://www.gankinterview.cn/pricing",
+        "https://www.gankinterview.cn/mock-interview"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向求职者的AI模拟面试与笔面训练平台，主要靠专业版和旗舰版订阅变现。",
+          "update": "补充适合技术岗求职训练场景的AI模拟面试工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.paperpal-academic-writing",
       "canonicalName": "Paperpal",
       "aliases": [
