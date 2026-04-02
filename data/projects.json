@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.howxm-ai",
+      "canonicalName": "HowXM",
+      "aliases": [
+        "浩客HowXM",
+        "HowXM AI",
+        "浩客"
+      ],
+      "slug": "howxm-ai",
+      "discoveredSeq": 40,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI应用内调研与反馈平台",
+      "targetCustomers": "独立开发者、SaaS产品团队、小型互联网公司、需要做应用内问卷与用户反馈分析的团队",
+      "painPoint": "产品团队很难在合适时机低成本收集用户反馈、评价和问卷数据，分析过程也常常分散在多套工具里，影响迭代效率。",
+      "monetization": "免费版 + 基础版/专业版/旗舰版按年订阅收费，支持私有化部署。",
+      "barriers": "应用内触达与事件触发能力、问卷与评价系统设计、反馈数据分析与AI总结、团队协作权限，以及用户数据与隐私合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方价格页",
+          "官方AI能力描述"
+        ],
+        "note": "官方价格页直接公开免费、基础、专业和旗舰版年费及数据量边界，首页也明确把AI能力写入反馈分析场景，但AI单独收费边界不是主卖点，因此按medium入库。"
+      },
+      "benchmarks": [
+        "Typeform",
+        "问卷星"
+      ],
+      "sources": [
+        "https://howxm.com/",
+        "https://ai.howxm.com/pricing",
+        "https://howxm.com/templates"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向独立开发者和小产品团队的AI应用内调研与反馈平台，主要靠分层年费订阅和私有化部署变现。",
+          "update": "补充适合应用内问卷、用户反馈采集和体验分析场景的AI产品运营应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.mixdesk-ai",
       "canonicalName": "Mixdesk",
       "aliases": [
