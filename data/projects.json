@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.doclingo-document-translation",
+      "canonicalName": "Doclingo",
+      "aliases": [
+        "Doclingo文档翻译",
+        "Doclingo AI文档翻译"
+      ],
+      "slug": "doclingo-document-translation",
+      "discoveredSeq": 48,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI文档翻译与版式保留工具",
+      "targetCustomers": "跨境团队、科研人员、留学申请者、法律与商务文件处理人员，以及需要批量翻译PDF和Office文档的小团队",
+      "painPoint": "PDF、论文、合同和说明书翻译时既要保证译文质量，又要尽量保留原排版和图片结构，传统人工翻译或通用翻译工具在长文档和复杂格式上效率低。",
+      "monetization": "免费体验 + Pro会员订阅 + 字符/加油包权益 + API与企业版服务。",
+      "barriers": "复杂文档解析、排版还原、OCR识别、多语种翻译质量、批量处理稳定性，以及涉合同和论文文档的数据安全与合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方会员页",
+          "官方翻译工作台"
+        ],
+        "note": "官网首页明确把产品定义为保留格式的AI文档翻译平台；会员页展示了会员权益、翻译次数、页数、字符额度和加油包结构，但公开数值价格提取不如标准SaaS清晰，因此按medium入库。"
+      },
+      "benchmarks": [
+        "DeepL",
+        "UPDF AI"
+      ],
+      "sources": [
+        "https://doclingo.cn/zh/",
+        "https://doclingo.cn/zh/pro",
+        "https://doclingo.cn/zh/translate"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向长文档和PDF场景的AI文档翻译工具，主要靠Pro会员、加油包和企业/API服务变现。",
+          "update": "补充适合跨境、科研和商务文件处理场景的AI文档翻译工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.offerin-ai-interview-copilot",
       "canonicalName": "Offer IN",
       "aliases": [
