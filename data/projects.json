@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.super-resume-ai",
+      "canonicalName": "超级简历 AI",
+      "aliases": [
+        "超级简历",
+        "WonderResume",
+        "trubocv"
+      ],
+      "slug": "super-resume-ai",
+      "discoveredSeq": 32,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI简历优化与求职工作台",
+      "targetCustomers": "应届生、转岗求职者、职场人、需要批量投递的小团队求职辅导服务",
+      "painPoint": "简历撰写、JD匹配、求职信生成和面试准备分散在多个工具里，求职者很难低成本高频迭代投递材料。",
+      "monetization": "周/月/季/年会员订阅 + AI诊断、AI求职信、AI面试准备等分层权益收费。",
+      "barriers": "中文求职场景理解、JD与简历匹配算法、ATS兼容排版、多轮求职工作流整合，以及求职数据与隐私处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "官方会员价格页",
+          "官方求职信功能页"
+        ],
+        "note": "官网直接给出会员分层价格，且有独立的AI求职信等功能页，买家场景和分层权益都比较清楚，因此按strong入库。"
+      },
+      "benchmarks": [
+        "UP简历",
+        "Moka Eva"
+      ],
+      "sources": [
+        "https://trubocv.com/",
+        "https://trubocv.com/#pricing",
+        "https://trubocv.com/cover-letter"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向求职者的AI简历优化与求职工作台，主要靠周/月/季/年会员订阅和分层AI求职权益变现。",
+          "update": "补充适合求职辅导、简历优化和高频投递场景的AI求职应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.baimiao",
       "canonicalName": "白描",
       "aliases": [
