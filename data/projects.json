@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.get-notes-ai-capture",
+      "canonicalName": "Get笔记",
+      "aliases": [
+        "Get Notes",
+        "得到AI笔记"
+      ],
+      "slug": "get-notes-ai-capture",
+      "discoveredSeq": 57,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI多模态记录与结构化笔记工具",
+      "targetCustomers": "学生、职场人士、研究者、自媒体创作者，以及需要把语音、图片和链接快速整理成笔记的小团队",
+      "painPoint": "会议、课堂、灵感和网页资料往往以语音、图片、链接等碎片形式出现，传统笔记工具整理成本高，用户很难持续把零散信息变成可检索的知识资产。",
+      "monetization": "免费体验引流 + App Store订阅与内购 + 硬件周边协同销售。",
+      "barriers": "多模态识别精度、结构化整理能力、跨端同步体验、会议与通话录音场景兼容性，以及用户内容隐私与数据安全。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方使用文档",
+          "官方App Store页",
+          "硬件协同说明"
+        ],
+        "note": "官方使用文档能清楚说明它在做语音、图片、链接和文字的AI记录与整理；App Store页能确认持续更新、自动整理能力和付费订阅/内购路径；但当前公开抓取里可稳定引用的官方网页价格面仍不够完整，因此按medium入库。"
+      },
+      "benchmarks": [
+        "FlowUs AI",
+        "听脑AI"
+      ],
+      "sources": [
+        "https://doc.biji.com/",
+        "https://apps.apple.com/us/app/get%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%8F%AA%E7%AE%A1%E8%AF%B4-ai-%E5%B8%AE%E4%BD%A0%E8%AE%B0%E4%B8%8B%E6%9D%A5/id6711334436?l=zh-Hant-TW"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向会议、课堂和灵感采集场景的AI多模态记录与结构化笔记工具，主要靠订阅、内购和硬件协同销售变现。",
+          "update": "补充适合学生、职场人士和研究者的AI多模态记录与结构化笔记工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.xiezuocat-ai-writing-assistant",
       "canonicalName": "秘塔写作猫",
       "aliases": [
