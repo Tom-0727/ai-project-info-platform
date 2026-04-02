@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.135editor",
+      "canonicalName": "135编辑器",
+      "aliases": [
+        "135AI排版",
+        "135AI"
+      ],
+      "slug": "135editor",
+      "discoveredSeq": 26,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI公众号排版与内容创作工具",
+      "targetCustomers": "公众号运营者、私域运营团队、内容代运营工作室、中小商家、新媒体创作者",
+      "painPoint": "公众号文章、营销内容和活动推文需要持续排版、配图和内容生产，小团队难以低成本兼顾效率与视觉质量。",
+      "monetization": "个人VIP会员 + 企业VIP + AI创作相关付费服务与多账号协作服务。",
+      "barriers": "排版与模板引擎、AI生文/生图/排版协同、微信公众号工作流适配、商用素材版权与内容合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品首页",
+          "官方会员服务页",
+          "官方AI服务协议"
+        ],
+        "note": "产品、AI服务和会员体系都能确认，但公开标准价格透明度不如纯标准化SaaS，因此按medium入库。"
+      },
+      "benchmarks": [
+        "秀米",
+        "稿定设计"
+      ],
+      "sources": [
+        "https://www.135editor.com/",
+        "https://www.135editor.com/charge-service",
+        "https://www.135plat.com/books/chapter/1/1007"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向公众号和私域运营团队的AI排版与内容创作工具，主要靠个人VIP、企业VIP和相关AI服务变现。",
+          "update": "补充适合内容代运营和私域接单场景的小型AI内容工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.moyingongfang",
       "canonicalName": "魔音工坊",
       "aliases": [
