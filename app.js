@@ -12,6 +12,7 @@ const evidenceFilter = document.querySelector("#evidence-filter");
 const formFilter = document.querySelector("#form-filter");
 const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
+const resetFiltersButton = document.querySelector("#reset-filters");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -332,6 +333,18 @@ const state = {
   selectedProjectId: null,
 };
 
+const syncFilterControls = () => {
+  searchInput.value = state.query;
+  evidenceFilter.value = state.evidence;
+  formFilter.value = state.form;
+  scenarioFilter.value = state.scenario;
+  sortFilter.value = state.sort;
+
+  const hasActiveFilter =
+    state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all";
+  resetFiltersButton.toggleAttribute("data-active", hasActiveFilter);
+};
+
 const normalizeText = (value) => value.toLowerCase().trim();
 const evidenceWeight = { strong: 3, medium: 2, weak: 1 };
 
@@ -533,6 +546,7 @@ const renderApp = (projects) => {
   });
   renderDetailView(selectedProject, projects);
   renderResultsHint(visibleProjects, projects);
+  syncFilterControls();
 };
 
 const bootstrap = async () => {
@@ -564,6 +578,15 @@ const bootstrap = async () => {
 
   sortFilter.addEventListener("change", (event) => {
     state.sort = event.target.value;
+    renderApp(projects);
+  });
+
+  resetFiltersButton.addEventListener("click", () => {
+    state.query = "";
+    state.evidence = "all";
+    state.form = "all";
+    state.scenario = "all";
+    state.sort = "discovered";
     renderApp(projects);
   });
 
