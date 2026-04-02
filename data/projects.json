@@ -342,6 +342,92 @@
           "update": "补充AI数字人视频赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.salesmartly",
+      "canonicalName": "SaleSmartly",
+      "aliases": [
+        "SaleSmartly AI客服",
+        "SaleSmartly 在线客服系统"
+      ],
+      "slug": "salesmartly",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI客服SaaS",
+      "targetCustomers": "跨境电商团队、在线客服团队、出海企业与运营团队",
+      "painPoint": "多渠道客服分散、人工响应成本高、AI自动回复和会话管理难统一落地。",
+      "monetization": "免费版引流 + Pro/Max 订阅 + Custom 企业报价。",
+      "barriers": "多渠道客服整合、AI机器人效果、自动化流程编排、客户数据与跨境合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "免费到企业版梯度",
+          "AI回复额度公开"
+        ],
+        "note": "价格层级、AI字符额度和企业定制路径都公开，商业模式很清晰。"
+      },
+      "benchmarks": [
+        "美洽",
+        "Intercom"
+      ],
+      "sources": [
+        "https://www.salesmartly.com/zh/pricing/",
+        "https://www.salesmartly.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI客服SaaS的分层定价和使用额度都较透明。",
+          "update": "补充AI客服赛道案例。"
+        }
+      ]
+    },
+    {
+      "id": "proj.iterms",
+      "canonicalName": "iTerms",
+      "aliases": [
+        "iTerms.AI",
+        "一站式法律AI工作台"
+      ],
+      "slug": "iterms",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI法务工作台",
+      "targetCustomers": "企业法务团队、律所、需要合同审查与法律检索的组织",
+      "painPoint": "合同起草、审查和法律问答效率低，法务知识沉淀和协作难标准化。",
+      "monetization": "体验版 + 标准版年费 + 私有版/定制服务。",
+      "barriers": "法律语义理解、合同审查准确性、专业知识库建设、数据安全与行业合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方定价页",
+          "年费标准版",
+          "私有化与定制服务"
+        ],
+        "note": "公开定价和私有化版本并存，法务场景商业路径清晰，但专业效果仍需长期验证。"
+      },
+      "benchmarks": [
+        "Alpha系统",
+        "法行宝"
+      ],
+      "sources": [
+        "https://www.iterms.com/pricing",
+        "https://www.iterms.com/product/iterms-ai"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI法务工作台已经有清晰的年费和私有化商业模式。",
+          "update": "补充AI法务赛道案例。"
+        }
+      ]
     }
   ]
 }
