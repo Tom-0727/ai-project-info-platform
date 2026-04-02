@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.pitaya-ai-writing-assistant",
+      "canonicalName": "火龙果写作",
+      "aliases": [
+        "Pitaya",
+        "火龙果智能写作"
+      ],
+      "slug": "pitaya-ai-writing-assistant",
+      "discoveredSeq": 50,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI写作校对与改写工具",
+      "targetCustomers": "学生、自媒体写作者、内容运营、论文写作者，以及需要跨设备写作和英文润色的小团队",
+      "painPoint": "中文与英文写作常见的问题是错别字、语法错误、改写润色效率低、资料检索和跨设备同步割裂，通用聊天工具又不适合作为持续写作工作台。",
+      "monetization": "免费版引流 + Plus 月费订阅 + Pro 周费订阅 + 企业定制报价 + 灵感与查重等增值服务单独付费 + App内字数包内购。",
+      "barriers": "中文与英文语法纠错能力、长文档改写与翻译质量、跨端编辑器和Office插件体验、资料库与同步能力，以及写作文档的数据隐私与版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方首页",
+          "官方会员权益页",
+          "官方App Store页"
+        ],
+        "note": "官网首页同时给出了校对、改写、续写、翻译、插件和价格层级；会员权益页明确说明专业版无限使用范围与单独付费增值项；App Store页又补充了季度会员和字数包内购，因此可以按strong入库，但首页宣传口径略广，营销风险定为medium。"
+      },
+      "benchmarks": [
+        "秘塔写作猫",
+        "Paperpal"
+      ],
+      "sources": [
+        "https://www.mypitaya.com/",
+        "https://www.mypitaya.com/66cfd18d-c161-41da-907b-b50073ba22c7.html",
+        "https://apps.apple.com/lc/app/%E7%81%AB%E9%BE%99%E6%9E%9C%E6%99%BA%E8%83%BD%E5%86%99%E4%BD%9C-%E8%AE%A9%E5%86%99%E4%BD%9C%E6%9B%B4%E8%BD%BB%E6%9D%BE/id6451374152"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生和内容写作者的AI写作校对与改写工具，主要靠会员订阅、增值服务和字数包内购变现。",
+          "update": "补充适合学生、内容运营和论文写作者的AI写作校对与改写工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.rubriq-academic-polish-translation",
       "canonicalName": "Rubriq",
       "aliases": [
