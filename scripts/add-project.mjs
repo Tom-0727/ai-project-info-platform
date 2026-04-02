@@ -1,6 +1,7 @@
 import { parseArgs } from "node:util";
 
 import {
+  getMaxDiscoveredSeq,
   loadProjects,
   makeProjectId,
   saveProjects,
@@ -71,6 +72,7 @@ const main = async () => {
     canonicalName: values.name,
     aliases: splitList(values.aliases),
     slug: values.slug,
+    discoveredSeq: getMaxDiscoveredSeq(data.projects) + 1,
     status: values.status,
     firstSeen: values.date,
     lastUpdated: values.date,
@@ -105,7 +107,7 @@ const main = async () => {
   }
 
   data.projects.push(candidate);
-  data.projects.sort((left, right) => right.lastUpdated.localeCompare(left.lastUpdated));
+  data.projects.sort((left, right) => right.discoveredSeq - left.discoveredSeq);
   await saveProjects(data);
   console.log(`Added project ${candidate.canonicalName} (${candidate.id}).`);
 };

@@ -6,6 +6,7 @@ const main = async () => {
   const seenIds = new Map();
   const seenSlugs = new Map();
   const seenNames = new Map();
+  const seenDiscoveredSeq = new Map();
   const seenSources = new Map();
   const failures = [];
 
@@ -17,6 +18,7 @@ const main = async () => {
       [seenIds, project.id, "id"],
       [seenSlugs, project.slug, "slug"],
       [seenNames, normalizedName, "canonicalName"],
+      [seenDiscoveredSeq, String(project.discoveredSeq), "discoveredSeq"],
     ].forEach(([bucket, key, label]) => {
       if (bucket.has(key)) {
         failures.push(`Duplicate ${label}: ${key} -> ${bucket.get(key)} / ${project.id}`);
@@ -48,6 +50,10 @@ const main = async () => {
       continue;
     }
 
+    if (!Number.isInteger(project.discoveredSeq) || project.discoveredSeq <= 0) {
+      failures.push(`Invalid discoveredSeq for ${project.id}: ${project.discoveredSeq}`);
+    }
+
     if (!["strong", "medium", "weak"].includes(evidenceQuality.level)) {
       failures.push(`Invalid evidenceQuality.level for ${project.id}: ${evidenceQuality.level}`);
     }
@@ -66,7 +72,9 @@ const main = async () => {
     return;
   }
 
-  console.log(`Validated ${projects.length} projects with no duplicate ids, names, slugs, or sources.`);
+  console.log(
+    `Validated ${projects.length} projects with no duplicate ids, names, slugs, sources, or discoveredSeq values.`
+  );
 };
 
 main().catch((error) => {

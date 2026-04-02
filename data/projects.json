@@ -1,865 +1,49 @@
 {
   "projects": [
     {
-      "id": "proj.meitu-design-studio",
-      "canonicalName": "美图设计室",
+      "id": "proj.edrawmax",
+      "canonicalName": "万兴图示",
       "aliases": [
-        "Meitu X-Design",
-        "X-Design"
+        "亿图图示",
+        "EdrawMax"
       ],
-      "slug": "meitu-design-studio",
+      "slug": "edrawmax",
       "status": "active",
       "firstSeen": "2026-04-02",
       "lastUpdated": "2026-04-02",
-      "productForm": "AI设计SaaS",
-      "targetCustomers": "电商商家、内容营销团队、品牌运营",
-      "painPoint": "商品图、营销素材和内容视觉生产成本高，响应速度慢。",
-      "monetization": "订阅会员 + 企业版，依托 AI 设计与影像生产工具持续付费。",
-      "barriers": "图像生成与编辑工作流、模板资产沉淀、电商场景适配、素材版权与商用合规。",
+      "productForm": "AI流程图与商业图示工具",
+      "targetCustomers": "产品经理、运营、咨询顾问、IT架构师、培训与办公场景用户",
+      "painPoint": "流程图、架构图、组织图和商业分析图制作慢，跨场景表达工具分散，模板复用和多人协作效率低。",
+      "monetization": "个人标准版/专业版/商务版授权付费 + 企业版授权 + 维护升级服务。",
+      "barriers": "图形编辑引擎、海量模板与素材生态、AI一键制图与分析能力、办公场景适配，以及商用模板与企业数据处理合规。",
       "evidenceQuality": {
         "level": "strong",
         "marketingRisk": "low",
-        "signals": [
-          "官方收入披露",
-          "官方产品矩阵",
-          "付费订阅驱动"
-        ],
-        "note": "官方披露口径清楚，商业模式透明度高于多数内容型AI工具。"
-      },
-      "benchmarks": [
-        "Canva可画",
-        "创客贴"
-      ],
-      "sources": [
-        "https://www.meitu.com/hk/media/395",
-        "https://corp-static.meitu.com/corp-new/20251008/2023%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是有官方收入披露与 AI 功能订阅驱动的清晰信号。",
-          "update": "首轮建立卡片与跟踪基线。"
-        }
-      ]
-    },
-    {
-      "id": "proj.aippt",
-      "canonicalName": "AiPPT",
-      "aliases": [
-        "AiPPT.cn"
-      ],
-      "slug": "aippt",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI PPT生成工具",
-      "targetCustomers": "职场用户、销售、培训、教育与轻量企业团队",
-      "painPoint": "演示文档结构搭建慢、模板整理成本高、内容转 PPT 效率低。",
-      "monetization": "会员权益体系 + 插件分发 + 企业解决方案，定价透明度仍需继续补证。",
-      "barriers": "长文档结构化、模板引擎、与 PowerPoint/WPS 的适配，以及企业文档处理合规。",
-      "evidenceQuality": {
-        "level": "medium",
-        "marketingRisk": "medium",
         "signals": [
           "官方产品页",
-          "插件分发",
-          "会员体系存在"
+          "官方AI功能页",
+          "官方FAQ明确版本与价格"
         ],
-        "note": "产品形态明确，但价格透明度和企业成交证据还需补强。"
+        "note": "官方站点同时公开产品定位、AI能力和版本价格，商业模式透明度较高。"
       },
       "benchmarks": [
-        "讯飞智文",
-        "WPS AI"
+        "Visio",
+        "Lucidchart"
       ],
       "sources": [
-        "https://www.aippt.cn/about-us/",
-        "https://www.aippt.cn/plugin/download",
-        "https://www.aippt.cn/plugin/help/article/50"
+        "https://www.edrawsoft.cn/edrawmax/",
+        "https://www.edrawsoft.cn/edrawmax/ai/",
+        "https://www.edrawsoft.cn/faqs/edrawmax-version-differences/"
       ],
       "dailyNotes": [
         {
           "date": "2026-04-02",
           "kind": "New",
-          "summary": "纳入正式名单，确认产品形态、插件渠道和会员体系存在。",
-          "update": "后续需继续补齐会员价格与企业成交案例。"
+          "summary": "纳入正式名单，原因是官方版本价格、AI能力和企业授权路径都较清楚。",
+          "update": "补充应用层流程图与商业图示案例。"
         }
-      ]
-    },
-    {
-      "id": "proj.deepseek-api",
-      "canonicalName": "DeepSeek API",
-      "aliases": [
-        "DeepSeek Platform"
       ],
-      "slug": "deepseek-api",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "大模型API服务",
-      "targetCustomers": "开发者、AI 应用团队、企业技术团队",
-      "painPoint": "高质量推理能力成本高，模型接入门槛和调用费用难平衡。",
-      "monetization": "按 token 计费，可直接对接开发者与企业调用量。",
-      "barriers": "模型能力、推理成本控制、服务稳定性、输出安全与数据合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "公开成本/收入测算",
-          "API直接计费"
-        ],
-        "note": "定价公开且商业化链路直接，验证强度高。"
-      },
-      "benchmarks": [
-        "OpenAI API",
-        "通义千问 API"
-      ],
-      "sources": [
-        "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-        "https://www.36kr.com/p/3189676494987396"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，理由是官方计费透明，且公开报道给出成本与收入测算信号。",
-          "update": "后续可追加模型版本变更和价格调整跟踪。"
-        }
-      ]
-    },
-    {
-      "id": "proj.zhipu-open-platform",
-      "canonicalName": "智谱开放平台",
-      "aliases": [
-        "BigModel",
-        "GLM Coding Plan"
-      ],
-      "slug": "zhipu-open-platform",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "大模型MaaS平台",
-      "targetCustomers": "开发者、企业AI团队、AI编程工具用户",
-      "painPoint": "需要国产大模型API、多模态能力和编码场景订阅方案，但希望成本与平台能力更可控。",
-      "monetization": "API按量付费 + 用户权益充值体系 + GLM Coding Plan订阅套餐。",
-      "barriers": "模型与工具链能力、平台并发治理、企业接入稳定性、数据安全与备案合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方平台介绍",
-          "充值权益规则",
-          "订阅套餐说明"
-        ],
-        "note": "平台同时覆盖按量API与订阅制Coding Plan，商业路径清晰，但公开客户案例少于Kimi。"
-      },
-      "benchmarks": [
-        "Kimi 开放平台",
-        "通义千问 API"
-      ],
-      "sources": [
-        "https://docs.bigmodel.cn/",
-        "https://docs.bigmodel.cn/cn/guide/platform/equity-explain",
-        "https://docs.bigmodel.cn/cn/coding-plan/overview"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是平台化商业模式与订阅体系都已公开。",
-          "update": "补充国产大模型平台案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.wps-365",
-      "canonicalName": "WPS 365",
-      "aliases": [
-        "金山数字办公"
-      ],
-      "slug": "wps-365",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI办公协同SaaS",
-      "targetCustomers": "中小企业、中大型组织、需要协同办公的一线业务团队",
-      "painPoint": "文档、会议、IM、邮箱分散，企业协同与AI办公能力难统一采购和落地。",
-      "monetization": "按人/年收费的企业套餐 + 更高阶商业版本，支持对公开票与企业支付。",
-      "barriers": "办公套件整合能力、企业协作闭环、数据安全与权限治理、生成内容合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "企业付费套餐",
-          "对公开票与汇款支付"
-        ],
-        "note": "官方定价与企业结算路径都公开，商业化透明度高。"
-      },
-      "benchmarks": [
-        "Microsoft 365 Copilot",
-        "飞书"
-      ],
-      "sources": [
-        "https://365.wps.cn/price",
-        "https://plus.wps.cn/blog/p104175.html"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是官方企业定价和AI办公场景都比较明确。",
-          "update": "作为企业AI办公案例补入站点。"
-        }
-      ]
-    },
-    {
-      "id": "proj.kimi-open-platform",
-      "canonicalName": "Kimi 开放平台",
-      "aliases": [
-        "Moonshot API",
-        "Kimi API 开放平台"
-      ],
-      "slug": "kimi-open-platform",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "大模型API平台",
-      "targetCustomers": "开发者、AI产品团队、企业研发与智能体团队",
-      "painPoint": "需要兼顾模型效果、Agent能力和成本控制的团队，缺少可直接商用的国产模型接口。",
-      "monetization": "自助充值按量付费 + 企业定制服务。",
-      "barriers": "模型能力、工具调用稳定性、长上下文成本控制、企业数据与内容合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方模型价格",
-          "自助充值按量付费",
-          "企业服务与客户案例"
-        ],
-        "note": "首页直接公开模型价格与客户案例，自助充值与企业服务并行，变现链路清楚。"
-      },
-      "benchmarks": [
-        "DeepSeek API",
-        "智谱开放平台"
-      ],
-      "sources": [
-        "https://platform.moonshot.cn/",
-        "https://platform.moonshot.cn/docs/intro"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是API定价与商业模式公开透明。",
-          "update": "补充国产大模型API案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.codebuddy",
-      "canonicalName": "腾讯云代码助手 CodeBuddy",
-      "aliases": [
-        "CodeBuddy",
-        "腾讯云代码助手"
-      ],
-      "slug": "codebuddy",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI编程助手",
-      "targetCustomers": "开发者、研发团队、企业工程组织",
-      "painPoint": "代码补全、理解、修复和评审效率低，团队希望把AI能力嵌入现有开发流程。",
-      "monetization": "个人版/旗舰版订阅 + 企业版采购。",
-      "barriers": "代码理解与补全能力、IDE集成、企业代码安全、私有仓库与审计合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "订阅版本划分",
-          "企业版采购路径"
-        ],
-        "note": "定价、版本差异和企业采购路径都公开，商业化方式直接。"
-      },
-      "benchmarks": [
-        "百度 Comate",
-        "Cursor"
-      ],
-      "sources": [
-        "https://www.codebuddy.ai/pricing",
-        "https://www.codebuddy.ai/"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI编程助手的付费路径和目标客群都比较明确。",
-          "update": "补充AI coding赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.youyan",
-      "canonicalName": "有言",
-      "aliases": [
-        "魔珐有言",
-        "有言AI数字人视频平台"
-      ],
-      "slug": "youyan",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI数字人视频平台",
-      "targetCustomers": "品牌营销团队、培训团队、内容运营、企业宣传与电商团队",
-      "painPoint": "真人出镜视频制作成本高、周期长，难以稳定批量生成可控口播内容。",
-      "monetization": "订阅套餐 + 更高阶企业合作。",
-      "barriers": "数字人驱动与口型匹配、视频生成效率、人物肖像与声音授权、内容合规。",
-      "evidenceQuality": {
-        "level": "medium",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方订阅页",
-          "版本功能对比",
-          "企业合作入口"
-        ],
-        "note": "官方订阅体系清楚，但相较API平台，公开商业数据和客户成交细节仍偏少。"
-      },
-      "benchmarks": [
-        "硅基智能数字人",
-        "腾讯智影"
-      ],
-      "sources": [
-        "https://www.youyan3d.com/",
-        "https://www.youyan3d.com/subscribe"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI数字人视频赛道已有明确订阅模式。",
-          "update": "补充AI数字人视频赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.salesmartly",
-      "canonicalName": "SaleSmartly",
-      "aliases": [
-        "SaleSmartly AI客服",
-        "SaleSmartly 在线客服系统"
-      ],
-      "slug": "salesmartly",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI客服SaaS",
-      "targetCustomers": "跨境电商团队、在线客服团队、出海企业与运营团队",
-      "painPoint": "多渠道客服分散、人工响应成本高、AI自动回复和会话管理难统一落地。",
-      "monetization": "免费版引流 + Pro/Max 订阅 + Custom 企业报价。",
-      "barriers": "多渠道客服整合、AI机器人效果、自动化流程编排、客户数据与跨境合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "免费到企业版梯度",
-          "AI回复额度公开"
-        ],
-        "note": "价格层级、AI字符额度和企业定制路径都公开，商业模式很清晰。"
-      },
-      "benchmarks": [
-        "美洽",
-        "Intercom"
-      ],
-      "sources": [
-        "https://www.salesmartly.com/zh/pricing/",
-        "https://www.salesmartly.com/"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI客服SaaS的分层定价和使用额度都较透明。",
-          "update": "补充AI客服赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.iterms",
-      "canonicalName": "iTerms",
-      "aliases": [
-        "iTerms.AI",
-        "一站式法律AI工作台"
-      ],
-      "slug": "iterms",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI法务工作台",
-      "targetCustomers": "企业法务团队、律所、需要合同审查与法律检索的组织",
-      "painPoint": "合同起草、审查和法律问答效率低，法务知识沉淀和协作难标准化。",
-      "monetization": "体验版 + 标准版年费 + 私有版/定制服务。",
-      "barriers": "法律语义理解、合同审查准确性、专业知识库建设、数据安全与行业合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方定价页",
-          "年费标准版",
-          "私有化与定制服务"
-        ],
-        "note": "公开定价和私有化版本并存，法务场景商业路径清晰，但专业效果仍需长期验证。"
-      },
-      "benchmarks": [
-        "Alpha系统",
-        "法行宝"
-      ],
-      "sources": [
-        "https://www.iterms.com/pricing",
-        "https://www.iterms.com/product/iterms-ai"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI法务工作台已经有清晰的年费和私有化商业模式。",
-          "update": "补充AI法务赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.tungee",
-      "canonicalName": "探迹",
-      "aliases": [
-        "探迹智能销售",
-        "Tungee"
-      ],
-      "slug": "tungee",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI销售SaaS",
-      "targetCustomers": "B2B销售团队、企服公司、需要获客与销售线索管理的企业",
-      "painPoint": "销售获客分散、线索筛选效率低、销售过程难标准化，AI能力难嵌入日常销售动作。",
-      "monetization": "企业订阅/席位制SaaS + 增值服务，公开价格透明度较弱。",
-      "barriers": "企业画像与线索挖掘能力、销售流程嵌入、CRM协同、数据合规与企业采购门槛。",
-      "evidenceQuality": {
-        "level": "medium",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方产品页",
-          "官方客户案例",
-          "企业销售数字化定位"
-        ],
-        "note": "产品定位和企业客群清晰，但公开定价不如API和标准SaaS透明，因此按中等证据纳入。"
-      },
-      "benchmarks": [
-        "销售易",
-        "HubSpot Sales Hub"
-      ],
-      "sources": [
-        "https://www.tungee.com/",
-        "https://www.tungee.com/product/sdr"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI销售赛道需要代表案例，且探迹的企业销售产品化路径较清楚。",
-          "update": "补充AI销售赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.moka-eva",
-      "canonicalName": "Moka Eva",
-      "aliases": [
-        "Moka AI 招聘助手",
-        "Moka HR SaaS"
-      ],
-      "slug": "moka-eva",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI招聘SaaS",
-      "targetCustomers": "企业招聘团队、HR 团队、需要招聘流程自动化的组织",
-      "painPoint": "招聘流程长、筛选效率低、面试安排与候选人沟通成本高，AI能力难嵌入标准招聘流程。",
-      "monetization": "企业招聘SaaS订阅 + AI能力商业化，公开价格透明度较弱。",
-      "barriers": "招聘流程产品化、候选人匹配能力、企业工作流整合、数据隐私与雇佣合规。",
-      "evidenceQuality": {
-        "level": "medium",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方AI产品页",
-          "商业化表述",
-          "企业招聘SaaS定位"
-        ],
-        "note": "官方已明确Eva商业化与企业招聘场景，但公开价格信息弱于强证据类目，因此按中等证据入库。"
-      },
-      "benchmarks": [
-        "北森招聘云",
-        "牛客AI面试"
-      ],
-      "sources": [
-        "https://www.mokahr.com/eva",
-        "https://www.mokahr.com/about"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI招聘赛道需要代表案例，且Moka Eva的产品化与商业化路径已较清晰。",
-          "update": "补充AI招聘赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.baidu-comate",
-      "canonicalName": "百度 Comate",
-      "aliases": [
-        "Baidu Comate",
-        "文心快码"
-      ],
-      "slug": "baidu-comate",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI编程助手",
-      "targetCustomers": "开发者、研发团队、企业工程组织",
-      "painPoint": "编码补全、代码理解和企业级AI编程落地效率不足，团队希望在现有IDE中接入付费AI能力。",
-      "monetization": "个人版月/季/年付费 + 企业版 + 智能体请求包。",
-      "barriers": "代码理解与生成能力、IDE集成、企业License管理、代码与数据安全合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方定价页",
-          "个人版与企业版区分",
-          "智能体请求包单独售卖"
-        ],
-        "note": "官方文档直接公开计费模式、支付方式和个人/企业差异，商业化透明度较高。"
-      },
-      "benchmarks": [
-        "腾讯云代码助手 CodeBuddy",
-        "Cursor"
-      ],
-      "sources": [
-        "https://comate.baidu.com/docs/产品定价/产品定价.html",
-        "https://comate.baidu.com/docs/隐私协议/用户服务协议.html"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是AI编程助手赛道需要第二个强证据对照样本。",
-          "update": "补充百度系AI coding案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.gaoding-design",
-      "canonicalName": "稿定设计",
-      "aliases": [
-        "稿定",
-        "稿定AI"
-      ],
-      "slug": "gaoding-design",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI设计SaaS",
-      "targetCustomers": "品牌营销团队、电商商家、内容运营、需要视觉物料生产的中小企业",
-      "painPoint": "营销物料与视觉内容产出成本高，设计协作与版权合规难统一，AI能力需要嵌入实际创作流程。",
-      "monetization": "个人会员 + 团队版席位收费 + 稿豆增值消耗。",
-      "barriers": "模板与素材生态、AI生成与编辑能力、团队协作流程、正版素材与版权合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "团队版席位收费",
-          "AI功能稿豆增值"
-        ],
-        "note": "公开价格、团队套餐和AI相关增值消耗都很明确，且属于典型应用层产品。"
-      },
-      "benchmarks": [
-        "创客贴",
-        "Canva可画"
-      ],
-      "sources": [
-        "https://m.gaoding.com/pricing",
-        "https://www.gaoding.com/article/gaodou_Introduction"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是它更符合应用层灵感导向，且商业模式与AI增值路径都比较清晰。",
-          "update": "按用户新偏好补充应用层AI设计案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.boardmix",
-      "canonicalName": "boardmix 博思白板",
-      "aliases": [
-        "博思白板",
-        "boardmix AI白板"
-      ],
-      "slug": "boardmix",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI协作白板",
-      "targetCustomers": "产品团队、设计团队、培训团队、需要协作创作与知识梳理的组织",
-      "painPoint": "头脑风暴、流程梳理、方案共创和知识整理分散在多个工具里，协作效率低，AI能力难嵌入白板工作流。",
-      "monetization": "个人会员/团队版订阅 + 企业合作，公开价格透明度中等。",
-      "barriers": "协作白板交互、多人实时同步、AI生成与整理能力、企业知识与权限治理。",
-      "evidenceQuality": {
-        "level": "medium",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方产品页",
-          "白板AI场景",
-          "企业协作定位"
-        ],
-        "note": "应用层形态和付费方向清楚，但公开定价透明度弱于强证据类目，因此按中等证据纳入。"
-      },
-      "benchmarks": [
-        "Miro AI",
-        "FigJam AI"
-      ],
-      "sources": [
-        "https://boardmix.cn/file/recommend2/boardmix-introduction.pdf",
-        "https://boardmix.cn/ai-whiteboard"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是它更能提供应用层协作产品灵感，而不是上游能力堆叠。",
-          "update": "按用户偏好补充AI协作白板案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.processon",
-      "canonicalName": "ProcessOn",
-      "aliases": [
-        "ProcessOn AI 思维导图",
-        "ProcessOn 流程图"
-      ],
-      "slug": "processon",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI图表与知识整理工具",
-      "targetCustomers": "产品经理、咨询顾问、教师学生、需要流程图/思维导图/架构图的知识工作者",
-      "painPoint": "流程图、思维导图和知识整理常在不同工具间切换，内容结构化与图表生成效率低。",
-      "monetization": "个人会员订阅 + AI创作权益 + 团队版协作收费。",
-      "barriers": "图表与知识结构生成能力、多人协作、模板生态、文档与知识内容版权合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "AI创作权益",
-          "团队版协作收费"
-        ],
-        "note": "官方会员页直接包含AI创作权益和团队版分层，是较典型的应用层知识整理产品。"
-      },
-      "benchmarks": [
-        "boardmix 博思白板",
-        "Xmind Copilot"
-      ],
-      "sources": [
-        "https://www.processon.com/about/pricing",
-        "https://www.processon.com/template"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是它提供了另一类应用层工作流灵感：图表、知识整理与AI生成结合。",
-          "update": "补充AI图表与知识整理赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.chuangkit",
-      "canonicalName": "创客贴",
-      "aliases": [
-        "创客贴AI",
-        "Chuangkit"
-      ],
-      "slug": "chuangkit",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI设计SaaS",
-      "targetCustomers": "中小商家、营销团队、内容运营、需要快速产出视觉物料的个人与团队",
-      "painPoint": "设计物料、视频和营销内容生产门槛高，模板、版权和团队协作难统一管理。",
-      "monetization": "会员订阅 + 协作版/旗舰版团队收费 + 企业服务与开放平台。",
-      "barriers": "模板与素材生态、AI设计功能、团队协作体验、商业授权与版权合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方价格页",
-          "团队版矩阵",
-          "AI工具与企业服务"
-        ],
-        "note": "会员专享服务矩阵、团队版和企业服务都公开，且AI设计能力已进入核心卖点。"
-      },
-      "benchmarks": [
-        "稿定设计",
-        "Canva可画"
-      ],
-      "sources": [
-        "https://www.chuangkit.com/price",
-        "https://www.chuangkit.com/templatebatch"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是它是更成熟的应用层设计生产对照样本。",
-          "update": "按应用层偏好补充AI设计赛道对照案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.modao",
-      "canonicalName": "墨刀",
-      "aliases": [
-        "Modao",
-        "墨刀AI",
-        "墨刀原型"
-      ],
-      "slug": "modao",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI原型设计与产研协作平台",
-      "targetCustomers": "产品经理、设计师、研发协作团队、企业产研组织",
-      "painPoint": "需求梳理、原型设计、评审和交付分散在多个工具中，AI能力难直接嵌入产研流程。",
-      "monetization": "个人/团队会员 + 企业版 + 私有化部署服务。",
-      "barriers": "AI原型生成能力、产研协作闭环、设计到研发衔接、企业数据与权限治理。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方AI产品页",
-          "团队版与企业版",
-          "私有化部署服务"
-        ],
-        "note": "AI功能、团队版和企业版路径都公开，应用层工作流价值明确；公开统一价目弱于标准会员页，所以营销风险略高于强证据设计工具。"
-      },
-      "benchmarks": [
-        "Figma AI",
-        "Axure"
-      ],
-      "sources": [
-        "https://modao.cc/feature/ai",
-        "https://modao.cc/feature/enterprise.html"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是它能提供 AI 原型设计与产研协作的应用层灵感。",
-          "update": "补充AI原型设计与协作赛道案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.mastergo",
-      "canonicalName": "MasterGo",
-      "aliases": [
-        "莫高设计"
-      ],
-      "slug": "mastergo",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI界面设计与原型协作平台",
-      "targetCustomers": "产品经理、设计师、前端工程师、产设研协作团队",
-      "painPoint": "界面设计、原型、设计系统和交付协作分散，非设计人员难把需求快速转成高保真界面与可用代码。",
-      "monetization": "个人AI积分订阅套餐 + 团队版/企业版席位付费 + 企业积分与对公支付。",
-      "barriers": "设计系统与协作平台能力、AI生成界面与代码质量、团队权限治理，以及设计资产和企业数据合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "medium",
-        "signals": [
-          "官方AI套餐价格",
-          "官方企业购买流程",
-          "对公转账与客户案例"
-        ],
-        "note": "个人AI套餐、企业购买与支付路径都公开，商业化透明度高于多数设计协作AI工具。"
-      },
-      "benchmarks": [
-        "即时设计",
-        "Figma"
-      ],
-      "sources": [
-        "https://mastergo.com/",
-        "https://mastergo.com/help/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%94%AF%E4%BB%98",
-        "https://mastergo.com/help/%E5%A6%82%E4%BD%95%E8%B4%AD%E4%B9%B0%E4%BC%81%E4%B8%9A%E7%89%88"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是 AI 套餐价格、企业购买路径和客户案例都较清楚。",
-          "update": "补充应用层界面设计与产设研协作案例。"
-        }
-      ]
-    },
-    {
-      "id": "proj.xmind",
-      "canonicalName": "Xmind",
-      "aliases": [
-        "Xmind思维导图",
-        "Xmind Copilot"
-      ],
-      "slug": "xmind",
-      "status": "active",
-      "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
-      "productForm": "AI思维导图与知识整理工具",
-      "targetCustomers": "知识工作者、产品经理、研究人员、学生与需要结构化整理信息的团队",
-      "painPoint": "文本、文件和链接里的信息难以快速结构化，个人与团队在梳理思路、拆解任务和协同推进时效率低。",
-      "monetization": "个人 Pro/Pro+ 年付订阅 + AI 点数权益 + 多人订阅与企业定价。",
-      "barriers": "思维导图与多结构编辑引擎、AI总结与任务拆解能力、跨端同步协作，以及用户内容和企业数据处理合规。",
-      "evidenceQuality": {
-        "level": "strong",
-        "marketingRisk": "low",
-        "signals": [
-          "官方定价页",
-          "AI点数与功能配额",
-          "多人订阅与企业定价"
-        ],
-        "note": "官方定价页同时公开个人版、AI能力配额和企业定价入口，商业模式透明度较高。"
-      },
-      "benchmarks": [
-        "ProcessOn",
-        "亿图脑图"
-      ],
-      "sources": [
-        "https://xmind.cn/pricing",
-        "https://xmind.cn/ai",
-        "https://xmind.cn/features"
-      ],
-      "dailyNotes": [
-        {
-          "date": "2026-04-02",
-          "kind": "New",
-          "summary": "纳入正式名单，原因是官方定价、AI配额和企业定价入口都比较清楚。",
-          "update": "补充应用层思维导图与知识整理案例。"
-        }
-      ]
+      "discoveredSeq": 19
     },
     {
       "id": "proj.iflyrec",
@@ -903,51 +87,757 @@
           "summary": "纳入正式名单，原因是个人权益包与企业合作路径都已公开，商业模式较清楚。",
           "update": "补充应用层语音转写与会议纪要案例。"
         }
-      ]
+      ],
+      "discoveredSeq": 18
     },
     {
-      "id": "proj.edrawmax",
-      "canonicalName": "万兴图示",
+      "id": "proj.xmind",
+      "canonicalName": "Xmind",
       "aliases": [
-        "亿图图示",
-        "EdrawMax"
+        "Xmind思维导图",
+        "Xmind Copilot"
       ],
-      "slug": "edrawmax",
+      "slug": "xmind",
       "status": "active",
       "firstSeen": "2026-04-02",
       "lastUpdated": "2026-04-02",
-      "productForm": "AI流程图与商业图示工具",
-      "targetCustomers": "产品经理、运营、咨询顾问、IT架构师、培训与办公场景用户",
-      "painPoint": "流程图、架构图、组织图和商业分析图制作慢，跨场景表达工具分散，模板复用和多人协作效率低。",
-      "monetization": "个人标准版/专业版/商务版授权付费 + 企业版授权 + 维护升级服务。",
-      "barriers": "图形编辑引擎、海量模板与素材生态、AI一键制图与分析能力、办公场景适配，以及商用模板与企业数据处理合规。",
+      "productForm": "AI思维导图与知识整理工具",
+      "targetCustomers": "知识工作者、产品经理、研究人员、学生与需要结构化整理信息的团队",
+      "painPoint": "文本、文件和链接里的信息难以快速结构化，个人与团队在梳理思路、拆解任务和协同推进时效率低。",
+      "monetization": "个人 Pro/Pro+ 年付订阅 + AI 点数权益 + 多人订阅与企业定价。",
+      "barriers": "思维导图与多结构编辑引擎、AI总结与任务拆解能力、跨端同步协作，以及用户内容和企业数据处理合规。",
       "evidenceQuality": {
         "level": "strong",
         "marketingRisk": "low",
         "signals": [
-          "官方产品页",
-          "官方AI功能页",
-          "官方FAQ明确版本与价格"
+          "官方定价页",
+          "AI点数与功能配额",
+          "多人订阅与企业定价"
         ],
-        "note": "官方站点同时公开产品定位、AI能力和版本价格，商业模式透明度较高。"
+        "note": "官方定价页同时公开个人版、AI能力配额和企业定价入口，商业模式透明度较高。"
       },
       "benchmarks": [
-        "Visio",
-        "Lucidchart"
+        "ProcessOn",
+        "亿图脑图"
       ],
       "sources": [
-        "https://www.edrawsoft.cn/edrawmax/",
-        "https://www.edrawsoft.cn/edrawmax/ai/",
-        "https://www.edrawsoft.cn/faqs/edrawmax-version-differences/"
+        "https://xmind.cn/pricing",
+        "https://xmind.cn/ai",
+        "https://xmind.cn/features"
       ],
       "dailyNotes": [
         {
           "date": "2026-04-02",
           "kind": "New",
-          "summary": "纳入正式名单，原因是官方版本价格、AI能力和企业授权路径都较清楚。",
-          "update": "补充应用层流程图与商业图示案例。"
+          "summary": "纳入正式名单，原因是官方定价、AI配额和企业定价入口都比较清楚。",
+          "update": "补充应用层思维导图与知识整理案例。"
         }
-      ]
+      ],
+      "discoveredSeq": 17
+    },
+    {
+      "id": "proj.mastergo",
+      "canonicalName": "MasterGo",
+      "aliases": [
+        "莫高设计"
+      ],
+      "slug": "mastergo",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI界面设计与原型协作平台",
+      "targetCustomers": "产品经理、设计师、前端工程师、产设研协作团队",
+      "painPoint": "界面设计、原型、设计系统和交付协作分散，非设计人员难把需求快速转成高保真界面与可用代码。",
+      "monetization": "个人AI积分订阅套餐 + 团队版/企业版席位付费 + 企业积分与对公支付。",
+      "barriers": "设计系统与协作平台能力、AI生成界面与代码质量、团队权限治理，以及设计资产和企业数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI套餐价格",
+          "官方企业购买流程",
+          "对公转账与客户案例"
+        ],
+        "note": "个人AI套餐、企业购买与支付路径都公开，商业化透明度高于多数设计协作AI工具。"
+      },
+      "benchmarks": [
+        "即时设计",
+        "Figma"
+      ],
+      "sources": [
+        "https://mastergo.com/",
+        "https://mastergo.com/help/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%94%AF%E4%BB%98",
+        "https://mastergo.com/help/%E5%A6%82%E4%BD%95%E8%B4%AD%E4%B9%B0%E4%BC%81%E4%B8%9A%E7%89%88"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是 AI 套餐价格、企业购买路径和客户案例都较清楚。",
+          "update": "补充应用层界面设计与产设研协作案例。"
+        }
+      ],
+      "discoveredSeq": 16
+    },
+    {
+      "id": "proj.modao",
+      "canonicalName": "墨刀",
+      "aliases": [
+        "Modao",
+        "墨刀AI",
+        "墨刀原型"
+      ],
+      "slug": "modao",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI原型设计与产研协作平台",
+      "targetCustomers": "产品经理、设计师、研发协作团队、企业产研组织",
+      "painPoint": "需求梳理、原型设计、评审和交付分散在多个工具中，AI能力难直接嵌入产研流程。",
+      "monetization": "个人/团队会员 + 企业版 + 私有化部署服务。",
+      "barriers": "AI原型生成能力、产研协作闭环、设计到研发衔接、企业数据与权限治理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI产品页",
+          "团队版与企业版",
+          "私有化部署服务"
+        ],
+        "note": "AI功能、团队版和企业版路径都公开，应用层工作流价值明确；公开统一价目弱于标准会员页，所以营销风险略高于强证据设计工具。"
+      },
+      "benchmarks": [
+        "Figma AI",
+        "Axure"
+      ],
+      "sources": [
+        "https://modao.cc/feature/ai",
+        "https://modao.cc/feature/enterprise.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它能提供 AI 原型设计与产研协作的应用层灵感。",
+          "update": "补充AI原型设计与协作赛道案例。"
+        }
+      ],
+      "discoveredSeq": 15
+    },
+    {
+      "id": "proj.chuangkit",
+      "canonicalName": "创客贴",
+      "aliases": [
+        "创客贴AI",
+        "Chuangkit"
+      ],
+      "slug": "chuangkit",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "中小商家、营销团队、内容运营、需要快速产出视觉物料的个人与团队",
+      "painPoint": "设计物料、视频和营销内容生产门槛高，模板、版权和团队协作难统一管理。",
+      "monetization": "会员订阅 + 协作版/旗舰版团队收费 + 企业服务与开放平台。",
+      "barriers": "模板与素材生态、AI设计功能、团队协作体验、商业授权与版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "团队版矩阵",
+          "AI工具与企业服务"
+        ],
+        "note": "会员专享服务矩阵、团队版和企业服务都公开，且AI设计能力已进入核心卖点。"
+      },
+      "benchmarks": [
+        "稿定设计",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://www.chuangkit.com/price",
+        "https://www.chuangkit.com/templatebatch"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它是更成熟的应用层设计生产对照样本。",
+          "update": "按应用层偏好补充AI设计赛道对照案例。"
+        }
+      ],
+      "discoveredSeq": 14
+    },
+    {
+      "id": "proj.processon",
+      "canonicalName": "ProcessOn",
+      "aliases": [
+        "ProcessOn AI 思维导图",
+        "ProcessOn 流程图"
+      ],
+      "slug": "processon",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI图表与知识整理工具",
+      "targetCustomers": "产品经理、咨询顾问、教师学生、需要流程图/思维导图/架构图的知识工作者",
+      "painPoint": "流程图、思维导图和知识整理常在不同工具间切换，内容结构化与图表生成效率低。",
+      "monetization": "个人会员订阅 + AI创作权益 + 团队版协作收费。",
+      "barriers": "图表与知识结构生成能力、多人协作、模板生态、文档与知识内容版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "AI创作权益",
+          "团队版协作收费"
+        ],
+        "note": "官方会员页直接包含AI创作权益和团队版分层，是较典型的应用层知识整理产品。"
+      },
+      "benchmarks": [
+        "boardmix 博思白板",
+        "Xmind Copilot"
+      ],
+      "sources": [
+        "https://www.processon.com/about/pricing",
+        "https://www.processon.com/template"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它提供了另一类应用层工作流灵感：图表、知识整理与AI生成结合。",
+          "update": "补充AI图表与知识整理赛道案例。"
+        }
+      ],
+      "discoveredSeq": 13
+    },
+    {
+      "id": "proj.boardmix",
+      "canonicalName": "boardmix 博思白板",
+      "aliases": [
+        "博思白板",
+        "boardmix AI白板"
+      ],
+      "slug": "boardmix",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI协作白板",
+      "targetCustomers": "产品团队、设计团队、培训团队、需要协作创作与知识梳理的组织",
+      "painPoint": "头脑风暴、流程梳理、方案共创和知识整理分散在多个工具里，协作效率低，AI能力难嵌入白板工作流。",
+      "monetization": "个人会员/团队版订阅 + 企业合作，公开价格透明度中等。",
+      "barriers": "协作白板交互、多人实时同步、AI生成与整理能力、企业知识与权限治理。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "白板AI场景",
+          "企业协作定位"
+        ],
+        "note": "应用层形态和付费方向清楚，但公开定价透明度弱于强证据类目，因此按中等证据纳入。"
+      },
+      "benchmarks": [
+        "Miro AI",
+        "FigJam AI"
+      ],
+      "sources": [
+        "https://boardmix.cn/file/recommend2/boardmix-introduction.pdf",
+        "https://boardmix.cn/ai-whiteboard"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它更能提供应用层协作产品灵感，而不是上游能力堆叠。",
+          "update": "按用户偏好补充AI协作白板案例。"
+        }
+      ],
+      "discoveredSeq": 12
+    },
+    {
+      "id": "proj.gaoding-design",
+      "canonicalName": "稿定设计",
+      "aliases": [
+        "稿定",
+        "稿定AI"
+      ],
+      "slug": "gaoding-design",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "品牌营销团队、电商商家、内容运营、需要视觉物料生产的中小企业",
+      "painPoint": "营销物料与视觉内容产出成本高，设计协作与版权合规难统一，AI能力需要嵌入实际创作流程。",
+      "monetization": "个人会员 + 团队版席位收费 + 稿豆增值消耗。",
+      "barriers": "模板与素材生态、AI生成与编辑能力、团队协作流程、正版素材与版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "团队版席位收费",
+          "AI功能稿豆增值"
+        ],
+        "note": "公开价格、团队套餐和AI相关增值消耗都很明确，且属于典型应用层产品。"
+      },
+      "benchmarks": [
+        "创客贴",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://m.gaoding.com/pricing",
+        "https://www.gaoding.com/article/gaodou_Introduction"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它更符合应用层灵感导向，且商业模式与AI增值路径都比较清晰。",
+          "update": "按用户新偏好补充应用层AI设计案例。"
+        }
+      ],
+      "discoveredSeq": 11
+    },
+    {
+      "id": "proj.baidu-comate",
+      "canonicalName": "百度 Comate",
+      "aliases": [
+        "Baidu Comate",
+        "文心快码"
+      ],
+      "slug": "baidu-comate",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI编程助手",
+      "targetCustomers": "开发者、研发团队、企业工程组织",
+      "painPoint": "编码补全、代码理解和企业级AI编程落地效率不足，团队希望在现有IDE中接入付费AI能力。",
+      "monetization": "个人版月/季/年付费 + 企业版 + 智能体请求包。",
+      "barriers": "代码理解与生成能力、IDE集成、企业License管理、代码与数据安全合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方定价页",
+          "个人版与企业版区分",
+          "智能体请求包单独售卖"
+        ],
+        "note": "官方文档直接公开计费模式、支付方式和个人/企业差异，商业化透明度较高。"
+      },
+      "benchmarks": [
+        "腾讯云代码助手 CodeBuddy",
+        "Cursor"
+      ],
+      "sources": [
+        "https://comate.baidu.com/docs/产品定价/产品定价.html",
+        "https://comate.baidu.com/docs/隐私协议/用户服务协议.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI编程助手赛道需要第二个强证据对照样本。",
+          "update": "补充百度系AI coding案例。"
+        }
+      ],
+      "discoveredSeq": 10
+    },
+    {
+      "id": "proj.moka-eva",
+      "canonicalName": "Moka Eva",
+      "aliases": [
+        "Moka AI 招聘助手",
+        "Moka HR SaaS"
+      ],
+      "slug": "moka-eva",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI招聘SaaS",
+      "targetCustomers": "企业招聘团队、HR 团队、需要招聘流程自动化的组织",
+      "painPoint": "招聘流程长、筛选效率低、面试安排与候选人沟通成本高，AI能力难嵌入标准招聘流程。",
+      "monetization": "企业招聘SaaS订阅 + AI能力商业化，公开价格透明度较弱。",
+      "barriers": "招聘流程产品化、候选人匹配能力、企业工作流整合、数据隐私与雇佣合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI产品页",
+          "商业化表述",
+          "企业招聘SaaS定位"
+        ],
+        "note": "官方已明确Eva商业化与企业招聘场景，但公开价格信息弱于强证据类目，因此按中等证据入库。"
+      },
+      "benchmarks": [
+        "北森招聘云",
+        "牛客AI面试"
+      ],
+      "sources": [
+        "https://www.mokahr.com/eva",
+        "https://www.mokahr.com/about"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI招聘赛道需要代表案例，且Moka Eva的产品化与商业化路径已较清晰。",
+          "update": "补充AI招聘赛道案例。"
+        }
+      ],
+      "discoveredSeq": 9
+    },
+    {
+      "id": "proj.tungee",
+      "canonicalName": "探迹",
+      "aliases": [
+        "探迹智能销售",
+        "Tungee"
+      ],
+      "slug": "tungee",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI销售SaaS",
+      "targetCustomers": "B2B销售团队、企服公司、需要获客与销售线索管理的企业",
+      "painPoint": "销售获客分散、线索筛选效率低、销售过程难标准化，AI能力难嵌入日常销售动作。",
+      "monetization": "企业订阅/席位制SaaS + 增值服务，公开价格透明度较弱。",
+      "barriers": "企业画像与线索挖掘能力、销售流程嵌入、CRM协同、数据合规与企业采购门槛。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "官方客户案例",
+          "企业销售数字化定位"
+        ],
+        "note": "产品定位和企业客群清晰，但公开定价不如API和标准SaaS透明，因此按中等证据纳入。"
+      },
+      "benchmarks": [
+        "销售易",
+        "HubSpot Sales Hub"
+      ],
+      "sources": [
+        "https://www.tungee.com/",
+        "https://www.tungee.com/product/sdr"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI销售赛道需要代表案例，且探迹的企业销售产品化路径较清楚。",
+          "update": "补充AI销售赛道案例。"
+        }
+      ],
+      "discoveredSeq": 8
+    },
+    {
+      "id": "proj.iterms",
+      "canonicalName": "iTerms",
+      "aliases": [
+        "iTerms.AI",
+        "一站式法律AI工作台"
+      ],
+      "slug": "iterms",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI法务工作台",
+      "targetCustomers": "企业法务团队、律所、需要合同审查与法律检索的组织",
+      "painPoint": "合同起草、审查和法律问答效率低，法务知识沉淀和协作难标准化。",
+      "monetization": "体验版 + 标准版年费 + 私有版/定制服务。",
+      "barriers": "法律语义理解、合同审查准确性、专业知识库建设、数据安全与行业合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方定价页",
+          "年费标准版",
+          "私有化与定制服务"
+        ],
+        "note": "公开定价和私有化版本并存，法务场景商业路径清晰，但专业效果仍需长期验证。"
+      },
+      "benchmarks": [
+        "Alpha系统",
+        "法行宝"
+      ],
+      "sources": [
+        "https://www.iterms.com/pricing",
+        "https://www.iterms.com/product/iterms-ai"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI法务工作台已经有清晰的年费和私有化商业模式。",
+          "update": "补充AI法务赛道案例。"
+        }
+      ],
+      "discoveredSeq": 7
+    },
+    {
+      "id": "proj.salesmartly",
+      "canonicalName": "SaleSmartly",
+      "aliases": [
+        "SaleSmartly AI客服",
+        "SaleSmartly 在线客服系统"
+      ],
+      "slug": "salesmartly",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI客服SaaS",
+      "targetCustomers": "跨境电商团队、在线客服团队、出海企业与运营团队",
+      "painPoint": "多渠道客服分散、人工响应成本高、AI自动回复和会话管理难统一落地。",
+      "monetization": "免费版引流 + Pro/Max 订阅 + Custom 企业报价。",
+      "barriers": "多渠道客服整合、AI机器人效果、自动化流程编排、客户数据与跨境合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "免费到企业版梯度",
+          "AI回复额度公开"
+        ],
+        "note": "价格层级、AI字符额度和企业定制路径都公开，商业模式很清晰。"
+      },
+      "benchmarks": [
+        "美洽",
+        "Intercom"
+      ],
+      "sources": [
+        "https://www.salesmartly.com/zh/pricing/",
+        "https://www.salesmartly.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI客服SaaS的分层定价和使用额度都较透明。",
+          "update": "补充AI客服赛道案例。"
+        }
+      ],
+      "discoveredSeq": 6
+    },
+    {
+      "id": "proj.youyan",
+      "canonicalName": "有言",
+      "aliases": [
+        "魔珐有言",
+        "有言AI数字人视频平台"
+      ],
+      "slug": "youyan",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI数字人视频平台",
+      "targetCustomers": "品牌营销团队、培训团队、内容运营、企业宣传与电商团队",
+      "painPoint": "真人出镜视频制作成本高、周期长，难以稳定批量生成可控口播内容。",
+      "monetization": "订阅套餐 + 更高阶企业合作。",
+      "barriers": "数字人驱动与口型匹配、视频生成效率、人物肖像与声音授权、内容合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方订阅页",
+          "版本功能对比",
+          "企业合作入口"
+        ],
+        "note": "官方订阅体系清楚，但相较API平台，公开商业数据和客户成交细节仍偏少。"
+      },
+      "benchmarks": [
+        "硅基智能数字人",
+        "腾讯智影"
+      ],
+      "sources": [
+        "https://www.youyan3d.com/",
+        "https://www.youyan3d.com/subscribe"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI数字人视频赛道已有明确订阅模式。",
+          "update": "补充AI数字人视频赛道案例。"
+        }
+      ],
+      "discoveredSeq": 5
+    },
+    {
+      "id": "proj.codebuddy",
+      "canonicalName": "腾讯云代码助手 CodeBuddy",
+      "aliases": [
+        "CodeBuddy",
+        "腾讯云代码助手"
+      ],
+      "slug": "codebuddy",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI编程助手",
+      "targetCustomers": "开发者、研发团队、企业工程组织",
+      "painPoint": "代码补全、理解、修复和评审效率低，团队希望把AI能力嵌入现有开发流程。",
+      "monetization": "个人版/旗舰版订阅 + 企业版采购。",
+      "barriers": "代码理解与补全能力、IDE集成、企业代码安全、私有仓库与审计合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "订阅版本划分",
+          "企业版采购路径"
+        ],
+        "note": "定价、版本差异和企业采购路径都公开，商业化方式直接。"
+      },
+      "benchmarks": [
+        "百度 Comate",
+        "Cursor"
+      ],
+      "sources": [
+        "https://www.codebuddy.ai/pricing",
+        "https://www.codebuddy.ai/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI编程助手的付费路径和目标客群都比较明确。",
+          "update": "补充AI coding赛道案例。"
+        }
+      ],
+      "discoveredSeq": 4
+    },
+    {
+      "id": "proj.wps-365",
+      "canonicalName": "WPS 365",
+      "aliases": [
+        "金山数字办公"
+      ],
+      "slug": "wps-365",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI办公协同SaaS",
+      "targetCustomers": "中小企业、中大型组织、需要协同办公的一线业务团队",
+      "painPoint": "文档、会议、IM、邮箱分散，企业协同与AI办公能力难统一采购和落地。",
+      "monetization": "按人/年收费的企业套餐 + 更高阶商业版本，支持对公开票与企业支付。",
+      "barriers": "办公套件整合能力、企业协作闭环、数据安全与权限治理、生成内容合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "企业付费套餐",
+          "对公开票与汇款支付"
+        ],
+        "note": "官方定价与企业结算路径都公开，商业化透明度高。"
+      },
+      "benchmarks": [
+        "Microsoft 365 Copilot",
+        "飞书"
+      ],
+      "sources": [
+        "https://365.wps.cn/price",
+        "https://plus.wps.cn/blog/p104175.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是官方企业定价和AI办公场景都比较明确。",
+          "update": "作为企业AI办公案例补入站点。"
+        }
+      ],
+      "discoveredSeq": 3
+    },
+    {
+      "id": "proj.aippt",
+      "canonicalName": "AiPPT",
+      "aliases": [
+        "AiPPT.cn"
+      ],
+      "slug": "aippt",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI PPT生成工具",
+      "targetCustomers": "职场用户、销售、培训、教育与轻量企业团队",
+      "painPoint": "演示文档结构搭建慢、模板整理成本高、内容转 PPT 效率低。",
+      "monetization": "会员权益体系 + 插件分发 + 企业解决方案，定价透明度仍需继续补证。",
+      "barriers": "长文档结构化、模板引擎、与 PowerPoint/WPS 的适配，以及企业文档处理合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "插件分发",
+          "会员体系存在"
+        ],
+        "note": "产品形态明确，但价格透明度和企业成交证据还需补强。"
+      },
+      "benchmarks": [
+        "讯飞智文",
+        "WPS AI"
+      ],
+      "sources": [
+        "https://www.aippt.cn/about-us/",
+        "https://www.aippt.cn/plugin/download",
+        "https://www.aippt.cn/plugin/help/article/50"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，确认产品形态、插件渠道和会员体系存在。",
+          "update": "后续需继续补齐会员价格与企业成交案例。"
+        }
+      ],
+      "discoveredSeq": 2
+    },
+    {
+      "id": "proj.meitu-design-studio",
+      "canonicalName": "美图设计室",
+      "aliases": [
+        "Meitu X-Design",
+        "X-Design"
+      ],
+      "slug": "meitu-design-studio",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI设计SaaS",
+      "targetCustomers": "电商商家、内容营销团队、品牌运营",
+      "painPoint": "商品图、营销素材和内容视觉生产成本高，响应速度慢。",
+      "monetization": "订阅会员 + 企业版，依托 AI 设计与影像生产工具持续付费。",
+      "barriers": "图像生成与编辑工作流、模板资产沉淀、电商场景适配、素材版权与商用合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方收入披露",
+          "官方产品矩阵",
+          "付费订阅驱动"
+        ],
+        "note": "官方披露口径清楚，商业模式透明度高于多数内容型AI工具。"
+      },
+      "benchmarks": [
+        "Canva可画",
+        "创客贴"
+      ],
+      "sources": [
+        "https://www.meitu.com/hk/media/395",
+        "https://corp-static.meitu.com/corp-new/20251008/2023%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是有官方收入披露与 AI 功能订阅驱动的清晰信号。",
+          "update": "首轮建立卡片与跟踪基线。"
+        }
+      ],
+      "discoveredSeq": 1
     }
   ]
 }

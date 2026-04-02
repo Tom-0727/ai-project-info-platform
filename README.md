@@ -6,6 +6,7 @@ Static web frontend for daily AI project scouting.
 
 Track China-market AI software projects with explicit monetization paths, publish daily additions, and avoid duplicates before publishing to GitHub Pages.
 The UI also surfaces evidence strength, marketing risk, and source links so each entry can be audited quickly.
+Projects are displayed by discovery order descending by default, so the newest scoped item stays at the top.
 
 ## Structure
 
@@ -14,6 +15,7 @@ The UI also surfaces evidence strength, marketing risk, and source links so each
 - `app.js`: renders daily feed and project index from JSON data.
   Includes client-side search and filters for case browsing.
 - `data/projects.json`: source of truth for tracked projects.
+  Includes `discoveredSeq`, which is the stable ordering key for newest-first display.
 - `scripts/add-project.mjs`: add a new project with its first daily note.
 - `scripts/add-daily-note.mjs`: append a daily update to an existing project.
 - `scripts/validate-projects.mjs`: duplicate guard for ids, normalized names, slugs, source URLs, and repeated daily notes.
@@ -54,6 +56,8 @@ The UI also surfaces evidence strength, marketing risk, and source links so each
 
 3. Run `node scripts/validate-projects.mjs`.
 4. Push the repo and publish with GitHub Pages.
+
+The add-project script auto-assigns the next `discoveredSeq`, so newer projects remain ahead of older ones in the UI even if they share the same `firstSeen` date.
 
 ## GitHub Pages
 

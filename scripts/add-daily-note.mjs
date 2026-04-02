@@ -1,6 +1,12 @@
 import { parseArgs } from "node:util";
 
-import { hasDailyNote, loadProjects, saveProjects, todayInShanghai } from "./lib/projects.mjs";
+import {
+  compareByDiscoveredSeqDesc,
+  hasDailyNote,
+  loadProjects,
+  saveProjects,
+  todayInShanghai,
+} from "./lib/projects.mjs";
 
 const { values } = parseArgs({
   options: {
@@ -44,7 +50,7 @@ const main = async () => {
   project.dailyNotes.push(note);
   project.dailyNotes.sort((left, right) => right.date.localeCompare(left.date));
   project.lastUpdated = values.date;
-  data.projects.sort((left, right) => right.lastUpdated.localeCompare(left.lastUpdated));
+  data.projects.sort(compareByDiscoveredSeqDesc);
   await saveProjects(data);
   console.log(`Added ${values.kind} note to ${project.canonicalName} (${project.id}).`);
 };

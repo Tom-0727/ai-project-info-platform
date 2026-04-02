@@ -79,6 +79,7 @@ const renderDailyFeed = (projects) => {
   const entries = projects.flatMap((project) =>
     project.dailyNotes.map((note) => ({
       ...note,
+      discoveredSeq: project.discoveredSeq,
       canonicalName: project.canonicalName,
       productForm: project.productForm,
       monetization: project.monetization,
@@ -97,6 +98,7 @@ const renderDailyFeed = (projects) => {
   Object.entries(grouped)
     .sort((left, right) => right[0].localeCompare(left[0]))
     .forEach(([date, items]) => {
+      items.sort((left, right) => right.discoveredSeq - left.discoveredSeq);
       const node = dayTemplate.content.firstElementChild.cloneNode(true);
       node.querySelector(".day-date").textContent = date;
       node.querySelector(".day-title").textContent = normalizeDate(date);
@@ -174,7 +176,7 @@ const state = {
   query: "",
   evidence: "all",
   form: "all",
-  sort: "updated",
+  sort: "discovered",
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
@@ -215,10 +217,15 @@ const renderResultsHint = (visibleProjects, allProjects) => {
 const sortProjects = (projects) => {
   const copy = [...projects];
 
+  if (state.sort === "discovered") {
+    copy.sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+    return copy;
+  }
+
   if (state.sort === "evidence") {
     copy.sort((left, right) => {
       const evidenceDelta = evidenceWeight[right.evidenceQuality.level] - evidenceWeight[left.evidenceQuality.level];
-      return evidenceDelta || right.lastUpdated.localeCompare(left.lastUpdated);
+      return evidenceDelta || right.discoveredSeq - left.discoveredSeq;
     });
     return copy;
   }
@@ -228,7 +235,7 @@ const sortProjects = (projects) => {
     return copy;
   }
 
-  copy.sort((left, right) => right.lastUpdated.localeCompare(left.lastUpdated));
+  copy.sort((left, right) => right.discoveredSeq - left.discoveredSeq);
   return copy;
 };
 

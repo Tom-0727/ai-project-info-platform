@@ -32,6 +32,14 @@ export const saveProjects = async (data) => {
 
 export const makeProjectId = (slug) => `proj.${slug}`;
 
+export const getMaxDiscoveredSeq = (projects) =>
+  projects.reduce((max, project) => Math.max(max, Number(project.discoveredSeq) || 0), 0);
+
+export const compareByDiscoveredSeqDesc = (left, right) =>
+  (Number(right.discoveredSeq) || 0) - (Number(left.discoveredSeq) || 0) ||
+  right.lastUpdated.localeCompare(left.lastUpdated) ||
+  right.firstSeen.localeCompare(left.firstSeen);
+
 export const hasDailyNote = (project, candidate) =>
   project.dailyNotes.some(
     (note) =>
