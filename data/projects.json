@@ -3,7 +3,10 @@
     {
       "id": "proj.meitu-design-studio",
       "canonicalName": "美图设计室",
-      "aliases": ["Meitu X-Design", "X-Design"],
+      "aliases": [
+        "Meitu X-Design",
+        "X-Design"
+      ],
       "slug": "meitu-design-studio",
       "status": "active",
       "firstSeen": "2026-04-02",
@@ -16,10 +19,17 @@
       "evidenceQuality": {
         "level": "strong",
         "marketingRisk": "low",
-        "signals": ["官方收入披露", "官方产品矩阵", "付费订阅驱动"],
+        "signals": [
+          "官方收入披露",
+          "官方产品矩阵",
+          "付费订阅驱动"
+        ],
         "note": "官方披露口径清楚，商业模式透明度高于多数内容型AI工具。"
       },
-      "benchmarks": ["Canva可画", "创客贴"],
+      "benchmarks": [
+        "Canva可画",
+        "创客贴"
+      ],
       "sources": [
         "https://www.meitu.com/hk/media/395",
         "https://corp-static.meitu.com/corp-new/20251008/2023%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf"
@@ -36,7 +46,9 @@
     {
       "id": "proj.aippt",
       "canonicalName": "AiPPT",
-      "aliases": ["AiPPT.cn"],
+      "aliases": [
+        "AiPPT.cn"
+      ],
       "slug": "aippt",
       "status": "active",
       "firstSeen": "2026-04-02",
@@ -49,10 +61,17 @@
       "evidenceQuality": {
         "level": "medium",
         "marketingRisk": "medium",
-        "signals": ["官方产品页", "插件分发", "会员体系存在"],
+        "signals": [
+          "官方产品页",
+          "插件分发",
+          "会员体系存在"
+        ],
         "note": "产品形态明确，但价格透明度和企业成交证据还需补强。"
       },
-      "benchmarks": ["讯飞智文", "WPS AI"],
+      "benchmarks": [
+        "讯飞智文",
+        "WPS AI"
+      ],
       "sources": [
         "https://www.aippt.cn/about-us/",
         "https://www.aippt.cn/plugin/download",
@@ -70,7 +89,9 @@
     {
       "id": "proj.deepseek-api",
       "canonicalName": "DeepSeek API",
-      "aliases": ["DeepSeek Platform"],
+      "aliases": [
+        "DeepSeek Platform"
+      ],
       "slug": "deepseek-api",
       "status": "active",
       "firstSeen": "2026-04-02",
@@ -83,10 +104,17 @@
       "evidenceQuality": {
         "level": "strong",
         "marketingRisk": "low",
-        "signals": ["官方价格页", "公开成本/收入测算", "API直接计费"],
+        "signals": [
+          "官方价格页",
+          "公开成本/收入测算",
+          "API直接计费"
+        ],
         "note": "定价公开且商业化链路直接，验证强度高。"
       },
-      "benchmarks": ["OpenAI API", "通义千问 API"],
+      "benchmarks": [
+        "OpenAI API",
+        "通义千问 API"
+      ],
       "sources": [
         "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
         "https://www.36kr.com/p/3189676494987396"
@@ -97,6 +125,135 @@
           "kind": "New",
           "summary": "纳入正式名单，理由是官方计费透明，且公开报道给出成本与收入测算信号。",
           "update": "后续可追加模型版本变更和价格调整跟踪。"
+        }
+      ]
+    },
+    {
+      "id": "proj.zhipu-open-platform",
+      "canonicalName": "智谱开放平台",
+      "aliases": [
+        "BigModel",
+        "GLM Coding Plan"
+      ],
+      "slug": "zhipu-open-platform",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "大模型MaaS平台",
+      "targetCustomers": "开发者、企业AI团队、AI编程工具用户",
+      "painPoint": "需要国产大模型API、多模态能力和编码场景订阅方案，但希望成本与平台能力更可控。",
+      "monetization": "API按量付费 + 用户权益充值体系 + GLM Coding Plan订阅套餐。",
+      "barriers": "模型与工具链能力、平台并发治理、企业接入稳定性、数据安全与备案合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方平台介绍",
+          "充值权益规则",
+          "订阅套餐说明"
+        ],
+        "note": "平台同时覆盖按量API与订阅制Coding Plan，商业路径清晰，但公开客户案例少于Kimi。"
+      },
+      "benchmarks": [
+        "Kimi 开放平台",
+        "通义千问 API"
+      ],
+      "sources": [
+        "https://docs.bigmodel.cn/",
+        "https://docs.bigmodel.cn/cn/guide/platform/equity-explain",
+        "https://docs.bigmodel.cn/cn/coding-plan/overview"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是平台化商业模式与订阅体系都已公开。",
+          "update": "补充国产大模型平台案例。"
+        }
+      ]
+    },
+    {
+      "id": "proj.wps-365",
+      "canonicalName": "WPS 365",
+      "aliases": [
+        "金山数字办公"
+      ],
+      "slug": "wps-365",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI办公协同SaaS",
+      "targetCustomers": "中小企业、中大型组织、需要协同办公的一线业务团队",
+      "painPoint": "文档、会议、IM、邮箱分散，企业协同与AI办公能力难统一采购和落地。",
+      "monetization": "按人/年收费的企业套餐 + 更高阶商业版本，支持对公开票与企业支付。",
+      "barriers": "办公套件整合能力、企业协作闭环、数据安全与权限治理、生成内容合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "企业付费套餐",
+          "对公开票与汇款支付"
+        ],
+        "note": "官方定价与企业结算路径都公开，商业化透明度高。"
+      },
+      "benchmarks": [
+        "Microsoft 365 Copilot",
+        "飞书"
+      ],
+      "sources": [
+        "https://365.wps.cn/price",
+        "https://plus.wps.cn/blog/p104175.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是官方企业定价和AI办公场景都比较明确。",
+          "update": "作为企业AI办公案例补入站点。"
+        }
+      ]
+    },
+    {
+      "id": "proj.kimi-open-platform",
+      "canonicalName": "Kimi 开放平台",
+      "aliases": [
+        "Moonshot API",
+        "Kimi API 开放平台"
+      ],
+      "slug": "kimi-open-platform",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "大模型API平台",
+      "targetCustomers": "开发者、AI产品团队、企业研发与智能体团队",
+      "painPoint": "需要兼顾模型效果、Agent能力和成本控制的团队，缺少可直接商用的国产模型接口。",
+      "monetization": "自助充值按量付费 + 企业定制服务。",
+      "barriers": "模型能力、工具调用稳定性、长上下文成本控制、企业数据与内容合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方模型价格",
+          "自助充值按量付费",
+          "企业服务与客户案例"
+        ],
+        "note": "首页直接公开模型价格与客户案例，自助充值与企业服务并行，变现链路清楚。"
+      },
+      "benchmarks": [
+        "DeepSeek API",
+        "智谱开放平台"
+      ],
+      "sources": [
+        "https://platform.moonshot.cn/",
+        "https://platform.moonshot.cn/docs/intro"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是API定价与商业模式公开透明。",
+          "update": "补充国产大模型API案例。"
         }
       ]
     }
