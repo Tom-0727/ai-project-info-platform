@@ -333,31 +333,35 @@ const normalizeText = (value) => value.toLowerCase().trim();
 const evidenceWeight = { strong: 3, medium: 2, weak: 1 };
 
 const summarizeScenario = (project) => {
-  const text = [
-    project.productForm,
-    project.targetCustomers,
-    project.painPoint,
-    project.monetization,
-  ].join(" ");
+  const productFormSignal = project.productForm;
+  const productSignal = [project.productForm, project.painPoint].join(" ");
 
-  if (/(电商|跨境|营销|客服|销售|listing|广告)/i.test(text)) {
-    return "卖家增长";
-  }
-
-  if (/(字幕|配音|转写|语音|视频|音频|翻译|口播)/i.test(text)) {
-    return "音视频处理";
-  }
-
-  if (/(pdf|ocr|文档|知识|协作|白板|思维导图|反馈|问卷|原型)/i.test(text)) {
+  if (/(笔记|知识|协作|白板|思维导图|反馈|问卷|原型|文档|工作台)/i.test(productFormSignal)) {
     return "办公与知识";
   }
 
-  if (/(logo|设计|海报|修图|写真|图片|商品图)/i.test(text)) {
+  if (/(编程|开发|代码)/i.test(productSignal)) {
+    return "开发提效";
+  }
+
+  if (/(字幕|配音|转写|语音|视频|音频|翻译|口播|会议纪要|同传)/i.test(productSignal)) {
+    return "音视频处理";
+  }
+
+  if (/(logo|设计|海报|修图|写真|图片|商品图|商拍|视觉)/i.test(productSignal)) {
     return "视觉创作";
   }
 
-  if (/(编程|开发|代码)/i.test(text)) {
-    return "开发提效";
+  if (/(客服|工单|销售|listing|广告|营销|电商|跨境客服|获客)/i.test(productSignal)) {
+    return "卖家增长";
+  }
+
+  if (/(写作|作文|论文|校对|改写|润色|求职|面试|招聘|学习|阅读|订阅|总结阅读|翻译阅读)/i.test(productSignal)) {
+    return "写作与学习";
+  }
+
+  if (/(pdf|ocr|文档|知识|协作|白板|思维导图|反馈|问卷|原型|笔记|信息聚合|总结|工作台)/i.test(productSignal)) {
+    return "办公与知识";
   }
 
   return "通用效率";
