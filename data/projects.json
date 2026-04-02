@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.udesk-ai-customer-service",
+      "canonicalName": "Udesk",
+      "aliases": [
+        "沃丰科技Udesk"
+      ],
+      "slug": "udesk-ai-customer-service",
+      "discoveredSeq": 60,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI客服与工单协同平台",
+      "targetCustomers": "中大型企业、跨境电商团队、连锁服务品牌，以及需要全渠道客服与工单协同的企业团队",
+      "painPoint": "企业客服常常分散在网页、APP、微信、WhatsApp等多个渠道，人工分流和工单衔接成本高，服务质量也难统一评估与沉淀。",
+      "monetization": "按坐席月费订阅 + 不同版本分层收费 + 企业定制与行业方案销售。",
+      "barriers": "全渠道接入能力、客服机器人训练与质检能力、工单和呼叫中心系统协同、复杂企业部署与权限体系，以及数据安全和行业合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网产品页",
+          "官网FAQ价格说明",
+          "多渠道接入说明"
+        ],
+        "note": "官网产品页能清楚说明它在做全渠道智能客服与工单系统，官方FAQ文章还给出了基础版800元/坐席/月、企业版1500元/坐席/月这类参考价格；但价格公开位置更像内容文章而非标准价格页，因此按medium入库。"
+      },
+      "benchmarks": [
+        "SaleSmartly",
+        "Mixdesk"
+      ],
+      "sources": [
+        "https://www.udesk.cn/v1/",
+        "https://www.udesk.cn/feature_udesk.html",
+        "https://www.udesk.cn/ucm/faq/65987"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向企业服务团队的AI客服与工单协同平台，主要靠按坐席订阅和企业方案销售变现。",
+          "update": "补充适合中大型企业和跨境服务团队的AI客服与工单协同平台案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.youdao-aibox-writing-workbench",
       "canonicalName": "有道AIBox",
       "aliases": [
