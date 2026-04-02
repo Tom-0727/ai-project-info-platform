@@ -5,6 +5,7 @@ const dailyFeed = document.querySelector("#daily-feed");
 const resultsHint = document.querySelector("#results-hint");
 const detailEmpty = document.querySelector("#detail-empty");
 const detailView = document.querySelector("#detail-view");
+const detailPanel = document.querySelector(".panel-side");
 const searchInput = document.querySelector("#search-input");
 const evidenceFilter = document.querySelector("#evidence-filter");
 const formFilter = document.querySelector("#form-filter");
@@ -218,6 +219,13 @@ const renderDetailView = (project) => {
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
   detailView.appendChild(node);
+  detailView.scrollTop = 0;
+};
+
+const focusDetailPanel = () => {
+  if (window.matchMedia("(max-width: 1080px)").matches) {
+    detailPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 };
 
 const state = {
@@ -297,6 +305,7 @@ const renderApp = (projects) => {
   renderDailyFeed(visibleProjects, state.selectedProjectId, (projectId) => {
     state.selectedProjectId = projectId;
     renderApp(projects);
+    focusDetailPanel();
   });
   renderDetailView(selectedProject);
   renderResultsHint(visibleProjects, projects);
