@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.jiaogaolang-ai-proofreading",
+      "canonicalName": "校稿郎",
+      "aliases": [
+        "校稿郎AI"
+      ],
+      "slug": "jiaogaolang-ai-proofreading",
+      "discoveredSeq": 52,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI内容校对与深度润色工具",
+      "targetCustomers": "编辑、内容团队、自媒体写作者、教辅与出版从业者，以及需要长文档校对的小团队",
+      "painPoint": "长文稿常见的错别字、标点、术语不一致和语义逻辑问题靠人工通读很慢，通用大模型又容易幻觉或漏改，批量文稿交付容易出错。",
+      "monetization": "注册送字数体验金 + 按千字计费的四档校对服务 + 年费专属服务。",
+      "barriers": "长文档稳定输出、低幻觉校对能力、语义与术语一致性规则、教辅试卷等垂直场景适配，以及内容安全与文稿隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方服务价格页",
+          "官方注册体验入口"
+        ],
+        "note": "官网首页和价格区讲的是同一套文稿校对产品，直接公开了基础校对到教辅试卷四档按千字计费价格，并给出注册送2000字校对金和年费服务信号，因此可按strong入库。"
+      },
+      "benchmarks": [
+        "爱校对",
+        "火龙果写作"
+      ],
+      "sources": [
+        "https://www.jiaogaolang.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向编辑和内容团队的AI校对与深度润色工具，主要靠按千字计费和年费服务变现。",
+          "update": "补充适合编辑、内容团队和教辅出版场景的AI校对与深度润色工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.inkcraft-ai-essay-grading",
       "canonicalName": "墨灵 InkCraft",
       "aliases": [
