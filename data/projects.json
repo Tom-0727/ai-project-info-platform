@@ -256,6 +256,92 @@
           "update": "补充国产大模型API案例。"
         }
       ]
+    },
+    {
+      "id": "proj.codebuddy",
+      "canonicalName": "腾讯云代码助手 CodeBuddy",
+      "aliases": [
+        "CodeBuddy",
+        "腾讯云代码助手"
+      ],
+      "slug": "codebuddy",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI编程助手",
+      "targetCustomers": "开发者、研发团队、企业工程组织",
+      "painPoint": "代码补全、理解、修复和评审效率低，团队希望把AI能力嵌入现有开发流程。",
+      "monetization": "个人版/旗舰版订阅 + 企业版采购。",
+      "barriers": "代码理解与补全能力、IDE集成、企业代码安全、私有仓库与审计合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "订阅版本划分",
+          "企业版采购路径"
+        ],
+        "note": "定价、版本差异和企业采购路径都公开，商业化方式直接。"
+      },
+      "benchmarks": [
+        "百度 Comate",
+        "Cursor"
+      ],
+      "sources": [
+        "https://www.codebuddy.ai/pricing",
+        "https://www.codebuddy.ai/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI编程助手的付费路径和目标客群都比较明确。",
+          "update": "补充AI coding赛道案例。"
+        }
+      ]
+    },
+    {
+      "id": "proj.youyan",
+      "canonicalName": "有言",
+      "aliases": [
+        "魔珐有言",
+        "有言AI数字人视频平台"
+      ],
+      "slug": "youyan",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI数字人视频平台",
+      "targetCustomers": "品牌营销团队、培训团队、内容运营、企业宣传与电商团队",
+      "painPoint": "真人出镜视频制作成本高、周期长，难以稳定批量生成可控口播内容。",
+      "monetization": "订阅套餐 + 更高阶企业合作。",
+      "barriers": "数字人驱动与口型匹配、视频生成效率、人物肖像与声音授权、内容合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方订阅页",
+          "版本功能对比",
+          "企业合作入口"
+        ],
+        "note": "官方订阅体系清楚，但相较API平台，公开商业数据和客户成交细节仍偏少。"
+      },
+      "benchmarks": [
+        "硅基智能数字人",
+        "腾讯智影"
+      ],
+      "sources": [
+        "https://www.youyan3d.com/",
+        "https://www.youyan3d.com/subscribe"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI数字人视频赛道已有明确订阅模式。",
+          "update": "补充AI数字人视频赛道案例。"
+        }
+      ]
     }
   ]
 }
