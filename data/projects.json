@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.baigua-ai",
+      "canonicalName": "白瓜AI",
+      "aliases": [
+        "白瓜内容AI",
+        "白瓜文案"
+      ],
+      "slug": "baigua-ai",
+      "discoveredSeq": 27,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI文案与新媒体内容生成工具",
+      "targetCustomers": "自媒体创作者、私域运营团队、电商商家、本地商家、内容代运营工作室",
+      "painPoint": "小团队需要高频产出标题、商品文案、探店文案和私域内容，但人工写作和选题成本高，难以长期稳定交付。",
+      "monetization": "点数充值包 + 月会员订阅 + 官方联系成交服务。",
+      "barriers": "多场景文案模板、中文内容生成质量、敏感词与平台合规约束、稳定的低成本内容调用能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品站点",
+          "官方价格页",
+          "官方AI服务协议"
+        ],
+        "note": "官方直接公开点数包和月会员价格，内容创作场景清楚，商业模式透明度较高。"
+      },
+      "benchmarks": [
+        "135编辑器",
+        "笔灵AI"
+      ],
+      "sources": [
+        "https://ai.baigua.com/",
+        "https://ai.baigua.com/pricing",
+        "https://ai.baigua.com/policies/ai_protocal.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向新媒体和私域运营团队的AI文案工具，主要靠点数充值包和月会员订阅变现。",
+          "update": "补充适合内容代运营和私域接单场景的小型AI文案应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.135editor",
       "canonicalName": "135编辑器",
       "aliases": [
