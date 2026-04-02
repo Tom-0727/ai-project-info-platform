@@ -52,9 +52,21 @@ const renderSourceLinks = (container, sources) => {
   });
 };
 
-const shortList = (value, count = 2) => value.split("、").filter(Boolean).slice(0, count).join("、");
+const shortList = (value, count = 2) => {
+  if (!value) {
+    return "未标注";
+  }
 
-const firstClause = (value) => value.split(/[，。；;]/)[0].trim();
+  return value.split("、").filter(Boolean).slice(0, count).join("、");
+};
+
+const firstClause = (value) => {
+  if (!value) {
+    return "未标注";
+  }
+
+  return value.split(/[，。；;]/)[0].trim();
+};
 
 const buildFeedIntro = (project) => {
   const audience = shortList(project.targetCustomers, 2);
@@ -108,6 +120,7 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
       discoveredSeq: project.discoveredSeq,
       canonicalName: project.canonicalName,
       productForm: project.productForm,
+      targetCustomers: project.targetCustomers,
       monetization: project.monetization,
       evidenceQuality: project.evidenceQuality,
       sources: project.sources,
