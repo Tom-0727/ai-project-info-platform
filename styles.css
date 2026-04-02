@@ -564,7 +564,7 @@ button.summary-card:focus-visible {
 
 .related-card {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   width: 100%;
   padding: 12px 14px;
   border: 1px solid rgba(29, 26, 22, 0.08);
@@ -596,6 +596,17 @@ button.summary-card:focus-visible {
 
 .related-name {
   font-weight: 700;
+}
+
+.related-evidence {
+  color: var(--ink);
+  font-size: 0.83rem;
+}
+
+.related-monetization {
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.55;
 }
 
 .related-form,

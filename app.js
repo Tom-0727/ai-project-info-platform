@@ -239,6 +239,8 @@ const renderRelatedProjects = (container, project, projects) => {
     button.innerHTML = `
       <span class="related-name">${candidate.canonicalName}</span>
       <span class="related-form">${candidate.productForm}</span>
+      <span class="related-evidence">商业化：${evidenceLevelLabel[candidate.evidenceQuality.level]}</span>
+      <span class="related-monetization">变现：${firstClause(candidate.monetization)}</span>
     `;
     button.addEventListener("click", () => {
       state.selectedProjectId = candidate.id;
