@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.meijian",
+      "canonicalName": "美间",
+      "aliases": [
+        "美间设计",
+        "Meijian"
+      ],
+      "slug": "meijian",
+      "discoveredSeq": 23,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI创意商拍与营销海报工具",
+      "targetCustomers": "软装设计师、电商商家、小型营销工作室、家居从业者、内容创作者",
+      "painPoint": "提案PPT、软装搭配、营销海报和电商主图需要持续出图，小团队很难兼顾创意、模板复用和高频交付。",
+      "monetization": "会员订阅 + AI海报/AI软搭等付费服务 + 素材与设计服务增值。",
+      "barriers": "模板与素材库沉淀、软装与营销场景适配、AI出图质量、商用素材版权，以及用户设计稿数据合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "官方会员服务协议",
+          "官方AI设计案例页"
+        ],
+        "note": "产品和付费会员都能确认，但公开标准价格透明度有限，因此按medium入库。"
+      },
+      "benchmarks": [
+        "稿定设计",
+        "创客贴"
+      ],
+      "sources": [
+        "https://www.meijian.com/",
+        "https://www.meijian.com/agreement",
+        "https://www.meijian.com/design/3fo4jkvx6jpx"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向设计师和商家的AI创意商拍与营销设计工具，主要靠会员订阅和付费设计服务变现。",
+          "update": "补充适合软装提案和小型营销工作流的AI设计应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.chanjing",
       "canonicalName": "蝉镜",
       "aliases": [
