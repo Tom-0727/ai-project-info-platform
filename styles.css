@@ -163,13 +163,16 @@ h1 {
   min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   min-height: 0;
+  height: 100%;
 }
 
 .panel-sticky {
   position: sticky;
   top: 24px;
-  max-height: calc(100vh - 24px);
+  height: calc(100vh - 24px);
+  overflow: hidden;
 }
 
 .panel-heading,
@@ -381,11 +384,12 @@ h1 {
   border-radius: 18px;
   background: rgba(245, 239, 226, 0.8);
   color: var(--muted);
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
 }
 
 .detail-view {
-  margin-top: 16px;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -440,7 +444,8 @@ h1 {
 
   .panel-sticky {
     position: static;
-    max-height: none;
+    height: auto;
+    overflow: visible;
   }
 }
 
