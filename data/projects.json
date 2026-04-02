@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.gaminik",
+      "canonicalName": "爱译客 Gaminik",
+      "aliases": [
+        "爱译客",
+        "Gaminik"
+      ],
+      "slug": "gaminik",
+      "discoveredSeq": 63,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI屏幕实时翻译工具",
+      "targetCustomers": "跨境玩家、漫画读者、外语学习者、需要处理外文屏幕内容的小团队",
+      "painPoint": "解决游戏、漫画、聊天截图和软件界面里的外文内容无法快速看懂的问题，减少来回截图、复制和手动翻译的成本",
+      "monetization": "免费版引流，专业会员按月付、年付和终身版收费，另有高级翻译引擎和硬币消耗型能力",
+      "barriers": "进入门槛在屏幕 OCR、低延迟翻译、原画面融合渲染、多平台客户端适配，以及第三方模型与隐私合规处理",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网明确产品工作流",
+          "官方价格页公开月付年付终身版",
+          "Windows和Android账号及会员通用"
+        ],
+        "note": "官方首页和价格页已经把屏幕实时翻译、会员权益和具体价格讲清楚，商业化路径可直接验证，但营销文案仍有一定性能宣称成分。"
+      },
+      "benchmarks": [
+        "彩云小译",
+        "沉浸式翻译"
+      ],
+      "sources": [
+        "https://www.gaminik.cn/",
+        "https://www.gaminik.cn/pricing.html",
+        "https://www.gaminik.net/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向跨境玩家、漫画读者和外语学习者的 AI 屏幕实时翻译工具，主要靠月付、年付和终身会员变现。",
+          "update": "爱译客 Gaminik 把游戏、漫画、聊天截图和软件界面的外文内容做成了实时翻译工作流，核心卖点是低延迟、画面融合和多平台通用会员。官方价格页直接公开了月付 19.9 元、年付 105 元和终身版 349.99 元，商业化路径比较清楚。"
+        }
+      ]
+    },
+    {
       "id": "proj.younews-ai-news-tracker",
       "canonicalName": "YouNews",
       "aliases": [
