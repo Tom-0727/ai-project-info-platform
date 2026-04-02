@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.updf-ai",
+      "canonicalName": "UPDF AI",
+      "aliases": [
+        "UPDF",
+        "UPDF AI助手",
+        "UPDF PDF编辑器"
+      ],
+      "slug": "updf-ai",
+      "discoveredSeq": 35,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI PDF阅读编辑与文档助手",
+      "targetCustomers": "自由职业者、学生、律师顾问、小企业行政、需要高频处理PDF文件的小团队",
+      "painPoint": "PDF阅读、编辑、OCR、翻译和摘要常常分散在多个工具里，文档处理流程碎片化，个人和小团队难以低成本完成高频办公资料处理。",
+      "monetization": "个人会员/企业会员/教育会员 + AI会员与组合会员收费。",
+      "barriers": "PDF编辑与渲染能力、OCR与格式还原、长文档总结与翻译质量、多端同步能力，以及文档隐私和企业数据处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品官网",
+          "官方AI子站",
+          "官方会员与AI价格展示"
+        ],
+        "note": "官网首页直接展示个人会员、AI会员和组合会员，AI子站也把摘要、翻译、对话等能力单独展开，商业化和产品边界都比较清楚，因此按strong入库。"
+      },
+      "benchmarks": [
+        "Adobe Acrobat AI",
+        "福昕PDF"
+      ],
+      "sources": [
+        "https://www.updf.cn/",
+        "https://ai.updf.com/cn/",
+        "https://checkout.updf.cn/updf?source=website_updf&language=zh-CN"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向个人办公和小团队文档处理场景的AI PDF阅读编辑与文档助手，主要靠会员、AI会员和组合会员收费变现。",
+          "update": "补充适合PDF编辑、文档总结翻译和轻办公资料处理场景的AI文档应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.itingnao-ai",
       "canonicalName": "听脑AI",
       "aliases": [
