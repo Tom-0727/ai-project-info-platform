@@ -13,11 +13,13 @@ const formFilter = document.querySelector("#form-filter");
 const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
 const resetFiltersButton = document.querySelector("#reset-filters");
+const copyViewLinkButton = document.querySelector("#copy-view-link");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
 const feedItemTemplate = document.querySelector("#feed-item-template");
 const detailTemplate = document.querySelector("#detail-template");
+let copyFeedbackTimer = null;
 
 const formatCount = (value) => String(value).padStart(2, "0");
 const evidenceLevelLabel = {
@@ -463,6 +465,48 @@ const hydrateStateFromUrl = (projects) => {
   state.selectedProjectId = projectIds.has(params.get("project")) ? params.get("project") : null;
 };
 
+const fallbackCopyText = (value) => {
+  const input = document.createElement("textarea");
+  input.value = value;
+  input.setAttribute("readonly", "");
+  input.style.position = "absolute";
+  input.style.left = "-9999px";
+  document.body.appendChild(input);
+  input.select();
+  const copied = document.execCommand("copy");
+  document.body.removeChild(input);
+  return copied;
+};
+
+const flashCopyButton = (label) => {
+  if (!copyViewLinkButton) {
+    return;
+  }
+
+  copyViewLinkButton.textContent = label;
+  window.clearTimeout(copyFeedbackTimer);
+  copyFeedbackTimer = window.setTimeout(() => {
+    copyViewLinkButton.textContent = "复制当前视图";
+  }, 1800);
+};
+
+const copyCurrentViewLink = async () => {
+  const value = window.location.href;
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      flashCopyButton("已复制链接");
+      return;
+    }
+  } catch (error) {
+    // Fall through to the legacy copy path when clipboard access is unavailable.
+  }
+
+  const copied = fallbackCopyText(value);
+  flashCopyButton(copied ? "已复制链接" : "复制失败");
+};
+
 const syncFilterControls = () => {
   searchInput.value = state.query;
   evidenceFilter.value = state.evidence;
@@ -729,6 +773,10 @@ const bootstrap = async () => {
     state.scenario = "all";
     state.sort = "discovered";
     renderApp(projects);
+  });
+
+  copyViewLinkButton?.addEventListener("click", () => {
+    copyCurrentViewLink();
   });
 
   renderApp(projects);

@@ -199,6 +199,7 @@ h1 {
 
 .filters-actions {
   display: flex;
+  gap: 10px;
   justify-content: flex-end;
   margin-top: 12px;
 }
@@ -233,6 +234,10 @@ h1 {
   color: var(--signal);
   border-color: rgba(188, 75, 39, 0.28);
   background: rgba(255, 244, 234, 0.94);
+}
+
+.filters-secondary {
+  color: var(--ink);
 }
 
 .filter-field {
