@@ -97,6 +97,7 @@ const renderFeedMeta = (container, project) => {
   [
     `变现：${firstClause(project.monetization)}`,
     `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
+    `场景：${summarizeScenario(project)}`,
     `客群：${shortList(project.targetCustomers, 2)}`,
   ].forEach((text) => {
     const item = document.createElement("span");
@@ -280,6 +281,7 @@ const renderDetailView = (project, projects) => {
     ["目标客群", project.targetCustomers],
     ["核心痛点", project.painPoint],
     ["变现模式", project.monetization],
+    ["工作流场景", summarizeScenario(project)],
     ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
     ["证据信号", project.evidenceQuality.signals.join(" / ")],
     ["判断说明", project.evidenceQuality.note],
