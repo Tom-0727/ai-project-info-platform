@@ -904,6 +904,50 @@
           "update": "补充应用层语音转写与会议纪要案例。"
         }
       ]
+    },
+    {
+      "id": "proj.edrawmax",
+      "canonicalName": "万兴图示",
+      "aliases": [
+        "亿图图示",
+        "EdrawMax"
+      ],
+      "slug": "edrawmax",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI流程图与商业图示工具",
+      "targetCustomers": "产品经理、运营、咨询顾问、IT架构师、培训与办公场景用户",
+      "painPoint": "流程图、架构图、组织图和商业分析图制作慢，跨场景表达工具分散，模板复用和多人协作效率低。",
+      "monetization": "个人标准版/专业版/商务版授权付费 + 企业版授权 + 维护升级服务。",
+      "barriers": "图形编辑引擎、海量模板与素材生态、AI一键制图与分析能力、办公场景适配，以及商用模板与企业数据处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品页",
+          "官方AI功能页",
+          "官方FAQ明确版本与价格"
+        ],
+        "note": "官方站点同时公开产品定位、AI能力和版本价格，商业模式透明度较高。"
+      },
+      "benchmarks": [
+        "Visio",
+        "Lucidchart"
+      ],
+      "sources": [
+        "https://www.edrawsoft.cn/edrawmax/",
+        "https://www.edrawsoft.cn/edrawmax/ai/",
+        "https://www.edrawsoft.cn/faqs/edrawmax-version-differences/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是官方版本价格、AI能力和企业授权路径都较清楚。",
+          "update": "补充应用层流程图与商业图示案例。"
+        }
+      ]
     }
   ]
 }
