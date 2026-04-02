@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.xiezuocat-ai-writing-assistant",
+      "canonicalName": "秘塔写作猫",
+      "aliases": [
+        "写作猫",
+        "Metaso Writing Cat"
+      ],
+      "slug": "xiezuocat-ai-writing-assistant",
+      "discoveredSeq": 56,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "交互式中英文AI写作辅助平台",
+      "targetCustomers": "学生、内容创作者、编辑、营销文案团队，以及需要中英文写作改错和改写的小团队",
+      "painPoint": "写作者常常在语法、措辞、降重、改写和多语言表达上反复耗时，通用聊天工具不适合持续文档修改，也缺少长期写作工作台能力。",
+      "monetization": "免费版引流 + App Store月度订阅 + 团队版商务采购。",
+      "barriers": "中英文纠错和改写质量、长文档交互式编辑体验、多端同步和插件生态、团队协作能力，以及文本隐私与版权合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官网产品页",
+          "官方App Store页",
+          "团队版说明"
+        ],
+        "note": "官网能够清楚说明它在做中英文写作辅助，并覆盖改错、改写、降重和团队协作场景；App Store页能确认持续付费订阅；但当前公开抓取中稳定可见的官方价格面仍不够完整，因此按medium入库。"
+      },
+      "benchmarks": [
+        "火龙果写作",
+        "校稿郎"
+      ],
+      "sources": [
+        "https://xiezuocat.com/",
+        "https://apps.apple.com/cn/app/%E7%A7%98%E5%A1%94%E5%86%99%E4%BD%9C%E7%8C%AB/id1638842929"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生和内容团队的交互式中英文AI写作辅助平台，主要靠订阅和团队版采购变现。",
+          "update": "补充适合学生、编辑和内容团队的交互式中英文AI写作辅助平台案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.pigai-ai-writing-grading",
       "canonicalName": "AI批改网",
       "aliases": [
