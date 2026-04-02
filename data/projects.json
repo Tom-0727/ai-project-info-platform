@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.musedam-ai",
+      "canonicalName": "MuseDAM",
+      "aliases": [
+        "MuseDAM AI",
+        "MuseDAM资产库",
+        "musedam"
+      ],
+      "slug": "musedam-ai",
+      "discoveredSeq": 42,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI数字资产管理平台",
+      "targetCustomers": "品牌团队、设计团队、内容团队、电商与营销团队、需要集中管理素材资产的小中型组织",
+      "painPoint": "图片、视频、设计源文件和文档素材分散在网盘与聊天工具里，团队检索、复用和权限管理成本高，容易重复拍摄和重复制作。",
+      "monetization": "团队版按月订阅 + 商业版按月订阅 + 企业版联系销售/私有化部署。",
+      "barriers": "多格式资产预览、AI自动解析与标签、语义检索、权限与协作体系，以及企业资产与云部署合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方价格页",
+          "官方功能页"
+        ],
+        "note": "官网首页能确认AI原生DAM定位，价格页公开团队版和商业版起步价，功能页也把在线预览和资产管理能力展开说明，因此按strong入库。"
+      },
+      "benchmarks": [
+        "Bynder",
+        "蓝湖"
+      ],
+      "sources": [
+        "https://www.musedam.ai/zh-CN",
+        "https://www.musedam.ai/zh-CN/pricing",
+        "https://www.musedam.ai/zh-CN/features/file-formats"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向品牌和内容团队的AI数字资产管理平台，主要靠团队版、商业版订阅和企业私有化部署变现。",
+          "update": "补充适合品牌素材、设计源文件和内容资产统一管理场景的AI资产管理应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.miaoya-camera",
       "canonicalName": "妙鸭相机",
       "aliases": [
