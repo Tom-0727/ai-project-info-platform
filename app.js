@@ -221,7 +221,19 @@ const renderRelatedProjects = (container, project, projects) => {
       (candidate) =>
         candidate.id !== project.id && summarizeScenario(candidate) === summarizeScenario(project)
     )
-    .sort((left, right) => right.discoveredSeq - left.discoveredSeq)
+    .sort((left, right) => {
+      const formDelta = Number(right.productForm === project.productForm) - Number(left.productForm === project.productForm);
+      if (formDelta !== 0) {
+        return formDelta;
+      }
+
+      const evidenceDelta = evidenceWeight[right.evidenceQuality.level] - evidenceWeight[left.evidenceQuality.level];
+      if (evidenceDelta !== 0) {
+        return evidenceDelta;
+      }
+
+      return right.discoveredSeq - left.discoveredSeq;
+    })
     .slice(0, 4);
 
   if (related.length === 0) {
