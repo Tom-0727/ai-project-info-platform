@@ -816,6 +816,50 @@
           "update": "补充应用层界面设计与产设研协作案例。"
         }
       ]
+    },
+    {
+      "id": "proj.xmind",
+      "canonicalName": "Xmind",
+      "aliases": [
+        "Xmind思维导图",
+        "Xmind Copilot"
+      ],
+      "slug": "xmind",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI思维导图与知识整理工具",
+      "targetCustomers": "知识工作者、产品经理、研究人员、学生与需要结构化整理信息的团队",
+      "painPoint": "文本、文件和链接里的信息难以快速结构化，个人与团队在梳理思路、拆解任务和协同推进时效率低。",
+      "monetization": "个人 Pro/Pro+ 年付订阅 + AI 点数权益 + 多人订阅与企业定价。",
+      "barriers": "思维导图与多结构编辑引擎、AI总结与任务拆解能力、跨端同步协作，以及用户内容和企业数据处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方定价页",
+          "AI点数与功能配额",
+          "多人订阅与企业定价"
+        ],
+        "note": "官方定价页同时公开个人版、AI能力配额和企业定价入口，商业模式透明度较高。"
+      },
+      "benchmarks": [
+        "ProcessOn",
+        "亿图脑图"
+      ],
+      "sources": [
+        "https://xmind.cn/pricing",
+        "https://xmind.cn/ai",
+        "https://xmind.cn/features"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是官方定价、AI配额和企业定价入口都比较清楚。",
+          "update": "补充应用层思维导图与知识整理案例。"
+        }
+      ]
     }
   ]
 }
