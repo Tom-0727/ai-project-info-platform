@@ -215,6 +215,14 @@ const renderBenchmarkLinks = (container, project, projects) => {
   });
 };
 
+const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
+  state.query = "";
+  state.evidence = "all";
+  state.scenario = scenario;
+  state.form = form;
+  renderApp(window.__projectsCache__);
+};
+
 const renderRelatedProjects = (container, project, projects) => {
   const related = projects
     .filter(
@@ -316,6 +324,35 @@ const renderDetailView = (project, projects) => {
   benchmarkValue.className = "benchmark-links";
   renderBenchmarkLinks(benchmarkValue, project, projects);
   detailList.append(benchmarkTitle, benchmarkValue);
+
+  const shortcutsSection = document.createElement("section");
+  shortcutsSection.className = "detail-shortcuts";
+  shortcutsSection.innerHTML = `<p class="detail-note-label">快速筛选</p>`;
+  const shortcutActions = document.createElement("div");
+  shortcutActions.className = "detail-shortcut-actions";
+
+  [
+    {
+      label: "查看同场景项目",
+      onClick: () => applyFocusedFilter({ scenario: summarizeScenario(project) }),
+    },
+    {
+      label: "查看同形态项目",
+      onClick: () => applyFocusedFilter({ form: project.productForm }),
+    },
+  ].forEach((shortcut) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "detail-shortcut-chip";
+    button.textContent = shortcut.label;
+    button.addEventListener("click", () => {
+      shortcut.onClick();
+      focusDetailPanel();
+    });
+    shortcutActions.appendChild(button);
+  });
+  shortcutsSection.appendChild(shortcutActions);
+  node.appendChild(shortcutsSection);
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
 
