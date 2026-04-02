@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.youdao-aibox-writing-workbench",
+      "canonicalName": "有道AIBox",
+      "aliases": [
+        "Youdao AIBox"
+      ],
+      "slug": "youdao-aibox-writing-workbench",
+      "discoveredSeq": 59,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "中英文AI写作与文档改写工具",
+      "targetCustomers": "学生、职场白领、研究者、外贸从业者，以及需要中英文写作和文档改写的小团队",
+      "painPoint": "中英文写作、改写、润色和文档生成经常要在多个工具间切换，内容质量不稳定，跨语言表达和长文档处理效率也很低。",
+      "monetization": "免费体验引流 + App Store订阅与内购 + 企业与团队协作采购。",
+      "barriers": "中英文写作质量、长文档改写稳定性、桌面端工作流整合、多场景模板能力，以及文本数据隐私和版权合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品页",
+          "官方App Store页",
+          "桌面工作流说明"
+        ],
+        "note": "官方产品页能清楚说明它在做中英文写作、改写和文档生成，App Store页能确认持续更新和订阅路径；但当前公开抓取里稳定可见的官方价格面仍不够完整，因此按medium入库。"
+      },
+      "benchmarks": [
+        "火龙果写作",
+        "秘塔写作猫"
+      ],
+      "sources": [
+        "https://fanyi.youdao.com/aiwrite/document",
+        "https://apps.apple.com/cn/app/%E6%9C%89%E9%81%93aibox-%E4%B8%AD%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E7%A5%9E%E5%99%A8/id6461723064?mt=12"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生和职场人群的中英文AI写作与文档改写工具，主要靠订阅、内购和团队采购变现。",
+          "update": "补充适合学生、职场白领和外贸从业者的中英文AI写作与文档改写工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.transync-ai-live-translation",
       "canonicalName": "同言翻译",
       "aliases": [
