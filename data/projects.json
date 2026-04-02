@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.picdoc-ai",
+      "canonicalName": "PicDoc",
+      "aliases": [
+        "PicDoc AI",
+        "PicDoc文本转视觉"
+      ],
+      "slug": "picdoc-ai",
+      "discoveredSeq": 43,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI文本转视觉与信息图工具",
+      "targetCustomers": "咨询顾问、产品经理、市场运营、教师培训从业者、需要把长文本快速转成图表和信息图的小团队",
+      "painPoint": "把方案、文档和说明材料整理成图表、流程图和信息图很费时间，传统PPT和设计软件门槛高，导致表达效率低、交付慢。",
+      "monetization": "免费版积分体验 + VIP月付/年付订阅；高级下载、无水印、商用授权和AI生图表能力作为主要付费点。",
+      "barriers": "文本结构理解、图表与信息图自动排版、版式美观度控制、多场景模板资产，以及商用授权和内容版权边界。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方价格页",
+          "官方博客/用例页"
+        ],
+        "note": "官网首页直接把产品定义为AI文本转视觉工具，价格页公开免费版和VIP月付/年付价格与权益，官方博客页还能看到图表、PPT和信息图等具体使用场景，因此按strong入库。"
+      },
+      "benchmarks": [
+        "Napkin AI",
+        "Canva可画"
+      ],
+      "sources": [
+        "https://www.picdoc.cn/",
+        "https://www.picdoc.cn/pricing",
+        "https://www.picdoc.cn/blog"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个把文本快速转成信息图、图表和演示视觉的AI工具，主要靠VIP订阅、商用授权和高级下载权益变现。",
+          "update": "补充适合咨询、培训和产品表达场景的AI文本转视觉工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.musedam-ai",
       "canonicalName": "MuseDAM",
       "aliases": [
