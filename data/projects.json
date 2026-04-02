@@ -600,6 +600,49 @@
           "update": "按用户新偏好补充应用层AI设计案例。"
         }
       ]
+    },
+    {
+      "id": "proj.boardmix",
+      "canonicalName": "boardmix 博思白板",
+      "aliases": [
+        "博思白板",
+        "boardmix AI白板"
+      ],
+      "slug": "boardmix",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI协作白板",
+      "targetCustomers": "产品团队、设计团队、培训团队、需要协作创作与知识梳理的组织",
+      "painPoint": "头脑风暴、流程梳理、方案共创和知识整理分散在多个工具里，协作效率低，AI能力难嵌入白板工作流。",
+      "monetization": "个人会员/团队版订阅 + 企业合作，公开价格透明度中等。",
+      "barriers": "协作白板交互、多人实时同步、AI生成与整理能力、企业知识与权限治理。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页",
+          "白板AI场景",
+          "企业协作定位"
+        ],
+        "note": "应用层形态和付费方向清楚，但公开定价透明度弱于强证据类目，因此按中等证据纳入。"
+      },
+      "benchmarks": [
+        "Miro AI",
+        "FigJam AI"
+      ],
+      "sources": [
+        "https://boardmix.cn/file/recommend2/boardmix-introduction.pdf",
+        "https://boardmix.cn/ai-whiteboard"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它更能提供应用层协作产品灵感，而不是上游能力堆叠。",
+          "update": "按用户偏好补充AI协作白板案例。"
+        }
+      ]
     }
   ]
 }
