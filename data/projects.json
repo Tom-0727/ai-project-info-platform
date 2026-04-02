@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.rubriq-academic-polish-translation",
+      "canonicalName": "Rubriq",
+      "aliases": [
+        "Rubriq China",
+        "Rubriq AI学术润色"
+      ],
+      "slug": "rubriq-academic-polish-translation",
+      "discoveredSeq": 49,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI学术论文润色与翻译工具",
+      "targetCustomers": "研究生、科研工作者、高校教师、医学和理工科论文作者，以及需要批量学术润色和翻译服务的科研机构",
+      "painPoint": "学术论文在投稿前常需要语言润色、专业术语校正和中英翻译，但传统人工润色成本高、周期长，通用AI工具又难以稳定贴合学术表达。",
+      "monetization": "14天免费试用 + 高级版年费订阅 + 机构与团队定制采购。",
+      "barriers": "学术语料积累、专业术语与学科风格适配、润色与翻译质量控制、长文档处理能力，以及科研文稿的数据安全和投稿合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方定价页",
+          "官方功能页"
+        ],
+        "note": "官网首页、功能页和定价页在讲同一套学术润色与翻译产品；定价页公开了14天免费5次试用、高级版年费和字数/篇数限制，还面向机构提供专属服务，因此可按strong入库。"
+      },
+      "benchmarks": [
+        "Paperpal",
+        "Trinka AI"
+      ],
+      "sources": [
+        "https://rubriq.cn/",
+        "https://rubriq.cn/pricing/",
+        "https://rubriq.cn/features/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向科研论文场景的AI润色与翻译工具，主要靠高级版年费和机构采购变现。",
+          "update": "补充适合学术写作和机构投稿场景的AI论文润色与翻译工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.doclingo-document-translation",
       "canonicalName": "Doclingo",
       "aliases": [
