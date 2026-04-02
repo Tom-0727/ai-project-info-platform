@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.transync-ai-live-translation",
+      "canonicalName": "同言翻译",
+      "aliases": [
+        "Transync AI"
+      ],
+      "slug": "transync-ai-live-translation",
+      "discoveredSeq": 58,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI实时翻译与会议纪要工具",
+      "targetCustomers": "跨境团队、销售与商务人员、留学生、会展从业者，以及需要多语言实时沟通的小团队",
+      "painPoint": "跨语言会议和线上通话里，人工同传成本高、准备重，传统翻译工具又难以同时覆盖实时字幕、语音播报、会议纪要和团队协作。",
+      "monetization": "免费试用引流 + 个人版月费订阅 + 企业版按席位月费订阅 + 超额时长按量计费。",
+      "barriers": "实时语音识别与翻译延迟控制、多语言自动识别准确率、会议纪要结构化能力、跨平台音视频接入，以及隐私与合规要求。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "官方App Store页",
+          "企业方案说明"
+        ],
+        "note": "官方价格页直接公开了Free、Personal Premium、Enterprise三档方案，以及10/30/100小时按量包和企业折扣阈值；App Store和官网产品结构也一致，因此可按strong入库。"
+      },
+      "benchmarks": [
+        "讯飞听见",
+        "沉浸式翻译"
+      ],
+      "sources": [
+        "https://www.transyncai.com/pricing/",
+        "https://apps.apple.com/us/app/%E5%90%8C%E8%A8%80%E7%BF%BB%E8%AF%91-%E5%AE%9E%E6%97%B6%E7%BF%BB%E8%AF%91%E8%8B%B1%E8%AF%AD%E6%97%A5%E8%AF%AD%E9%9F%A9%E8%AF%AD%E4%BF%84%E8%AF%AD%E5%BE%B7%E8%AF%AD%E6%B3%95%E8%AF%AD%E8%A5%BF%E7%8F%AD%E7%89%99%E8%AF%AD%E5%90%8C%E5%A3%B0%E4%BC%A0%E8%AF%91/id6745154830?l=zh-Hans-CN"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向跨语言会议和通话场景的AI实时翻译与会议纪要工具，主要靠订阅和按时长计费变现。",
+          "update": "补充适合跨境团队、商务会议和留学交流场景的AI实时翻译与会议纪要工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.get-notes-ai-capture",
       "canonicalName": "Get笔记",
       "aliases": [
