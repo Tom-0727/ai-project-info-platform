@@ -212,6 +212,40 @@ const renderBenchmarkLinks = (container, project, projects) => {
   });
 };
 
+const renderRelatedProjects = (container, project, projects) => {
+  const related = projects
+    .filter(
+      (candidate) =>
+        candidate.id !== project.id && summarizeScenario(candidate) === summarizeScenario(project)
+    )
+    .sort((left, right) => right.discoveredSeq - left.discoveredSeq)
+    .slice(0, 4);
+
+  if (related.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "related-empty";
+    empty.textContent = "当前库里还没有更多同场景项目。";
+    container.appendChild(empty);
+    return;
+  }
+
+  related.forEach((candidate) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "related-card";
+    button.innerHTML = `
+      <span class="related-name">${candidate.canonicalName}</span>
+      <span class="related-form">${candidate.productForm}</span>
+    `;
+    button.addEventListener("click", () => {
+      state.selectedProjectId = candidate.id;
+      renderApp(window.__projectsCache__);
+      focusDetailPanel();
+    });
+    container.appendChild(button);
+  });
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -266,6 +300,16 @@ const renderDetailView = (project, projects) => {
   detailList.append(benchmarkTitle, benchmarkValue);
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
+
+  const relatedSection = document.createElement("section");
+  relatedSection.className = "related-section";
+  relatedSection.innerHTML = `
+    <p class="detail-note-label">同场景项目</p>
+    <div class="related-projects"></div>
+  `;
+  renderRelatedProjects(relatedSection.querySelector(".related-projects"), project, projects);
+  node.appendChild(relatedSection);
+
   detailView.appendChild(node);
   detailView.scrollTop = 0;
 };
