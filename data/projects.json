@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.paperpal-academic-writing",
+      "canonicalName": "Paperpal",
+      "aliases": [
+        "Paperpal Prime",
+        "Paperpal学术写作AI"
+      ],
+      "slug": "paperpal-academic-writing",
+      "discoveredSeq": 45,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI学术写作与投稿检查工具",
+      "targetCustomers": "研究生、科研工作者、高校教师、医学与理工科论文作者、需要提升英文论文质量和投稿成功率的小型研究团队",
+      "painPoint": "英文论文写作、润色、查重、投稿检查和文献整合耗时且专业门槛高，非母语作者在语言质量和投稿规范上容易反复返工。",
+      "monetization": "免费版基础能力 + Prime月度/季度/年度订阅 + 团队版折扣采购；附带学生折扣和企业/机构授权。",
+      "barriers": "学术语境理解、术语与语法优化、文献检索与引用格式支持、投稿前技术检查，以及学术诚信和数据隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页",
+          "官方定价页",
+          "官方功能与FAQ信息"
+        ],
+        "note": "中文官网首页明确给出学术写作、润色和投稿检查定位；定价页公开Prime订阅、团队版、退款规则、微信支付与功能配额，因此商业化和产品边界都足够清楚，可按strong入库。"
+      },
+      "benchmarks": [
+        "Writefull",
+        "Trinka AI"
+      ],
+      "sources": [
+        "https://paperpal.cn/",
+        "https://paperpal.cn/pricing",
+        "https://paperpal.cn/features"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学术论文作者的AI写作与投稿检查工具，主要靠Prime订阅和团队版采购变现。",
+          "update": "补充适合科研写作和英文投稿场景的AI学术写作工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.startai-ps-plugin",
       "canonicalName": "StartAI",
       "aliases": [
