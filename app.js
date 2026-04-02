@@ -451,12 +451,18 @@ const populateFormFilter = (projects) => {
 };
 
 const populateScenarioFilter = (projects) => {
-  [...new Set(projects.map((project) => summarizeScenario(project)))]
-    .sort((left, right) => left.localeCompare(right, "zh-CN"))
-    .forEach((scenario) => {
+  const counts = projects.reduce((accumulator, project) => {
+    const scenario = summarizeScenario(project);
+    accumulator.set(scenario, (accumulator.get(scenario) ?? 0) + 1);
+    return accumulator;
+  }, new Map());
+
+  [...counts.entries()]
+    .sort((left, right) => left[0].localeCompare(right[0], "zh-CN"))
+    .forEach(([scenario, count]) => {
       const option = document.createElement("option");
       option.value = scenario;
-      option.textContent = scenario;
+      option.textContent = `${scenario} (${count})`;
       scenarioFilter.appendChild(option);
     });
 };
