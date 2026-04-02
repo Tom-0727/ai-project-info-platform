@@ -773,6 +773,49 @@
           "update": "补充AI原型设计与协作赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.mastergo",
+      "canonicalName": "MasterGo",
+      "aliases": [
+        "莫高设计"
+      ],
+      "slug": "mastergo",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI界面设计与原型协作平台",
+      "targetCustomers": "产品经理、设计师、前端工程师、产设研协作团队",
+      "painPoint": "界面设计、原型、设计系统和交付协作分散，非设计人员难把需求快速转成高保真界面与可用代码。",
+      "monetization": "个人AI积分订阅套餐 + 团队版/企业版席位付费 + 企业积分与对公支付。",
+      "barriers": "设计系统与协作平台能力、AI生成界面与代码质量、团队权限治理，以及设计资产和企业数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI套餐价格",
+          "官方企业购买流程",
+          "对公转账与客户案例"
+        ],
+        "note": "个人AI套餐、企业购买与支付路径都公开，商业化透明度高于多数设计协作AI工具。"
+      },
+      "benchmarks": [
+        "即时设计",
+        "Figma"
+      ],
+      "sources": [
+        "https://mastergo.com/",
+        "https://mastergo.com/help/%E7%A7%AF%E5%88%86%E4%B8%8E%E6%94%AF%E4%BB%98",
+        "https://mastergo.com/help/%E5%A6%82%E4%BD%95%E8%B4%AD%E4%B9%B0%E4%BC%81%E4%B8%9A%E7%89%88"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是 AI 套餐价格、企业购买路径和客户案例都较清楚。",
+          "update": "补充应用层界面设计与产设研协作案例。"
+        }
+      ]
     }
   ]
 }
