@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.yizhenmiaochuang",
+      "canonicalName": "一帧秒创",
+      "aliases": [
+        "秒创",
+        "一帧秒创AI"
+      ],
+      "slug": "yizhenmiaochuang",
+      "discoveredSeq": 24,
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI图文转视频与数字人口播工具",
+      "targetCustomers": "自媒体创作者、营销团队、本地商家、培训机构、需要批量视频生产的小团队",
+      "painPoint": "图文转视频、数字人口播和批量内容成片依赖剪辑与素材匹配，个人或小团队难以低成本持续产出。",
+      "monetization": "会员/积分体系 + AI市场标准报价 + 企业定制服务。",
+      "barriers": "文案理解与视频编排、素材匹配、数字人口播生成、批量生产稳定性，以及内容版权与合规审核。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品站点",
+          "官方关于页",
+          "AI市场标准报价"
+        ],
+        "note": "产品形态和报价信号都能确认，但价格更多来自分发市场而非官网标准购买页，因此按medium入库。"
+      },
+      "benchmarks": [
+        "蝉镜",
+        "HeyGen"
+      ],
+      "sources": [
+        "https://aigc.yizhentv.com/",
+        "https://aigc.yizhentv.com/about",
+        "https://aim.baidu.com/product/10a20d86-6641-4307-b648-da2ec495b120"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "这是一个面向创作者和机构的AI图文转视频与数字人口播工具，主要靠会员、积分和企业服务变现。",
+          "update": "补充适合批量内容生产和副业视频制作场景的小型AI视频应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.meijian",
       "canonicalName": "美间",
       "aliases": [
