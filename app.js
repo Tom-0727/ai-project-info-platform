@@ -10,6 +10,7 @@ const detailPanel = document.querySelector(".panel-side");
 const searchInput = document.querySelector("#search-input");
 const evidenceFilter = document.querySelector("#evidence-filter");
 const formFilter = document.querySelector("#form-filter");
+const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
 
 const metricTemplate = document.querySelector("#metric-template");
@@ -424,6 +425,7 @@ const renderStructureSummary = (projects) => {
       }
       element.addEventListener("click", () => {
         state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
+        scenarioFilter.value = state.scenario;
         renderApp(window.__projectsCache__);
       });
     }
@@ -445,6 +447,17 @@ const populateFormFilter = (projects) => {
       option.value = form;
       option.textContent = form;
       formFilter.appendChild(option);
+    });
+};
+
+const populateScenarioFilter = (projects) => {
+  [...new Set(projects.map((project) => summarizeScenario(project)))]
+    .sort((left, right) => left.localeCompare(right, "zh-CN"))
+    .forEach((scenario) => {
+      const option = document.createElement("option");
+      option.value = scenario;
+      option.textContent = scenario;
+      scenarioFilter.appendChild(option);
     });
 };
 
@@ -521,6 +534,7 @@ const bootstrap = async () => {
   const { projects } = await response.json();
   window.__projectsCache__ = projects;
   populateFormFilter(projects);
+  populateScenarioFilter(projects);
 
   searchInput.addEventListener("input", (event) => {
     state.query = event.target.value;
@@ -534,6 +548,11 @@ const bootstrap = async () => {
 
   formFilter.addEventListener("change", (event) => {
     state.form = event.target.value;
+    renderApp(projects);
+  });
+
+  scenarioFilter.addEventListener("change", (event) => {
+    state.scenario = event.target.value;
     renderApp(projects);
   });
 
