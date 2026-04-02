@@ -643,6 +643,49 @@
           "update": "按用户偏好补充AI协作白板案例。"
         }
       ]
+    },
+    {
+      "id": "proj.processon",
+      "canonicalName": "ProcessOn",
+      "aliases": [
+        "ProcessOn AI 思维导图",
+        "ProcessOn 流程图"
+      ],
+      "slug": "processon",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI图表与知识整理工具",
+      "targetCustomers": "产品经理、咨询顾问、教师学生、需要流程图/思维导图/架构图的知识工作者",
+      "painPoint": "流程图、思维导图和知识整理常在不同工具间切换，内容结构化与图表生成效率低。",
+      "monetization": "个人会员订阅 + AI创作权益 + 团队版协作收费。",
+      "barriers": "图表与知识结构生成能力、多人协作、模板生态、文档与知识内容版权合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "AI创作权益",
+          "团队版协作收费"
+        ],
+        "note": "官方会员页直接包含AI创作权益和团队版分层，是较典型的应用层知识整理产品。"
+      },
+      "benchmarks": [
+        "boardmix 博思白板",
+        "Xmind Copilot"
+      ],
+      "sources": [
+        "https://www.processon.com/about/pricing",
+        "https://www.processon.com/template"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它提供了另一类应用层工作流灵感：图表、知识整理与AI生成结合。",
+          "update": "补充AI图表与知识整理赛道案例。"
+        }
+      ]
     }
   ]
 }
