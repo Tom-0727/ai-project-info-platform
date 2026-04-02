@@ -514,6 +514,49 @@
           "update": "补充AI招聘赛道案例。"
         }
       ]
+    },
+    {
+      "id": "proj.baidu-comate",
+      "canonicalName": "百度 Comate",
+      "aliases": [
+        "Baidu Comate",
+        "文心快码"
+      ],
+      "slug": "baidu-comate",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI编程助手",
+      "targetCustomers": "开发者、研发团队、企业工程组织",
+      "painPoint": "编码补全、代码理解和企业级AI编程落地效率不足，团队希望在现有IDE中接入付费AI能力。",
+      "monetization": "个人版月/季/年付费 + 企业版 + 智能体请求包。",
+      "barriers": "代码理解与生成能力、IDE集成、企业License管理、代码与数据安全合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方定价页",
+          "个人版与企业版区分",
+          "智能体请求包单独售卖"
+        ],
+        "note": "官方文档直接公开计费模式、支付方式和个人/企业差异，商业化透明度较高。"
+      },
+      "benchmarks": [
+        "腾讯云代码助手 CodeBuddy",
+        "Cursor"
+      ],
+      "sources": [
+        "https://comate.baidu.com/docs/产品定价/产品定价.html",
+        "https://comate.baidu.com/docs/隐私协议/用户服务协议.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是AI编程助手赛道需要第二个强证据对照样本。",
+          "update": "补充百度系AI coding案例。"
+        }
+      ]
     }
   ]
 }
