@@ -729,6 +729,50 @@
           "update": "按应用层偏好补充AI设计赛道对照案例。"
         }
       ]
+    },
+    {
+      "id": "proj.modao",
+      "canonicalName": "墨刀",
+      "aliases": [
+        "Modao",
+        "墨刀AI",
+        "墨刀原型"
+      ],
+      "slug": "modao",
+      "status": "active",
+      "firstSeen": "2026-04-02",
+      "lastUpdated": "2026-04-02",
+      "productForm": "AI原型设计与产研协作平台",
+      "targetCustomers": "产品经理、设计师、研发协作团队、企业产研组织",
+      "painPoint": "需求梳理、原型设计、评审和交付分散在多个工具中，AI能力难直接嵌入产研流程。",
+      "monetization": "个人/团队会员 + 企业版 + 私有化部署服务。",
+      "barriers": "AI原型生成能力、产研协作闭环、设计到研发衔接、企业数据与权限治理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方AI产品页",
+          "团队版与企业版",
+          "私有化部署服务"
+        ],
+        "note": "AI功能、团队版和企业版路径都公开，应用层工作流价值明确；公开统一价目弱于标准会员页，所以营销风险略高于强证据设计工具。"
+      },
+      "benchmarks": [
+        "Figma AI",
+        "Axure"
+      ],
+      "sources": [
+        "https://modao.cc/feature/ai",
+        "https://modao.cc/feature/enterprise.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-02",
+          "kind": "New",
+          "summary": "纳入正式名单，原因是它能提供 AI 原型设计与产研协作的应用层灵感。",
+          "update": "补充AI原型设计与协作赛道案例。"
+        }
+      ]
     }
   ]
 }
