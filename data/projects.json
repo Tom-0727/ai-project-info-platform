@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.jike-ai-scan",
+      "canonicalName": "即刻AI扫描",
+      "aliases": [
+        "即刻扫描",
+        "AI Scan OCR",
+        "即刻AI扫描-OCR拍照取字和表格识别"
+      ],
+      "slug": "jike-ai-scan",
+      "discoveredSeq": 73,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI OCR扫描与表格识别工具",
+      "targetCustomers": "学生、行政人员、自由职业者与需要快速扫描文档和识别表格的个人或小团队",
+      "painPoint": "纸质文档、图片文字和表格内容整理费时，传统扫描工具缺少结构化提取和跨格式导出能力。",
+      "monetization": "免费体验引流 + 年会员128元/年 + OCR、表格识别和导出等高级权益收费。",
+      "barriers": "OCR识别准确率、表格结构还原、扫描图像增强、多格式导出体验与文档隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方App Store页",
+          "App Store订阅价格",
+          "开发者官方协议页"
+        ],
+        "note": "App Store 直接公开年会员128元/年和产品工作流，开发者还提供独立的隐私与服务协议页，商业化和产品形态都比较清楚。"
+      },
+      "benchmarks": [
+        "白描",
+        "UPDF AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%8D%B3%E5%88%BBai%E6%89%AB%E6%8F%8F-ocr%E6%8B%8D%E7%85%A7%E5%8F%96%E5%AD%97%E5%92%8C%E8%A1%A8%E6%A0%BC%E8%AF%86%E5%88%AB/id6670554476",
+        "https://www.ichanyue.com/app/privacy.html",
+        "https://www.ichanyue.com/app/service.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生、行政和自由职业者的AI OCR扫描与表格识别工具，主要靠年会员和高级识别导出权益变现。",
+          "update": "补充适合文档扫描、图片取字和表格识别场景的小工具型AI OCR应用。"
+        }
+      ]
+    },
+    {
       "id": "proj.shannian-ai-voice-notes",
       "canonicalName": "闪念-AI语音笔记",
       "aliases": [
