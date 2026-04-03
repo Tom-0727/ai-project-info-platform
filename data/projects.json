@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.yuanyuan-ai-bookkeeping",
+      "canonicalName": "元元记账",
+      "aliases": [],
+      "slug": "yuanyuan-ai-bookkeeping",
+      "discoveredSeq": 98,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI语音记账与资产管理工具",
+      "targetCustomers": "个人记账用户、家庭用户，以及需要快速记录多笔消费和统一管理资产账户的用户",
+      "painPoint": "很多人记账时输入成本高、消费记录容易漏记，多账户资产也分散在不同平台，导致记账和看账都很费劲。",
+      "monetization": "通过月会员、年会员和永久会员变现，公开价格包括月会员18元、年会员48元，以及多档终身/永久会员价格38元、48元、58元。",
+      "barriers": "语音识别与多笔消费拆分准确率、资产同步与分类体验、图表分析能力，以及个人财务数据隐私与安全合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store会员价格",
+          "官方用户协议/隐私协议/会员付费协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 极速语音记账、资产管理和图表分析，并直接公开多档月会员、年会员和永久会员价格；相关用户协议、隐私协议和会员付费协议页也都可访问，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "咔皮记账",
+        "飞鸭AI记账"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%85%83%E5%85%83%E8%AE%B0%E8%B4%A6-ai%E6%9E%81%E9%80%9F%E8%AF%AD%E9%9F%B3%E8%AE%B0%E8%B4%A6/id6740757453",
+        "https://cdn.gameley.cn/ftp/XXMZYS/aibook/aiBookUserPrivate.html",
+        "https://cdn.gameley.cn/ftp/XXMZYS/aibook/Private.html",
+        "https://cdn.gameley.cn/ftp/download/ddjz/userMemberPrivacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向个人和家庭场景的 AI 语音记账与资产管理工具，主要靠月会员、年会员和永久会员变现。",
+          "update": "补充一个把语音记账、多笔拆账、资产管理和图表分析打通在一起的个人财务工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.yida-ai-virtual-try-on",
       "canonicalName": "衣搭",
       "aliases": [],
