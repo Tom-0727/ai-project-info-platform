@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.chefcal-ai-meal-planner",
+      "canonicalName": "大厨日历",
+      "aliases": [
+        "大厨日历 - AI饮食管家 冰箱食材管理 菜谱推荐"
+      ],
+      "slug": "chefcal-ai-meal-planner",
+      "discoveredSeq": 87,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI饮食规划与冰箱食材管理工具",
+      "targetCustomers": "家庭做饭用户、独居青年、轻食减脂人群，以及需要管理库存食材、购物清单和日常饮食计划的小团队或家庭",
+      "painPoint": "很多人每天都会卡在今天吃什么、冰箱里还有什么、买菜容易漏买和浪费食材这些重复问题上，烹饪规划和库存管理长期分散在多个工具里。",
+      "monetization": "通过 Plus 会员、Pro 会员、终身会员和盐粒值变现，公开价格包括 Plus 月付 28 元、Plus 年付 60 元、Pro 月付 46/48 元、Pro 年付 180 元、终身 Plus 会员 98/198 元，以及盐粒值 100 点 12 元。",
+      "barriers": "饮食计划推荐准确度、库存食材识别与同步、菜谱生成质量、购物清单与提醒体验，以及涉及饮食建议时的责任边界和隐私数据处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方官网与服务协议/隐私政策页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 饮食管家、冰箱食材管理、菜谱推荐和购物清单生成，并直接公开 Plus 月付 28 元、Plus 年付 60 元、Pro 月付 46/48 元、Pro 年付 180 元、终身 Plus 会员 98/198 元以及盐粒值 100 点 12 元；同时官网 chefcal.app 与服务协议、隐私页都可访问，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "豆果美食",
+        "薄荷健康"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%A4%A7%E5%8E%A8%E6%97%A5%E5%8E%86-ai%E9%A5%AE%E9%A3%9F%E7%AE%A1%E5%AE%B6-%E5%86%B0%E7%AE%B1%E9%A3%9F%E6%9D%90%E7%AE%A1%E7%90%86-%E8%8F%9C%E8%B0%B1%E6%8E%A8%E8%8D%90/id6651850261",
+        "https://chefcal.app/",
+        "https://dachurili.com/en/terms-of-service",
+        "https://dachurili.com/en/privacy-policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向家庭做饭和饮食管理场景的 AI 饮食规划工具，主要靠会员订阅、终身会员和积分包变现。",
+          "update": "补充一个把饮食计划、冰箱库存、购物清单和菜谱推荐打通在一起的生活管理类 AI 工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.piaoxiaomi-receipt-expense",
       "canonicalName": "票小秘",
       "aliases": [
