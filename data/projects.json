@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.offergoose-ai-interview",
+      "canonicalName": "鹅来面",
+      "aliases": [
+        "鹅来面 - AI模拟面试&简历优化助手",
+        "OfferGoose"
+      ],
+      "slug": "offergoose-ai-interview",
+      "discoveredSeq": 88,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI模拟面试与简历优化助手",
+      "targetCustomers": "应届毕业生、转岗求职者、准备跳槽涨薪的职场人士，以及需要同时打磨简历和面试表现的求职用户",
+      "painPoint": "很多求职者卡在简历不会改、面试容易卡壳、实战练习机会少这几个环节，准备流程碎片化，求职效率和通过率都受影响。",
+      "monetization": "通过面试时长包变现，公开价格包括 30 分钟 68/108 元、120 分钟 188 元、300 分钟 378 元。",
+      "barriers": "JD 匹配与简历重写质量、模拟面试追问能力、实时语音识别稳定性、求职场景话术生成效果，以及简历和求职数据的隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store时长包价格",
+          "官方隐私政策与服务条款页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 简历定制、模拟面试和面试过程中的实时提示，并直接公开 30 分钟 68/108 元、120 分钟 188 元、300 分钟 378 元几档面试时长包；同时 offergoose.cn 的隐私政策和服务条款页均可访问，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "Gank Interview",
+        "超级简历AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E9%B9%85%E6%9D%A5%E9%9D%A2-ai%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E7%AE%80%E5%8E%86%E4%BC%98%E5%8C%96%E5%8A%A9%E6%89%8B/id6504543050",
+        "https://offergoose.cn/privacyPolicy.html",
+        "https://offergoose.cn/serviceAgreement.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向求职者的 AI 模拟面试与简历优化工具，主要靠面试时长包变现。",
+          "update": "补充一个把简历精修、模拟面试和实时面试提示打通在一起的求职工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.chefcal-ai-meal-planner",
       "canonicalName": "大厨日历",
       "aliases": [
