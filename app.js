@@ -14,6 +14,7 @@ const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
 const resetFiltersButton = document.querySelector("#reset-filters");
 const strongFilterButton = document.querySelector("#strong-filter");
+const mediumFilterButton = document.querySelector("#medium-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 
@@ -538,9 +539,13 @@ const syncFilterControls = () => {
   scenarioFilter.value = state.scenario;
   sortFilter.value = state.sort;
   const strongCount = (window.__projectsCache__ ?? []).filter((project) => project.evidenceQuality.level === "strong").length;
+  const mediumCount = (window.__projectsCache__ ?? []).filter((project) => project.evidenceQuality.level === "medium").length;
   const refreshedCount = (window.__projectsCache__ ?? []).filter((project) => hasEvidenceRefresh(project)).length;
   if (strongFilterButton) {
     strongFilterButton.textContent = `只看商业化清楚（${strongCount}）`;
+  }
+  if (mediumFilterButton) {
+    mediumFilterButton.textContent = `只看待补证（${mediumCount}）`;
   }
   if (refreshFilterButton) {
     refreshFilterButton.textContent = `只看最近补证（${refreshedCount}）`;
@@ -550,6 +555,7 @@ const syncFilterControls = () => {
     state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all" || state.refreshed;
   resetFiltersButton.toggleAttribute("data-active", hasActiveFilter);
   strongFilterButton?.toggleAttribute("data-active", state.evidence === "strong");
+  mediumFilterButton?.toggleAttribute("data-active", state.evidence === "medium");
   refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
 };
 
@@ -800,6 +806,11 @@ const bootstrap = async () => {
 
   strongFilterButton?.addEventListener("click", () => {
     state.evidence = state.evidence === "strong" ? "all" : "strong";
+    renderApp(projects);
+  });
+
+  mediumFilterButton?.addEventListener("click", () => {
+    state.evidence = state.evidence === "medium" ? "all" : "medium";
     renderApp(projects);
   });
 

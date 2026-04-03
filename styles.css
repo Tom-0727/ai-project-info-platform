@@ -246,6 +246,12 @@ h1 {
   background: rgba(236, 247, 240, 0.9);
 }
 
+#medium-filter[data-active] {
+  color: #8a4d16;
+  border-color: rgba(205, 143, 49, 0.32);
+  background: rgba(255, 247, 230, 0.94);
+}
+
 .filter-field {
   display: flex;
   flex-direction: column;
