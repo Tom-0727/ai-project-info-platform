@@ -298,6 +298,29 @@ const getRelatedProjects = (project, projects, mode) => {
     .slice(0, 4);
 };
 
+const getComparableCounts = (project, projects) => {
+  const scenario = summarizeScenario(project);
+  let sameFormCount = 0;
+  let sameScenarioCount = 0;
+
+  projects.forEach((candidate) => {
+    if (candidate.id === project.id) {
+      return;
+    }
+
+    if (candidate.productForm === project.productForm) {
+      sameFormCount += 1;
+      return;
+    }
+
+    if (summarizeScenario(candidate) === scenario) {
+      sameScenarioCount += 1;
+    }
+  });
+
+  return { sameFormCount, sameScenarioCount };
+};
+
 const getPendingEvidenceProjects = (projects) =>
   projects
     .filter((candidate) => candidate.evidenceQuality.level === "medium")
@@ -401,14 +424,15 @@ const renderDetailView = (project, projects) => {
   shortcutActions.className = "detail-shortcut-actions";
   const pendingProjects = getPendingEvidenceProjects(projects);
   const pendingIndex = pendingProjects.findIndex((candidate) => candidate.id === project.id);
+  const { sameFormCount, sameScenarioCount } = getComparableCounts(project, projects);
 
   const shortcuts = [
     {
-      label: "查看同场景项目",
+      label: `查看同场景项目（${sameScenarioCount}）`,
       onClick: () => applyFocusedFilter({ scenario: summarizeScenario(project) }),
     },
     {
-      label: "查看同形态项目",
+      label: `查看同形态项目（${sameFormCount}）`,
       onClick: () => applyFocusedFilter({ form: project.productForm }),
     },
   ];
@@ -468,7 +492,7 @@ const renderDetailView = (project, projects) => {
   const sameFormSection = document.createElement("section");
   sameFormSection.className = "related-section";
   sameFormSection.innerHTML = `
-    <p class="detail-note-label">同形态项目</p>
+    <p class="detail-note-label">同形态项目（${sameFormCount}）</p>
     <div class="related-projects"></div>
   `;
   renderRelatedProjects(
@@ -481,7 +505,7 @@ const renderDetailView = (project, projects) => {
   const relatedSection = document.createElement("section");
   relatedSection.className = "related-section";
   relatedSection.innerHTML = `
-    <p class="detail-note-label">同场景项目</p>
+    <p class="detail-note-label">同场景项目（${sameScenarioCount}）</p>
     <div class="related-projects"></div>
   `;
   renderRelatedProjects(
