@@ -1897,21 +1897,21 @@
       "discoveredSeq": 31,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI OCR识别与扫描工具",
       "targetCustomers": "学生、自由职业者、办公室白领、资料整理团队、需要高频处理纸质文档的小团队",
       "painPoint": "图片转文字、票据整理、纸质文件电子化和扫描归档耗时长，个人或小团队难以低成本完成高频文档处理。",
-      "monetization": "多端会员订阅 + 高级OCR与扫描功能付费。",
+      "monetization": "多端会员订阅 + 黄金会员(永久) + 高级OCR与扫描功能付费。",
       "barriers": "OCR识别准确率、多语种和手写识别、文档扫描增强、隐私与文件数据处理合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "low",
         "signals": [
           "官网产品页",
           "官方关于页",
-          "官方应用商店订阅信号"
+          "App Store订阅价格"
         ],
-        "note": "产品和会员订阅路径可确认，但公开价格信息更多依赖应用商店，因此按medium入库。"
+        "note": "官网和关于页能够确认它在做OCR识别、文档扫描和多端工具链，App Store 还能直接看到黄金会员(永久)等订阅/买断价格，商业化证据已较清楚。"
       },
       "benchmarks": [
         "扫描全能王",
