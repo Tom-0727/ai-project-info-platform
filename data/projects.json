@@ -827,14 +827,14 @@
       "monetization": "免费体验引流 + App Store订阅与内购 + 硬件周边协同销售。",
       "barriers": "多模态识别精度、结构化整理能力、跨端同步体验、会议与通话录音场景兼容性，以及用户内容隐私与数据安全。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "low",
         "signals": [
           "官方使用文档",
-          "官方App Store页",
+          "官方App Store订阅价格",
           "硬件协同说明"
         ],
-        "note": "官方使用文档能清楚说明它在做语音、图片、链接和文字的AI记录与整理；App Store页能确认持续更新、自动整理能力和付费订阅/内购路径；但当前公开抓取里可稳定引用的官方网页价格面仍不够完整，因此按medium入库。"
+        "note": "官方使用文档能稳定说明它在做语音、图片、链接和文字的AI记录与整理，App Store 页面又可直接抓到Get笔记会员连续包月 US$3.99 和连续包年 US$29.99，因此虽然官网没有独立价格页，商业化证据也已足以按strong处理。"
       },
       "benchmarks": [
         "FlowUs AI",
@@ -845,6 +845,12 @@
         "https://apps.apple.com/us/app/get%E7%AC%94%E8%AE%B0-%E4%BD%A0%E5%8F%AA%E7%AE%A1%E8%AF%B4-ai-%E5%B8%AE%E4%BD%A0%E8%AE%B0%E4%B8%8B%E6%9D%A5/id6711334436?l=zh-Hant-TW"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向会议、课堂和灵感采集场景的AI多模态记录与结构化笔记工具，主要靠订阅、内购和硬件协同销售变现。",
+          "update": "补证确认官方文档与App Store价格项已能稳定拼出完整付费面，升级为商业化清楚样本。"
+        },
         {
           "date": "2026-04-03",
           "kind": "New",
