@@ -321,6 +321,24 @@ const getComparableCounts = (project, projects) => {
   return { sameFormCount, sameScenarioCount };
 };
 
+const getScenarioStats = (project, projects) => {
+  const scenario = summarizeScenario(project);
+  const summary = projects.reduce(
+    (accumulator, candidate) => {
+      if (summarizeScenario(candidate) !== scenario) {
+        return accumulator;
+      }
+
+      accumulator.total += 1;
+      accumulator[candidate.evidenceQuality.level] += 1;
+      return accumulator;
+    },
+    { total: 0, strong: 0, medium: 0, weak: 0 }
+  );
+
+  return `${summary.total} 个样本，其中商业化清楚 ${summary.strong} 个，待补证 ${summary.medium + summary.weak} 个`;
+};
+
 const getPendingEvidenceProjects = (projects) =>
   projects
     .filter((candidate) => candidate.evidenceQuality.level === "medium")
@@ -396,6 +414,7 @@ const renderDetailView = (project, projects) => {
     ["核心痛点", project.painPoint],
     ["变现模式", project.monetization],
     ["工作流场景", summarizeScenario(project)],
+    ["场景样本概览", scenarioStats],
     ["样本状态", hasEvidenceRefresh(project) ? `已收录 / 最近一次补证于 ${project.lastUpdated}` : "已收录"],
     ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
     ...(getEvidenceGapLabel(project) ? [["待补证点", getEvidenceGapLabel(project)]] : []),
@@ -425,6 +444,7 @@ const renderDetailView = (project, projects) => {
   const pendingProjects = getPendingEvidenceProjects(projects);
   const pendingIndex = pendingProjects.findIndex((candidate) => candidate.id === project.id);
   const { sameFormCount, sameScenarioCount } = getComparableCounts(project, projects);
+  const scenarioStats = getScenarioStats(project, projects);
 
   const shortcuts = [
     {
