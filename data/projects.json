@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.laihua-ai-video-platform",
+      "canonicalName": "来画",
+      "aliases": [
+        "来画视频",
+        "来画数字人",
+        "Laihua"
+      ],
+      "slug": "laihua-ai-video-platform",
+      "discoveredSeq": 68,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI动画视频与数字人口播平台",
+      "targetCustomers": "中小企业市场团队、培训机构、教师、内容运营团队与需要批量做口播和动画视频的小团队",
+      "painPoint": "动画视频和数字人口播制作门槛高、模板搭建慢、商用授权和多人协作流程分散，导致中小团队视频产能低。",
+      "monetization": "动画商用版会员￥899/年 + 企业高级版/臻享版报价 + APP会员自动续费 + 数字人/API与行业解决方案。",
+      "barriers": "动画模板引擎、数字人口播生成、配音与素材版权管理、多端协作与商用授权边界，以及企业级交付服务能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方会员购买页",
+          "官方自动续费规则",
+          "企业版与API入口"
+        ],
+        "note": "官方会员页直接给出商用版会员年费、适用客群、账号数和权益，自动续费协议补足APP付费路径，会员页同时挂出API和行业解决方案入口，商业化闭环清楚。"
+      },
+      "benchmarks": [
+        "有言",
+        "蝉镜"
+      ],
+      "sources": [
+        "https://www.laihua.com/",
+        "https://chatipbeta.laihua.com/pvip",
+        "https://www.laihua.com/mobile/agreement"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向中小企业、教师和内容团队的AI动画视频与数字人口播平台，主要靠商用版会员、企业版和APP续费变现。",
+          "update": "补充适合培训讲解、营销内容和数字人口播场景的AI视频创作平台样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.edrawmind-ai-mindmap",
       "canonicalName": "万兴脑图",
       "aliases": [
