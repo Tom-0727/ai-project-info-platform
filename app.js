@@ -414,6 +414,11 @@ const renderDetailView = (project, projects) => {
   ];
 
   if (project.evidenceQuality.level === "medium") {
+    const pendingProgress = document.createElement("p");
+    pendingProgress.className = "detail-note-text";
+    pendingProgress.textContent = `待补证复查进度：${pendingIndex + 1} / ${pendingProjects.length}`;
+    shortcutsSection.appendChild(pendingProgress);
+
     shortcuts.push({
       label: "只看待补证清单",
       onClick: () => {
