@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.chongzhiling-ai-pet-health-assistant",
+      "canonicalName": "宠智灵",
+      "aliases": [],
+      "slug": "chongzhiling-ai-pet-health-assistant",
+      "discoveredSeq": 91,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI宠物健康问诊与养护助手",
+      "targetCustomers": "宠物主人、宠物店，以及需要做宠物健康咨询、养护管理和品种识别的中小养宠服务团队",
+      "painPoint": "宠物突发不适时很难第一时间获得低成本、持续在线的基础判断，日常养护、喂养计划和宠物识别信息也常常分散在不同工具和社区里。",
+      "monetization": "通过会员订阅和终身会员变现，当前公开价格信号包括连续包周38元和终身会员118元。",
+      "barriers": "宠物症状问诊和品种识别准确率、宠物健康知识库覆盖、不同宠物类别的数据积累，以及宠物健康建议边界和误诊风险控制。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store会员价格",
+          "官方卖家网站产品页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 宠物问诊、健康档案、品种识别和情绪分析，并给出连续包周 38 元、终身会员 118 元等价格信号；同时 sellerUrl 指向的 chongzhiling.com 官网也在讲同一套 AI 养宠产品，因此按 strong 处理，但协议落点稳定性仍弱于最干净的官方价格页案例。"
+      },
+      "benchmarks": [
+        "小佩宠物",
+        "犬卫士"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%AE%A0%E6%99%BA%E7%81%B5-%E5%AE%A0%E7%89%A9%E5%81%A5%E5%BA%B7%E4%B8%8E%E7%AE%A1%E7%90%86-%E6%83%85%E7%BB%AA%E5%93%81%E7%A7%8D%E8%AF%86%E5%88%AB/id6736894659",
+        "https://www.chongzhiling.com",
+        "https://itunes.apple.com/lookup?id=6736894659&country=cn"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向宠物主人的 AI 问诊和养护管理工具，主要靠会员订阅和终身会员变现。",
+          "update": "补充一个把宠物问诊、健康档案、品种识别和情绪分析打通在一起的 AI 养宠工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.fazhi-legal-analysis-assistant",
       "canonicalName": "法智",
       "aliases": [],
