@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.piaoxiaomi-receipt-expense",
+      "canonicalName": "票小秘",
+      "aliases": [
+        "票小秘-发票拍照扫描生成报销单"
+      ],
+      "slug": "piaoxiaomi-receipt-expense",
+      "discoveredSeq": 86,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI发票扫描与报销单生成工具",
+      "targetCustomers": "个体经营者、财务报销人员、小微企业行政，以及需要快速整理票据和导出报销单的个人或小团队",
+      "painPoint": "发票和小票整理常常靠手动录入，票面信息容易出错，报销和记账流程又零散，导致个人和小团队在票据归档、导出和复核上反复耗时。",
+      "monetization": "通过发票验真套餐变现，公开价格包括发票验真 1 元套餐、98 元套餐、488 元套餐。",
+      "barriers": "票据 OCR 识别准确率、票面字段结构化、票据真伪校验能力、导出报销单稳定性，以及票据数据存储与财务信息处理合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方产品官网页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做发票拍照扫描、票面识别、报销单导出和票据管理，并直接公开发票验真 1 元、98 元、488 元三档套餐；同时 regenai.cn 和 piaoxiaomi.cn 都在讲同一套发票识别与移动报销产品，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "白描",
+        "ReceiptGenie"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E7%A5%A8%E5%B0%8F%E7%A7%98-%E5%8F%91%E7%A5%A8%E6%8B%8D%E7%85%A7%E6%89%AB%E6%8F%8F%E7%94%9F%E6%88%90%E6%8A%A5%E9%94%80%E5%8D%95/id1409489853",
+        "https://regenai.cn/",
+        "https://piaoxiaomi.cn/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向个体经营者和小微团队的 AI 发票扫描与报销单生成工具，主要靠发票验真套餐变现。",
+          "update": "补充一个把票据识别、票面字段提取和报销单导出打通在一起的财务小工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.zhiji-plant-care",
       "canonicalName": "植迹",
       "aliases": [
