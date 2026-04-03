@@ -1,6 +1,47 @@
 {
   "projects": [
     {
+      "id": "proj.faxingmeimeida-hairstyle-simulator",
+      "canonicalName": "发型美美哒",
+      "aliases": [],
+      "slug": "faxingmeimeida-hairstyle-simulator",
+      "discoveredSeq": 100,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI发型设计与脸型匹配工具",
+      "targetCustomers": "想换发型的个人用户、婚礼与约会场景用户，以及需要低成本先看造型效果的美发工作室和内容创作者",
+      "painPoint": "选发型前很难判断脸型是否适配，上理发店试错成本高，和发型师沟通风格也经常低效，导致很多人换发型时犹豫且容易踩坑。",
+      "monetization": "通过会员订阅变现，公开价格至少包括十二个月会员38元。",
+      "barriers": "脸型识别准确率、发型贴合和发色模拟效果、风格库更新速度、生成结果真实感，以及用户照片和人脸数据的隐私处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store公开订阅价格",
+          "可访问的官方隐私页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做脸型识别、发型匹配和模拟发型，并直接公开至少十二个月会员38元的订阅价格；facetag.info 隐私页可访问，因此按 strong 处理，但官方外显站点完整度弱于最强官网型样本。"
+      },
+      "benchmarks": [
+        "发型多多",
+        "妙鸭相机"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%8F%91%E5%9E%8B%E7%BE%8E%E7%BE%8E%E5%93%92-%E5%8F%91%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%84%B8%E5%9E%8B%E6%90%AD%E9%85%8D%E6%A8%A1%E6%8B%9F%E8%BD%AF%E4%BB%B6/id1601557959",
+        "https://facetag.info/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向想换发型用户的 AI 发型设计与脸型匹配工具，主要靠会员订阅变现。",
+          "update": "补充一个把脸型识别、发型匹配和虚拟换发型打通在一起的轻量美妆工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.gooh-trip-planner",
       "canonicalName": "Gooh旅记",
       "aliases": [],
