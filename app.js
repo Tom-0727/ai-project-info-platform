@@ -263,6 +263,14 @@ const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   renderApp(window.__projectsCache__);
 };
 
+const applyFocusedStrongFilter = ({ scenario = "all", form = "all" }) => {
+  state.query = "";
+  state.evidence = "strong";
+  state.scenario = scenario;
+  state.form = form;
+  renderApp(window.__projectsCache__);
+};
+
 const sortComparableProjects = (project) => (left, right) => {
   const formDelta = Number(right.productForm === project.productForm) - Number(left.productForm === project.productForm);
   if (formDelta !== 0) {
@@ -479,8 +487,16 @@ const renderDetailView = (project, projects) => {
       onClick: () => applyFocusedFilter({ scenario: summarizeScenario(project) }),
     },
     {
+      label: `只看同场景清楚样本（${sameScenarioStats.strong}）`,
+      onClick: () => applyFocusedStrongFilter({ scenario: summarizeScenario(project) }),
+    },
+    {
       label: `查看同形态项目（${sameFormCount}）`,
       onClick: () => applyFocusedFilter({ form: project.productForm }),
+    },
+    {
+      label: `只看同形态清楚样本（${sameFormStats.strong}）`,
+      onClick: () => applyFocusedStrongFilter({ form: project.productForm }),
     },
   ];
 
