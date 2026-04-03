@@ -986,6 +986,7 @@ const renderStructureSummary = (projects) => {
       label: "最近补证样本",
       scenario: null,
       refreshed: true,
+      sort: "refreshed",
       value: `${refreshedCount} 个`,
       note: "点击只看后来补强过证据的项目。",
     },
@@ -996,6 +997,7 @@ const renderStructureSummary = (projects) => {
         refreshed: true,
         evidence: "strong",
       },
+      sort: "refreshed",
       value: `${refreshedStrongCount} 个`,
       note: "点击直达最近补证过、且商业化清楚的样本。",
     },
@@ -1018,9 +1020,11 @@ const renderStructureSummary = (projects) => {
     if (isInteractive) {
       element.type = "button";
       const isActive = card.filters
-        ? state.refreshed === Boolean(card.filters.refreshed) && state.evidence === card.filters.evidence
+        ? state.refreshed === Boolean(card.filters.refreshed) &&
+          state.evidence === card.filters.evidence &&
+          (card.sort ? state.sort === card.sort : true)
         : card.refreshed
-          ? state.refreshed
+          ? state.refreshed && (card.sort ? state.sort === card.sort : true)
           : card.evidence
             ? state.evidence === card.evidence
             : state.scenario === card.scenario;
@@ -1030,12 +1034,24 @@ const renderStructureSummary = (projects) => {
       }
       element.addEventListener("click", () => {
         if (card.filters) {
-          const nextActive = !(state.refreshed === Boolean(card.filters.refreshed) && state.evidence === card.filters.evidence);
+          const nextActive = !(
+            state.refreshed === Boolean(card.filters.refreshed) &&
+            state.evidence === card.filters.evidence &&
+            (card.sort ? state.sort === card.sort : true)
+          );
           state.refreshed = nextActive ? Boolean(card.filters.refreshed) : false;
           state.evidence = nextActive ? card.filters.evidence : "all";
+          if (card.sort) {
+            state.sort = nextActive ? card.sort : "discovered";
+            sortFilter.value = state.sort;
+          }
           evidenceFilter.value = state.evidence;
         } else if (card.refreshed) {
           state.refreshed = !state.refreshed;
+          if (card.sort) {
+            state.sort = state.refreshed ? card.sort : "discovered";
+            sortFilter.value = state.sort;
+          }
         } else if (card.evidence) {
           state.evidence = state.evidence === card.evidence ? "all" : card.evidence;
           evidenceFilter.value = state.evidence;
