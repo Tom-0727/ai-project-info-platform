@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.yiwa-speaking-coach",
+      "canonicalName": "译蛙口语官",
+      "aliases": [
+        "Yiwah",
+        "译蛙",
+        "译蛙英语"
+      ],
+      "slug": "yiwa-speaking-coach",
+      "discoveredSeq": 76,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI口语陪练与英语表达训练工具",
+      "targetCustomers": "上班族、雅思与留学备考用户、求职面试用户，以及想用碎片时间练口语的小团队或个人学习者",
+      "painPoint": "很多人看得懂、听得懂英语，但一开口就卡壳；约真人外教成本高、练习频率低、真实场景反馈也不连续。",
+      "monetization": "普通月度会员¥158 + 季度学神会员¥288 + 年度学神会员¥398 + 自动续费会员体系变现。",
+      "barriers": "实时语音识别与发音纠错、对话式教学反馈、场景化课程编排、跨水平适配能力，以及教育内容合规与用户数据隐私处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方用户协议与自动续费协议"
+        ],
+        "note": "中国区App Store页面已清楚说明它在做AI一对一口语陪练，并直接公开连续包月、包季、包年会员说明；同页还能看到普通月度会员¥158、季度学神会员¥288、年度学神会员¥398的App内购买价格，配合官方用户协议、自动续费协议和隐私政策，因此按strong处理。"
+      },
+      "benchmarks": [
+        "智能口语大师",
+        "TalkAI练口语"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E8%AF%91%E8%9B%99%E5%8F%A3%E8%AF%AD%E5%AE%98/id6758861786",
+        "https://ywkyg.com/user_supplementary_agreement.html?plain=1",
+        "https://ywkyg.com/user_agreement.html?plain=1",
+        "https://ywkyg.com/privacy_policy.html?plain=1"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向口语提升、留学备考和面试场景的AI口语陪练工具，主要靠包月、包季和包年会员自动续费变现。",
+          "update": "补充适合英语口语训练、求职面试和留学备考场景的AI口语陪练应用案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.tizhongxiaoben-ai-weight-loss",
       "canonicalName": "体重小本",
       "aliases": [
