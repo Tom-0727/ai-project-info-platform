@@ -95,6 +95,14 @@ const firstClause = (value) => {
   return value.split(/[，。；;]/)[0].trim();
 };
 
+const buildEvidenceTimingLabel = (project) => {
+  if (hasEvidenceRefresh(project)) {
+    return `最近补证 · ${project.lastUpdated}`;
+  }
+
+  return `首次挖掘 · ${project.firstSeen ?? "未标注"}`;
+};
+
 const getEvidenceGapLabel = (project) => {
   if (project.evidenceQuality.level === "strong") {
     return null;
@@ -454,6 +462,10 @@ const renderCompareSnapshot = (container, currentProject, related) => {
     {
       label: "商业化",
       values: compareProjects.map((project) => evidenceLevelLabel[project.evidenceQuality.level]),
+    },
+    {
+      label: "证据时间",
+      values: compareProjects.map((project) => buildEvidenceTimingLabel(project)),
     },
   ];
 
