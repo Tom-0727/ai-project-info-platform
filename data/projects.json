@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.hi-echo-ai-speaking-coach",
+      "canonicalName": "Hi Echo",
+      "aliases": [
+        "Hi Echo 虚拟人口语私教",
+        "Hi Echo 虚拟人口语私教 - 口语学习方案解决者"
+      ],
+      "slug": "hi-echo-ai-speaking-coach",
+      "discoveredSeq": 108,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI虚拟人口语私教",
+      "targetCustomers": "英语学习者、雅思备考用户、职场沟通用户和想高频练口语的个人学习者",
+      "painPoint": "真人口语教练成本高、可练习时间固定，很多用户缺少能持续对话、即时纠错并给出完整报告的训练工具。",
+      "monetization": "通过连续包月、连续包年和雅思臻享等会员方案变现，公开价格包括68元、168元、358元、498元、598元、698元、998元。",
+      "barriers": "实时语音识别与评测、多轮对话生成、分场景课程设计、口语报告生成，以及教育内容合规和语音数据隐私处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "App Store订阅价格",
+          "官方协议页"
+        ],
+        "note": "App Store清楚说明它是虚拟人口语私教，并直接给出连续包月、连续包年和雅思臻享等价格；有道官方协议页也直接点名Hi Echo，因此按strong处理。"
+      },
+      "benchmarks": [
+        "AI外教",
+        "TalkAI练口语"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/hi-echo-%E8%99%9A%E6%8B%9F%E4%BA%BA%E5%8F%A3%E8%AF%AD%E7%A7%81%E6%95%99-%E5%8F%A3%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%A1%88%E8%A7%A3%E5%86%B3%E8%80%85/id6454838455",
+        "https://c.youdao.com/dict/law/renew_HiEcho.html",
+        "https://c.youdao.com/dict/law/HiEcho_service.html",
+        "https://c.youdao.com/dict/law/HiEcho_privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向英语学习和备考用户的AI虚拟人口语私教，主要靠连续包月、连续包年和高阶会员方案变现。",
+          "update": "补充一个更偏系统训练和完整评测报告的虚拟人口语私教样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.qingka-daily-ai-calorie-coach",
       "canonicalName": "轻卡日常",
       "aliases": [
