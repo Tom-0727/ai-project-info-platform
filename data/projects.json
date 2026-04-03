@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.focusee",
+      "canonicalName": "FocuSee",
+      "aliases": [
+        "FocuSee AI",
+        "FocuSee 录屏"
+      ],
+      "slug": "focusee",
+      "discoveredSeq": 65,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI录屏剪辑与演示视频工具",
+      "targetCustomers": "独立开发者、内容创作者、课程作者、需要做产品演示和教程视频的小团队",
+      "painPoint": "解决录屏后还要手动放大重点、补字幕、去静音和做后期的问题，降低演示视频制作门槛和时间成本",
+      "monetization": "免费试用引流，标准版/高级版/团队版按月或按年订阅收费，AI 功能通过积分消耗控制",
+      "barriers": "进入门槛在鼠标轨迹与画面重点识别、录屏后自动运镜、AI 字幕与智能消冗质量、多平台桌面端体验，以及语音与视频处理合规",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方首页明确录屏到成片工作流",
+          "官方价格页公开标准版高级版团队版价格",
+          "官方FAQ解释AI积分和退款规则"
+        ],
+        "note": "官方首页、官方价格页和价格页中的FAQ已经把录屏成片工作流、订阅价格、AI积分和退款规则讲清楚，商业化路径可直接验证，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "一帧秒创",
+        "录咖"
+      ],
+      "sources": [
+        "https://focusee.imobie.net/",
+        "https://focusee.imobie.net/pricing.htm"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向独立开发者、内容创作者和课程作者的 AI 录屏剪辑与演示视频工具，主要靠订阅和 AI 积分变现。",
+          "update": "FocuSee 把录屏、自动放大重点、AI 字幕、智能消冗和音频增强串成了一个成片工作流，适合做教程、演示和营销视频。官方价格页直接公开了标准版年费 169 元、高级版年费 299 元、团队版年费 699 元，并把 AI 积分和退款边界写得比较清楚。"
+        }
+      ]
+    },
+    {
       "id": "proj.motiff-ai",
       "canonicalName": "Motiff AI",
       "aliases": [
