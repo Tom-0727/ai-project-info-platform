@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.tizhongxiaoben-ai-weight-loss",
+      "canonicalName": "体重小本",
+      "aliases": [
+        "体重小本-超好用的AI减肥打卡饮食记录瘦身轻断食计划管理软件社区",
+        "新蝶科技体重小本"
+      ],
+      "slug": "tizhongxiaoben-ai-weight-loss",
+      "discoveredSeq": 75,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI减肥打卡与饮食管理工具",
+      "targetCustomers": "减脂用户、健身博主、轻健康内容创业者与围绕体重管理做服务的个人工作室",
+      "painPoint": "体重、饮食、轻断食和运动记录往往分散在多个工具里，普通打卡软件也很难把长期数据、营养搭配和减脂节奏真正串起来。",
+      "monetization": "免费版引流 + 连续包月12元 + 连续包年98元 + 会员食谱、饮食分析和社区等高级权益收费。",
+      "barriers": "食物库与营养数据积累、长期体重和饮食关联分析、轻断食与建议可靠性、社区留存，以及健康数据与个人隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方官网",
+          "官方会员与隐私协议页",
+          "App Store订阅价格"
+        ],
+        "note": "官网与官方协议页能稳定确认它是围绕体重管理、饮食记录和轻断食的正式产品，App Store 页面又直接给出连续包月12元和连续包年98元的订阅价格；AI 主要落在营养匹配、饮食分析和个性化减脂辅助上，商业化证据已足够清楚。"
+      },
+      "benchmarks": [
+        "Keep",
+        "薄荷健康"
+      ],
+      "sources": [
+        "https://tizhongxiaoben.cn/?f=tzxb",
+        "https://privacy.1xindear.com/privacy_agreement.html?app=tizhongxiaoben",
+        "https://apps.apple.com/cn/app/%E4%BD%93%E9%87%8D%E5%B0%8F%E6%9C%AC-%E8%B6%85%E5%A5%BD%E7%94%A8%E7%9A%84ai%E5%87%8F%E8%82%A5%E6%89%93%E5%8D%A1%E9%A5%AE%E9%A3%9F%E8%AE%B0%E5%BD%95%E7%98%A6%E8%BA%AB%E8%BD%BB%E6%96%AD%E9%A3%9F%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%A4%BE%E5%8C%BA/id1030653122"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向减脂用户和轻健康内容创业者的AI减肥打卡与饮食管理工具，主要靠月度、年度会员和营养分析类高级权益变现。",
+          "update": "补充把AI放进饮食记录、轻断食和体重分析工作流的健康管理型应用样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.ai-shijuanbao",
       "canonicalName": "AI试卷宝",
       "aliases": [
