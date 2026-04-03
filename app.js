@@ -636,10 +636,10 @@ const renderStructureSummary = (projects) => {
   const mediumCount = projects.filter((project) => project.evidenceQuality.level === "medium").length;
   const weakCount = projects.filter((project) => project.evidenceQuality.level === "weak").length;
   const refreshedCount = projects.filter((project) => hasEvidenceRefresh(project)).length;
-  const mediumNames = projects
+  const mediumSummaries = projects
     .filter((project) => project.evidenceQuality.level === "medium")
     .slice(0, 3)
-    .map((project) => project.canonicalName);
+    .map((project) => `${project.canonicalName}·${getEvidenceGapLabel(project) ?? "待复查"}`);
 
   const topScenarios = Object.entries(
     projects.reduce((accumulator, project) => {
@@ -684,7 +684,7 @@ const renderStructureSummary = (projects) => {
       value: `${mediumCount} 个`,
       note:
         mediumCount > 0
-          ? `${mediumNames.join(" / ")}。点击只看这些边界样本。`
+          ? `${mediumSummaries.join(" / ")}。点击只看这些边界样本。`
           : "当前结果里没有待补证样本。",
     },
   ];
