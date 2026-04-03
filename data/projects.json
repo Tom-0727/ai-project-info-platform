@@ -2532,21 +2532,21 @@
       "discoveredSeq": 20,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI写作与文案工作台",
       "targetCustomers": "个人创作者、学生、写作工作室、内容代写团队、中小商家营销人员",
       "painPoint": "长文、营销文案、小说和论文类内容写作耗时长，结构搭建、改写润色和批量交付效率低，个人或小团队难以低成本承接更多内容需求。",
       "monetization": "个人会员/字数额度付费 + 面向写作工作室和中小机构的批量采购 + API接口合作。",
       "barriers": "长文结构生成、改写降重与降AI痕迹能力、垂直模板覆盖、内容合规审核，以及用户文本与学术场景数据安全。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "官方站点",
-          "商务采购页",
-          "官方分发市场价格信号"
+          "官方首页会员价格信号",
+          "官方AI写作产品页",
+          "官方商务采购页"
         ],
-        "note": "更适合副业和小团队使用，变现路径清楚，但官网公开价格透明度仍弱于标准SaaS，因此按medium入库。"
+        "note": "官网首页已直接公开终身VIP 199元，并同时提供成为会员与批量采购入口；结合官方AI写作产品页和商务采购页，产品面与付费面已经足够清楚，因此从medium升级到strong。"
       },
       "benchmarks": [
         "秘塔写作猫",
@@ -2554,10 +2554,16 @@
       ],
       "sources": [
         "https://ibiling.cn/",
-        "https://ibiling.cn/customize",
-        "https://qianfanmarket.baidu.com/product/detail/217ed46d-b5ae-43c7-aca2-f9430105ec8f"
+        "https://ibiling.cn/tool",
+        "https://ibiling.cn/customize"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向学生、创作者和写作工作室的AI写作与文案工作台，官网首页已直接公开终身VIP 199元，并提供批量采购与定制合作入口。",
+          "update": "补到官方首页会员价格信号后，这个写作工作流样本的商业化证据已足够清楚，证据等级升级为strong。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
