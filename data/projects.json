@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.bestrie-ai-shared-bookkeeping",
+      "canonicalName": "百事AA记账",
+      "aliases": [
+        "Best Tracker",
+        "百事AA记账-AI记账 自动记账 多人记账 多币种 预算管理"
+      ],
+      "slug": "bestrie-ai-shared-bookkeeping",
+      "discoveredSeq": 106,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI多人共享记账与预算管理工具",
+      "targetCustomers": "情侣家庭、AA制社交群体、自由职业合伙人和需要多人共享账本的小团队",
+      "painPoint": "多人记账时经常漏记、分摊规则容易算错，跨账户和多币种账目也分散在不同平台里，导致共享看账、报销和预算管理都很费劲。",
+      "monetization": "通过连续包月VIP、连续包季VIP、连续包年VIP、永久会员和无广告权益变现，公开价格包括3元、8元、12元、40元、69元、79元、108元、118元、199元。",
+      "barriers": "多成员账本权限设计、语音图片文字多模态记账、自动分类与财务分析、跨账户多币种处理，以及财务数据隐私与安全保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方官网",
+          "App Store订阅价格",
+          "官方App Store产品说明"
+        ],
+        "note": "官方站点和App Store都在讲同一套多人共享记账产品，工作流覆盖AI自动记账、分摊、预算、多币种和报销；App Store又公开了月付、季付、年付和永久会员价格，因此按strong处理。"
+      },
+      "benchmarks": [
+        "飞鸭AI记账",
+        "咔皮记账"
+      ],
+      "sources": [
+        "https://www.bestrie.com",
+        "https://apps.apple.com/cn/app/%E7%99%BE%E4%BA%8Baa%E8%AE%B0%E8%B4%A6-ai%E8%AE%B0%E8%B4%A6-%E8%87%AA%E5%8A%A8%E8%AE%B0%E8%B4%A6-%E5%A4%9A%E4%BA%BA%E8%AE%B0%E8%B4%A6-%E5%A4%9A%E5%B8%81%E7%A7%8D-%E9%A2%84%E7%AE%97%E7%AE%A1%E7%90%86/id1536568727"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向情侣家庭和小团队的AI多人共享记账工具，主要靠VIP订阅、永久会员和无广告权益变现。",
+          "update": "补充一个把多人账本、分摊规则、预算中心和多币种管理整合在一起的共享财务样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.mononomori-ai-home-organization",
       "canonicalName": "物之森",
       "aliases": [
