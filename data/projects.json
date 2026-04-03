@@ -1728,21 +1728,21 @@
       "discoveredSeq": 37,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI音视频转写与字幕翻译工具",
       "targetCustomers": "短视频创作者、跨境视频团队、自媒体工作室、会议记录用户、需要批量处理音视频内容的小团队",
       "painPoint": "字幕生成、语音转文字、视频翻译和配音通常要在多个工具之间切换，音视频内容团队很难低成本快速完成批量处理和二次创作。",
       "monetization": "会员订阅 + 部分高级音视频处理能力以内购或额度方式收费。",
       "barriers": "多语言语音识别、字幕时间轴对齐、视频翻译与配音质量、批量处理稳定性，以及音视频内容和版权数据处理合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品官网",
           "官方功能页",
           "官方App Store内购价格"
         ],
-        "note": "官网能确认字幕、转写、翻译和配音等一站式工作流，App Store也公开了内购信号，但官网侧公开标准价格不够完整，因此按medium入库。"
+        "note": "官网能稳定说明它在做字幕生成、语音转文字、视频翻译和配音的一站式工作流，App Store 页面又可直接抓到 Weekly Membership (Pro) US$12.90、基础周会员 US$9.00、年度会员 US$48/69/88 以及不同算粒组合等具体价格项，因此商业化证据已足以按strong处理。"
       },
       "benchmarks": [
         "剪映",
@@ -1754,6 +1754,12 @@
         "https://apps.apple.com/us/app/%E5%BD%95%E5%92%96-ai%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95-%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E9%9F%B3-%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90/id6476857948?l=zh-Hans-CN"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向创作者和小团队的AI音视频转写与字幕翻译工具，主要靠会员订阅、算粒包和高级音视频处理能力变现。",
+          "update": "补证确认官网工作流和App Store具体内购价格都已稳定可取，升级为商业化清楚样本。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
