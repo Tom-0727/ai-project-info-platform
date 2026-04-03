@@ -2611,29 +2611,30 @@
       "slug": "boardmix",
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI协作白板",
       "targetCustomers": "产品团队、设计团队、培训团队、需要协作创作与知识梳理的组织",
       "painPoint": "头脑风暴、流程梳理、方案共创和知识整理分散在多个工具里，协作效率低，AI能力难嵌入白板工作流。",
-      "monetization": "个人会员/团队版订阅 + 企业合作，公开价格透明度中等。",
+      "monetization": "白板会员¥199/年 + 白板AI会员¥288/年 + 终身会员¥599 + 团队版/团队AI版按人年收费 + 企业合作。",
       "barriers": "协作白板交互、多人实时同步、AI生成与整理能力、企业知识与权限治理。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品页",
-          "白板AI场景",
+          "官方商店定价页",
           "企业协作定位"
         ],
-        "note": "应用层形态和付费方向清楚，但公开定价透明度弱于强证据类目，因此按中等证据纳入。"
+        "note": "官方产品页能确认AI白板工作流，官方商店还直接公开个人会员、AI会员、终身会员和团队版价格，商业化证据已足够清楚。"
       },
       "benchmarks": [
         "Miro AI",
         "FigJam AI"
       ],
       "sources": [
-        "https://boardmix.cn/file/recommend2/boardmix-introduction.pdf",
-        "https://boardmix.cn/ai-whiteboard"
+        "https://boardmix.cn/ai-whiteboard",
+        "https://boardmix.cn/price/",
+        "https://boardmix.cn/education/"
       ],
       "dailyNotes": [
         {
