@@ -536,6 +536,10 @@ const syncFilterControls = () => {
   formFilter.value = state.form;
   scenarioFilter.value = state.scenario;
   sortFilter.value = state.sort;
+  const refreshedCount = (window.__projectsCache__ ?? []).filter((project) => hasEvidenceRefresh(project)).length;
+  if (refreshFilterButton) {
+    refreshFilterButton.textContent = `只看最近补证（${refreshedCount}）`;
+  }
 
   const hasActiveFilter =
     state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all" || state.refreshed;
