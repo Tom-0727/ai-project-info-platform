@@ -298,6 +298,11 @@ const getRelatedProjects = (project, projects, mode) => {
     .slice(0, 4);
 };
 
+const getPendingEvidenceProjects = (projects) =>
+  projects
+    .filter((candidate) => candidate.evidenceQuality.level === "medium")
+    .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+
 const renderRelatedProjects = (container, related, emptyText) => {
   if (related.length === 0) {
     const empty = document.createElement("p");
@@ -394,8 +399,10 @@ const renderDetailView = (project, projects) => {
   shortcutsSection.innerHTML = `<p class="detail-note-label">快速筛选</p>`;
   const shortcutActions = document.createElement("div");
   shortcutActions.className = "detail-shortcut-actions";
+  const pendingProjects = getPendingEvidenceProjects(projects);
+  const pendingIndex = pendingProjects.findIndex((candidate) => candidate.id === project.id);
 
-  [
+  const shortcuts = [
     {
       label: "查看同场景项目",
       onClick: () => applyFocusedFilter({ scenario: summarizeScenario(project) }),
@@ -404,7 +411,31 @@ const renderDetailView = (project, projects) => {
       label: "查看同形态项目",
       onClick: () => applyFocusedFilter({ form: project.productForm }),
     },
-  ].forEach((shortcut) => {
+  ];
+
+  if (project.evidenceQuality.level === "medium") {
+    shortcuts.push({
+      label: "只看待补证清单",
+      onClick: () => {
+        state.evidence = "medium";
+        renderApp(window.__projectsCache__);
+      },
+    });
+
+    if (pendingProjects.length > 1 && pendingIndex !== -1) {
+      const nextPending = pendingProjects[(pendingIndex + 1) % pendingProjects.length];
+      shortcuts.push({
+        label: `下一个待补证样本：${nextPending.canonicalName}`,
+        onClick: () => {
+          state.evidence = "medium";
+          state.selectedProjectId = nextPending.id;
+          renderApp(window.__projectsCache__);
+        },
+      });
+    }
+  }
+
+  shortcuts.forEach((shortcut) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "detail-shortcut-chip";
