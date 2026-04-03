@@ -1,6 +1,47 @@
 {
   "projects": [
     {
+      "id": "proj.yida-ai-virtual-try-on",
+      "canonicalName": "衣搭",
+      "aliases": [],
+      "slug": "yida-ai-virtual-try-on",
+      "discoveredSeq": 97,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI虚拟试衣与穿搭分析工具",
+      "targetCustomers": "穿搭爱好者、求职和约会场景用户，以及需要做穿搭建议和虚拟试衣的小型内容团队",
+      "painPoint": "很多人线上买衣服时看不准上身效果，也缺少能结合场景和天气给出即时穿搭建议的低成本工具。",
+      "monetization": "通过分层 Pro 套餐变现，公开价格包括Pro体验包18元、Pro高级包48元、Pro专业包128元。",
+      "barriers": "真人上身试穿生成质量、穿搭评分与推荐准确度、商品图对接能力，以及用户照片隐私和推荐结果可信度。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store Pro价格",
+          "官方隐私与用户协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 试穿、穿搭分析和穿搭推荐，并直接公开多档 Pro 价格；myaitoday.top 的用户协议与隐私政策页也可访问，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "Outfity",
+        "AI试穿"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E8%A1%A3%E6%90%AD-%E6%99%BA%E8%83%BDai%E8%AF%95%E7%A9%BF-%E9%9A%8F%E8%BA%AB%E7%A9%BF%E6%90%AD%E5%BD%A2%E8%B1%A1%E9%A1%BE%E9%97%AE-%E4%B9%B0%E8%A1%A3%E6%9C%8D%E8%99%9A%E6%8B%9F%E8%AF%95%E7%A9%BF%E7%A5%9E%E5%99%A8/id6747672261",
+        "https://www.myaitoday.top/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向穿搭用户的 AI 虚拟试衣和穿搭分析工具，主要靠分层 Pro 套餐变现。",
+          "update": "补充一个把虚拟试衣、穿搭评分和场景化穿搭推荐打通在一起的时尚工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.kapi-ai-bookkeeping",
       "canonicalName": "咔皮记账",
       "aliases": [],
