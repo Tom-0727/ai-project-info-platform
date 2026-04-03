@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.haibao-ai-translation",
+      "canonicalName": "海豹翻译",
+      "aliases": [
+        "海豹AI翻译",
+        "海豹实时翻译软件",
+        "海豹翻译器"
+      ],
+      "slug": "haibao-ai-translation",
+      "discoveredSeq": 69,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI跨境实时翻译与多账号沟通平台",
+      "targetCustomers": "跨境电商卖家、出海客服团队、海外社媒运营者与需要多语言实时沟通的小团队",
+      "painPoint": "跨境客服和社媒私信沟通需要在多个平台和语言之间频繁切换，传统翻译工具不适合多账号同步处理，导致响应慢、沟通成本高。",
+      "monetization": "免费版引流 + 字符版$25/月 + 标准版$40/5端口/月 + 多端口年付/半年付套餐。",
+      "barriers": "实时翻译准确率、多平台聚合聊天稳定性、账号隔离与风控、关键词自动回复和多语言工作流设计，以及跨境通信与数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方价格页",
+          "官方首页工作流",
+          "端口与字符包定价"
+        ],
+        "note": "官方价格页直接公开免费版、字符版和标准版套餐，以及5端口月付/季付/半年付/年付价格；首页还能确认它不是单纯翻译API，而是跨境沟通与多账号运营工作流产品。"
+      },
+      "benchmarks": [
+        "Mixdesk",
+        "SaleSmartly"
+      ],
+      "sources": [
+        "https://www.haibaofy.com/",
+        "https://www.haibaofy.com/pricing"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向跨境卖家和出海客服团队的AI实时翻译与多账号沟通平台，主要靠字符版、端口版和团队套餐变现。",
+          "update": "补充适合跨境客服、社媒私信和多账号沟通场景的AI翻译工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.laihua-ai-video-platform",
       "canonicalName": "来画",
       "aliases": [
