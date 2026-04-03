@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.fapiaohezi-ai-invoice-manager",
+      "canonicalName": "发票盒子",
+      "aliases": [
+        "发票盒子-Ai管理发票小秘书",
+        "发盒票子"
+      ],
+      "slug": "fapiaohezi-ai-invoice-manager",
+      "discoveredSeq": 103,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI发票管理与报销单生成工具",
+      "targetCustomers": "个体经营者、自由职业者、财务报销人员和需要集中整理发票的小微团队",
+      "painPoint": "电子发票、纸质发票、短信票据和微信支付宝票夹分散在多个入口里，人工收集、查重、分类和生成报销单非常耗时，月底报销尤其容易漏票。",
+      "monetization": "通过高级会员PRO连续包月和连续包年订阅变现，公开价格包括21元/月、25元单月和180元/年。",
+      "barriers": "多来源发票归集能力、OCR识别和查重准确率、票据分类学习能力、报销单与PDF/Excel导出能力，以及票据数据安全和财税合规处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方官网",
+          "官方用户协议",
+          "官方隐私政策",
+          "App Store订阅价格"
+        ],
+        "note": "官网首页能稳定说明它在做电子发票归集、OCR识别、智能分类和报销单生成；同域用户协议与隐私页也都可访问，且说明了主体和自动续费边界；App Store与iTunes Lookup又直接公开了21元/月和180元/年等会员价格，因此按strong处理。"
+      },
+      "benchmarks": [
+        "票小秘",
+        "发票大师"
+      ],
+      "sources": [
+        "https://fapiaohezi.com/",
+        "https://www.fapiaohezi.com/1326/",
+        "https://www.fapiaohezi.com/1329/",
+        "https://apps.apple.com/cn/app/%E5%8F%91%E7%A5%A8%E7%9B%92%E5%AD%90-ai%E7%AE%A1%E7%90%86%E5%8F%91%E7%A5%A8%E5%B0%8F%E7%A7%98%E4%B9%A6/id6443434538"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向个体经营者和小微团队的AI发票管理与报销单生成工具，主要靠高级会员订阅变现。",
+          "update": "补充一个把发票归集、OCR识别、智能分类和报销单导出做成同一条工作流的票据管理样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.pethealthy-ai-pet-health-journal",
       "canonicalName": "猫狗健康日记",
       "aliases": [
