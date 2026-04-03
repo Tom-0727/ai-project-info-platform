@@ -240,6 +240,12 @@ h1 {
   color: var(--ink);
 }
 
+#refresh-filter[data-active] {
+  color: var(--signal);
+  border-color: rgba(52, 117, 84, 0.28);
+  background: rgba(236, 247, 240, 0.9);
+}
+
 .filter-field {
   display: flex;
   flex-direction: column;

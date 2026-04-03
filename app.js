@@ -13,6 +13,7 @@ const formFilter = document.querySelector("#form-filter");
 const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
 const resetFiltersButton = document.querySelector("#reset-filters");
+const refreshFilterButton = document.querySelector("#refresh-filter");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 
 const metricTemplate = document.querySelector("#metric-template");
@@ -431,6 +432,7 @@ const state = {
   form: "all",
   sort: "discovered",
   scenario: "all",
+  refreshed: false,
   selectedProjectId: null,
 };
 
@@ -457,6 +459,10 @@ const writeStateToUrl = () => {
     params.set("sort", state.sort);
   }
 
+  if (state.refreshed) {
+    params.set("refreshed", "1");
+  }
+
   if (state.selectedProjectId) {
     params.set("project", state.selectedProjectId);
   }
@@ -478,6 +484,7 @@ const hydrateStateFromUrl = (projects) => {
   state.form = formOptions.has(params.get("form")) ? params.get("form") : "all";
   state.scenario = scenarioOptions.has(params.get("scenario")) ? params.get("scenario") : "all";
   state.sort = sortOptions.has(params.get("sort")) ? params.get("sort") : "discovered";
+  state.refreshed = params.get("refreshed") === "1";
   state.selectedProjectId = projectIds.has(params.get("project")) ? params.get("project") : null;
 };
 
@@ -531,8 +538,9 @@ const syncFilterControls = () => {
   sortFilter.value = state.sort;
 
   const hasActiveFilter =
-    state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all";
+    state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all" || state.refreshed;
   resetFiltersButton.toggleAttribute("data-active", hasActiveFilter);
+  refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
@@ -684,7 +692,8 @@ const projectMatchesBase = (project) => {
   const matchesQuery = !state.query || haystack.includes(normalizeText(state.query));
   const matchesEvidence = state.evidence === "all" || project.evidenceQuality.level === state.evidence;
   const matchesForm = state.form === "all" || project.productForm === state.form;
-  return matchesQuery && matchesEvidence && matchesForm;
+  const matchesRefresh = !state.refreshed || hasEvidenceRefresh(project);
+  return matchesQuery && matchesEvidence && matchesForm && matchesRefresh;
 };
 
 const projectMatches = (project) =>
@@ -697,6 +706,7 @@ const renderResultsHint = (visibleProjects, allProjects) => {
     state.evidence !== "all" ? `证据：${evidenceLevelLabel[state.evidence]}` : null,
     state.form !== "all" ? `形态：${state.form}` : null,
     state.scenario !== "all" ? `场景：${state.scenario}` : null,
+    state.refreshed ? "状态：只看最近补证" : null,
     state.sort !== "discovered" ? `排序：${sortFilter.selectedOptions[0]?.textContent ?? state.sort}` : null,
   ].filter(Boolean);
 
@@ -772,6 +782,11 @@ const bootstrap = async () => {
     renderApp(projects);
   });
 
+  refreshFilterButton?.addEventListener("click", () => {
+    state.refreshed = !state.refreshed;
+    renderApp(projects);
+  });
+
   scenarioFilter.addEventListener("change", (event) => {
     state.scenario = event.target.value;
     renderApp(projects);
@@ -788,6 +803,7 @@ const bootstrap = async () => {
     state.form = "all";
     state.scenario = "all";
     state.sort = "discovered";
+    state.refreshed = false;
     renderApp(projects);
   });
 
