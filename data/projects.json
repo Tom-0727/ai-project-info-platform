@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.islide-ppt-plugin",
+      "canonicalName": "iSlide",
+      "aliases": [
+        "iSlide PPT",
+        "iSlide AI"
+      ],
+      "slug": "islide-ppt-plugin",
+      "discoveredSeq": 66,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI PPT设计与演示插件",
+      "targetCustomers": "职场白领、咨询顾问、销售团队、培训讲师，以及需要高频做商业演示和汇报材料的小团队",
+      "painPoint": "PPT制作常常卡在排版、素材搜集、图表美化和结构重组上，传统 PowerPoint 工作流效率低，重复劳动多，做出来的演示质量也不稳定。",
+      "monetization": "个人会员/企业会员订阅 + AI增值能力与会员权益收费。",
+      "barriers": "PPT原生插件能力、版式与素材资产积累、AI生成大纲与单页的稳定性、Office兼容性，以及商用素材授权与企业协作合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方价格页",
+          "官方AI功能教程",
+          "官方官网"
+        ],
+        "note": "官方价格页已明确展示个人会员、企业会员与AI能力相关权益；官方AI教程也能确认生成大纲、单页生成、导入文档生成和文本优化等真实工作流，因此可按strong入库。"
+      },
+      "benchmarks": [
+        "AiPPT",
+        "WPS 365"
+      ],
+      "sources": [
+        "https://www.islide.cc/",
+        "https://www.islide.cc/pricing",
+        "https://www.islide.cc/help/article/295"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个把 PPT 排版、素材调用和 AI 生成大纲/单页串进 PowerPoint 工作流的插件工具，主要靠个人会员和企业会员变现。",
+          "update": "补充面向高频商业演示场景的 AI PPT 设计与演示插件案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.focusee",
       "canonicalName": "FocuSee",
       "aliases": [
