@@ -44,6 +44,8 @@ const normalizeDate = (value) =>
     weekday: "short",
   }).format(new Date(value));
 
+const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
+
 const domainFromUrl = (value) => new URL(value).hostname.replace(/^www\./, "");
 
 const renderSourceLinks = (container, sources) => {
@@ -98,12 +100,18 @@ const buildFeedIntro = (project) => {
 const getLatestNote = (project) => project.dailyNotes[0];
 
 const renderFeedMeta = (container, project) => {
-  [
+  const items = [
     `变现：${firstClause(project.monetization)}`,
     `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
     `场景：${summarizeScenario(project)}`,
     `客群：${shortList(project.targetCustomers, 2)}`,
-  ].forEach((text) => {
+  ];
+
+  if (hasEvidenceRefresh(project)) {
+    items.push("状态：最近补证");
+  }
+
+  items.forEach((text) => {
     const item = document.createElement("span");
     item.className = "feed-pill";
     item.textContent = text;
@@ -306,6 +314,13 @@ const renderDetailView = (project, projects) => {
   node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
   node.querySelector(".detail-intro").textContent = buildFeedIntro(project);
 
+  if (hasEvidenceRefresh(project)) {
+    const refreshFlag = document.createElement("span");
+    refreshFlag.className = "project-refresh-flag";
+    refreshFlag.textContent = "最近补证";
+    node.querySelector(".project-top").appendChild(refreshFlag);
+  }
+
   const latestNote = getLatestNote(project);
   const noteBlock = node.querySelector(".detail-note");
   noteBlock.innerHTML = "";
@@ -323,6 +338,7 @@ const renderDetailView = (project, projects) => {
     ["核心痛点", project.painPoint],
     ["变现模式", project.monetization],
     ["工作流场景", summarizeScenario(project)],
+    ["样本状态", hasEvidenceRefresh(project) ? `已收录 / 最近一次补证于 ${project.lastUpdated}` : "已收录"],
     ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
     ["证据信号", project.evidenceQuality.signals.join(" / ")],
     ["判断说明", project.evidenceQuality.note],

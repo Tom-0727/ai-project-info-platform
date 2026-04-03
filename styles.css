@@ -351,7 +351,8 @@ button.summary-card:focus-visible {
 
 .day-count,
 .feed-tag,
-.project-status {
+.project-status,
+.project-refresh-flag {
   align-self: start;
   padding: 7px 10px;
   border-radius: 999px;
@@ -359,6 +360,11 @@ button.summary-card:focus-visible {
   color: var(--signal);
   font-size: 0.82rem;
   font-weight: 700;
+}
+
+.project-refresh-flag {
+  background: rgba(52, 117, 84, 0.12);
+  color: #295a40;
 }
 
 .status-strong {
