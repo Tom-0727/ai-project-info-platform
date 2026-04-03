@@ -803,7 +803,7 @@ const hydrateStateFromUrl = (projects) => {
   const scenarioOptions = new Set(["all", ...projects.map((project) => summarizeScenario(project))]);
   const formOptions = new Set(["all", ...projects.map((project) => project.productForm)]);
   const evidenceOptions = new Set(["all", "strong", "medium", "weak"]);
-  const sortOptions = new Set(["discovered", "evidence", "name"]);
+  const sortOptions = new Set(["discovered", "refreshed", "evidence", "name"]);
   const projectIds = new Set(projects.map((project) => project.id));
 
   state.query = params.get("q") ?? "";
@@ -1116,6 +1116,23 @@ const sortProjects = (projects) => {
 
   if (state.sort === "discovered") {
     copy.sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+    return copy;
+  }
+
+  if (state.sort === "refreshed") {
+    copy.sort((left, right) => {
+      const refreshDelta = Number(hasEvidenceRefresh(right)) - Number(hasEvidenceRefresh(left));
+      if (refreshDelta !== 0) {
+        return refreshDelta;
+      }
+
+      const updatedDelta = String(right.lastUpdated ?? "").localeCompare(String(left.lastUpdated ?? ""));
+      if (updatedDelta !== 0) {
+        return updatedDelta;
+      }
+
+      return right.discoveredSeq - left.discoveredSeq;
+    });
     return copy;
   }
 
