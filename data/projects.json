@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.mianshi-niuniu-ai-interview-assistant",
+      "canonicalName": "面试牛牛",
+      "aliases": [],
+      "slug": "mianshi-niuniu-ai-interview-assistant",
+      "discoveredSeq": 93,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI实时面试辅助与模拟面试工具",
+      "targetCustomers": "应届生、转岗求职者，以及需要在真实线上面试前做准备或在面试中获得辅助提示的用户",
+      "painPoint": "很多求职者在真实面试里回答节奏慢、临场容易卡壳，事前缺少贴近岗位的模拟训练，事中也很难快速组织结构化回答。",
+      "monetization": "通过面试时长包变现，公开价格包括30分钟58元、120分钟108元、300分钟198元、500分钟268元。",
+      "barriers": "实时识别面试问题与低延迟生成回答、简历上下文匹配能力、岗位题库覆盖、反作弊与合规边界，以及用户对风险和伦理问题的接受度。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "high",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store时长包价格",
+          "官方官网产品页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 面试辅助、模拟面试和简历结合答题，并直接公开多档时长包价格；offernn.com 官网也在讲同一套 AI 面试助手产品，因此按 strong 处理，但赛道本身营销和合规风险都偏高。"
+      },
+      "benchmarks": [
+        "Gank Interview",
+        "鹅来面"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E9%9D%A2%E8%AF%95%E7%89%9B%E7%89%9B-ai%E8%BE%85%E5%8A%A9%E9%9D%A2%E8%AF%95%E5%8A%A9%E6%89%8B%E6%8F%90%E8%AF%8D%E5%99%A8%E6%99%BA%E8%83%BD%E7%AD%94%E9%A2%98%E5%AE%9A%E5%88%B6%E6%89%BE%E5%B7%A5%E4%BD%9C%E7%A5%9E%E5%99%A8/id6743431889",
+        "https://www.offernn.com",
+        "https://app.yikemaizi.top/app-privacy-policy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向求职者的 AI 面试辅助和模拟面试工具，主要靠面试时长包变现。",
+          "update": "补充一个把模拟面试、简历结合答题和实时面试辅助打通在一起的求职工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.talkai-speaking-practice",
       "canonicalName": "TalkAI练口语",
       "aliases": [],
