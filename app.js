@@ -255,6 +255,14 @@ const renderBenchmarkLinks = (container, project, projects) => {
   });
 };
 
+const getInternalBenchmarkProjects = (project, projects) => {
+  const projectLookup = buildProjectLookup(projects);
+
+  return (project.benchmarks ?? [])
+    .map((benchmark) => projectLookup.get(normalizeLookupKey(benchmark)))
+    .filter((candidate, index, array) => candidate && candidate.id !== project.id && array.findIndex((item) => item?.id === candidate.id) === index);
+};
+
 const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   state.query = "";
   state.evidence = "all";
@@ -614,6 +622,23 @@ const renderDetailView = (project, projects) => {
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
 
   const sameFormRelated = getRelatedProjects(project, projects, "same-form");
+  const internalBenchmarkProjects = getInternalBenchmarkProjects(project, projects);
+
+  if (internalBenchmarkProjects.length > 0) {
+    const benchmarkCompareSection = document.createElement("section");
+    benchmarkCompareSection.className = "related-section";
+    benchmarkCompareSection.innerHTML = `
+      <p class="detail-note-label">对标快照（${internalBenchmarkProjects.length}）</p>
+      <div class="compare-snapshot"></div>
+    `;
+    renderCompareSnapshot(
+      benchmarkCompareSection.querySelector(".compare-snapshot"),
+      project,
+      internalBenchmarkProjects
+    );
+    node.appendChild(benchmarkCompareSection);
+  }
+
   const compareSection = document.createElement("section");
   compareSection.className = "related-section";
   compareSection.innerHTML = `
