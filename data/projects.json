@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.ai-xtrans-translator",
+      "canonicalName": "AI Xtrans",
+      "aliases": [
+        "AIXtrans",
+        "AI Xtrans-AI翻译"
+      ],
+      "slug": "ai-xtrans-translator",
+      "discoveredSeq": 79,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI翻译与音视频转写工具",
+      "targetCustomers": "跨语种办公用户、留学与出海团队、内容创作者，以及需要离线翻译和音视频翻译的小团队或个人",
+      "painPoint": "很多翻译工具只解决文字互译，难同时覆盖离线翻译、音视频内容转写翻译和持续订阅场景，导致用户在学习、会议和内容处理流程里频繁切换工具。",
+      "monetization": "通过连续包月会员、SVIP、离线翻译订阅和音视频翻译附加包变现，公开付费层级包括 10 元、28 元、68 元、88 元。",
+      "barriers": "多语种翻译质量、离线模型压缩与端侧体验、音视频转写同步、字幕与导出链路，以及跨语种内容处理的隐私与合规要求。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store付费说明与协议链接",
+          "官方站点与隐私/会员协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它是 AI 翻译工具，并挂出自动续费协议、会员服务协议、付费服务协议和隐私协议链接；搜索结果中的 App Store 官方摘要同时给出了连续包月会员 10 元、SVIP 68 元、离线翻译订阅 28 元、音视频翻译说明 88 元这几档公开付费层级，配合官方站点和协议页，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "同言翻译",
+        "秒转翻译官"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/ai-xtrans/id6746107424",
+        "https://www.aixtranslate.com",
+        "https://www.aixtranslate.com/app/autoRenewal?lang=zh-CN",
+        "https://www.aixtranslate.com/app/vipAgreement?lang=zh-CN",
+        "https://www.aixtranslate.com/app/content?type=payment_agreement&appkey=AI-Xtrans&lang=zh-CN",
+        "https://www.aixtranslate.com/app/privacyterms?lang=zh-CN"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向跨语种办公、留学和音视频内容处理场景的 AI 翻译工具，主要靠会员订阅和附加翻译包变现。",
+          "update": "补充适合跨语种办公、离线翻译和音视频内容处理场景的 AI 翻译工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.miaozhuan-live-translator",
       "canonicalName": "秒转翻译官",
       "aliases": [
