@@ -908,14 +908,14 @@
       "monetization": "免费版引流 + 会员订阅 + App Store自动续费 + 高额度翻译与高级模型访问等付费权益。",
       "barriers": "双语排版体验、复杂PDF和字幕翻译质量、多翻译引擎集成稳定性、浏览器与移动端兼容性，以及跨境内容处理与用户数据合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "low",
         "signals": [
           "官方价格页",
           "官方浏览器插件文档",
-          "官方App Store页"
+          "官方App Store订阅价格"
         ],
-        "note": "官方价格页和会员条款能确认它有持续付费会员服务、退款政策和高级翻译权益，App Store页也明确存在自动续费订阅；但当前公开抓取结果对具体价格数字不够稳定，因此按medium入库而不是strong。"
+        "note": "官方 pricing 页面已能稳定确认它有 Pro 会员体系，官方文档也清楚说明网页、PDF 和字幕双语翻译工作流；同时 App Store 页面可直接抓到月费会员 Pro、年费会员 Pro、Max 月会员和 Max 年会员等订阅价格项，商业化证据已足以按 strong 处理。"
       },
       "benchmarks": [
         "彩云小译",
@@ -927,6 +927,12 @@
         "https://apps.apple.com/cn/app/%E6%B2%89%E6%B5%B8%E5%BC%8F%E7%BF%BB%E8%AF%91-1000%E4%B8%87%E7%94%A8%E6%88%B7%E9%80%89%E6%8B%A9%E7%9A%84ai%E7%BF%BB%E8%AF%91%E7%A5%9E%E5%99%A8/id6447957425"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向外文网页、PDF 和字幕阅读场景的AI双语翻译工具，主要靠 Pro 会员订阅和高级模型/额度权益变现。",
+          "update": "补证确认官方 pricing 与 App Store 订阅价格都已稳定可取，升级为商业化清楚样本。"
+        },
         {
           "date": "2026-04-03",
           "kind": "New",
