@@ -405,6 +405,67 @@ const renderRelatedProjects = (container, related, emptyText) => {
   });
 };
 
+const renderCompareSnapshot = (container, currentProject, related) => {
+  const compareProjects = [currentProject, ...related.slice(0, 2)];
+
+  if (compareProjects.length <= 1) {
+    const empty = document.createElement("p");
+    empty.className = "related-empty";
+    empty.textContent = "当前库里还没有足够多的同形态样本用于快照对比。";
+    container.appendChild(empty);
+    return;
+  }
+
+  const rows = [
+    {
+      label: "产品",
+      values: compareProjects.map((project) => project.canonicalName),
+    },
+    {
+      label: "客群",
+      values: compareProjects.map((project) => shortList(project.targetCustomers, 2)),
+    },
+    {
+      label: "变现",
+      values: compareProjects.map((project) => firstClause(project.monetization)),
+    },
+    {
+      label: "商业化",
+      values: compareProjects.map((project) => evidenceLevelLabel[project.evidenceQuality.level]),
+    },
+  ];
+
+  const table = document.createElement("div");
+  table.className = "compare-table";
+
+  rows.forEach((row) => {
+    const rowNode = document.createElement("div");
+    rowNode.className = "compare-row";
+
+    const label = document.createElement("span");
+    label.className = "compare-label";
+    label.textContent = row.label;
+    rowNode.appendChild(label);
+
+    row.values.forEach((value, index) => {
+      const cell = document.createElement(index === 0 ? "button" : "button");
+      cell.type = "button";
+      cell.className = `compare-cell${index === 0 ? " compare-cell-current" : ""}`;
+      cell.textContent = value;
+      cell.addEventListener("click", () => {
+        state.selectedProjectId = compareProjects[index].id;
+        renderApp(window.__projectsCache__);
+        focusDetailPanel();
+      });
+      rowNode.appendChild(cell);
+    });
+
+    table.appendChild(rowNode);
+  });
+
+  container.appendChild(table);
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -552,6 +613,16 @@ const renderDetailView = (project, projects) => {
 
   renderSourceLinks(node.querySelector(".source-links"), project.sources);
 
+  const sameFormRelated = getRelatedProjects(project, projects, "same-form");
+  const compareSection = document.createElement("section");
+  compareSection.className = "related-section";
+  compareSection.innerHTML = `
+    <p class="detail-note-label">同形态快照对比</p>
+    <div class="compare-snapshot"></div>
+  `;
+  renderCompareSnapshot(compareSection.querySelector(".compare-snapshot"), project, sameFormRelated);
+  node.appendChild(compareSection);
+
   const sameFormSection = document.createElement("section");
   sameFormSection.className = "related-section";
   sameFormSection.innerHTML = `
@@ -560,7 +631,7 @@ const renderDetailView = (project, projects) => {
   `;
   renderRelatedProjects(
     sameFormSection.querySelector(".related-projects"),
-    getRelatedProjects(project, projects, "same-form"),
+    sameFormRelated,
     "当前库里还没有更多同形态项目。"
   );
   node.appendChild(sameFormSection);
