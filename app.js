@@ -94,6 +94,28 @@ const firstClause = (value) => {
   return value.split(/[，。；;]/)[0].trim();
 };
 
+const getEvidenceGapLabel = (project) => {
+  if (project.evidenceQuality.level === "strong") {
+    return null;
+  }
+
+  const note = project.evidenceQuality.note ?? "";
+
+  if (/(价格|定价|价格数字).*(不完整|不透明|较弱|不足|不稳定)/.test(note)) {
+    return "缺稳定价格面";
+  }
+
+  if (/(企业|采购|报价|席位).*(弱|不透明|咨询)/.test(note)) {
+    return "缺公开套餐价";
+  }
+
+  if (/(抓取|检索|获取|retriev)/i.test(note)) {
+    return "缺稳定可检索证据";
+  }
+
+  return "缺更强商业化证据";
+};
+
 const buildFeedIntro = (project) => {
   const audience = shortList(project.targetCustomers, 2);
   const pain = firstClause(project.painPoint);
@@ -109,6 +131,11 @@ const renderFeedMeta = (container, project) => {
     `场景：${summarizeScenario(project)}`,
     `客群：${shortList(project.targetCustomers, 2)}`,
   ];
+  const gapLabel = getEvidenceGapLabel(project);
+
+  if (gapLabel) {
+    items.push(`待补证：${gapLabel}`);
+  }
 
   if (hasEvidenceRefresh(project)) {
     items.push("状态：最近补证");
@@ -343,6 +370,7 @@ const renderDetailView = (project, projects) => {
     ["工作流场景", summarizeScenario(project)],
     ["样本状态", hasEvidenceRefresh(project) ? `已收录 / 最近一次补证于 ${project.lastUpdated}` : "已收录"],
     ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
+    ...(getEvidenceGapLabel(project) ? [["待补证点", getEvidenceGapLabel(project)]] : []),
     ["证据信号", project.evidenceQuality.signals.join(" / ")],
     ["判断说明", project.evidenceQuality.note],
     ["技术与合规门槛", project.barriers],
