@@ -16,6 +16,7 @@ const resetFiltersButton = document.querySelector("#reset-filters");
 const strongFilterButton = document.querySelector("#strong-filter");
 const mediumFilterButton = document.querySelector("#medium-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
+const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 
 const metricTemplate = document.querySelector("#metric-template");
@@ -860,6 +861,9 @@ const syncFilterControls = () => {
   if (refreshFilterButton) {
     refreshFilterButton.textContent = `只看最近补证（${refreshedCount}）`;
   }
+  if (compareClearButton) {
+    compareClearButton.hidden = state.compareIds.length === 0;
+  }
 
   const hasActiveFilter =
     state.query !== "" ||
@@ -872,6 +876,7 @@ const syncFilterControls = () => {
   strongFilterButton?.toggleAttribute("data-active", state.evidence === "strong");
   mediumFilterButton?.toggleAttribute("data-active", state.evidence === "medium");
   refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
+  compareClearButton?.toggleAttribute("data-active", state.compareIds.length > 0);
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
@@ -1168,6 +1173,11 @@ const bootstrap = async () => {
 
   refreshFilterButton?.addEventListener("click", () => {
     state.refreshed = !state.refreshed;
+    renderApp(projects);
+  });
+
+  compareClearButton?.addEventListener("click", () => {
+    state.compareIds = [];
     renderApp(projects);
   });
 
