@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.huadai-ai-notes",
+      "canonicalName": "话袋AI笔记",
+      "aliases": [
+        "话袋",
+        "Huadai AI Notes"
+      ],
+      "slug": "huadai-ai-notes",
+      "discoveredSeq": 71,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI语音记录与结构化笔记工具",
+      "targetCustomers": "学生、研究者、内容创作者、知识工作者与需要把语音快速整理成笔记的小团队",
+      "painPoint": "语音记录、临时想法和碎片知识很难快速沉淀成结构化笔记，传统笔记工具又缺少即时语音转写和二次整理能力。",
+      "monetization": "免费体验引流 + 话袋月会员¥29 + 高级AI记忆与笔记整理权益收费。",
+      "barriers": "语音转写准确率、碎片信息结构化整理、个人知识检索体验、多端同步与隐私数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网产品页",
+          "官方App Store页",
+          "App Store订阅价格"
+        ],
+        "note": "官网能够确认它在做AI语音记录和结构化笔记，App Store 还能直接看到话袋月会员¥29与AI服务订阅说明，商业化证据清楚。"
+      },
+      "benchmarks": [
+        "Get笔记",
+        "FlowUs AI"
+      ],
+      "sources": [
+        "https://ihuadai.cn/",
+        "https://apps.apple.com/cn/app/%E8%AF%9D%E8%A2%8Bai%E7%AC%94%E8%AE%B0-%E8%AE%A9%E4%BD%A0%E7%9A%84%E8%AF%9D%E5%8F%98%E6%88%90%E7%AC%94%E8%AE%B0/id6743582447"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生、研究者和内容创作者的AI语音记录与结构化笔记工具，主要靠会员订阅和AI整理能力变现。",
+          "update": "补充适合语音记录、灵感整理和个人知识沉淀场景的AI笔记工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.superdir-ai-video-ops",
       "canonicalName": "超级编导",
       "aliases": [
