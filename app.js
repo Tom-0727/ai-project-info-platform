@@ -339,6 +339,31 @@ const getScenarioStats = (project, projects) => {
   return `${summary.total} 个样本，其中商业化清楚 ${summary.strong} 个，待补证 ${summary.medium + summary.weak} 个`;
 };
 
+const getComparableStats = (project, projects, mode) =>
+  projects.reduce(
+    (accumulator, candidate) => {
+      if (candidate.id === project.id) {
+        return accumulator;
+      }
+
+      const matches =
+        mode === "same-form"
+          ? candidate.productForm === project.productForm
+          : summarizeScenario(candidate) === summarizeScenario(project) && candidate.productForm !== project.productForm;
+
+      if (!matches) {
+        return accumulator;
+      }
+
+      accumulator.total += 1;
+      if (candidate.evidenceQuality.level === "strong") {
+        accumulator.strong += 1;
+      }
+      return accumulator;
+    },
+    { total: 0, strong: 0 }
+  );
+
 const getPendingEvidenceProjects = (projects) =>
   projects
     .filter((candidate) => candidate.evidenceQuality.level === "medium")
@@ -408,6 +433,7 @@ const renderDetailView = (project, projects) => {
   noteText.textContent = latestNote ? latestNote.update : "暂无动态。";
   noteBlock.append(noteTitle, noteText);
 
+  const scenarioStats = getScenarioStats(project, projects);
   const detailList = node.querySelector(".project-detail-list");
   [
     ["目标客群", project.targetCustomers],
@@ -444,7 +470,8 @@ const renderDetailView = (project, projects) => {
   const pendingProjects = getPendingEvidenceProjects(projects);
   const pendingIndex = pendingProjects.findIndex((candidate) => candidate.id === project.id);
   const { sameFormCount, sameScenarioCount } = getComparableCounts(project, projects);
-  const scenarioStats = getScenarioStats(project, projects);
+  const sameFormStats = getComparableStats(project, projects, "same-form");
+  const sameScenarioStats = getComparableStats(project, projects, "same-scenario");
 
   const shortcuts = [
     {
@@ -512,7 +539,7 @@ const renderDetailView = (project, projects) => {
   const sameFormSection = document.createElement("section");
   sameFormSection.className = "related-section";
   sameFormSection.innerHTML = `
-    <p class="detail-note-label">同形态项目（${sameFormCount}）</p>
+    <p class="detail-note-label">同形态项目（${sameFormStats.total}，清楚 ${sameFormStats.strong}）</p>
     <div class="related-projects"></div>
   `;
   renderRelatedProjects(
@@ -525,7 +552,7 @@ const renderDetailView = (project, projects) => {
   const relatedSection = document.createElement("section");
   relatedSection.className = "related-section";
   relatedSection.innerHTML = `
-    <p class="detail-note-label">同场景项目（${sameScenarioCount}）</p>
+    <p class="detail-note-label">同场景项目（${sameScenarioStats.total}，清楚 ${sameScenarioStats.strong}）</p>
     <div class="related-projects"></div>
   `;
   renderRelatedProjects(
