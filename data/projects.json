@@ -16,17 +16,17 @@
       "productForm": "AI思维导图与知识整理工具",
       "targetCustomers": "学生、知识工作者、产品经理、培训讲师，以及需要把文档、会议和复杂信息快速结构化的小团队",
       "painPoint": "长文档、会议内容和零散想法很难快速整理成清晰结构，传统脑图工具又常常停留在手工整理层，导致知识沉淀和表达效率都不稳定。",
-      "monetization": "订阅版（6个月/1年/2年） + Pro会员/授权版收费 + 企业采购。",
+      "monetization": "移动版/全平台会员按6个月、1年和终身收费 + AI点数充值 + 教育版与企业采购。",
       "barriers": "跨端脑图编辑能力、AI结构化生成与优化质量、多格式导入导出、社区模板生态，以及云端协作与数据合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "low",
         "signals": [
           "官方产品页",
-          "官方支持FAQ",
-          "官方许可协议"
+          "官方许可协议",
+          "App Store订阅与内购价格"
         ],
-        "note": "官网产品页能确认 AI 问答、PPT生成、文档转脑图和媒体转脑图等真实工作流；官方支持页和许可协议也明确存在订阅版、授权版和Pro会员，但稳定可见的公开价格数字仍不完整，因此按medium入库。"
+        "note": "官网产品页能确认 AI 问答、PPT生成、文档转脑图和媒体转脑图等真实工作流；App Store 还能稳定给出移动版、全平台会员、教育版和AI点数充值价格，商业化证据已足够清楚。"
       },
       "benchmarks": [
         "Xmind",
@@ -34,8 +34,8 @@
       ],
       "sources": [
         "https://www.edrawsoft.cn/mindmaster/",
-        "https://www.edrawsoft.cn/support-cn/",
-        "https://www.edrawsoft.cn/mindmaster/term-service/"
+        "https://www.edrawsoft.cn/mindmaster/term-service/",
+        "https://apps.apple.com/cn/app/id1437212530"
       ],
       "dailyNotes": [
         {
