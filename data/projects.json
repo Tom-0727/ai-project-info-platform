@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.mononomori-ai-home-organization",
+      "canonicalName": "物之森",
+      "aliases": [
+        "MononoMori",
+        "物之森 - AI智能收纳与管理"
+      ],
+      "slug": "mononomori-ai-home-organization",
+      "discoveredSeq": 105,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI家庭收纳与物品管理工具",
+      "targetCustomers": "收纳整理用户、家庭用户、收藏爱好者和需要管理实物资产的小团队",
+      "painPoint": "家里的物品分散在不同房间、柜子和收纳盒里，靠记忆很难找回，保修、保养和有效期也容易漏掉，人工建档又很麻烦。",
+      "monetization": "通过森林守护者月计划、年计划和永久令牌变现，公开价格包括8元、68元和168元。",
+      "barriers": "AI物品识别与抠图、面向家庭空间的可视化归档设计、提醒体系、跨设备同步体验，以及家庭资产与图片数据的隐私保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方官网",
+          "App Store订阅价格",
+          "官方App Store产品说明"
+        ],
+        "note": "官网和App Store都在讲同一套AI收纳管理产品，产品面覆盖拍照识别、电子档案卡片、家居地图和提醒；App Store又直接公开了月付、年付和永久买断价格，因此按strong处理。"
+      },
+      "benchmarks": [
+        "Get笔记",
+        "白描"
+      ],
+      "sources": [
+        "https://mono.windmori.com/",
+        "https://apps.apple.com/cn/app/%E7%89%A9%E4%B9%8B%E6%A3%AE-ai%E6%99%BA%E8%83%BD%E6%94%B6%E7%BA%B3%E4%B8%8E%E7%AE%A1%E7%90%86/id6752316277"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向家庭和收藏用户的AI收纳管理工具，主要靠月付、年付会员和永久令牌变现。",
+          "update": "补充一个把物品拍照识别、电子建档、家居地图和提醒整合到一起的家庭收纳样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.fapiaodashi-ai-invoice-manager",
       "canonicalName": "发票大师",
       "aliases": [
