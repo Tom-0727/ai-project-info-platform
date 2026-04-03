@@ -1743,7 +1743,7 @@
       "discoveredSeq": 61,
       "status": "active",
       "firstSeen": "2026-04-03",
-      "lastUpdated": "2026-04-03",
+      "lastUpdated": "2026-04-04",
       "productForm": "AI信息订阅与总结阅读工具",
       "targetCustomers": "产品经理、研究者、投资分析师、自媒体作者，以及需要持续跟踪公众号、网页、论文和研报的小团队",
       "painPoint": "信息源分散在公众号、网页、论文和研报里，人工逐篇筛读成本高，收藏后又很难真正消化和形成结构化结论。",
@@ -1754,10 +1754,10 @@
         "marketingRisk": "low",
         "signals": [
           "官方帮助页",
-          "官方App Store页",
-          "信息聚合工作流说明"
+          "官方主站订阅路由迹象",
+          "官方App Store页"
         ],
-        "note": "官方帮助页能清楚说明它在做订阅、聚合、总结和专题聚览，App Store页也能确认这是持续迭代的AI阅读产品；但当前公开抓取里稳定可见的官方价格数字仍不完整，因此按medium入库。"
+        "note": "官方帮助页能稳定说明语鲸在做订阅、聚合、总结和专题聚览；主站robots.txt又暴露了/subscription、/reader、/account等应用路由迹象，说明存在订阅型产品面。但当前公开可访问页面仍拿不到稳定价格数字，App Store页也未稳定露出内购金额，因此继续按medium处理。"
       },
       "benchmarks": [
         "Get笔记",
@@ -1765,7 +1765,9 @@
       ],
       "sources": [
         "https://lingowhale.com/help",
-        "https://apps.apple.com/cn/app/%E8%AF%AD%E9%B2%B8-%E8%AE%A2%E9%98%85-%E8%81%9A%E5%90%88-%E6%80%BB%E7%BB%93%E4%BD%A0%E5%85%B3%E5%BF%83%E7%9A%84%E4%BF%A1%E6%81%AF/id6736673642"
+        "https://apps.apple.com/cn/app/%E8%AF%AD%E9%B2%B8-%E8%AE%A2%E9%98%85-%E8%81%9A%E5%90%88-%E6%80%BB%E7%BB%93%E4%BD%A0%E5%85%B3%E5%BF%83%E7%9A%84%E4%BF%A1%E6%81%AF/id6736673642",
+        "https://lingowhale.com/robots.txt",
+        "https://h5.lingowhale.com/privacy"
       ],
       "dailyNotes": [
         {
