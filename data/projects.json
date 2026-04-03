@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.knowme-ai-keyboard",
+      "canonicalName": "知我AI输入法",
+      "aliases": [
+        "KnowmeType",
+        "知我AI输入法-革命性AI语音输入法 AI键盘"
+      ],
+      "slug": "knowme-ai-keyboard",
+      "discoveredSeq": 80,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI语音输入与智能写作键盘",
+      "targetCustomers": "内容创作者、职场白领、多语种沟通用户，以及需要高频语音输入和跨应用写作的小团队或个人",
+      "painPoint": "传统输入法在长语音输入、跨应用写作和多语言表达上效率有限，用户常常要在语音转写、文本润色和不同应用之间来回切换。",
+      "monetization": "通过 VIP 订阅变现，公开价格包括月订阅 68 元和年订阅 698 元，并提供高级语音转写模型、自定义模板、多设备同步和历史输入保存等权益。",
+      "barriers": "高精度语音识别、多语言输入与纠错、跨应用键盘稳定性、端侧隐私保护，以及输入法权限、用户内容处理和语音数据安全合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方服务条款与隐私政策页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它是面向语音输入、跨应用写作和多语言表达的 AI 输入法，并直接公开月订阅 68 元、年订阅 698 元两档 App 内购买；同时页面挂有 knowme-type.com 自有域名的服务条款与隐私政策，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "Get笔记",
+        "笔灵AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E7%9F%A5%E6%88%91ai%E8%BE%93%E5%85%A5%E6%B3%95-%E9%9D%A9%E5%91%BD%E6%80%A7ai%E8%AF%AD%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95-ai%E9%94%AE%E7%9B%98/id6744967748",
+        "https://knowme-type.com/zh-CN",
+        "https://knowme-type.com/en/terms-of-service",
+        "https://knowme-type.com/en/privacy-policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向高频语音输入、跨应用写作和多语言表达场景的 AI 输入法工具，主要靠月费和年费订阅变现。",
+          "update": "补充适合语音输入、跨应用写作和多语言沟通场景的 AI 输入法案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.ai-xtrans-translator",
       "canonicalName": "AI Xtrans",
       "aliases": [
