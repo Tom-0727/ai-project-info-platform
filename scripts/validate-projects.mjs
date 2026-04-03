@@ -1,5 +1,7 @@
 import { loadProjects, normalizeName } from "./lib/projects.mjs";
 
+const bannedSummaryPatterns = [/纳入正式名单/, /原因是/, /值得跟踪/];
+
 const main = async () => {
   const { projects } = await loadProjects();
 
@@ -43,6 +45,14 @@ const main = async () => {
         continue;
       }
       seenDailyNotes.add(key);
+
+      if (!note.summary?.trim()) {
+        failures.push(`Empty daily note summary in ${project.id}: ${note.date}`);
+      }
+
+      if (bannedSummaryPatterns.some((pattern) => pattern.test(note.summary ?? ""))) {
+        failures.push(`Meta-style daily note summary in ${project.id}: ${note.summary}`);
+      }
     }
 
     if (!evidenceQuality) {

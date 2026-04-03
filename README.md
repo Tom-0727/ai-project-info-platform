@@ -41,7 +41,7 @@ Projects are displayed by discovery order descending by default, so the newest s
      --evidence-note "为什么这条线索可信" \
      --benchmarks "对标A,对标B" \
      --sources "https://source-a,https://source-b" \
-     --summary "为什么今天纳入" \
+     --summary "这是一个面向商家和创作者的AI视频工具，主要靠会员和额度权益变现。" \
      --update "本次新增说明"
    ```
 
@@ -51,7 +51,7 @@ Projects are displayed by discovery order descending by default, so the newest s
    node scripts/add-daily-note.mjs \
      --id "proj.project-slug" \
      --kind "Update" \
-     --summary "今天的新判断" \
+     --summary "这是一个面向学生和职场人群的AI写作工具，主要靠订阅和团队采购变现。" \
      --update "发生了什么变化"
    ```
 
@@ -74,7 +74,7 @@ Projects are displayed by discovery order descending by default, so the newest s
    node scripts/update-project.mjs \
      --id "proj.project-slug" \
      --evidence-level "strong" \
-     --summary "今天的新判断" \
+     --summary "这是一个面向知识工作者的AI信息整理工具，主要靠订阅和增值功能变现。" \
      --update "这次补证补到了什么"
    ```
 
@@ -83,6 +83,7 @@ Projects are displayed by discovery order descending by default, so the newest s
 
 The add-project script auto-assigns the next `discoveredSeq`, so newer projects remain ahead of older ones in the UI even if they share the same `firstSeen` date.
 The update-project script is useful for medium-to-strong upgrades because it updates `lastUpdated` on the targeted project only, avoiding manual JSON edits across repeated fields.
+The validator now rejects meta-style daily note summaries such as `纳入正式名单，原因是……`; public summaries should describe what the product is, who it helps, and how it makes money in plain language.
 
 ## GitHub Pages
 
