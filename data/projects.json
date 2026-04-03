@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.ai-shijuanbao",
+      "canonicalName": "AI试卷宝",
+      "aliases": [
+        "试卷宝",
+        "AI试卷宝-拍试卷和图片转Word"
+      ],
+      "slug": "ai-shijuanbao",
+      "discoveredSeq": 74,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI试卷还原与错题整理工具",
+      "targetCustomers": "学生、家长、教师与需要把试卷、错题和习题快速电子化整理的个人或小团队",
+      "painPoint": "纸质试卷和错题本整理效率低，拍照后还原版式、提取题目和导出可编辑文档通常要靠多工具拼接。",
+      "monetization": "免费体验引流 + 包年会员98元/年 + OCR还原、图片转Word和错题整理等高级权益收费。",
+      "barriers": "试卷版面结构识别、题目区域切分、OCR识别准确率、文档还原质量与学生数据隐私合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方App Store页",
+          "App Store订阅价格",
+          "教育场景工作流说明"
+        ],
+        "note": "App Store 直接公开包年会员98元/年和试卷拍照转Word等核心工作流，教育场景和付费路径都比较清楚。"
+      },
+      "benchmarks": [
+        "白描",
+        "墨灵 InkCraft"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/ai%E8%AF%95%E5%8D%B7%E5%AE%9D-%E6%8B%8D%E8%AF%95%E5%8D%B7%E5%92%8C%E5%9B%BE%E7%89%87%E8%BD%ACword/id6743177710"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生、家长和教师的AI试卷还原与错题整理工具，主要靠包年会员和高级文档处理权益变现。",
+          "update": "补充适合试卷拍照、错题整理和教育文档电子化场景的小工具型AI应用。"
+        }
+      ]
+    },
+    {
       "id": "proj.jike-ai-scan",
       "canonicalName": "即刻AI扫描",
       "aliases": [
