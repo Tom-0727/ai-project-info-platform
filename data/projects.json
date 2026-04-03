@@ -1,6 +1,47 @@
 {
   "projects": [
     {
+      "id": "proj.kapi-ai-bookkeeping",
+      "canonicalName": "咔皮记账",
+      "aliases": [],
+      "slug": "kapi-ai-bookkeeping",
+      "discoveredSeq": 96,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI自动记账与预算管理工具",
+      "targetCustomers": "个人记账用户、自由职业者，以及需要做多账本管理和预算控制的小团队或家庭",
+      "painPoint": "很多人记账断断续续、手动分类太麻烦，预算和资产分散在不同地方后也很难持续看清钱花在哪、还能怎么优化。",
+      "monetization": "通过连续包年和终身使用权变现，公开价格包括连续包年68元和终身使用权128元。",
+      "barriers": "自动分类与一句话拆账准确率、多账本和资产管理体验、预算推荐效果，以及个人财务数据的隐私与安全合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store价格信号",
+          "官方隐私政策页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 自动记账、预算管理和资产分析，并公开连续包年 68 元、终身使用权 128 元等价格信号；隐私政策页也可访问，因此按 strong 处理，但官方产品面弱于有独立官网的同类案例。"
+      },
+      "benchmarks": [
+        "飞鸭AI记账",
+        "知我AI输入法"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%92%94%E7%9A%AE%E8%AE%B0%E8%B4%A6-%E8%87%AA%E5%8A%A8%E8%AE%B0%E8%B4%A6-ai%E8%AE%B0%E8%B4%A6-%E9%A2%84%E7%AE%97-%E5%A4%9A%E8%B4%A6%E6%9C%AC-%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86-%E5%AD%98%E9%92%B1/id6738811698",
+        "https://u.heylumi.cn/capi/privacy/index.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向个人和家庭场景的 AI 自动记账与预算管理工具，主要靠包年和终身使用权变现。",
+          "update": "补充一个把自动记账、预算规划、多账本和资产管理打通在一起的个人财务工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.keli-speaking-ai-tutor",
       "canonicalName": "可栗口语",
       "aliases": [],
