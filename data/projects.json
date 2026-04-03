@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.keli-speaking-ai-tutor",
+      "canonicalName": "可栗口语",
+      "aliases": [],
+      "slug": "keli-speaking-ai-tutor",
+      "discoveredSeq": 95,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI外教情景对话与口语训练工具",
+      "targetCustomers": "英语学习者、雅思与KET/PET备考用户，以及需要低成本做日常口语训练的个人用户",
+      "painPoint": "很多人长期学英语却缺少稳定开口场景，真人外教成本高、时间难约，普通背词和刷题又很难直接转化成流利表达。",
+      "monetization": "通过 VIP 会员和永久会员变现，公开价格包括3天体验会员6元、包月VIP会员98元、包季VIP会员268元、包年VIP会员298元，以及多档永久会员和升级包价格。",
+      "barriers": "拟人语音与口语反馈质量、情景课程设计、英语水平测评准确度、考试场景适配，以及教育效果和用户数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store会员价格",
+          "官方官网与隐私页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 外教情景对话、口语训练和考试陪练，并直接公开多档 VIP 与永久会员价格；oral-craft.com 官网和隐私页也可访问，因此按 strong 处理，但条款页稳定性弱于最干净的同域案例。"
+      },
+      "benchmarks": [
+        "TalkAI练口语",
+        "AI外教"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E5%8F%AF%E6%A0%97%E5%8F%A3%E8%AF%AD-ai%E5%A4%96%E6%95%99%E6%83%85%E6%99%AF%E5%AF%B9%E8%AF%9D-%E9%9B%B6%E5%9F%BA%E7%A1%80%E7%BB%83%E5%8F%91%E9%9F%B3%E5%AD%A6%E8%AF%AD%E6%B3%95/id6449095944",
+        "https://oral-craft.com",
+        "https://oral-craft.com/privacy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向英语学习者的 AI 外教情景对话和口语训练工具，主要靠 VIP 会员和永久会员变现。",
+          "update": "补充一个把情景对话、口语测评、考试陪练和AI外教陪练打通在一起的英语学习工作流案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.outfity-ai-closet-try-on",
       "canonicalName": "Outfity",
       "aliases": [],
