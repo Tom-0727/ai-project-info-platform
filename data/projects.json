@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.lingoq-ai-english",
+      "canonicalName": "灵格AI英语",
+      "aliases": [
+        "LingoQ",
+        "灵格奇",
+        "灵格AI"
+      ],
+      "slug": "lingoq-ai-english",
+      "discoveredSeq": 101,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI视频学英语与口语陪练工具",
+      "targetCustomers": "英语学习者、留学备考用户、职场外语学习者，以及希望借视频内容练听说的小团队或个人",
+      "painPoint": "很多英语学习产品要么偏背单词，要么偏纯对话机器人，用户很难把喜欢的视频内容、口语纠音、语法讲解和持续练习放进同一个学习流程。",
+      "monetization": "App Store会员订阅与永久会员售卖，公开价格可见月会员、季会员、半年会员、年会员和永久会员等多档付费层级。",
+      "barriers": "视频内容切片与语言点提取能力、跟读纠音与口语评估能力、AIGC导师交互设计、学习路径编排，以及教育内容合规与版权处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方官网",
+          "官方隐私协议",
+          "官方用户服务协议",
+          "App Store订阅价格"
+        ],
+        "note": "官网能稳定说明它在做基于视频内容的AI英语学习与口语陪练，官方隐私协议和服务协议也都可访问；App Store页又直接公开了月会员、年会员和永久会员等多档价格，因此按strong处理。"
+      },
+      "benchmarks": [
+        "TalkAI练口语",
+        "AI外教"
+      ],
+      "sources": [
+        "https://www.lingoq.com",
+        "https://www.lingoq.com/privacy.html",
+        "https://www.lingoq.com/agreement.html",
+        "https://apps.apple.com/cn/app/%E7%81%B5%E6%A0%BCai%E8%8B%B1%E8%AF%AD-%E7%9C%8B%E8%A7%86%E9%A2%91%E5%AD%A6%E8%8B%B1%E8%AF%AD-%E5%BF%AB%E9%80%9F%E6%8F%90%E5%8D%87%E8%8B%B1%E8%AF%AD%E5%90%AC%E8%AF%B4%E8%AF%BB%E5%86%99/id6503163012"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向英语学习者和留学备考用户的AI视频学英语与口语陪练工具，主要靠会员订阅和永久会员变现。",
+          "update": "补充一个把视频内容学习、AI讲解和口语练习做成同一条工作流的英语学习样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.faxingmeimeida-hairstyle-simulator",
       "canonicalName": "发型美美哒",
       "aliases": [],
