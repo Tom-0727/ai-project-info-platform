@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.qingka-daily-ai-calorie-coach",
+      "canonicalName": "轻卡日常",
+      "aliases": [
+        "轻卡日常-锁外卖AI聊天减肥&AI记卡路里热量&饮食减脂食谱"
+      ],
+      "slug": "qingka-daily-ai-calorie-coach",
+      "discoveredSeq": 107,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI减脂陪伴与热量管理工具",
+      "targetCustomers": "减脂用户、健身人群、轻断食用户和围绕饮食管理做服务的个人工作室",
+      "painPoint": "减脂过程中手动查热量、记饮食和追踪体重很容易半途而废，外卖和零食也难控制，很多人既缺持续记录工具，也缺能陪着执行计划的反馈机制。",
+      "monetization": "通过月会员、年会员和永久会员变现，公开价格包括38元/月、128元/年、168元永久会员。",
+      "barriers": "食物与营养识别、语音和拍照记热量、多目标健康数据整合、AI陪伴式交互设计，以及健康建议边界和免责声明合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方官网",
+          "App Store订阅价格",
+          "官方App Store产品说明"
+        ],
+        "note": "App Store和官网都在讲同一套AI减脂管理产品，工作流覆盖聊天/语音/拍照记热量、轻断食和健康统计；同域协议页也能稳定访问，会员价格公开明确，因此按strong处理。"
+      },
+      "benchmarks": [
+        "体重小本",
+        "大厨日历"
+      ],
+      "sources": [
+        "https://calorie.51wnl-cq.com",
+        "https://apps.apple.com/cn/app/%E8%BD%BB%E5%8D%A1%E6%97%A5%E5%B8%B8-%E9%94%81%E5%A4%96%E5%8D%96ai%E8%81%8A%E5%A4%A9%E5%87%8F%E8%82%A5-ai%E8%AE%B0%E5%8D%A1%E8%B7%AF%E9%87%8C%E7%83%AD%E9%87%8F-%E9%A5%AE%E9%A3%9F%E5%87%8F%E8%84%82%E9%A3%9F%E8%B0%B1/id6747462807"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向减脂用户的AI热量记录和饮食管理工具，主要靠会员订阅和永久会员变现。",
+          "update": "补充一个把聊天记热量、拍照识别、轻断食和AI陪伴整合在一起的减脂管理样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.bestrie-ai-shared-bookkeeping",
       "canonicalName": "百事AA记账",
       "aliases": [
