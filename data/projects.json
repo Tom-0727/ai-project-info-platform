@@ -2302,32 +2302,37 @@
       "discoveredSeq": 25,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI配音与音频创作工具",
       "targetCustomers": "短视频创作者、有声书制作者、广告营销团队、培训课件团队、小型音频工作室",
       "painPoint": "配音、音色选择、声音克隆和批量音频制作依赖人工录制与后期处理，个人或小团队很难低成本稳定交付。",
       "monetization": "个人会员订阅 + 声音克隆等增值包 + 团队版/企业版 + API与定制服务。",
       "barriers": "高拟真语音合成、声音克隆、音频编辑工作流、版权与声纹授权、生成内容合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品站点",
-          "官方定价页",
-          "官方关于页"
+          "官方App Store内购价格页",
+          "官方隐私政策入口"
         ],
-        "note": "变现路径和价格能看到，但站点营销色彩偏重，因此按medium入库而不是strong。"
+        "note": "官方站点已能稳定说明AI配音、声音克隆与短视频配音工作流，官方App Store又直接公开一个月会员60元、半年198元、一年348元、新用户月会员38元和AI文案字数包38元，付费结构已经足够清楚，因此从medium升级到strong。"
       },
       "benchmarks": [
         "ElevenLabs",
         "讯飞听见"
       ],
       "sources": [
-        "https://moyincn.com/",
-        "https://www.moyincn.com/price.html",
-        "https://moyincn.com/about.html"
+        "https://www.moyin.com/",
+        "https://apps.apple.com/cn/app/%E9%AD%94%E9%9F%B3%E5%B7%A5%E5%9D%8A-ai%E6%99%BA%E8%83%BD%E9%85%8D%E9%9F%B3%E8%BD%AF%E4%BB%B6-%E7%9F%AD%E8%A7%86%E9%A2%91%E9%85%8D%E9%9F%B3%E7%A5%9E%E5%99%A8/id1633046070"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向短视频创作者和音频工作室的AI配音工具，官方App Store已公开一个月会员60元、半年198元、一年348元和AI文案字数包38元。",
+          "update": "补到官方App Store购买面后，这个AI配音样本的会员与增值包价格结构已经足够清楚，证据等级升级为strong。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
