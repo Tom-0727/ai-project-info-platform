@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.yinlu-ai-cover-dubbing",
+      "canonicalName": "音鹿",
+      "aliases": [
+        "音鹿 - AI翻唱 & AI配音",
+        "音鹿AI翻唱AI配音"
+      ],
+      "slug": "yinlu-ai-cover-dubbing",
+      "discoveredSeq": 81,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI翻唱与配音创作工具",
+      "targetCustomers": "短视频创作者、配音接单者、音乐爱好者，以及需要音色克隆和快速生成音频内容的小团队或个人",
+      "painPoint": "真人配音和翻唱制作成本高、试错慢，很多创作者需要在文案配音、翻唱、音色替换和音频剪辑之间来回切换，产出效率很低。",
+      "monetization": "通过连续订阅会员和钻石内购变现，公开价格包括月会员 18 元、季会员 38 元、年会员 68 元，以及 60 到 5000 钻石等多档内购。",
+      "barriers": "音色克隆与歌声合成质量、版权与声音肖像风险控制、音频剪辑与导出稳定性、生成速度，以及配音与翻唱内容的合规边界。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方隐私政策与连续订阅协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 翻唱、AI 配音和音色克隆，并直接公开月会员 18 元、季会员 38 元、年会员 68 元以及多档钻石内购；同时页面挂出官方隐私政策和连续订阅协议链接，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "魔音工坊",
+        "超级编导"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E9%9F%B3%E9%B9%BF-ai%E7%BF%BB%E5%94%B1-ai%E9%85%8D%E9%9F%B3/id6478577754",
+        "http://cdn.polariscode.cn/yinlu_protocol/yinlu_privacyPolicy.html",
+        "http://cdn.polariscode.cn/yinlu_protocol/yinlu_subscribe_protocol.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向短视频创作、翻唱和配音场景的 AI 音频创作工具，主要靠会员订阅和钻石内购变现。",
+          "update": "补充适合短视频创作者、配音接单者和音乐爱好者的 AI 翻唱与配音工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.knowme-ai-keyboard",
       "canonicalName": "知我AI输入法",
       "aliases": [
