@@ -563,6 +563,8 @@ const renderDetailView = (project, projects) => {
   const { sameFormCount, sameScenarioCount } = getComparableCounts(project, projects);
   const sameFormStats = getComparableStats(project, projects, "same-form");
   const sameScenarioStats = getComparableStats(project, projects, "same-scenario");
+  const compareProjects = projects.filter((candidate) => state.compareIds.includes(candidate.id));
+  const compareProjectNames = compareProjects.map((candidate) => candidate.canonicalName);
 
   const shortcuts = [
     {
@@ -582,6 +584,21 @@ const renderDetailView = (project, projects) => {
       onClick: () => applyFocusedStrongFilter({ form: project.productForm }),
     },
   ];
+
+  if (state.compareIds.length > 0) {
+    const compareStatus = document.createElement("p");
+    compareStatus.className = "detail-note-text";
+    compareStatus.textContent = `当前处于对标视图：${compareProjectNames.slice(0, 4).join(" / ")}${compareProjectNames.length > 4 ? " 等" : ""}`;
+    shortcutsSection.appendChild(compareStatus);
+
+    shortcuts.unshift({
+      label: "退出对标视图",
+      onClick: () => {
+        state.compareIds = [];
+        renderApp(window.__projectsCache__);
+      },
+    });
+  }
 
   if (project.evidenceQuality.level === "medium") {
     const pendingProgress = document.createElement("p");
