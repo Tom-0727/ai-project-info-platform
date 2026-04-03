@@ -945,6 +945,9 @@ const renderStructureSummary = (projects) => {
   const mediumCount = projects.filter((project) => project.evidenceQuality.level === "medium").length;
   const weakCount = projects.filter((project) => project.evidenceQuality.level === "weak").length;
   const refreshedCount = projects.filter((project) => hasEvidenceRefresh(project)).length;
+  const refreshedStrongCount = projects.filter(
+    (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
+  ).length;
   const mediumSummaries = projects
     .filter((project) => project.evidenceQuality.level === "medium")
     .slice(0, 3)
@@ -987,6 +990,16 @@ const renderStructureSummary = (projects) => {
       note: "点击只看后来补强过证据的项目。",
     },
     {
+      label: "最近补证清楚样本",
+      scenario: null,
+      filters: {
+        refreshed: true,
+        evidence: "strong",
+      },
+      value: `${refreshedStrongCount} 个`,
+      note: "点击直达最近补证过、且商业化清楚的样本。",
+    },
+    {
       label: "待补证清单",
       scenario: null,
       evidence: "medium",
@@ -999,22 +1012,29 @@ const renderStructureSummary = (projects) => {
   ];
 
   cards.forEach((card) => {
-    const isInteractive = Boolean(card.scenario || card.refreshed || card.evidence);
+    const isInteractive = Boolean(card.scenario || card.refreshed || card.evidence || card.filters);
     const element = document.createElement(isInteractive ? "button" : "article");
     element.className = "summary-card";
     if (isInteractive) {
       element.type = "button";
-      const isActive = card.refreshed
-        ? state.refreshed
-        : card.evidence
-          ? state.evidence === card.evidence
-          : state.scenario === card.scenario;
+      const isActive = card.filters
+        ? state.refreshed === Boolean(card.filters.refreshed) && state.evidence === card.filters.evidence
+        : card.refreshed
+          ? state.refreshed
+          : card.evidence
+            ? state.evidence === card.evidence
+            : state.scenario === card.scenario;
       element.setAttribute("aria-pressed", String(isActive));
       if (isActive) {
         element.classList.add("summary-card-active");
       }
       element.addEventListener("click", () => {
-        if (card.refreshed) {
+        if (card.filters) {
+          const nextActive = !(state.refreshed === Boolean(card.filters.refreshed) && state.evidence === card.filters.evidence);
+          state.refreshed = nextActive ? Boolean(card.filters.refreshed) : false;
+          state.evidence = nextActive ? card.filters.evidence : "all";
+          evidenceFilter.value = state.evidence;
+        } else if (card.refreshed) {
           state.refreshed = !state.refreshed;
         } else if (card.evidence) {
           state.evidence = state.evidence === card.evidence ? "all" : card.evidence;
