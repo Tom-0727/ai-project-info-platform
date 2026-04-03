@@ -619,8 +619,30 @@ const renderDetailView = (project, projects) => {
   compareSection.innerHTML = `
     <p class="detail-note-label">同形态快照对比</p>
     <div class="compare-snapshot"></div>
+    <div class="compare-actions"></div>
   `;
   renderCompareSnapshot(compareSection.querySelector(".compare-snapshot"), project, sameFormRelated);
+  const compareActions = compareSection.querySelector(".compare-actions");
+  [
+    {
+      label: `看完整同形态列表（${sameFormStats.total}）`,
+      onClick: () => applyFocusedFilter({ form: project.productForm }),
+    },
+    {
+      label: `只看同形态清楚样本（${sameFormStats.strong}）`,
+      onClick: () => applyFocusedStrongFilter({ form: project.productForm }),
+    },
+  ].forEach((action) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "detail-shortcut-chip";
+    button.textContent = action.label;
+    button.addEventListener("click", () => {
+      action.onClick();
+      focusDetailPanel();
+    });
+    compareActions.appendChild(button);
+  });
   node.appendChild(compareSection);
 
   const sameFormSection = document.createElement("section");
