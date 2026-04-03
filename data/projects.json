@@ -2352,21 +2352,21 @@
       "discoveredSeq": 24,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI图文转视频与数字人口播工具",
       "targetCustomers": "自媒体创作者、营销团队、本地商家、培训机构、需要批量视频生产的小团队",
       "painPoint": "图文转视频、数字人口播和批量内容成片依赖剪辑与素材匹配，个人或小团队难以低成本持续产出。",
-      "monetization": "会员/积分体系 + AI市场标准报价 + 企业定制服务。",
+      "monetization": "会员订阅（1个月¥98、3个月¥168、1年¥568、2年¥968）+ AI创作积分与成片时长权益 + 企业会员咨询与定制服务。",
       "barriers": "文案理解与视频编排、素材匹配、数字人口播生成、批量生产稳定性，以及内容版权与合规审核。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "官方产品站点",
-          "官方关于页",
-          "AI市场标准报价"
+          "官网产品站点",
+          "官网价格页",
+          "官网帮助中心与会员权益说明"
         ],
-        "note": "产品形态和报价信号都能确认，但价格更多来自分发市场而非官网标准购买页，因此按medium入库。"
+        "note": "官网首页和帮助中心能稳定说明它在做图文转视频、AI成片和数字人口播；同时官网价格页已直接公开1个月¥98、3个月¥168、1年¥568、2年¥968的会员价格，以及企业会员咨询入口，因此按strong处理。"
       },
       "benchmarks": [
         "蝉镜",
@@ -2374,8 +2374,8 @@
       ],
       "sources": [
         "https://aigc.yizhentv.com/",
-        "https://aigc.yizhentv.com/about",
-        "https://aim.baidu.com/product/10a20d86-6641-4307-b648-da2ec495b120"
+        "https://aigc.yizhentv.com/pricing",
+        "https://aigc.yizhentv.com/help/article/407452071118241792.html"
       ],
       "dailyNotes": [
         {
