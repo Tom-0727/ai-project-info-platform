@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.zhiji-plant-care",
+      "canonicalName": "植迹",
+      "aliases": [
+        "植迹 - 养花种菜植物成长养护全记录 & AI识花识病"
+      ],
+      "slug": "zhiji-plant-care",
+      "discoveredSeq": 85,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI植物识别与养护管理工具",
+      "targetCustomers": "家庭园艺爱好者、阳台种菜用户、花店和小型园艺工作室，以及需要持续记录植物生长和做智能养护提醒的个人或小团队",
+      "painPoint": "很多人会买花种菜，但很难长期判断植物品种、病症和养护节奏，浇水施肥修剪常靠经验，导致植物反复养死、记录也很分散。",
+      "monetization": "通过会员订阅和终生会员变现，公开价格包括连续包月 8 元、连续包年 68 元、终生会员 128 元。",
+      "barriers": "植物识别与病症诊断准确率、养护提醒与天气联动能力、生长记录长期留存、植物知识库维护，以及涉及植物病虫害建议时的责任边界。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方官网与用户协议/隐私政策页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 植物识别、病症检测、养护提醒和生长记录，并直接公开连续包月 8 元、连续包年 68 元、终生会员 128 元三档付费；同时官方自有域名 zhiji.ultraifun.com 可正常访问官网、用户协议和隐私政策，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "形色",
+        "PictureThis"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E6%A4%8D%E8%BF%B9-%E5%85%BB%E8%8A%B1%E7%A7%8D%E8%8F%9C%E6%A4%8D%E7%89%A9%E6%88%90%E9%95%BF%E5%85%BB%E6%8A%A4%E5%85%A8%E8%AE%B0%E5%BD%95-ai%E8%AF%86%E8%8A%B1%E8%AF%86%E7%97%85/id6743957454",
+        "https://zhiji.ultraifun.com",
+        "https://zhiji.ultraifun.com/agreements/termsOfUser.html",
+        "https://zhiji.ultraifun.com/agreements/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向养花种菜用户的 AI 植物识别与养护管理工具，主要靠会员订阅和终生会员变现。",
+          "update": "补充一个把识花识病、养护提醒和植物成长记录打通在一起的园艺垂直工作流工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.shuode-ai",
       "canonicalName": "说得AI",
       "aliases": [
