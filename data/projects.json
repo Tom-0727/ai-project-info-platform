@@ -2910,21 +2910,21 @@
       "slug": "aippt",
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI PPT生成工具",
       "targetCustomers": "职场用户、销售、培训、教育与轻量企业团队",
       "painPoint": "演示文档结构搭建慢、模板整理成本高、内容转 PPT 效率低。",
-      "monetization": "会员权益体系 + 插件分发 + 企业解决方案，定价透明度仍需继续补证。",
+      "monetization": "连续包月/包年VIP、标准VIP月付/两年/终身版订阅 + 插件端权益互通 + 企业解决方案。",
       "barriers": "长文档结构化、模板引擎、与 PowerPoint/WPS 的适配，以及企业文档处理合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品页",
-          "插件分发",
-          "会员体系存在"
+          "官方插件分发页",
+          "App Store订阅价格"
         ],
-        "note": "产品形态明确，但价格透明度和企业成交证据还需补强。"
+        "note": "官网能稳定确认产品与插件工作流，App Store 直接给出持续订阅和多档价格，商业化闭环已比初次入库时更清楚。"
       },
       "benchmarks": [
         "讯飞智文",
@@ -2933,7 +2933,7 @@
       "sources": [
         "https://www.aippt.cn/about-us/",
         "https://www.aippt.cn/plugin/download",
-        "https://www.aippt.cn/plugin/help/article/50"
+        "https://apps.apple.com/cn/app/aippt-%E8%B6%85-3000-%E4%B8%87%E7%94%A8%E6%88%B7%E7%9A%84%E9%80%89%E6%8B%A9/id6504657264"
       ],
       "dailyNotes": [
         {
