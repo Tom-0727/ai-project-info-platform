@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.superdir-ai-video-ops",
+      "canonicalName": "超级编导",
+      "aliases": [
+        "Superdir",
+        "超级编导AI"
+      ],
+      "slug": "superdir-ai-video-ops",
+      "discoveredSeq": 70,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI短视频创意生产与矩阵分发平台",
+      "targetCustomers": "短视频运营团队、本地商家、品牌营销团队、MCN与需要批量产出和分发视频内容的小团队",
+      "painPoint": "短视频脚本、混剪、字幕、多语言处理和多账号分发常常要在多个工具之间切换，团队协同和批量起量效率低。",
+      "monetization": "基础版/标准版/高级版团队套餐 + AI算力点数收费 + 定制化企业服务。",
+      "barriers": "批量混剪与矩阵分发稳定性、AI文案与人脸融合生成效果、多语言字幕与配音处理、账号矩阵管理，以及平台侧内容合规与账号风控。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "high",
+        "signals": [
+          "官方价格页",
+          "官方首页工作流",
+          "帮助中心持续更新"
+        ],
+        "note": "官方价格页直接公开团队套餐和AI算力点数，首页把AI文案、批量混剪、矩阵分发等工作流串在一起，帮助中心也能确认它是持续迭代的软件产品。"
+      },
+      "benchmarks": [
+        "来画",
+        "FocuSee"
+      ],
+      "sources": [
+        "https://www.superdir.cn/",
+        "https://www.superdir.cn/pricing",
+        "https://help.superdir.cn/docs/chao-ji-bian-dao-2026-ruan-jian-shi-yong-ji-an-li-ying-yong"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向短视频运营团队和商家内容团队的AI短视频创意生产与矩阵分发平台，主要靠团队套餐、AI算力点数和企业服务变现。",
+          "update": "补充适合批量混剪、矩阵分发和多语言短视频内容生产场景的AI视频运营平台样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.haibao-ai-translation",
       "canonicalName": "海豹翻译",
       "aliases": [
