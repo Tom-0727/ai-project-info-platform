@@ -1066,13 +1066,21 @@ const projectMatches = (project) =>
   (state.scenario === "all" || summarizeScenario(project) === state.scenario);
 
 const renderResultsHint = (visibleProjects, allProjects) => {
+  const compareProjectNames =
+    state.compareIds.length > 0
+      ? allProjects
+          .filter((project) => state.compareIds.includes(project.id))
+          .map((project) => project.canonicalName)
+      : [];
   const filterNotes = [
     state.query ? `关键词：${state.query}` : null,
     state.evidence !== "all" ? `证据：${evidenceLevelLabel[state.evidence]}` : null,
     state.form !== "all" ? `形态：${state.form}` : null,
     state.scenario !== "all" ? `场景：${state.scenario}` : null,
     state.refreshed ? "状态：只看最近补证" : null,
-    state.compareIds.length > 0 ? "对比：当前与已收录对标" : null,
+    state.compareIds.length > 0
+      ? `对比：${compareProjectNames.slice(0, 4).join(" / ")}${compareProjectNames.length > 4 ? " 等" : ""}`
+      : null,
     state.sort !== "discovered" ? `排序：${sortFilter.selectedOptions[0]?.textContent ?? state.sort}` : null,
   ].filter(Boolean);
 
