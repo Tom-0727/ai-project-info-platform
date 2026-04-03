@@ -591,6 +591,7 @@ const renderStructureSummary = (projects) => {
   const strongCount = projects.filter((project) => project.evidenceQuality.level === "strong").length;
   const mediumCount = projects.filter((project) => project.evidenceQuality.level === "medium").length;
   const weakCount = projects.filter((project) => project.evidenceQuality.level === "weak").length;
+  const refreshedCount = projects.filter((project) => hasEvidenceRefresh(project)).length;
 
   const topScenarios = Object.entries(
     projects.reduce((accumulator, project) => {
@@ -621,22 +622,32 @@ const renderStructureSummary = (projects) => {
       value: `${strongCount} 强 / ${mediumCount} 中 / ${weakCount} 待补证`,
       note: "直接看当前筛选结果里证据强弱分布。",
     },
+    {
+      label: "最近补证样本",
+      scenario: null,
+      refreshed: true,
+      value: `${refreshedCount} 个`,
+      note: "点击只看后来补强过证据的项目。",
+    },
   ];
 
   cards.forEach((card) => {
-    const isInteractive = Boolean(card.scenario);
+    const isInteractive = Boolean(card.scenario || card.refreshed);
     const element = document.createElement(isInteractive ? "button" : "article");
     element.className = "summary-card";
     if (isInteractive) {
       element.type = "button";
-      element.dataset.scenario = card.scenario;
-      element.setAttribute("aria-pressed", String(state.scenario === card.scenario));
-      if (state.scenario === card.scenario) {
+      element.setAttribute("aria-pressed", String(card.refreshed ? state.refreshed : state.scenario === card.scenario));
+      if ((card.refreshed && state.refreshed) || (!card.refreshed && state.scenario === card.scenario)) {
         element.classList.add("summary-card-active");
       }
       element.addEventListener("click", () => {
-        state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
-        scenarioFilter.value = state.scenario;
+        if (card.refreshed) {
+          state.refreshed = !state.refreshed;
+        } else {
+          state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
+          scenarioFilter.value = state.scenario;
+        }
         renderApp(window.__projectsCache__);
       });
     }

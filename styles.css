@@ -277,7 +277,7 @@ h1 {
 
 .summary-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-top: 16px;
 }
@@ -320,6 +320,10 @@ button.summary-card:focus-visible {
   border-color: rgba(188, 75, 39, 0.4);
   background: rgba(255, 244, 234, 0.96);
   box-shadow: 0 14px 30px rgba(188, 75, 39, 0.12);
+}
+
+button.summary-card[aria-pressed="true"] .summary-label {
+  color: #295a40;
 }
 
 .summary-label {
