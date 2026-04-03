@@ -1538,21 +1538,21 @@
       "discoveredSeq": 41,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI写真与风格化人像工具",
       "targetCustomers": "个人用户、小型写真工作室、自媒体博主、需要低成本生产风格化人像内容的创作者",
       "painPoint": "写真拍摄、修图和风格化人像制作成本高、流程长，个人和小工作室很难快速低成本产出可分享的高质感人像内容。",
       "monetization": "会员订阅 + 写真生成等高级能力付费。",
       "barriers": "人像生成质量、风格一致性、训练与模板供给、审美调优，以及肖像权和生成内容合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品官网",
-          "官方App Store订阅信号",
-          "官方会员服务协议"
+          "官方会员服务协议",
+          "官方App Store订阅与内购价格"
         ],
-        "note": "官网能确认AI写真与风格化人像产品形态，App Store公开了付费说明，会员服务协议也能补足规则边界，但公开价格透明度仍弱于标准SaaS，因此按medium入库。"
+        "note": "官网能稳定说明它在做AI写真和风格化人像，官方会员服务协议补足了规则边界，App Store 还可直接抓到妙鸭包月会员、妙鸭月度会员卡、鸭钻和数字分身权益等价格项，因此商业化证据已足以按strong处理。"
       },
       "benchmarks": [
         "像素蛋糕",
@@ -1564,6 +1564,12 @@
         "https://terms.miaoya.cn/legal-agreement/terms/c_end_product_protocol/20240731105249100/20240731105249100.html"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向个人用户和小型写真工作室的AI写真与风格化人像工具，主要靠会员订阅、写真生成和相关高级权益付费变现。",
+          "update": "补证确认官网、会员协议和App Store价格项已能稳定拼出完整付费面，升级为商业化清楚样本。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
