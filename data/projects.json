@@ -1854,21 +1854,21 @@
       "discoveredSeq": 34,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI录音转写与会议总结助手",
       "targetCustomers": "产品经理、销售团队、老师学生、内容创作者、需要高频整理音视频内容的小团队",
       "painPoint": "会议、课程、通话和视频素材里的信息提取很耗时，手动转写、总结和追踪待办会拖慢小团队协作与复盘效率。",
       "monetization": "月/季/年VIP订阅 + 转写时长包购买 + 配音字数包和AI功能内购。",
       "barriers": "实时转写准确率、多说话人区分、会议纪要与待办抽取、音视频解析稳定性，以及录音内容和隐私数据处理合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
           "官方产品官网",
           "官方行业场景页",
           "官方App Store内购价格"
         ],
-        "note": "官网能确认会议、教育、销售和内容创作等真实场景，App Store直接公开会员与转写包价格，但缺少独立官网价格页，因此按medium入库。"
+        "note": "官网能稳定确认它在做会议录音、转写、纪要和销售/教育等具体场景工作流，App Store 页面又可直接抓到VIP购买和转写10小时购买等价格项，例如29元、69元、99元、188元、198元和10小时转写29元，商业化证据已足以按strong处理。"
       },
       "benchmarks": [
         "讯飞听见",
@@ -1880,6 +1880,12 @@
         "https://apps.apple.com/cn/app/%E5%90%AC%E8%84%91ai-%E4%BC%9A%E8%AE%AE%E5%8A%A9%E6%89%8B-%E4%B8%80%E9%94%AE%E7%94%9F%E6%88%90%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81/id6670379647"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向会议、销售和内容创作场景的AI录音转写与会议总结助手，主要靠VIP订阅、转写时长包和AI内购变现。",
+          "update": "补证确认官网工作流和App Store具体内购价格都已稳定可取，升级为商业化清楚样本。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
