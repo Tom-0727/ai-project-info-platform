@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.shannian-ai-voice-notes",
+      "canonicalName": "闪念-AI语音笔记",
+      "aliases": [
+        "闪念AI语音笔记",
+        "闪念",
+        "闪念Pro"
+      ],
+      "slug": "shannian-ai-voice-notes",
+      "discoveredSeq": 72,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI语音笔记与灵感整理工具",
+      "targetCustomers": "学生、创作者、自由职业者与需要快速记录灵感和语音内容的个人或小团队",
+      "painPoint": "语音想法和灵感记录常常碎片化、难检索，传统备忘录缺少结构化整理、标签抽取和后续回顾能力。",
+      "monetization": "免费体验引流 + 月度订阅¥18 + 年度订阅¥128 + 高阶语音整理权益收费。",
+      "barriers": "语音转写准确率、碎片灵感结构化、标签与知识回顾体验、多端同步与个人隐私数据合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方App Store页",
+          "App Store订阅价格",
+          "开发者官方协议页"
+        ],
+        "note": "App Store 直接公开月度和年度订阅价格，也清楚说明AI语音记录、标签抽取和回顾等工作流；开发者还提供独立的隐私与订阅说明页，商业化证据足够清楚。"
+      },
+      "benchmarks": [
+        "话袋AI笔记",
+        "Get笔记"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E9%97%AA%E5%BF%B5-ai%E8%AF%AD%E9%9F%B3%E7%AC%94%E8%AE%B0/id6747597672",
+        "https://breads-doubt-hvc.craft.me/HMhlfZhsFVDavQ",
+        "https://breads-doubt-hvc.craft.me/lUmZszUdOvi83x"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向学生、创作者和自由职业者的AI语音笔记与灵感整理工具，主要靠月度、年度订阅和AI整理能力变现。",
+          "update": "补充适合语音速记、灵感整理和轻量知识沉淀场景的小工具型AI笔记应用。"
+        }
+      ]
+    },
+    {
       "id": "proj.huadai-ai-notes",
       "canonicalName": "话袋AI笔记",
       "aliases": [
