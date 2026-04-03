@@ -13,6 +13,7 @@ const formFilter = document.querySelector("#form-filter");
 const scenarioFilter = document.querySelector("#scenario-filter");
 const sortFilter = document.querySelector("#sort-filter");
 const resetFiltersButton = document.querySelector("#reset-filters");
+const strongFilterButton = document.querySelector("#strong-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 
@@ -536,7 +537,11 @@ const syncFilterControls = () => {
   formFilter.value = state.form;
   scenarioFilter.value = state.scenario;
   sortFilter.value = state.sort;
+  const strongCount = (window.__projectsCache__ ?? []).filter((project) => project.evidenceQuality.level === "strong").length;
   const refreshedCount = (window.__projectsCache__ ?? []).filter((project) => hasEvidenceRefresh(project)).length;
+  if (strongFilterButton) {
+    strongFilterButton.textContent = `只看商业化清楚（${strongCount}）`;
+  }
   if (refreshFilterButton) {
     refreshFilterButton.textContent = `只看最近补证（${refreshedCount}）`;
   }
@@ -544,6 +549,7 @@ const syncFilterControls = () => {
   const hasActiveFilter =
     state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all" || state.refreshed;
   resetFiltersButton.toggleAttribute("data-active", hasActiveFilter);
+  strongFilterButton?.toggleAttribute("data-active", state.evidence === "strong");
   refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
 };
 
@@ -789,6 +795,11 @@ const bootstrap = async () => {
 
   evidenceFilter.addEventListener("change", (event) => {
     state.evidence = event.target.value;
+    renderApp(projects);
+  });
+
+  strongFilterButton?.addEventListener("click", () => {
+    state.evidence = state.evidence === "strong" ? "all" : "strong";
     renderApp(projects);
   });
 
