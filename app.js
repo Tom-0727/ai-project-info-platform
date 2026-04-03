@@ -608,6 +608,10 @@ const renderStructureSummary = (projects) => {
   const mediumCount = projects.filter((project) => project.evidenceQuality.level === "medium").length;
   const weakCount = projects.filter((project) => project.evidenceQuality.level === "weak").length;
   const refreshedCount = projects.filter((project) => hasEvidenceRefresh(project)).length;
+  const mediumNames = projects
+    .filter((project) => project.evidenceQuality.level === "medium")
+    .slice(0, 3)
+    .map((project) => project.canonicalName);
 
   const topScenarios = Object.entries(
     projects.reduce((accumulator, project) => {
@@ -645,21 +649,39 @@ const renderStructureSummary = (projects) => {
       value: `${refreshedCount} 个`,
       note: "点击只看后来补强过证据的项目。",
     },
+    {
+      label: "待补证清单",
+      scenario: null,
+      evidence: "medium",
+      value: `${mediumCount} 个`,
+      note:
+        mediumCount > 0
+          ? `${mediumNames.join(" / ")}。点击只看这些边界样本。`
+          : "当前结果里没有待补证样本。",
+    },
   ];
 
   cards.forEach((card) => {
-    const isInteractive = Boolean(card.scenario || card.refreshed);
+    const isInteractive = Boolean(card.scenario || card.refreshed || card.evidence);
     const element = document.createElement(isInteractive ? "button" : "article");
     element.className = "summary-card";
     if (isInteractive) {
       element.type = "button";
-      element.setAttribute("aria-pressed", String(card.refreshed ? state.refreshed : state.scenario === card.scenario));
-      if ((card.refreshed && state.refreshed) || (!card.refreshed && state.scenario === card.scenario)) {
+      const isActive = card.refreshed
+        ? state.refreshed
+        : card.evidence
+          ? state.evidence === card.evidence
+          : state.scenario === card.scenario;
+      element.setAttribute("aria-pressed", String(isActive));
+      if (isActive) {
         element.classList.add("summary-card-active");
       }
       element.addEventListener("click", () => {
         if (card.refreshed) {
           state.refreshed = !state.refreshed;
+        } else if (card.evidence) {
+          state.evidence = state.evidence === card.evidence ? "all" : card.evidence;
+          evidenceFilter.value = state.evidence;
         } else {
           state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
           scenarioFilter.value = state.scenario;
