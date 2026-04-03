@@ -268,6 +268,7 @@ const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   state.evidence = "all";
   state.scenario = scenario;
   state.form = form;
+  state.compareIds = [];
   renderApp(window.__projectsCache__);
 };
 
@@ -276,6 +277,18 @@ const applyFocusedStrongFilter = ({ scenario = "all", form = "all" }) => {
   state.evidence = "strong";
   state.scenario = scenario;
   state.form = form;
+  state.compareIds = [];
+  renderApp(window.__projectsCache__);
+};
+
+const applyBenchmarkCompareFilter = (project, benchmarkProjects) => {
+  state.query = "";
+  state.evidence = "all";
+  state.scenario = "all";
+  state.form = "all";
+  state.refreshed = false;
+  state.compareIds = [project.id, ...benchmarkProjects.map((candidate) => candidate.id)];
+  state.selectedProjectId = project.id;
   renderApp(window.__projectsCache__);
 };
 
@@ -630,12 +643,23 @@ const renderDetailView = (project, projects) => {
     benchmarkCompareSection.innerHTML = `
       <p class="detail-note-label">对标快照（${internalBenchmarkProjects.length}）</p>
       <div class="compare-snapshot"></div>
+      <div class="compare-actions"></div>
     `;
     renderCompareSnapshot(
       benchmarkCompareSection.querySelector(".compare-snapshot"),
       project,
       internalBenchmarkProjects
     );
+    const benchmarkActions = benchmarkCompareSection.querySelector(".compare-actions");
+    const benchmarkButton = document.createElement("button");
+    benchmarkButton.type = "button";
+    benchmarkButton.className = "detail-shortcut-chip";
+    benchmarkButton.textContent = `只看当前与对标样本（${internalBenchmarkProjects.length + 1}）`;
+    benchmarkButton.addEventListener("click", () => {
+      applyBenchmarkCompareFilter(project, internalBenchmarkProjects);
+      focusDetailPanel();
+    });
+    benchmarkActions.appendChild(benchmarkButton);
     node.appendChild(benchmarkCompareSection);
   }
 
@@ -713,6 +737,7 @@ const state = {
   sort: "discovered",
   scenario: "all",
   refreshed: false,
+  compareIds: [],
   selectedProjectId: null,
 };
 
@@ -743,6 +768,10 @@ const writeStateToUrl = () => {
     params.set("refreshed", "1");
   }
 
+  if (state.compareIds.length > 0) {
+    params.set("compare", state.compareIds.join(","));
+  }
+
   if (state.selectedProjectId) {
     params.set("project", state.selectedProjectId);
   }
@@ -765,6 +794,9 @@ const hydrateStateFromUrl = (projects) => {
   state.scenario = scenarioOptions.has(params.get("scenario")) ? params.get("scenario") : "all";
   state.sort = sortOptions.has(params.get("sort")) ? params.get("sort") : "discovered";
   state.refreshed = params.get("refreshed") === "1";
+  state.compareIds = (params.get("compare") ?? "")
+    .split(",")
+    .filter((id) => projectIds.has(id));
   state.selectedProjectId = projectIds.has(params.get("project")) ? params.get("project") : null;
 };
 
@@ -830,7 +862,12 @@ const syncFilterControls = () => {
   }
 
   const hasActiveFilter =
-    state.query !== "" || state.evidence !== "all" || state.form !== "all" || state.scenario !== "all" || state.refreshed;
+    state.query !== "" ||
+    state.evidence !== "all" ||
+    state.form !== "all" ||
+    state.scenario !== "all" ||
+    state.refreshed ||
+    state.compareIds.length > 0;
   resetFiltersButton.toggleAttribute("data-active", hasActiveFilter);
   strongFilterButton?.toggleAttribute("data-active", state.evidence === "strong");
   mediumFilterButton?.toggleAttribute("data-active", state.evidence === "medium");
@@ -1020,7 +1057,8 @@ const projectMatchesBase = (project) => {
   const matchesEvidence = state.evidence === "all" || project.evidenceQuality.level === state.evidence;
   const matchesForm = state.form === "all" || project.productForm === state.form;
   const matchesRefresh = !state.refreshed || hasEvidenceRefresh(project);
-  return matchesQuery && matchesEvidence && matchesForm && matchesRefresh;
+  const matchesCompare = state.compareIds.length === 0 || state.compareIds.includes(project.id);
+  return matchesQuery && matchesEvidence && matchesForm && matchesRefresh && matchesCompare;
 };
 
 const projectMatches = (project) =>
@@ -1034,6 +1072,7 @@ const renderResultsHint = (visibleProjects, allProjects) => {
     state.form !== "all" ? `形态：${state.form}` : null,
     state.scenario !== "all" ? `场景：${state.scenario}` : null,
     state.refreshed ? "状态：只看最近补证" : null,
+    state.compareIds.length > 0 ? "对比：当前与已收录对标" : null,
     state.sort !== "discovered" ? `排序：${sortFilter.selectedOptions[0]?.textContent ?? state.sort}` : null,
   ].filter(Boolean);
 
@@ -1141,6 +1180,7 @@ const bootstrap = async () => {
     state.scenario = "all";
     state.sort = "discovered";
     state.refreshed = false;
+    state.compareIds = [];
     renderApp(projects);
   });
 
