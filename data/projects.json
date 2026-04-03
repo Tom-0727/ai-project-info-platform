@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.shuode-ai",
+      "canonicalName": "说得AI",
+      "aliases": [
+        "说得AI-提词器拍摄·数字人口播·智能脚本·视频剪辑全能神器",
+        "说得相机"
+      ],
+      "slug": "shuode-ai",
+      "discoveredSeq": 84,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI提词拍摄与数字人口播工具",
+      "targetCustomers": "口播创作者、短视频运营者、直播带货团队、知识博主，以及需要快速完成脚本、提词、出镜和剪辑的小团队或个体创作者",
+      "painPoint": "口播视频生产往往要在写脚本、背稿、拍摄、数字人口播和后期剪辑之间来回切换，内容团队容易卡在出镜效率低、返工多和成片速度慢的问题上。",
+      "monetization": "通过 VIP 会员、超级 VIP 会员和算力包变现，公开价格包括连续包月 45 元、连续包季 98 元、每周自动续费 19 元、每年自动续费 198 元、1 年有效 178 元、终身会员 308 元或 348 元，以及 200 点算力 9.9 元。",
+      "barriers": "提词跟随准确率、数字人口播与照片说话生成质量、脚本改写与热词文案效果、视频速剪稳定性，以及肖像权、声音权、直播与带货内容合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "high",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store内购价格",
+          "官方官网与用户协议/隐私政策页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它在做 AI 提词、数字人口播、脚本生成、照片说话和智能速剪，并直接公开连续包月 45 元、连续包季 98 元、每周自动续费 19 元、每年自动续费 198 元、1 年有效 178 元、终身会员 308/348 元以及 200 点算力 9.9 元等价格；同时官方自有域名 teditcam.vistring.com 可正常访问官网、用户协议和隐私政策，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "蝉镜",
+        "来画"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E8%AF%B4%E5%BE%97ai-%E6%8F%90%E8%AF%8D%E5%99%A8%E6%8B%8D%E6%91%84-%E6%95%B0%E5%AD%97%E4%BA%BA%E5%8F%A3%E6%92%AD-%E6%99%BA%E8%83%BD%E8%84%9A%E6%9C%AC-%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E5%85%A8%E8%83%BD%E7%A5%9E%E5%99%A8/id1569376400",
+        "https://teditcam.vistring.com/",
+        "https://teditcam.vistring.com/user_agreement",
+        "https://teditcam.vistring.com/privacy_policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向口播创作者和直播带货团队的 AI 提词拍摄与数字人口播工具，主要靠会员订阅和算力包变现。",
+          "update": "补充一个把脚本、提词、数字人口播和智能速剪打通在同一工作流里的视频创作工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.doctorscrap-recycling-assistant",
       "canonicalName": "再生助手",
       "aliases": [
