@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.ai-foreign-teacher-english-coach",
+      "canonicalName": "AI外教",
+      "aliases": [
+        "AI外教-AI学英语练口语背单词翻译写作批改",
+        "英语趣配音AI外教"
+      ],
+      "slug": "ai-foreign-teacher-english-coach",
+      "discoveredSeq": 77,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI口语陪练与英语学习工具",
+      "targetCustomers": "英语学习者、雅思与考研备考用户、求职面试用户，以及想用低成本高频练口语的个人或小团队",
+      "painPoint": "真人外教成本高、练习频率低，很多用户知道该学什么，却很难持续做高频口语练习、发音纠错和场景化表达训练。",
+      "monetization": "连续包年会员 288 元/年，主要通过自动续费会员售卖哈佛情景课、音素级纠音、语境润色、五维点评、写作批改等权益变现。",
+      "barriers": "实时语音识别与口语评分、多场景对话生成、分级课程编排、备考内容更新，以及教育内容合规、未成年人相关规范与语音数据隐私处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store自动续费说明",
+          "官方隐私政策与用户协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它是面向英语学习和口语陪练的 AI 外教工具，并直接写出连续包年会员 288 元/年的订阅价格、自动续费规则及官方协议链接；这些协议链接又回到英语趣配音官方隐私域名，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "译蛙口语官",
+        "TalkAI练口语"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/ai%E5%A4%96%E6%95%99-ai%E5%AD%A6%E8%8B%B1%E8%AF%AD%E7%BB%83%E5%8F%A3%E8%AF%AD%E8%83%8C%E5%8D%95%E8%AF%8D%E7%BF%BB%E8%AF%91%E5%86%99%E4%BD%9C%E6%89%B9%E6%94%B9/id1498739686",
+        "https://privacy.qupeiyin.com/home/Protocols/detail/id/13",
+        "https://privacy.qupeiyin.com/home/Protocols/detail/id/16",
+        "https://privacy.qupeiyin.com/home/Protocols/detail/id/23"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向英语学习、口语陪练和考试备考场景的 AI 外教工具，主要靠年费会员和自动续费权益变现。",
+          "update": "补充适合英语口语训练、备考和低成本高频练习场景的 AI 口语陪练案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.yiwa-speaking-coach",
       "canonicalName": "译蛙口语官",
       "aliases": [
