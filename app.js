@@ -428,7 +428,16 @@ const renderDetailView = (project, projects) => {
     });
 
     if (pendingProjects.length > 1 && pendingIndex !== -1) {
+      const previousPending = pendingProjects[(pendingIndex - 1 + pendingProjects.length) % pendingProjects.length];
       const nextPending = pendingProjects[(pendingIndex + 1) % pendingProjects.length];
+      shortcuts.push({
+        label: `上一个待补证样本：${previousPending.canonicalName}`,
+        onClick: () => {
+          state.evidence = "medium";
+          state.selectedProjectId = previousPending.id;
+          renderApp(window.__projectsCache__);
+        },
+      });
       shortcuts.push({
         label: `下一个待补证样本：${nextPending.canonicalName}`,
         onClick: () => {
