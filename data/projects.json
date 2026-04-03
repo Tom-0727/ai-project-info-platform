@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.fapiaodashi-ai-invoice-manager",
+      "canonicalName": "发票大师",
+      "aliases": [
+        "发票大师-发票扫描识别查验打印报销神器"
+      ],
+      "slug": "fapiaodashi-ai-invoice-manager",
+      "discoveredSeq": 104,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI发票归集与费控报销工具",
+      "targetCustomers": "个体经营者、财务人员、报销管理员和需要多人协同管票的小微团队",
+      "painPoint": "电子发票、纸票、短信票和平台票据分散在多个渠道里，人工收集、查重、验真、打印和报销归档流程长且容易出错，多人协同管票也很难统一。",
+      "monetization": "通过个人会员、个人VIP/黄金会员、发票查验额度包和发票张数扩容包变现，公开价格包括88元、118元、128元、156元、188元、260元、298元等多档。",
+      "barriers": "多来源票据归集能力、OCR与二维码识别、发票查重验真能力、多人协同票夹与费控流程设计，以及财税数据安全和合规处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方官网",
+          "App Store订阅价格",
+          "官方App Store产品说明"
+        ],
+        "note": "官网能稳定说明它在做发票归集、查重验真、打印归档和企业票夹费控；App Store页又直接公开了个人会员、VIP和查验/扩容包等多档价格，产品面和付费面都足够具体，因此按strong处理。"
+      },
+      "benchmarks": [
+        "发票盒子",
+        "票小秘"
+      ],
+      "sources": [
+        "https://8piao.com/",
+        "https://apps.apple.com/cn/app/%E5%8F%91%E7%A5%A8%E5%A4%A7%E5%B8%88-%E5%8F%91%E7%A5%A8%E6%89%AB%E6%8F%8F%E8%AF%86%E5%88%AB%E6%9F%A5%E9%AA%8C%E6%89%93%E5%8D%B0%E6%8A%A5%E9%94%80%E7%A5%9E%E5%99%A8/id1615181263"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向财务和小微团队的AI发票归集与费控报销工具，主要靠会员、查验额度包和扩容包变现。",
+          "update": "补充一个把发票归集、查重验真、打印归档和企业票夹费控做成一体化流程的票据管理样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.fapiaohezi-ai-invoice-manager",
       "canonicalName": "发票盒子",
       "aliases": [
