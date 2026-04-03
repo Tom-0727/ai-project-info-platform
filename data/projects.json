@@ -2397,21 +2397,21 @@
       "discoveredSeq": 23,
       "status": "active",
       "firstSeen": "2026-04-02",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-03",
       "productForm": "AI创意商拍与营销海报工具",
       "targetCustomers": "软装设计师、电商商家、小型营销工作室、家居从业者、内容创作者",
       "painPoint": "提案PPT、软装搭配、营销海报和电商主图需要持续出图，小团队很难兼顾创意、模板复用和高频交付。",
       "monetization": "会员订阅 + AI海报/AI软搭等付费服务 + 素材与设计服务增值。",
       "barriers": "模板与素材库沉淀、软装与营销场景适配、AI出图质量、商用素材版权，以及用户设计稿数据合规。",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "官方产品页",
-          "官方会员服务协议",
-          "官方AI设计案例页"
+          "官方会员购买脚本价格信号",
+          "官方会员FAQ与退款续费说明",
+          "官方AI设计产品页"
         ],
-        "note": "产品和付费会员都能确认，但公开标准价格透明度有限，因此按medium入库。"
+        "note": "官网会员页脚本已直接露出美间商业版799元和企业版999元，并同步给出会员购买、退款、续费和账单查询入口；结合官方AI设计产品页，产品面和付费面已经足够清楚，因此从medium升级到strong。"
       },
       "benchmarks": [
         "稿定设计",
@@ -2419,10 +2419,16 @@
       ],
       "sources": [
         "https://www.meijian.com/",
-        "https://www.meijian.com/agreement",
+        "https://www.meijian.com/vip/intro",
         "https://www.meijian.com/design/3fo4jkvx6jpx"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "Update",
+          "summary": "这是一个面向设计师和商家的AI创意商拍与营销设计工具，官网会员页已公开商业版799元和企业版999元的价格结构。",
+          "update": "补到官网会员购买脚本后，这个设计工作流样本的价格与退款续费边界已经足够清楚，证据等级升级为strong。"
+        },
         {
           "date": "2026-04-02",
           "kind": "New",
