@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.feiya-ai-accounting",
+      "canonicalName": "飞鸭AI记账",
+      "aliases": [
+        "飞鸭AI记账-聊天记账超有趣",
+        "飞鸭记账"
+      ],
+      "slug": "feiya-ai-accounting",
+      "discoveredSeq": 82,
+      "status": "active",
+      "firstSeen": "2026-04-03",
+      "lastUpdated": "2026-04-03",
+      "productForm": "AI聊天记账与财务记录工具",
+      "targetCustomers": "个人记账用户、情侣家庭、小微经营者，以及想用聊天方式快速记账和复盘开支的小团队或个人",
+      "painPoint": "传统记账软件录入步骤多、坚持成本高，很多人知道该记账，却很难持续记录零碎消费和做后续分类复盘。",
+      "monetization": "通过会员订阅和终身会员变现，公开价格包括月会员 38 元、季会员 68 元、年会员 128 元、终身会员 88 元。",
+      "barriers": "自然语言记账解析、分类识别准确率、账单结构化与统计展示、隐私数据保护，以及金融数据处理相关合规边界。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "中国区App Store会员价格说明",
+          "官方隐私政策与用户协议页"
+        ],
+        "note": "中国区 App Store 页面已清楚说明它是聊天式 AI 记账工具，并在官方摘要中直接给出月会员 38 元、季会员 68 元、年会员 128 元、终身会员 88 元四档会员价格；页面同时挂出官方隐私政策与用户协议链接，因此按 strong 处理。"
+      },
+      "benchmarks": [
+        "体重小本",
+        "Get笔记"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E9%A3%9E%E9%B8%ADai%E8%AE%B0%E8%B4%A6-%E8%81%8A%E5%A4%A9%E8%AE%B0%E8%B4%A6%E8%B6%85%E6%9C%89%E8%B6%A3/id6503937278",
+        "http://newapi.systemcom.hfhchuang.com/privacy-policy/v2/app-client-policy.do?productId=03bf21ef-0d91-4da1-b8e5-b518ea480ca3&vestId=37fa96a7-3811-4d08-aefe-6993ccdab0db&channel=test&versionNum=3&appName=%E9%A3%9E%E9%B8%ADAI%E8%AE%B0%E8%B4%A6",
+        "http://e687185f-91d6-4721-9aca-1317157a2292.oss.hfhchuang.com/e687185f-91d6-4721-9aca-1317157a2292/os/common-resource-web/20260320/05f4330c-ab14-45ef-a127-4d540874646b.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-03",
+          "kind": "New",
+          "summary": "这是一个面向个人和小微经营者的 AI 聊天记账工具，主要靠会员订阅和终身会员变现。",
+          "update": "补充适合个人记账、家庭开支管理和小微经营记录场景的 AI 记账工具案例。"
+        }
+      ]
+    },
+    {
       "id": "proj.yinlu-ai-cover-dubbing",
       "canonicalName": "音鹿",
       "aliases": [
