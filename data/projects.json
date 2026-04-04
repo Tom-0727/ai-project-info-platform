@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.duxiang-ai-companion-feed",
+      "canonicalName": "独响",
+      "aliases": [
+        "独响|独响—你的AI朋友圈"
+      ],
+      "slug": "duxiang-ai-companion-feed",
+      "discoveredSeq": 120,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI生活记录与情绪陪伴工具",
+      "targetCustomers": "年轻个人用户、情绪记录用户、内容创作者和需要轻量陪伴与私密表达空间的人群",
+      "painPoint": "很多生活记录工具偏静态笔记，情绪表达和互动反馈都很弱；而公开社交又容易带来压力，用户很难找到一个既私密又有回应感的记录空间。",
+      "monetization": "通过Premium会员、Premium Pro会员和响石内购变现，公开价格包括包月6元、包年60元、Pro包月29元、Pro包年290元，以及100响石6元、360响石18元、1888响石88元、18888响石648元。",
+      "barriers": "陪伴式AI角色与互动体验设计、长期留存机制、私密记录与角色关系的内容安全治理，以及持续运营社区玩法的能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方隐私政策|官方用户协议"
+        ],
+        "note": "App Store清楚说明它在做私密生活记录、AI陪伴聊天和角色互动，并公开了会员与响石价格；sellerUrl、官网、隐私政策和用户协议都能访问，且讲的是同一套独响产品，因此按strong处理。"
+      },
+      "benchmarks": [
+        "心光|猫箱"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6473223364|https://www.duxiangai.com|https://www.duxiangai.com/privacy.html|https://www.duxiangai.com/terms.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把生活记录、私密朋友圈和AI陪伴聊天结合在一起的产品，主要靠会员订阅和响石内购变现。",
+          "update": "补充一个更偏情绪记录与AI陪伴互动的轻社交样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.smoreai-calendar-assistant",
       "canonicalName": "SmoreAI",
       "aliases": [
