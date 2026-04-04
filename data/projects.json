@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.zhihuiji-ai-pos-inventory",
+      "canonicalName": "智慧记AI进销存",
+      "aliases": [
+        "智慧记AI进销存",
+        "智慧记AI进销存 App",
+        "智慧记星火"
+      ],
+      "slug": "zhihuiji-ai-pos-inventory",
+      "discoveredSeq": 116,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI进销存与小商户经营管理工具",
+      "targetCustomers": "批发零售商户、个体工商户和需要管理开单、库存、订货与客户的小微经营团队",
+      "painPoint": "很多小商户仍在用手工账或零散工具管理销售、库存和订货，开单慢、库存不准、经营分析难，线上线下也不容易打通。",
+      "monetization": "通过开单版、云店版和专属版等多年期套餐变现，公开价格包括389元、778元、1188元、1449元、2049元、2099元、3299元、3949元、5599元。",
+      "barriers": "开单识别、库存与仓库管理、客户供应商关系、微信订货闭环、经营报表与AI生意助手，以及面向小商户的多端协同能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方产品描述"
+        ],
+        "note": "App Store清楚说明它在做AI开单、进销存、云店和经营分析，并公开了多个年限套餐价格；官网也明确展示对应产品矩阵，因此按strong处理。"
+      },
+      "benchmarks": [
+        "SaleSmartly",
+        "Udesk"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1602651930",
+        "https://www.zhihuiji.cn"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向小商户的AI进销存与经营管理工具，主要靠开单版、云店版和专属版等多年期套餐变现。",
+          "update": "补充一个更偏小商户经营管理和AI开单的软件样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.suishenlu-ai-recording-knowledge-assistant",
       "canonicalName": "随身鹿",
       "aliases": [
