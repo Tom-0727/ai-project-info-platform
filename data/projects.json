@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.ai-kuaixiao-jxc",
+      "canonicalName": "AI快销进销存",
+      "aliases": [
+        "爱快销",
+        "AI快销"
+      ],
+      "slug": "ai-kuaixiao-jxc",
+      "discoveredSeq": 130,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI快消经销进销存与外勤销售管理工具",
+      "targetCustomers": "快消品经销商、小批发商、车销访销团队和需要管理开单、库存、客户与业务员外勤的小商贸公司",
+      "painPoint": "经销商常把开单、库存、拜访、订货、提成和财务拆在多套系统里，业务员跑店和老板看库存、回款、绩效都很低效",
+      "monetization": "主要靠软件开通、下载试用后的销售转化和企业咨询变现；官网能看到下载试用和联系入口，但当前公开页面没有稳定套餐价格，因此商业化清晰度保持中等",
+      "barriers": "要把进销存、外勤拜访、车销访销、CRM、在线订货、提成核算和多组织财务数据打通，需要较强的业务流程建模、移动端稳定性和行业实施能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官网首页详细说明经销商、业务员、库存、订货和提成场景",
+          "官网可见 联系我们 与 下载试用 入口",
+          "中国区 App Store 产品页与官网描述的快消进销存工作流一致"
+        ],
+        "note": "aiboog.com 官方站已经能稳定展示 AI快销 面向经销商的进销存、外勤销售和在线订货产品面，也有 联系我们 和 下载试用 入口；但当前公开页仍缺稳定套餐价或标准购买面，所以按 medium 入库。"
+      },
+      "benchmarks": [
+        "智慧记AI进销存",
+        "物屿｜收纳屋"
+      ],
+      "sources": [
+        "http://www.aiboog.com",
+        "https://apps.apple.com/cn/app/id1454492001"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向快消品经销商和外勤销售团队的 AI 进销存工具，覆盖开单、库存、客户拜访、在线订货和提成管理，主要靠软件开通、试用转化和企业咨询变现，公开套餐价暂不透明。",
+          "update": "新增 AI快销进销存，作为 AI快消经销进销存与外勤销售管理样本收录；官网产品面和试用/联系入口已清楚，但公开套餐价格仍不稳定，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.lifelight",
       "canonicalName": "心光",
       "aliases": [
