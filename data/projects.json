@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.moflow-ai-emotion-writing",
+      "canonicalName": "MoFlow",
+      "aliases": [
+        "MoFlow|MoFlow - AI 心情罐头 & CBT 情绪报告"
+      ],
+      "slug": "moflow-ai-emotion-writing",
+      "discoveredSeq": 122,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI情绪书写与疗愈辅助工具",
+      "targetCustomers": "情绪波动用户、压力管理用户、需要私密书写与自我梳理的年轻个人用户",
+      "painPoint": "很多情绪记录产品只做简单打卡或日记，缺少持续互动、结构化洞察和可执行的情绪支持，用户很难把零散情绪记录真正转成长期自我理解。",
+      "monetization": "通过MoFlow VIP、MoFlow Max+会员、永久会员和点数内购变现，公开价格包括VIP连续包月12元、VIP连续包年88元、Max+连续包月19.8元和26元、Max+连续包年188元、永久会员598元，以及500点数6元、1000点数12元、4000点数28元。",
+      "barriers": "情绪书写引导与CBT式反馈设计、长期用户留存、敏感内容安全治理，以及把疗愈陪伴做得既有效又不过度营销的产品能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方隐私政策页|sellerUrl直连官方站"
+        ],
+        "note": "App Store清楚说明它在做AI情绪书写、心情记录和CBT式情绪报告，并公开了会员与点数价格；sellerUrl指向的官网与隐私政策页也都明确写着同一套MoFlow产品，因此按strong处理。"
+      },
+      "benchmarks": [
+        "心光|独响"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6737146258|https://moflowapp.com/|https://moflowapp.com/privacy-policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把情绪书写、AI陪伴和CBT式洞察结合在一起的疗愈工具，主要靠会员订阅和点数内购变现。",
+          "update": "补充一个更偏情绪疗愈与私密书写的AI陪伴样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.yougejihua-study-planning",
       "canonicalName": "有个计划",
       "aliases": [
