@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.timelog-ai",
+      "canonicalName": "时光记AI助手",
+      "aliases": [
+        "时光记AI助手 - 时间精力统计AI助手，时间都去哪了",
+        "TimeLog"
+      ],
+      "slug": "timelog-ai",
+      "discoveredSeq": 138,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI时间记录与精力复盘工具",
+      "targetCustomers": "学生、职场白领、自律用户和希望通过记录时间与精力来优化效率的个人用户",
+      "painPoint": "很多人知道自己忙，却说不清时间到底浪费在哪，也很难把时间记录和精力状态一起复盘，普通打卡或待办工具往往只能记录任务，不能给出可执行的优化建议",
+      "monetization": "主要靠 Pro 月度、季度和年度会员变现，公开价格包括月度会员 15 元、季度会员 38 元和年度会员 68 元",
+      "barriers": "要把时间记录、精力评分、AI分析、个性化优化建议和长期趋势复盘做顺，需要较强的行为数据建模、自然语言分析、提醒策略和长期留存能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区 App Store 详细说明 AI 驱动的 时间记录→智能分析→精准优化 闭环;App Store 公开 Pro 月/季/年会员价格;当前未拿到同样稳定的 sellerUrl 官方产品站，因此商业化证据保守处理"
+        ],
+        "note": "时光记AI助手的中国区 App Store 已经把 AI 时间记录、精力统计、对话式分析和优化建议这套产品面讲清楚，也公开了月度 15 元、季度 38 元、年度 68 元的 Pro 会员价格；但当前没有拿到同样稳定的 sellerUrl 官方产品站，只能看到外部条款链接，因此先按 medium 入库。"
+      },
+      "benchmarks": [
+        "小智日历",
+        "SmoreAI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6755352189",
+        "https://www.snails-day.pub/privacy-app4.html",
+        "https://www.snails-day.pub/terms-app4.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向学生和自律用户的 AI 时间记录与精力复盘工具，能把时间日志转成优化建议，主要靠 Pro 月/季/年会员变现，公开官方产品站仍待补证。",
+          "update": "新增 时光记AI助手，作为 AI时间记录与精力复盘样本收录；App Store 的工作流和价格面已较完整，但官方产品站仍待补证，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.liaodian-jizhang",
       "canonicalName": "聊点记账",
       "aliases": [
