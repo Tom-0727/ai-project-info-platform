@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.mindsleep-health",
+      "canonicalName": "心眠健康",
+      "aliases": [
+        "心眠健康 - AI智能监测午睡、小睡，专注睡眠监测与睡眠分析",
+        "MindSleep"
+      ],
+      "slug": "mindsleep-health",
+      "discoveredSeq": 140,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI睡眠监测与午睡分析工具",
+      "targetCustomers": "Apple Watch 用户、睡眠质量不稳定的职场人士、学生党和希望长期改善睡眠习惯的个人用户",
+      "painPoint": "很多人知道自己睡不好，却很难搞清楚问题出在午睡、小睡、作息节奏还是整体睡眠结构，普通睡眠工具对日间短睡和个性化改善建议支持不足",
+      "monetization": "主要靠 Pro 周度、月度和年度会员变现，公开价格包括周度会员 3 元、月度会员 8 元和年度会员 66 元",
+      "barriers": "要把 Apple Watch 睡眠追踪、午睡识别、睡眠结构分析和个性化建议做顺，需要较强的可穿戴设备数据整合、睡眠算法建模和长期习惯干预能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "seller 根页直接说明 智能睡眠健康管理平台 和睡眠监测、健康工具、专业建议;App Store 详细说明 AI 监测午睡、小睡和多维睡眠分析;官方条款与隐私链接可访问且回到 mindsleep.tech 自有域"
+        ],
+        "note": "心眠健康的 seller 根页已经直接说明它是智能睡眠健康管理平台，App Store 又清楚写出 AI 监测午睡、小睡、多维睡眠分析和订阅方式；同时使用条款与隐私政策都回到了 mindsleep.tech 自有域，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "StressWatch",
+        "幻休助眠"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6480254633",
+        "https://www.mindsleep.tech/zh/products/mindsleep",
+        "https://www.mindsleep.tech/zh/terms",
+        "https://www.mindsleep.tech/zh/privacy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向 Apple Watch 用户的 AI 睡眠监测工具，主打午睡和小睡识别、多维睡眠分析与改善建议，主要靠周/月/年会员变现。",
+          "update": "新增 心眠健康，作为 AI睡眠监测与午睡分析样本收录；它把午睡识别和睡眠结构分析做成了更具体的睡眠工作流，官方产品面和价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.dingdong-ai-accounting",
       "canonicalName": "叮咚AI记账",
       "aliases": [
