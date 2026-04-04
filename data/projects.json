@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.newsay-ai-speaking-trainer",
+      "canonicalName": "新述口语",
+      "aliases": [
+        "新述口语-AI练口语背单词、AI外教学英语、剑桥、雅思模考"
+      ],
+      "slug": "newsay-ai-speaking-trainer",
+      "discoveredSeq": 109,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI英语口语训练与模考工具",
+      "targetCustomers": "英语学习者、雅思与剑桥备考用户、学生群体和想系统练口语的大众学习者",
+      "painPoint": "很多英语学习者缺少能随时练口语、做模考和拿到即时纠错反馈的工具，真人外教成本高，自己练又很难持续。",
+      "monetization": "通过连续包月、连续包年和多档VIP会员变现，公开价格包括98元、158元、298元、328元、358元、458元、558元。",
+      "barriers": "实时对话生成与纠错评分、模考流程设计、课程内容更新、多角色多口音体验，以及教育内容合规和语音数据隐私处理。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区App Store产品页",
+          "App Store订阅价格",
+          "同域官方协议页"
+        ],
+        "note": "App Store明确说明它在做AI口语训练、模考和多工具辅助，并公开了多档VIP价格；主站和同域协议页也都在讲新述口语这一产品，因此按strong处理。"
+      },
+      "benchmarks": [
+        "Hi Echo",
+        "TalkAI练口语"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/%E6%96%B0%E8%BF%B0%E5%8F%A3%E8%AF%AD-ai%E7%BB%83%E5%8F%A3%E8%AF%AD%E8%83%8C%E5%8D%95%E8%AF%8D-ai%E5%A4%96%E6%95%99%E5%AD%A6%E8%8B%B1%E8%AF%AD-%E5%89%91%E6%A1%A5-%E9%9B%85%E6%80%9D%E6%A8%A1%E8%80%83/id6451437586",
+        "https://www.newsay.com",
+        "https://www.newsay.com/agreement/ios/privacypolicy.html",
+        "https://www.newsay.com/agreement/ios/termsofsubscription.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向英语学习和考试备考场景的AI口语训练工具，主要靠连续包月、连续包年和多档VIP会员变现。",
+          "update": "补充一个更偏大众学习者和模考训练的AI口语练习样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.hi-echo-ai-speaking-coach",
       "canonicalName": "Hi Echo",
       "aliases": [
