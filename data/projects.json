@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.yougejihua-study-planning",
+      "canonicalName": "有个计划",
+      "aliases": [
+        "有个计划|有个计划-艾宾浩斯日程待办清单时间管理效率和提醒事项专注打卡"
+      ],
+      "slug": "yougejihua-study-planning",
+      "discoveredSeq": 121,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI计划与艾宾浩斯学习管理工具",
+      "targetCustomers": "学生、考研考公用户、高中生和需要长期任务拆解与复习安排的自律型个人用户",
+      "painPoint": "很多计划和待办工具只适合简单提醒，面对艾宾浩斯复习、长期学习任务和多层计划拆解时，创建成本高、复盘混乱、执行节奏也难坚持。",
+      "monetization": "通过连续包月会员、连续包年会员和永久会员变现，公开价格包括18元/月、88元/年、128元永久会员。",
+      "barriers": "艾宾浩斯复习逻辑与计划自动生成能力、清单/看板/日历/习惯的一体化体验、多端同步，以及长期学习场景下的执行留存。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "App Store公开价格|官方官网|官方产品概览页|官方隐私协议|官方服务协议"
+        ],
+        "note": "App Store清楚说明它在做艾宾浩斯学习计划、待办清单、日程和习惯管理，并公开了月费、年费和永久会员价格；官方站点、产品概览页、隐私协议和服务协议都可访问，且讲的是同一套有个计划产品，因此按strong处理。"
+      },
+      "benchmarks": [
+        "SmoreAI|小智日历"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6483804953|https://www.xcdz123.com/|https://www.xcdz123.com/a-plan.html|https://www.xcdz123.com/a-plan-privacy.html|https://www.xcdz123.com/a-plan-terms.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把艾宾浩斯复习、日程待办、看板清单和习惯打卡整合在一起的计划工具，主要靠会员订阅和永久会员变现。",
+          "update": "补充一个更偏学习计划和长期任务管理的AI效率样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.duxiang-ai-companion-feed",
       "canonicalName": "独响",
       "aliases": [
