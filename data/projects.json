@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.moelog-pet-log",
+      "canonicalName": "萌记",
+      "aliases": [
+        "萌记 - 宠物照片与健康管理"
+      ],
+      "slug": "moelog-pet-log",
+      "discoveredSeq": 133,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI宠物照片整理与健康档案工具",
+      "targetCustomers": "宠物主人、养宠家庭、宠物内容创作者和需要长期记录宠物成长与健康状态的小型养宠服务团队",
+      "painPoint": "宠物照片和健康记录经常散在相册、聊天记录和纸质笔记里，主人很难持续整理成长轨迹、疫苗体检信息和日常异常，也不方便多设备同步查看",
+      "monetization": "主要靠 Pro 月度、年度和终身会员变现，公开价格包括 Pro 月度订阅 6 元、年度订阅 38 元和终身会员 38 元",
+      "barriers": "要把宠物照片自动识别、成长时间线、健康档案、多设备同步和长期记录体验做顺，需要较强的相册理解、宠物信息结构化和轻量留存运营能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "sellerUrl 根页直接说明 AI识别相册宠物照片、记录健康档案和 iCloud 多设备同步;同域隐私页标题直接对应 萌记;中国区 App Store 公开 Pro 月订阅、年订阅和终身会员价格"
+        ],
+        "note": "萌记的 sellerUrl 根页已经直接写清它是一款 AI 识别相册宠物照片、记录健康档案并支持 iCloud 多设备同步的 iOS 宠物管理 App；同域隐私页标题也直接对应 萌记。与此同时，中国区 App Store 公开了 Pro 月度订阅 6 元、年度订阅 38 元和终身会员 38 元，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "猫狗健康日记",
+        "宠智灵"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6759881424",
+        "https://moelog.tianjichat.com",
+        "https://moelog.tianjichat.com/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向养宠家庭的 AI 宠物照片整理与健康档案工具，能自动识别相册里的宠物照片并持续记录成长和健康信息，主要靠 Pro 订阅和终身会员变现。",
+          "update": "新增 萌记，作为 AI宠物照片整理与健康档案样本收录；它把相册识别、成长记录和健康档案做成了更轻量的宠物管理工具，官方产品面和价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.kaipai",
       "canonicalName": "开拍",
       "aliases": [
