@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.zhiwa-public-exam-interview-trainer",
+      "canonicalName": "智蛙面试",
+      "aliases": [
+        "智蛙面试",
+        "智蛙面试-公务员/事业单位上岸神器"
+      ],
+      "slug": "zhiwa-public-exam-interview-trainer",
+      "discoveredSeq": 118,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI公考面试训练与反馈工具",
+      "targetCustomers": "公务员考生、事业单位考生、教师招聘考生和需要结构化面试训练的个人学习者",
+      "painPoint": "很多公考和编制类面试训练仍靠线下练习或低频人工点评，反馈慢、练题成本高、表达润色和临场状态训练都不够系统。",
+      "monetization": "通过连续包月会员、连续包季会员、优惠套餐、精选题库和蛙点包变现，公开价格包括6元、12元、30元、58元、68元、69元、98元、99元、198元。",
+      "barriers": "结构化面试题库沉淀、答案润色与反馈逻辑、表情语速等多模态分析，以及考试场景下的内容质量和训练留存。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "high",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方协议页"
+        ],
+        "note": "App Store清楚说明它在做公考和事业单位面试训练、AI答题润色和多维度反馈，并公开了会员、题库和点数价格；官网与协议页也都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "Gank Interview",
+        "面试牛牛"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6553988469",
+        "https://www.washine.tech/",
+        "https://oss.washine.tech/Privacy-Policyy/washine-Terms-of-Service.html",
+        "https://oss.washine.tech/Privacy-Policyy/washine-Privacy-Policyy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向公考和事业单位考生的AI面试训练工具，主要靠会员、题库套餐和点数权益变现。",
+          "update": "补充一个更偏公考结构化面试训练的AI教育样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.xztodo-ai-planning-calendar",
       "canonicalName": "小智日历",
       "aliases": [
