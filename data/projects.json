@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.jiandanlu",
+      "canonicalName": "简单录",
+      "aliases": [
+        "简单录-会议纪要语音转文字录音专家",
+        "简单录-AI语音记录助手"
+      ],
+      "slug": "jiandanlu",
+      "discoveredSeq": 135,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI语音记录与会议纪要助手",
+      "targetCustomers": "职场人士、学生、自媒体创作者和需要把录音快速整理成文字与纪要的个人用户或小团队",
+      "painPoint": "很多人开会、上课或临时记录灵感时只能先录音，后续再手动整理文字和纪要很耗时，个人工具又经常在录音、转写和总结之间来回切换",
+      "monetization": "主要靠连续包周、包月、包年会员和精准转写时长包变现，公开价格包括 18 元、28 元、38 元、98 元，以及 2 元和 10 元的转写时长包",
+      "barriers": "要把录音、语音转文字、纪要提炼和轻量个人工作流做顺，需要稳定的转写质量、时长计费设计、移动端录音体验和持续留存能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网根页标题直接说明 简单录-AI语音记录助手;同域 hash 路由隐私与服务页可访问并持续对应同一产品;中国区 App Store 公开周/月/年会员和转写时长包价格"
+        ],
+        "note": "简单录的官网根页已经直接写清它是 AI语音记录助手，同域 hash 路由下的隐私/服务相关页面也都可访问；中国区 App Store 则公开了连续包周 18 元、连续包月 28 元、连续包年 98 元，以及精准转写时长包 2 元和 10 元等价格，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "随身鹿",
+        "听脑AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6743737519",
+        "https://www.jiandanlu.com/",
+        "https://www.jiandanlu.com/#/privacyPolicy?type=6",
+        "https://www.jiandanlu.com/#/privacyPolicy?type=2",
+        "https://www.jiandanlu.com/#/privacyPolicy?type=1"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向职场人士和学生的 AI 语音记录工具，能把录音快速转成文字并整理会议纪要，主要靠周/月/年会员和转写时长包变现。",
+          "update": "新增 简单录，作为 AI语音记录与会议纪要样本收录；它更偏轻量个人工具，官方产品面和价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.vivitalk",
       "canonicalName": "viviTalk",
       "aliases": [
