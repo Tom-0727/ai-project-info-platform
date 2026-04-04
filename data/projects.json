@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.xiaoguai-health",
+      "canonicalName": "小乖健康",
+      "aliases": [
+        "小乖健康AI减肥"
+      ],
+      "slug": "xiaoguai-health",
+      "discoveredSeq": 131,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI饮食记录与轻断食减脂工具",
+      "targetCustomers": "减脂用户、轻断食用户、健身人群和希望用拍照记录饮食的个人健康管理用户",
+      "painPoint": "很多人减肥时记不住每餐热量，也很难长期坚持饮食记录和轻断食计划，既缺执行工具，也缺持续陪伴反馈",
+      "monetization": "主要靠月会员和高级会员变现，App Store 已公开多档会员价格；但当前公开官方面主要是协议页，标准化官网购买面仍不够完整",
+      "barriers": "要把拍照识别热量、营养分析、饮食计划、轻断食节奏和 AI 陪伴做成持续可用的日常工具，需要稳定的识别能力、行为反馈设计和长期留存运营能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区 App Store 清楚说明 AI拍照识热量、饮食记录和轻断食工作流",
+          "App Store 公开月会员和多档高级会员价格",
+          "同域协议页可访问但缺稳定官方产品首页"
+        ],
+        "note": "小乖健康的 App Store 产品页已经把拍照识热量、轻断食计划和 AI 陪伴写清楚，也公开了月会员和多档高级会员价格；但当前能稳定拿到的官方面主要是协议页，还缺一个同样清楚的官网产品首页，所以按 medium 入库。"
+      },
+      "benchmarks": [
+        "体重小本",
+        "食卡卡"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6469746688",
+        "https://gugu.zomoplan.com/policy/iOS",
+        "https://gugu.zomoplan.com/agreement/iOS"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向减脂和轻断食用户的 AI 饮食记录工具，能拍照识别热量、记录饮食并辅助制定轻断食计划，主要靠月会员和高级会员变现，官网公开面暂不完整。",
+          "update": "新增 小乖健康，作为 AI 饮食记录与轻断食减脂样本收录；App Store 的产品与价格面已经清楚，但公开官方面仍主要停留在协议页，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.ai-kuaixiao-jxc",
       "canonicalName": "AI快销进销存",
       "aliases": [
