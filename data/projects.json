@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.stresswatch-pressure-monitor",
+      "canonicalName": "StressWatch",
+      "aliases": [
+        "StressWatch|StressWatch: AI压力监测 & 健康习惯养成"
+      ],
+      "slug": "stresswatch-pressure-monitor",
+      "discoveredSeq": 123,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI压力监测与健康习惯管理工具",
+      "targetCustomers": "高压职场人士、Apple Watch 用户、睡眠与压力管理人群，以及需要长期追踪身心状态的健康自律用户",
+      "painPoint": "很多压力管理工具只给静态健康数据，缺少可执行的压力解释、长期趋势洞察和习惯养成闭环，用户很难把 HRV 等指标真正转成日常调整动作。",
+      "monetization": "通过按月订阅、按年订阅、终身会员和多档特别优惠方案变现，公开价格包括16元/月、98元/年、168元终身会员，以及78元、138元、298元等优惠档位。",
+      "barriers": "基于可穿戴数据的压力解释模型、健康建议的可信表达、长期习惯养成设计，以及健康场景下的合规边界与用户信任。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方用户协议页|官方隐私政策页|sellerUrl直连官方站"
+        ],
+        "note": "App Store清楚说明它在做AI压力监测、睡眠改善和健康习惯养成，并公开了月订阅、年订阅和终身会员价格；sellerUrl官网与官方文案里给出的协议、隐私页面都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "AMood|MoFlow"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6444737095|https://100badideas.com/stresswatch|https://docs.ideation.love/stresswatch/en/service/terms-of-use.html|https://docs.ideation.love/stresswatch/en/service/privacy-policy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个基于可穿戴数据做压力监测、习惯养成和身心趋势洞察的健康工具，主要靠订阅和终身会员变现。",
+          "update": "补充一个更偏压力监测和健康习惯管理的AI健康样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.moflow-ai-emotion-writing",
       "canonicalName": "MoFlow",
       "aliases": [
