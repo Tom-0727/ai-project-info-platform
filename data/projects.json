@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.youdao-meeting-transcribe",
+      "canonicalName": "有道会议转写",
+      "aliases": [
+        "有道会议转写 - AI 纪要，录音转文字，实时翻译",
+        "iTranscribe"
+      ],
+      "slug": "youdao-meeting-transcribe",
+      "discoveredSeq": 142,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI会议转写与实时翻译工具",
+      "targetCustomers": "职场人士、学生、记者、律师和需要把会议、课堂、采访录音快速转成文字与纪要的个人用户或小团队",
+      "painPoint": "很多人能录下会议和课堂，却很难再回听长录音并整理纪要；跨语言场景还会叠加翻译和导出成本，普通录音工具通常只解决保存，不解决转写、翻译和结构化整理",
+      "monetization": "主要靠 Pro 订阅变现，当前公开价格信号包括 iTranscribe Pro 9.9 元、38 元和 40 元等档位，核心付费点是长时实时转写、音频文件转录、同步翻译和高级导出",
+      "barriers": "要把高精度实时转写、长音频快速处理、多语言翻译、字幕导出和录音管理做顺，需要较强的语音识别、机器翻译、端侧录音体验优化和稳定云处理能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区 App Store 详细说明 录音、实时转写、同步翻译、高级导出和实时字幕这套工作流;App Store 公开 iTranscribe Pro 多档订阅价格;产品专属隐私政策和服务条款可访问，但 seller 根页公开产品面不够稳定"
+        ],
+        "note": "有道会议转写的中国区 App Store 已经把录音、实时转写、同步翻译和会议纪要工作流讲清楚，也公开了 iTranscribe Pro 的价格信号；同时 inter.youdao.com/cloudfront/itranscribe-youdao 下的隐私政策和服务条款都能访问，能证明这是官方产品链路。但当前 seller 根页公开产品面不够稳定，因此先按 medium 入库。"
+      },
+      "benchmarks": [
+        "讯飞听见",
+        "简单录"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1639842068",
+        "https://itranscribe.itranscribe.co/",
+        "https://inter.youdao.com/cloudfront/itranscribe-youdao/privacy.html",
+        "https://inter.youdao.com/cloudfront/itranscribe-youdao/terms.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向会议、课堂和采访场景的 AI 转写与翻译工具，能把录音快速转成文字、纪要和字幕，并支持同步翻译与导出，主要靠 Pro 订阅变现。",
+          "update": "新增 有道会议转写，作为 AI会议转写与实时翻译样本收录；它的工作流和价格面已经很清楚，但 seller 根页公开产品面仍不够稳，所以先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.petiloop",
       "canonicalName": "佩乐窝",
       "aliases": [
