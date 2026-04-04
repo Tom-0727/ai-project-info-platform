@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.kaipai",
+      "canonicalName": "开拍",
+      "aliases": [
+        "开拍App",
+        "开拍 - 0基础1分钟做网感口播视频"
+      ],
+      "slug": "kaipai",
+      "discoveredSeq": 132,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI口播视频制作与提词剪辑工具",
+      "targetCustomers": "短视频创作者、带货团队、本地商家、知识博主和需要高频做口播营销视频的小团队或个体经营者",
+      "painPoint": "很多口播视频团队卡在选题、写稿、拍摄、提词、加字幕和剪辑这几步反复切换，真人出镜和后期协同成本高，导致很难稳定日更和批量出片",
+      "monetization": "主要靠 VIP 与 SVIP 连续包月/包年会员变现，公开价格包括 VIP 30元/月、238元/年，SVIP 89元/月、699元/年；同时还有美豆等站内额度消费",
+      "barriers": "要把 AI脚本、提词节奏、网感模板、字幕包装、数字人口播和短视频营销工作流做顺，需要较强的视频编辑引擎、内容理解、模板系统和创作者增长运营能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "中国区 App Store 清楚说明 AI脚本、提词器、文字快剪、网感模板、数字人和 AI口播助手工作流;App Store 直接公开 VIP 和 SVIP 连续包月/包年价格;sellerUrl 根页与同域协议页都能稳定对应 开拍 产品面"
+        ],
+        "note": "开拍的中国区 App Store 页面已经把 AI脚本、提词、文字快剪、网感模板、数字人、AI口播助手等工作流说明清楚，并直接公开 VIP 连续包月 30 元、连续包年 238 元，以及 SVIP 连续包月 89 元、连续包年 699 元；sellerUrl 根页 pro.meitu.com/apps/action.html 也明确写着 开拍 和 用 AI 制作口播视频，同域会员/服务/隐私协议页均可访问，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "说得AI",
+        "一帧秒创"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6446305602",
+        "https://pro.meitu.com/apps/action.html",
+        "https://titan-h5.meitu.com/kaipai/agreements/service.html?lang=zh",
+        "https://titan-h5.meitu.com/kaipai/agreements/privacy_policy.html?lang=zh",
+        "https://titan-h5.meitu.com/kaipai/agreements/membership.html?lang=zh"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向短视频创作者和商家团队的 AI 口播视频制作工具，能把写稿、提词、字幕包装和网感剪辑串成一条工作流，主要靠 VIP 与 SVIP 会员和站内额度消费变现。",
+          "update": "新增 开拍，作为 AI口播视频制作与提词剪辑样本收录；它比泛视频平台更贴近创作者高频出片场景，官方产品面和会员价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.xiaoguai-health",
       "canonicalName": "小乖健康",
       "aliases": [
