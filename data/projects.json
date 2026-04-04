@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.tuantuan-ai-chat-bookkeeping",
+      "canonicalName": "团团记账",
+      "aliases": [
+        "团团记账",
+        "团团记账-自动记账AI聊天记账软件"
+      ],
+      "slug": "tuantuan-ai-chat-bookkeeping",
+      "discoveredSeq": 111,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI聊天记账与宠物养成工具",
+      "targetCustomers": "个人记账用户、学生、自由职业者和想把记账做得更轻松有趣的小团队或家庭",
+      "painPoint": "很多人知道该记账，但很难长期坚持；传统记账工具流程枯燥，既不够快，也缺少陪伴感和反馈。",
+      "monetization": "通过连续包月会员、终身会员和免广告会员变现，公开价格包括3元、18元、28元、32元、35元、38元、48元、58元。",
+      "barriers": "自然语言和语音记账识别、账目自动分类、养成式交互设计、长期留存，以及对消费和资产数据的隐私保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方协议页",
+          "官方产品描述"
+        ],
+        "note": "App Store清楚说明它在做AI记账、聊天记账和养成式陪伴，并公开了连续包月和多档终身会员价格；同域协议页也都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "飞鸭AI记账",
+        "元元记账"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6449834812",
+        "http://tuantuan.gameley.cn/membership.html",
+        "https://tuantuan.gameley.cn/ttyz.htm",
+        "http://tuantuan.gameley.cn/user.html",
+        "http://tuantuan.gameley.cn/private.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把AI记账、聊天陪伴和宠物养成结合在一起的记账工具，主要靠连续包月会员和多档终身会员变现。",
+          "update": "补充一个更偏聊天陪伴和养成体验的AI记账样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.pet-chat-ai-pet-interaction",
       "canonicalName": "陪宠说",
       "aliases": [
