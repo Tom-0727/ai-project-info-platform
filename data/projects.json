@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.achai-auto-bookkeeping",
+      "canonicalName": "阿柴记账",
+      "aliases": [
+        "阿柴记账",
+        "阿柴记账-自动记账超方便"
+      ],
+      "slug": "achai-auto-bookkeeping",
+      "discoveredSeq": 112,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI自动记账与萌宠陪伴工具",
+      "targetCustomers": "个人记账用户、学生、自由职业者和想把日常记账做得更轻松的小团队或家庭",
+      "painPoint": "很多人想长期坚持记账，但传统记账流程枯燥、输入麻烦，缺少持续反馈和轻量陪伴，导致很快放弃。",
+      "monetization": "通过月度VIP、季度VIP、年度VIP和多档永久VIP变现，公开价格包括30元、48元、60元、68元、78元、88元、98元、108元、128元。",
+      "barriers": "自动记账识别、轻量化账务结构设计、萌宠陪伴式留存体验，以及对账单和资产数据的隐私保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "同域协议页"
+        ],
+        "note": "App Store清楚说明它在做自动记账、共享记账和萌宠陪伴，并公开了多档会员价格；官网和同域协议页也都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "团团记账",
+        "飞鸭AI记账"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1593607634",
+        "https://www.cqmiaoa.com",
+        "http://www.cqmiaoa.com/puppy/service_agreement.html",
+        "http://www.cqmiaoa.com/puppy/app_privacy_policy.html",
+        "http://www.cqmiaoa.com/puppy/vip_service_agreement.html",
+        "https://cqmiaoa.com/puppy/service_autorenew.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把自动记账、共享账本和萌宠陪伴结合在一起的记账工具，主要靠月度、季度、年度和永久VIP变现。",
+          "update": "补充一个更偏自动记账和萌宠陪伴体验的AI记账样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.tuantuan-ai-chat-bookkeeping",
       "canonicalName": "团团记账",
       "aliases": [
