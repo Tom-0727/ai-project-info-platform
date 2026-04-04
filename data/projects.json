@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.suishenlu-ai-recording-knowledge-assistant",
+      "canonicalName": "随身鹿",
+      "aliases": [
+        "随身鹿",
+        "随身鹿-你的随身记录AI助手"
+      ],
+      "slug": "suishenlu-ai-recording-knowledge-assistant",
+      "discoveredSeq": 115,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI录音转写与结构化纪要助手",
+      "targetCustomers": "职场人士、学生、自媒体创作者和需要把录音快速整理成知识资产的小团队",
+      "painPoint": "很多录音工具只能完成转写，后续的重点提炼、纪要整理、任务抽取和跨文件问答仍然要手工处理，知识沉淀效率很低。",
+      "monetization": "通过周、月、半年、年和长期会员，以及声票额度包变现，公开价格包括9.9元、18元、25元、38元、66元、78元、88元、168元、298元。",
+      "barriers": "高准确率转写、多语种与方言支持、结构化纪要生成、跨文件问答、行动项抽取，以及录音与文本数据的隐私保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方条款页"
+        ],
+        "note": "App Store清楚说明它在做录音转写、重点提炼、结构化纪要和AI问答，并公开了订阅与额度包价格；官网与同域条款页也都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "讯飞听见",
+        "听脑AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id731368203",
+        "https://suishenlu.cn",
+        "https://suishenlu.cn/privacy",
+        "https://suishenlu.cn/terms"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把录音转写、结构化纪要、任务清单抽取和AI问答结合在一起的知识助手，主要靠订阅会员和声票额度包变现。",
+          "update": "补充一个更偏录音知识管理和结构化提炼的AI助手样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.duodo-social-task-ai-reminder",
       "canonicalName": "DuoDo",
       "aliases": [
