@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.qingke",
+      "canonicalName": "氢刻",
+      "aliases": [
+        "QingKe"
+      ],
+      "slug": "qingke",
+      "discoveredSeq": 128,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI复习备考与卡片记忆工具",
+      "targetCustomers": "考研考公用户、学生、教师培训用户和需要长期复习知识点的个人学习者",
+      "painPoint": "知识点分散、复习节奏难坚持、手工整理闪卡和测验成本高，很多人记了笔记却没法高频回顾和真正记住",
+      "monetization": "主要靠高级版和专业版会员订阅变现，公开档位包括月付、年付和三年付；高阶权益集中在更强的 AI 学习生成、复习效率和进阶学习能力上",
+      "barriers": "要把卡片笔记、类似 Anki 的记忆算法、AI 提炼重点、自动生成闪卡/测验/思维导图、云同步和内容共享社区做成一个稳定闭环，学习数据结构和复习算法门槛都不低",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网首页直接说明卡片笔记与高效记忆定位",
+          "同域隐私页直接点名氢刻产品主体",
+          "中国区 App Store 公开高级版和专业版多档会员价格"
+        ],
+        "note": "qingk.com 官方站已清楚说明氢刻的卡片笔记、智能学习回顾和 AI 生成闪卡/测验/思维导图能力；同域隐私页也直接点名氢刻，App Store 又公开了高级版和专业版多档订阅价格，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "有个计划",
+        "AI试卷宝"
+      ],
+      "sources": [
+        "https://qingk.com",
+        "https://qingk.com/about/privacy",
+        "https://apps.apple.com/cn/app/id1585104628"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向学生和备考用户的 AI 复习记忆工具，能把资料自动提炼成闪卡、测验和思维导图，再配合卡片式回顾提升记忆效率，主要靠高级版和专业版会员订阅变现。",
+          "update": "新增 氢刻，作为 AI 复习备考与卡片记忆样本收录；官网和同域隐私页能对上产品主体，App Store 也公开了高级版和专业版多档价格，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.wuyu-neathub",
       "canonicalName": "物屿｜收纳屋",
       "aliases": [
