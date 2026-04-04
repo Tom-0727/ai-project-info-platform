@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.petiloop",
+      "canonicalName": "佩乐窝",
+      "aliases": [
+        "佩乐窝– 宠物健康记录 & 养宠AI助手",
+        "PetiLoop"
+      ],
+      "slug": "petiloop",
+      "discoveredSeq": 141,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI宠物健康管理与咨询助手",
+      "targetCustomers": "宠物主人、养宠家庭、宠物店从业者和需要长期记录宠物健康状况的小型养宠服务团队",
+      "painPoint": "很多养宠用户会分散记录体重、饮食、运动和饮水，既难长期坚持，也难从零散数据里看出趋势；遇到健康、饮食或行为问题时，又缺一个能结合自家宠物情况持续给建议的轻量工具",
+      "monetization": "主要靠高级会员订阅变现，当前公开可确认的价格信号包括 PetiLoop 高级月会员 3 元，后续还可结合健康咨询、社区和多宠管理做持续付费转化",
+      "barriers": "要把多宠健康档案、喂养运动饮水记录、趋势分析、AI健康顾问和社区交流做顺，需要较强的宠物健康知识结构、数据建模、多模态交互和长期留存能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "seller 根页直接说明 宠物健康管理助手、健康数据记录、AI智能分析和社区交流;同域隐私页与根页都直接对应 PetiLoop 佩乐窝;中国区 App Store 公开了高级月会员价格信号"
+        ],
+        "note": "佩乐窝的 seller 根页已经直接把产品定位写成宠物健康管理助手，明确覆盖健康数据记录、AI健康分析和社区交流；同域隐私页能直接回到同一产品面，中国区 App Store 又公开了高级月会员价格，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "猫狗健康日记",
+        "宠智灵"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6753843145",
+        "https://petiloop.yuanmi.online",
+        "https://petiloop.yuanmi.online/privacy-policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向宠物主人和养宠家庭的 AI 宠物健康管理工具，能持续记录体重、饮食、运动和饮水，并通过 AI 顾问给出健康分析与喂养建议，主要靠高级会员订阅变现。",
+          "update": "新增 佩乐窝，作为 AI宠物健康管理与咨询样本收录；它把健康记录、AI顾问和社区交流做成了一条更完整的养宠工作流，官方产品面和价格信号足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.mindsleep-health",
       "canonicalName": "心眠健康",
       "aliases": [
