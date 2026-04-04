@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.lifelight",
+      "canonicalName": "心光",
+      "aliases": [
+        "Lifelight"
+      ],
+      "slug": "lifelight",
+      "discoveredSeq": 129,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI日记记录与情绪洞察工具",
+      "targetCustomers": "年轻个人用户、情绪记录用户、内容创作者和需要长期做生活回顾与情绪梳理的人",
+      "painPoint": "很多人的生活记录容易碎片化，写了日记也难看出长期情绪模式和生活规律，想要私密记录又需要更轻量的陪伴和反馈",
+      "monetization": "主要靠会员订阅和高阶长期会员变现，公开价格包括月订阅、年订阅和永久会员；高阶权益集中在 AI 洞察、长期回顾和更完整的记录体验上",
+      "barriers": "要把日记记录、情绪追踪、周报总结、AI 洞察、隐私安全和长期时间线体验做成持续可用的产品，需要稳定的情绪理解、总结生成和个人数据结构设计能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网首页直接说明 AI journal、mood tracking 和 weekly AI summaries",
+          "同域隐私页与 App Store app-id 直接对上同一产品",
+          "中国区 App Store 公开月订阅、年订阅和永久会员价格"
+        ],
+        "note": "Lifelight 官网首页已经把 AI Journal、情绪追踪和 weekly AI summaries 说清楚，同域隐私页与 App Store app-id 直接对应；App Store 又公开了月订阅、年订阅和永久会员价格，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "独响",
+        "MoFlow"
+      ],
+      "sources": [
+        "https://www.lifelight.me",
+        "https://www.lifelight.me/privacy",
+        "https://apps.apple.com/cn/app/id1631169735"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向个人用户的 AI 日记和情绪洞察工具，能记录生活瞬间、追踪情绪变化并生成每周 AI 总结，主要靠月订阅、年订阅和长期会员变现。",
+          "update": "新增 心光，作为 AI 日记记录与情绪洞察样本收录；官网首页、同域隐私页和 App Store 已经能对上同一套产品与价格，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.qingke",
       "canonicalName": "氢刻",
       "aliases": [
