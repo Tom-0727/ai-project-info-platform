@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.duodo-social-task-ai-reminder",
+      "canonicalName": "DuoDo",
+      "aliases": [
+        "DuoDo",
+        "DuoDo: 多人待办清单任务管理习惯养成AI好友监督提醒"
+      ],
+      "slug": "duodo-social-task-ai-reminder",
+      "discoveredSeq": 114,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI多人待办与习惯监督工具",
+      "targetCustomers": "情侣、朋友、家人和需要多人协作管理任务与习惯的小团队",
+      "painPoint": "很多待办和习惯工具只适合单人使用，缺少共同执行、相互监督和持续提醒，导致计划很难真正落地。",
+      "monetization": "通过月度会员、年度会员、永久会员和多人组队永久会员变现，公开价格包括18元、68元、88元、128元、198元。",
+      "barriers": "多人协作任务结构设计、提醒与留存机制、社交关系下的激励反馈、AI提醒体验，以及共享任务数据的隐私边界。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方协议页"
+        ],
+        "note": "App Store清楚说明它在做多人待办、习惯追踪和AI提醒，并公开了月付、年付和永久会员价格；官网与独立协议页也都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "FlowUs AI",
+        "boardmix 博思白板"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6738073645",
+        "https://iduodo.com",
+        "https://post.jellow.club/duodo-user-agreement-zh/",
+        "https://post.jellow.club/duodo-privacy-zh/",
+        "https://post.jellow.club/duodo-app-payment-zh/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把多人待办清单、习惯监督和AI提醒结合在一起的效率工具，主要靠月度、年度和永久会员变现。",
+          "update": "补充一个更偏社交协作和习惯监督的AI待办样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.shikaka-ai-diet-calorie-tracker",
       "canonicalName": "食卡卡",
       "aliases": [
