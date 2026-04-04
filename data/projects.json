@@ -1,6 +1,47 @@
 {
   "projects": [
     {
+      "id": "proj.liaodian-jizhang",
+      "canonicalName": "聊点记账",
+      "aliases": [
+        "聊点记账 - AI对话记账，轻松复盘收支"
+      ],
+      "slug": "liaodian-jizhang",
+      "discoveredSeq": 137,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI对话记账与收支复盘工具",
+      "targetCustomers": "个人记账用户、自由职业者、情侣家庭和希望更轻松复盘消费的小团队或个人用户",
+      "painPoint": "很多人记账坚持不下去，不是因为不会记，而是每笔支出都要手动找类目、改字段、做复盘，导致日常记录负担高，账单回顾也很难形成行动反馈",
+      "monetization": "主要靠月订阅、年订阅和永久会员变现，公开价格包括月订阅 18 元、年订阅 68 元和永久会员 88/128 元",
+      "barriers": "要把对话记账、语音理解、自动分类、NPC陪伴感和账单复盘做顺，需要较强的语义解析、财务分类设计、个性化交互和长期留存能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网根页直接说明通过 AI 和记账场景结合来降低记录负担并支持财务回顾;中国区 App Store 详细说明 NPC对话记账、对话回顾和云同步工作流;App Store 公开月订阅、年订阅和永久会员价格"
+        ],
+        "note": "聊点记账的官网根页已经直接说明它是把 AI 和记账场景结合的产品，用来降低记录负担并支持财务回顾；中国区 App Store 又把 NPC 对话记账、对话回顾、账单同步和公开价格写得很清楚，包括月订阅 18 元、年订阅 68 元以及永久会员 88/128 元，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "飞鸭AI记账",
+        "百事AA记账"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6745060445",
+        "https://www.drefine.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向个人和家庭用户的 AI 对话记账工具，能通过语音或文字对话记录收支并复盘账单，主要靠月/年订阅和永久会员变现。",
+          "update": "新增 聊点记账，作为 AI对话记账与收支复盘样本收录；它把 NPC 对话、记账和账单回顾做成了更轻量的日常工具，官网产品面和 App Store 价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.amood-health-tracker",
       "canonicalName": "AMood",
       "aliases": [
