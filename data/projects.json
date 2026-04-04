@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.qingniu-health-ai-weight-management",
+      "canonicalName": "轻牛健康",
+      "aliases": [
+        "轻牛健康|轻牛健康 - AI营养师减肥私教，体重身材管理好搭档"
+      ],
+      "slug": "qingniu-health-ai-weight-management",
+      "discoveredSeq": 126,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI减脂管理与全家健康跟踪平台",
+      "targetCustomers": "减脂用户、健身人群、家庭健康管理用户和需要体重身材长期跟踪的小团队或家庭",
+      "painPoint": "很多减脂工具只能记体重或热量，缺少持续的数据追踪、家庭协同和更生活化的减重陪伴，用户很难把短期控制饮食变成长期健康习惯。",
+      "monetization": "通过连续包月、连续包季、连续包年、月卡、季卡、年卡和两年卡会员变现，公开价格包括15.8元/月、19元月卡、29元连续包季、39元季卡、98元年卡/连续包年、128元两年卡。",
+      "barriers": "体重与体成分数据解释能力、AI营养建议与减脂方案设计、家庭健康协同、智能硬件生态和健康数据可信度建设。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网产品面|sellerUrl直连官方站"
+        ],
+        "note": "App Store清楚说明它在做AI营养师减脂陪伴、热量计算和全家健康管理，公开价格也较完整；sellerUrl指向的官网产品面对得上，但当前未拿到同样稳定的官方协议链，因此先按medium处理。"
+      },
+      "benchmarks": [
+        "体重小本|轻卡日常"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1436583353|http://www.qnniu.com/|https://www.qnniu.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把AI营养师减脂陪伴、热量计算和家庭健康跟踪结合在一起的平台，主要靠多档会员订阅变现。",
+          "update": "补充一个更偏全家健康管理和体重长期跟踪的AI健康样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.huanxiu-sleep-health",
       "canonicalName": "幻休助眠",
       "aliases": [
