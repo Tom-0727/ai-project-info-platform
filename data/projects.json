@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.vivitalk",
+      "canonicalName": "viviTalk",
+      "aliases": [
+        "viviTalk - 学语言练口语"
+      ],
+      "slug": "vivitalk",
+      "discoveredSeq": 134,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI游戏化口语训练工具",
+      "targetCustomers": "英语学习者、留学备考用户、职场外语学习者和想通过游戏化场景持续练口语的个人用户",
+      "painPoint": "很多人练口语时容易卡在开口门槛高、场景单一和坚持不下去的问题，传统课程包和泛聊天陪练都不够轻量，也缺持续反馈和趣味机制",
+      "monetization": "主要靠月度和年度会员订阅变现，公开价格包括月度会员 98 元和年度会员 588 元",
+      "barriers": "要把 RPG 场景互动、口语识别反馈、游戏化进度和长期学习留存做顺，需要较强的语音评测、场景设计、内容策划和产品运营能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "sellerUrl 根页直接说明 RPG游戏化场景口语训练和 AI驱动口语学习;同域隐私页标题直接对应 viviTalk;中国区 App Store 公开月度会员和年度会员价格"
+        ],
+        "note": "viviTalk 的 sellerUrl 根页已经直接写清它是 RPG 游戏化场景口语训练 App，并明确强调 AI 驱动的趣味口语学习；同域隐私页标题也直接对应 viviTalk。与此同时，中国区 App Store 公开了月度会员 98 元和年度会员 588 元，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "TalkAI练口语",
+        "可栗口语"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6749136996",
+        "https://vivitalk.vivitalk.net",
+        "https://vivitalk.vivitalk.net/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向英语学习者的 AI 游戏化口语训练工具，用 RPG 场景互动和图片学单词降低开口门槛，主要靠月度和年度会员订阅变现。",
+          "update": "新增 viviTalk，作为 AI游戏化口语训练样本收录；它把场景互动和口语练习做成了更轻量的游戏化产品，官方产品面和价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.moelog-pet-log",
       "canonicalName": "萌记",
       "aliases": [
