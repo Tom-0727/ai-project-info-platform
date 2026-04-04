@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.amood-health-tracker",
+      "canonicalName": "AMood",
+      "aliases": [
+        "AMood: 情绪实时监测 & 健康管理"
+      ],
+      "slug": "amood-health-tracker",
+      "discoveredSeq": 136,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI情绪与身心状态监测工具",
+      "targetCustomers": "Apple Watch 用户、高压职场人士、健康自律用户和需要长期追踪情绪与身体状态的个人用户",
+      "painPoint": "很多人能感受到焦虑、疲惫和状态波动，却很难知道是睡眠、压力、运动还是生活节奏在影响自己，普通健康工具又往往只看单一指标，难以给出持续的身心变化反馈",
+      "monetization": "主要靠按月、按年和永久会员变现，公开价格包括包月会员 16 元、包年会员 98 元和永久会员 128 元",
+      "barriers": "要把可穿戴数据、情绪状态、身体活力、睡眠饮水等多维指标整合成持续可用的个人健康产品，需要较强的数据建模、可穿戴设备集成、提醒策略和长期留存能力",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "sellerUrl 根页直接说明 AI health tracker、Mood、vitality 和 trend;同域条款与隐私页面可访问;中国区 App Store 公开包月、包年和永久会员价格"
+        ],
+        "note": "AMood 的 sellerUrl 根页虽然更像产品文档站，但已经直接给出 AI health tracker - Mood, vitality and trend 这条产品面；同域条款与隐私页可访问。与此同时，中国区 App Store 把双维度情绪与身体压力监测、健康指标整合和订阅价格写得很清楚，公开价格包括包月 16 元、包年 98 元和永久会员 128 元，因此按 strong 入库。"
+      },
+      "benchmarks": [
+        "StressWatch",
+        "心光"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6479683928",
+        "https://amood.app",
+        "https://docs.amood.app/terms-of-use",
+        "https://docs.amood.app/privacy-policy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向 Apple Watch 用户的 AI 情绪与身心状态监测工具，能结合情绪、活力、睡眠和生活习惯做持续追踪，主要靠月/年订阅和永久会员变现。",
+          "update": "新增 AMood，作为 AI情绪与身心状态监测样本收录；它把可穿戴数据和情绪反馈结合成更持续的个人健康工具，官方产品面和订阅价格都足够清楚，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.jiandanlu",
       "canonicalName": "简单录",
       "aliases": [
