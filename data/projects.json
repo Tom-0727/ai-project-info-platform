@@ -1,6 +1,48 @@
 {
   "projects": [
     {
+      "id": "proj.smoreai-calendar-assistant",
+      "canonicalName": "SmoreAI",
+      "aliases": [
+        "SmoreAI|SmoreAI - AI日历",
+        "生活助理",
+        "日程管理",
+        "提醒事项"
+      ],
+      "slug": "smoreai-calendar-assistant",
+      "discoveredSeq": 119,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI日历与日程管理助手",
+      "targetCustomers": "职场人士、学生、自由职业者、健忘人群和需要用自然语言管理提醒与待办的个人用户",
+      "painPoint": "很多日程和提醒工具仍然依赖手动点选与分类，语音、图片和自然语言输入后的创建成本高，零碎安排也很难被持续整理和复盘。",
+      "monetization": "通过Pro会员订阅变现，公开价格包括Pro月费会员9.9元和Pro年费会员108元。",
+      "barriers": "自然语言解析成提醒与待办的准确率、图片和语音输入转结构化任务的能力、跨提醒/笔记/复盘的统一产品体验，以及高频个人时间管理场景下的留存。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方会员协议页|官方隐私与用户协议页"
+        ],
+        "note": "App Store清楚说明它在做AI日历、提醒、待办和笔记复盘，并公开了月费与年费价格；sellerUrl、官网、会员协议、隐私政策和用户协议都在讲同一套产品，因此按strong处理。"
+      },
+      "benchmarks": [
+        "小智日历|DuoDo"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6743120531|https://smoreai.com/|https://smoreai.com/membership.html|https://smoreai.com/privacy.html|https://smoreai.com/terms.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个用自然语言、语音和图片创建提醒、待办与日程的AI日历工具，主要靠Pro会员订阅变现。",
+          "update": "补充一个更偏个人时间管理和提醒复盘的AI日历样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.zhiwa-public-exam-interview-trainer",
       "canonicalName": "智蛙面试",
       "aliases": [
