@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.huanxiu-sleep-health",
+      "canonicalName": "幻休助眠",
+      "aliases": [
+        "幻休助眠|幻休助眠-睡眠监测",
+        "白噪音",
+        "冥想",
+        "梦话鼾声",
+        "压力心率检测"
+      ],
+      "slug": "huanxiu-sleep-health",
+      "discoveredSeq": 125,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI睡眠监测与助眠疗愈工具",
+      "targetCustomers": "失眠用户、压力大上班族、学生党、宝妈和需要睡眠监测与放松陪伴的个人用户",
+      "painPoint": "很多助眠产品只提供白噪音或基础睡眠记录，缺少持续的睡眠分析、压力解释和可执行改善建议，用户很难把睡眠数据真正转成干预动作。",
+      "monetization": "通过连续包年会员、连续包月会员和终身会员变现，公开价格包括连续包月9.9元，以及48元、58元、88元、118元、128元、138元、158元、198元等会员档位和298元终身会员。",
+      "barriers": "睡眠监测算法、睡眠风险预警和个性化改善建议能力、内容疗愈资源供给，以及健康场景下的合规表达和长期留存。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方隐私政策|官方会员协议|官方自动续费协议|sellerUrl直连官方站"
+        ],
+        "note": "App Store清楚说明它在做睡眠监测、白噪音、冥想和压力检测，并公开了包月、包年和终身会员价格；sellerUrl官网以及App Store文案给出的隐私政策、会员协议、自动续费协议都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "StressWatch|AMood"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1595991642|https://www.shaolinzen.com/|http://web.sleepbrain.com/web/sleep-desc/privacyPolicy.html|http://web.sleepbrain.com/web/sleep-desc/memberService.html|http://web.sleepbrain.com/web/sleep-desc/autorenewal.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把睡眠监测、助眠内容、压力检测和改善建议结合在一起的健康工具，主要靠会员订阅和终身会员变现。",
+          "update": "补充一个更偏睡眠健康与放松疗愈的AI健康样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.xingyunxingkong-psychology-companion",
       "canonicalName": "星云星空",
       "aliases": [
