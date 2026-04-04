@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.xztodo-ai-planning-calendar",
+      "canonicalName": "小智日历",
+      "aliases": [
+        "小智日历",
+        "小智日历-倒数纪念日、清单备忘提醒与AI智能做计划"
+      ],
+      "slug": "xztodo-ai-planning-calendar",
+      "discoveredSeq": 117,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI时间管理与日程计划工具",
+      "targetCustomers": "个人效率用户、学生、职场白领和需要管理日程、提醒与待办的个人或小团队",
+      "painPoint": "很多时间管理工具只会记录待办，不擅长生成计划、自动整理周报和把语音或图片快速转成可执行的日程。",
+      "monetization": "通过月卡、年卡、三年卡、终身会员和能量充值包变现，公开价格包括9.9元、12元、45元、80元、109元、209元、339元。",
+      "barriers": "待办与日历结构设计、AI生成计划和周报、语音与图片输入转待办、多端同步，以及时间和个人数据的隐私保护。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方产品描述"
+        ],
+        "note": "App Store清楚说明它在做AI创建待办、AI写周报和AI问答，并公开了月卡、年卡和终身价格；官网与sellerUrl也能稳定对应，因此按strong处理。"
+      },
+      "benchmarks": [
+        "DuoDo",
+        "FlowUs AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1624642434",
+        "https://www.xztodo.com"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把AI做计划、待办清单、提醒和周报生成结合在一起的时间管理工具，主要靠会员和能量包变现。",
+          "update": "补充一个更偏个人时间管理和AI做计划的效率工具样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.zhihuiji-ai-pos-inventory",
       "canonicalName": "智慧记AI进销存",
       "aliases": [
