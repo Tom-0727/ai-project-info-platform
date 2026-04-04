@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.wuyu-neathub",
+      "canonicalName": "物屿｜收纳屋",
+      "aliases": [
+        "NeatHub",
+        "物屿"
+      ],
+      "slug": "wuyu-neathub",
+      "discoveredSeq": 127,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI收纳与物品库存管理工具",
+      "targetCustomers": "家庭用户、收藏爱好者、露营与搬家用户、二手卖家和需要管理实物资产的小团队",
+      "painPoint": "家里和仓库里的物品难找、属性记录分散、借出保修和库存状态混乱，靠相册和备忘录很难持续维护",
+      "monetization": "基础功能免费，主要靠月度/年度/终身会员变现，并通过图片扩容包和余额充值补充收费；会员权益集中在无限 AI 识别、云同步和多人协作",
+      "barriers": "需要把 AI 图像分割、图像识别、语义搜索、票据识别、跨端同步和多用户权限协作做成稳定的物品管理工作流，数据结构设计和场景模板沉淀门槛都不低",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官方产品页直接说明 AI 收纳、跨端同步和多人协作",
+          "官方 FAQ 明确写出 membership model 和会员高级权益",
+          "中国区 App Store 公开月度/年度/终身会员与图片扩容价格"
+        ],
+        "note": "Maozola 官方站的 NeatHub 页面已经把产品功能、适用场景和会员模式说清楚；App Store 又直接给出了 30 天会员、365 天会员、终身会员和图片扩容价格，产品面与价格面能稳定闭环。"
+      },
+      "benchmarks": [
+        "物之森",
+        "智慧记AI进销存"
+      ],
+      "sources": [
+        "https://www.maozla.com/en/neathub",
+        "https://apps.apple.com/cn/app/id6496853919"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个面向家庭收纳、收藏管理和小型库存场景的 AI 物品管理工具，能用图像分割、语义搜索和云协作帮用户把实物资产整理清楚，主要靠会员订阅、终身会员和扩容包变现。",
+          "update": "新增 物屿｜收纳屋，作为 AI 收纳与物品库存管理样本收录；官网已说明会员模式和高级权益，App Store 也公开了月度、年度、终身会员与图片扩容价格，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.qingniu-health-ai-weight-management",
       "canonicalName": "轻牛健康",
       "aliases": [
