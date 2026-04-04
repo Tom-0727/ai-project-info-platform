@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.shikaka-ai-diet-calorie-tracker",
+      "canonicalName": "食卡卡",
+      "aliases": [
+        "食卡卡",
+        "食卡卡-AI减肥食谱饮食热量记录轻断食卡路里计算健康体重"
+      ],
+      "slug": "shikaka-ai-diet-calorie-tracker",
+      "discoveredSeq": 113,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI饮食热量记录与轻断食管理工具",
+      "targetCustomers": "减脂用户、健身人群、轻断食用户和围绕饮食管理做服务的个人工作室",
+      "painPoint": "很多人想减脂或管理饮食，但手动记录食物热量、识别包装营养成分和长期坚持都很费力，容易半途放弃。",
+      "monetization": "通过月会员、季度会员、半年会员和年会员变现，公开价格包括18元、48元、78元、98元。",
+      "barriers": "食物识别与热量估算、营养成分解析、轻断食流程设计、长期留存，以及健康建议边界和免责提示。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格",
+          "官方官网",
+          "官方产品描述"
+        ],
+        "note": "App Store清楚说明它在做食物识别、营养分析、AI减脂食谱和轻断食管理，并公开了多档会员价格；sellerUrl对应官网也能稳定访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "轻卡日常",
+        "体重小本"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6450910950",
+        "https://www.calheal.com/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把食物识别、热量记录、AI减脂食谱和轻断食管理结合在一起的饮食工具，主要靠月度到年度会员变现。",
+          "update": "补充一个更偏食物识别和热量管理的AI饮食样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.achai-auto-bookkeeping",
       "canonicalName": "阿柴记账",
       "aliases": [
@@ -620,7 +664,6 @@
       ],
       "sources": [
         "https://apps.apple.com/cn/app/gooh%E6%97%85%E8%AE%B0-%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5%E5%88%B6%E4%BD%9C-%E8%A1%8C%E7%A8%8B%E8%B7%AF%E7%BA%BF%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E5%8A%A9%E6%89%8B/id6479474700",
-        "https://www.cqmiaoa.com",
         "https://www.cqmiaoa.com/puppy/app_privacy_policy.html"
       ],
       "dailyNotes": [
