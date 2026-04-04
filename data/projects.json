@@ -1,6 +1,45 @@
 {
   "projects": [
     {
+      "id": "proj.xingyunxingkong-psychology-companion",
+      "canonicalName": "星云星空",
+      "aliases": [
+        "星云星空|星云星空 - AI心理聊愈 看见情绪压力"
+      ],
+      "slug": "xingyunxingkong-psychology-companion",
+      "discoveredSeq": 124,
+      "status": "active",
+      "firstSeen": "2026-04-04",
+      "lastUpdated": "2026-04-04",
+      "productForm": "AI心理聊愈与情绪陪伴工具",
+      "targetCustomers": "情绪压力用户、心理自助人群、新手妈妈、职业迷茫用户和需要私密情绪支持的年轻个人用户",
+      "painPoint": "很多情绪陪伴产品只能做浅层聊天或简单日记，缺少持续的心理聊愈、可视化成长记录和自助工具箱，用户很难把短期倾诉变成长期自我觉察。",
+      "monetization": "通过星辰会员和星币内购变现，公开价格包括月度星辰会员19元、年度星辰会员99元，以及10星币1元、60星币6元、120星币12元、300星币30元、680星币68元、1280星币128元、1600星币160元。",
+      "barriers": "心理陪伴大模型能力、情绪和成长轨迹可视化、心理工具箱内容设计、敏感场景安全治理，以及把陪伴做得足够长期留存的运营能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store公开价格|官方官网|官方用户协议|官方隐私政策|官方会员协议|sellerUrl直连官方站"
+        ],
+        "note": "App Store清楚说明它在做AI心理聊愈、情绪陪伴和自助心理工具，并公开了会员与星币价格；sellerUrl官网以及App Store文案给出的用户协议、隐私政策、会员协议都可访问，因此按strong处理。"
+      },
+      "benchmarks": [
+        "MoFlow|独响"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6739960559|https://jianchengxingyun.com|https://user.xypsy.com/middlePage/app/userAgreement.html|https://user.xypsy.com/middlePage/app/privacyPolicy.html|https://user.xypsy.com/middlePage/app/vipAgreement.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-04",
+          "kind": "New",
+          "summary": "这是一个把AI心理聊愈、情绪倾诉和自助心理工具箱结合在一起的产品，主要靠会员订阅和星币内购变现。",
+          "update": "补充一个更偏心理聊愈和情绪陪伴的AI情绪样本。"
+        }
+      ]
+    },
+    {
       "id": "proj.stresswatch-pressure-monitor",
       "canonicalName": "StressWatch",
       "aliases": [
