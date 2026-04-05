@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.moki-ai-calendar",
+      "canonicalName": "Moki AI日历",
+      "aliases": [
+        "Moki AI日历",
+        "AI日程",
+        "AI规划",
+        "AI时间管理助手",
+        "Moki"
+      ],
+      "slug": "moki-ai-calendar",
+      "discoveredSeq": 144,
+      "status": "active",
+      "firstSeen": "2026-04-05",
+      "lastUpdated": "2026-04-05",
+      "productForm": "AI日历规划与时间管理助手",
+      "targetCustomers": "使用 iOS 原生日历和提醒事项的学生、职场白领、自律用户和希望降低日程管理负担的个人用户",
+      "painPoint": "很多时间管理工具只能让用户自己手动填日程和待办，真正卡住人的往往不是记不记，而是不知道什么时候做、怎么排优先级、冲突该怎么拆；普通日历工具很少能把理解任务、安排时间和复盘节奏串起来",
+      "monetization": "主要靠订阅变现，当前公开价格信号包括 1个月 12 元和 3个月 29.9 元；从 App Store 评论区还能看到开发者明确提到目前最多提供 3 个月订阅，说明其收费边界是持续 token 成本驱动的订阅模式",
+      "barriers": "要把自然语言任务理解、原生日历与提醒事项联动、时间冲突识别、优先级安排和个人节奏分析做顺，需要较强的任务理解、系统集成、日程算法和长期使用体验设计能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "中国区 App Store 详细说明它能自动操作 iOS 原生日历和提醒事项，并给出任务安排与时间分析;App Store 公开 1个月 12 元 和 3个月 29.9 元 订阅价格;描述里给出的产品专属协议链接当前被 Cloudflare 阻断，官方链路存在但公开可检索性不稳定"
+        ],
+        "note": "Moki AI日历的中国区 App Store 已经把 AI 日程规划、任务拆分、优先级安排和时间分析这套工作流讲清楚，也公开了 1个月 12 元 和 3个月 29.9 元 的订阅价格；同时描述中给出的协议链接指向产品专属子域，但当前公开抓取会被 Cloudflare 阻断，因此先按 medium 入库。"
+      },
+      "benchmarks": [
+        "SmoreAI",
+        "小智日历"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6755115073",
+        "https://moki.shiguangbanlv.com"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-05",
+          "kind": "New",
+          "summary": "这是一个面向 iOS 原生日历和提醒事项用户的 AI 时间管理工具，能用自然语言自动创建、调整和分析日程安排，主要靠订阅变现。",
+          "update": "新增 Moki AI日历，作为 AI日历规划与时间管理样本收录；它把自然语言日程操作和时间分析做成了很具体的小工具形态，但公开协议链当前可检索性不稳定，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.moodtalker-forest-room",
       "canonicalName": "林间聊愈室",
       "aliases": [
