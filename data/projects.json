@@ -62,12 +62,15 @@
       "monetization": "主要靠会员订阅、聊愈时长包和重启人生计划等增值项目变现，当前公开价格信号包括连续包月 22 元、VIP 30天 28 元、半年之约卡 58 元、Pro 连续包月 48 元、连续包年折扣 88 元，以及 30分钟聊愈时间 5 元和重启人生计划 68 元",
       "barriers": "要把 AI 情绪陪伴、小动物人格设计、情绪工具库、成长计划和长期留存做顺，需要较强的心理学内容设计、对话体验、个性化推荐和安全边界控制能力",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "seller 根页直接点名 林间聊愈室;中国区 App Store 详细说明 AI小动物陪伴、情绪工具、早晚音频和 21天重启人生计划;App Store 可直接抓到会员、时长包和计划包价格，但当前未拿到同样稳定的同域协议链"
+          "seller 根页直接点名 林间聊愈室",
+          "中国区 App Store 详细说明 AI 小动物陪伴、情绪工具、早晚音频和 21 天重启人生计划",
+          "App Store 可直接抓到会员、时长包和计划包价格",
+          "产品专属隐私政策页标题可对应 林间聊愈室隐私政策"
         ],
-        "note": "林间聊愈室的 seller 根页和中国区 App Store 都能对上同一套 AI 情绪陪伴与成长训练产品，App Store 还直接公开了会员、聊愈时长和重启人生计划等多档价格信号；但当前没有拿到同样稳定的同域协议链，因此先按 medium 入库。"
+        "note": "林间聊愈室的 seller 根页和中国区 App Store 都能对上同一套 AI 情绪陪伴与成长训练产品，App Store 还直接公开了会员、聊愈时长和重启人生计划等多档价格信号；另外 xindaoapp.com.cn/privacy_policy.html 的页面标题可直接对应 林间聊愈室隐私政策。按当前对消费型 AI 工具的口径，这条官方链路已经足以支撑 strong。"
       },
       "benchmarks": [
         "星云星空",
@@ -75,9 +78,16 @@
       ],
       "sources": [
         "https://apps.apple.com/cn/app/id6453689112",
-        "https://moodtalker.com"
+        "https://moodtalker.com",
+        "https://xindaoapp.com.cn/privacy_policy.html"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-05",
+          "kind": "Update",
+          "summary": "这是一个面向情绪低落和容易内耗用户的 AI 情绪陪伴工具，通过小动物伙伴、情绪工具、早晚音频和 21 天成长计划帮助用户做长期自我梳理，主要靠会员订阅、时长包和成长计划包变现。",
+          "update": "复查林间聊愈室后，补到了可直接对应产品的隐私政策页，因此把这条样本从 medium 升到 strong。"
+        },
         {
           "date": "2026-04-05",
           "kind": "New",
