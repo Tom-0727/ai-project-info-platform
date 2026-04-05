@@ -16,7 +16,7 @@ export const todayInShanghai = () => {
 
 export const splitList = (value) =>
   value
-    .split(",")
+    .split(/[|,]/)
     .map((item) => item.trim())
     .filter(Boolean);
 

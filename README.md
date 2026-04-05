@@ -83,6 +83,7 @@ Projects are displayed by discovery order descending by default, so the newest s
 
 The add-project script auto-assigns the next `discoveredSeq`, so newer projects remain ahead of older ones in the UI even if they share the same `firstSeen` date.
 The update-project script is useful for medium-to-strong upgrades because it updates `lastUpdated` on the targeted project only, avoiding manual JSON edits across repeated fields.
+List-style CLI fields such as `--aliases`, `--evidence-signals`, `--benchmarks`, and `--sources` now accept either commas or `|`, so older one-line shell habits still parse correctly.
 The validator now rejects meta-style daily note summaries such as `纳入正式名单，原因是……`; public summaries should describe what the product is, who it helps, and how it makes money in plain language.
 
 ## GitHub Pages
