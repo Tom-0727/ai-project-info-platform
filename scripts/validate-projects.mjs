@@ -53,6 +53,12 @@ const main = async () => {
       }
     }
 
+    for (const signal of evidenceQuality?.signals ?? []) {
+      if (signal.includes("|")) {
+        failures.push(`Pipe-joined evidence signal in ${project.id}: ${signal}`);
+      }
+    }
+
     const seenDailyNotes = new Set();
     for (const note of project.dailyNotes) {
       const key = [project.id, note.date, note.kind, note.summary, note.update].join("::");

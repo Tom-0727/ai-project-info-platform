@@ -857,7 +857,12 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方隐私政策|官方会员协议|官方自动续费协议|sellerUrl直连官方站"
+          "App Store公开价格",
+          "官方官网",
+          "官方隐私政策",
+          "官方会员协议",
+          "官方自动续费协议",
+          "sellerUrl直连官方站"
         ],
         "note": "App Store清楚说明它在做睡眠监测、白噪音、冥想和压力检测，并公开了包月、包年和终身会员价格；sellerUrl官网以及App Store文案给出的隐私政策、会员协议、自动续费协议都可访问，因此按strong处理。"
       },
@@ -902,7 +907,12 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方用户协议|官方隐私政策|官方会员协议|sellerUrl直连官方站"
+          "App Store公开价格",
+          "官方官网",
+          "官方用户协议",
+          "官方隐私政策",
+          "官方会员协议",
+          "sellerUrl直连官方站"
         ],
         "note": "App Store清楚说明它在做AI心理聊愈、情绪陪伴和自助心理工具，并公开了会员与星币价格；sellerUrl官网以及App Store文案给出的用户协议、隐私政策、会员协议都可访问，因此按strong处理。"
       },
@@ -947,7 +957,11 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方用户协议页|官方隐私政策页|sellerUrl直连官方站"
+          "App Store公开价格",
+          "官方官网",
+          "官方用户协议页",
+          "官方隐私政策页",
+          "sellerUrl直连官方站"
         ],
         "note": "App Store清楚说明它在做AI压力监测、睡眠改善和健康习惯养成，并公开了月订阅、年订阅和终身会员价格；sellerUrl官网与官方文案里给出的协议、隐私页面都可访问，因此按strong处理。"
       },
@@ -991,7 +1005,10 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方隐私政策页|sellerUrl直连官方站"
+          "App Store公开价格",
+          "官方官网",
+          "官方隐私政策页",
+          "sellerUrl直连官方站"
         ],
         "note": "App Store清楚说明它在做AI情绪书写、心情记录和CBT式情绪报告，并公开了会员与点数价格；sellerUrl指向的官网与隐私政策页也都明确写着同一套MoFlow产品，因此按strong处理。"
       },
@@ -1034,7 +1051,11 @@
         "level": "strong",
         "marketingRisk": "low",
         "signals": [
-          "App Store公开价格|官方官网|官方产品概览页|官方隐私协议|官方服务协议"
+          "App Store公开价格",
+          "官方官网",
+          "官方产品概览页",
+          "官方隐私协议",
+          "官方服务协议"
         ],
         "note": "App Store清楚说明它在做艾宾浩斯学习计划、待办清单、日程和习惯管理，并公开了月费、年费和永久会员价格；官方站点、产品概览页、隐私协议和服务协议都可访问，且讲的是同一套有个计划产品，因此按strong处理。"
       },
@@ -1079,7 +1100,10 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方隐私政策|官方用户协议"
+          "App Store公开价格",
+          "官方官网",
+          "官方隐私政策",
+          "官方用户协议"
         ],
         "note": "App Store清楚说明它在做私密生活记录、AI陪伴聊天和角色互动，并公开了会员与响石价格；sellerUrl、官网、隐私政策和用户协议都能访问，且讲的是同一套独响产品，因此按strong处理。"
       },
@@ -1126,7 +1150,10 @@
         "level": "strong",
         "marketingRisk": "medium",
         "signals": [
-          "App Store公开价格|官方官网|官方会员协议页|官方隐私与用户协议页"
+          "App Store公开价格",
+          "官方官网",
+          "官方会员协议页",
+          "官方隐私与用户协议页"
         ],
         "note": "App Store清楚说明它在做AI日历、提醒、待办和笔记复盘，并公开了月费与年费价格；sellerUrl、官网、会员协议、隐私政策和用户协议都在讲同一套产品，因此按strong处理。"
       },
