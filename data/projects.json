@@ -21,12 +21,14 @@
       "monetization": "主要靠订阅变现，当前公开价格信号包括 1个月 12 元和 3个月 29.9 元；从 App Store 评论区还能看到开发者明确提到目前最多提供 3 个月订阅，说明其收费边界是持续 token 成本驱动的订阅模式",
       "barriers": "要把自然语言任务理解、原生日历与提醒事项联动、时间冲突识别、优先级安排和个人节奏分析做顺，需要较强的任务理解、系统集成、日程算法和长期使用体验设计能力",
       "evidenceQuality": {
-        "level": "medium",
+        "level": "strong",
         "marketingRisk": "low",
         "signals": [
-          "中国区 App Store 详细说明它能自动操作 iOS 原生日历和提醒事项，并给出任务安排与时间分析;App Store 公开 1个月 12 元 和 3个月 29.9 元 订阅价格;描述里给出的产品专属协议链接当前被 Cloudflare 阻断，官方链路存在但公开可检索性不稳定"
+          "中国区 App Store 详细说明 AI 日程规划、任务拆分、优先级安排和时间分析工作流",
+          "App Store 公开 1个月 12 元 和 3个月 29.9 元 订阅价格",
+          "moki.shiguangbanlv.com 根页可读且主域 shiguangbanlv.com 下的 Moki 隐私政策和服务条款可稳定访问"
         ],
-        "note": "Moki AI日历的中国区 App Store 已经把 AI 日程规划、任务拆分、优先级安排和时间分析这套工作流讲清楚，也公开了 1个月 12 元 和 3个月 29.9 元 的订阅价格；同时描述中给出的协议链接指向产品专属子域，但当前公开抓取会被 Cloudflare 阻断，因此先按 medium 入库。"
+        "note": "Moki AI日历的中国区 App Store 已经把 AI 日程规划、任务拆分、优先级安排和时间分析这套工作流讲清楚，也公开了 1个月 12 元 和 3个月 29.9 元 的订阅价格；虽然 moki 子域上的协议路径会被 Cloudflare 拦截，但主域 shiguangbanlv.com 下存在可稳定访问的 Moki 隐私政策和 Moki 服务条款，因此这条官方链路已经足以支撑 strong。"
       },
       "benchmarks": [
         "SmoreAI",
@@ -34,9 +36,17 @@
       ],
       "sources": [
         "https://apps.apple.com/cn/app/id6755115073",
-        "https://moki.shiguangbanlv.com"
+        "https://moki.shiguangbanlv.com",
+        "https://shiguangbanlv.com/mokiPrivacyPolicy/",
+        "https://shiguangbanlv.com/mokiUserServicesAgreement/"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-05",
+          "kind": "Update",
+          "summary": "这是一个面向 iOS 原生日历和提醒事项用户的 AI 时间管理工具，能用自然语言自动创建、调整和分析日程安排，主要靠订阅变现。",
+          "update": "复查 Moki AI日历后，补到了主域下可直接访问的 Moki 隐私政策和服务条款，因此把这条样本从 medium 升到 strong。"
+        },
         {
           "date": "2026-04-05",
           "kind": "New",
