@@ -785,7 +785,8 @@
       "id": "proj.qingniu-health-ai-weight-management",
       "canonicalName": "轻牛健康",
       "aliases": [
-        "轻牛健康|轻牛健康 - AI营养师减肥私教，体重身材管理好搭档"
+        "轻牛健康",
+        "轻牛健康 - AI营养师减肥私教，体重身材管理好搭档"
       ],
       "slug": "qingniu-health-ai-weight-management",
       "discoveredSeq": 126,
@@ -808,7 +809,8 @@
         "note": "轻牛健康的中国区 App Store 已经把 AI 营养师减脂陪伴、热量计算和全家健康管理这套工作流讲清楚，公开价格也较完整；sellerUrl 指向的官网根页产品面同样成立。但 App Store 给出的隐私链接正文实际写的是另一款产品 辟谷轻断食，因此当前官方协议链不能拿来补强，继续按 medium 处理。"
       },
       "benchmarks": [
-        "体重小本|轻卡日常"
+        "体重小本",
+        "轻卡日常"
       ],
       "sources": [
         "https://apps.apple.com/cn/app/id1436583353",
@@ -834,7 +836,8 @@
       "id": "proj.huanxiu-sleep-health",
       "canonicalName": "幻休助眠",
       "aliases": [
-        "幻休助眠|幻休助眠-睡眠监测",
+        "幻休助眠",
+        "幻休助眠-睡眠监测",
         "白噪音",
         "冥想",
         "梦话鼾声",
@@ -859,10 +862,15 @@
         "note": "App Store清楚说明它在做睡眠监测、白噪音、冥想和压力检测，并公开了包月、包年和终身会员价格；sellerUrl官网以及App Store文案给出的隐私政策、会员协议、自动续费协议都可访问，因此按strong处理。"
       },
       "benchmarks": [
-        "StressWatch|AMood"
+        "StressWatch",
+        "AMood"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id1595991642|https://www.shaolinzen.com/|http://web.sleepbrain.com/web/sleep-desc/privacyPolicy.html|http://web.sleepbrain.com/web/sleep-desc/memberService.html|http://web.sleepbrain.com/web/sleep-desc/autorenewal.html"
+        "https://apps.apple.com/cn/app/id1595991642",
+        "https://www.shaolinzen.com/",
+        "http://web.sleepbrain.com/web/sleep-desc/privacyPolicy.html",
+        "http://web.sleepbrain.com/web/sleep-desc/memberService.html",
+        "http://web.sleepbrain.com/web/sleep-desc/autorenewal.html"
       ],
       "dailyNotes": [
         {
@@ -877,7 +885,8 @@
       "id": "proj.xingyunxingkong-psychology-companion",
       "canonicalName": "星云星空",
       "aliases": [
-        "星云星空|星云星空 - AI心理聊愈 看见情绪压力"
+        "星云星空",
+        "星云星空 - AI心理聊愈 看见情绪压力"
       ],
       "slug": "xingyunxingkong-psychology-companion",
       "discoveredSeq": 124,
@@ -898,10 +907,15 @@
         "note": "App Store清楚说明它在做AI心理聊愈、情绪陪伴和自助心理工具，并公开了会员与星币价格；sellerUrl官网以及App Store文案给出的用户协议、隐私政策、会员协议都可访问，因此按strong处理。"
       },
       "benchmarks": [
-        "MoFlow|独响"
+        "MoFlow",
+        "独响"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6739960559|https://jianchengxingyun.com|https://user.xypsy.com/middlePage/app/userAgreement.html|https://user.xypsy.com/middlePage/app/privacyPolicy.html|https://user.xypsy.com/middlePage/app/vipAgreement.html"
+        "https://apps.apple.com/cn/app/id6739960559",
+        "https://jianchengxingyun.com",
+        "https://user.xypsy.com/middlePage/app/userAgreement.html",
+        "https://user.xypsy.com/middlePage/app/privacyPolicy.html",
+        "https://user.xypsy.com/middlePage/app/vipAgreement.html"
       ],
       "dailyNotes": [
         {
@@ -916,7 +930,8 @@
       "id": "proj.stresswatch-pressure-monitor",
       "canonicalName": "StressWatch",
       "aliases": [
-        "StressWatch|StressWatch: AI压力监测 & 健康习惯养成"
+        "StressWatch",
+        "StressWatch: AI压力监测 & 健康习惯养成"
       ],
       "slug": "stresswatch-pressure-monitor",
       "discoveredSeq": 123,
@@ -937,10 +952,14 @@
         "note": "App Store清楚说明它在做AI压力监测、睡眠改善和健康习惯养成，并公开了月订阅、年订阅和终身会员价格；sellerUrl官网与官方文案里给出的协议、隐私页面都可访问，因此按strong处理。"
       },
       "benchmarks": [
-        "AMood|MoFlow"
+        "AMood",
+        "MoFlow"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6444737095|https://100badideas.com/stresswatch|https://docs.ideation.love/stresswatch/en/service/terms-of-use.html|https://docs.ideation.love/stresswatch/en/service/privacy-policy.html"
+        "https://apps.apple.com/cn/app/id6444737095",
+        "https://100badideas.com/stresswatch",
+        "https://docs.ideation.love/stresswatch/en/service/terms-of-use.html",
+        "https://docs.ideation.love/stresswatch/en/service/privacy-policy.html"
       ],
       "dailyNotes": [
         {
@@ -955,7 +974,8 @@
       "id": "proj.moflow-ai-emotion-writing",
       "canonicalName": "MoFlow",
       "aliases": [
-        "MoFlow|MoFlow - AI 心情罐头 & CBT 情绪报告"
+        "MoFlow",
+        "MoFlow - AI 心情罐头 & CBT 情绪报告"
       ],
       "slug": "moflow-ai-emotion-writing",
       "discoveredSeq": 122,
@@ -976,10 +996,13 @@
         "note": "App Store清楚说明它在做AI情绪书写、心情记录和CBT式情绪报告，并公开了会员与点数价格；sellerUrl指向的官网与隐私政策页也都明确写着同一套MoFlow产品，因此按strong处理。"
       },
       "benchmarks": [
-        "心光|独响"
+        "心光",
+        "独响"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6737146258|https://moflowapp.com/|https://moflowapp.com/privacy-policy"
+        "https://apps.apple.com/cn/app/id6737146258",
+        "https://moflowapp.com/",
+        "https://moflowapp.com/privacy-policy"
       ],
       "dailyNotes": [
         {
@@ -994,7 +1017,8 @@
       "id": "proj.yougejihua-study-planning",
       "canonicalName": "有个计划",
       "aliases": [
-        "有个计划|有个计划-艾宾浩斯日程待办清单时间管理效率和提醒事项专注打卡"
+        "有个计划",
+        "有个计划-艾宾浩斯日程待办清单时间管理效率和提醒事项专注打卡"
       ],
       "slug": "yougejihua-study-planning",
       "discoveredSeq": 121,
@@ -1015,10 +1039,15 @@
         "note": "App Store清楚说明它在做艾宾浩斯学习计划、待办清单、日程和习惯管理，并公开了月费、年费和永久会员价格；官方站点、产品概览页、隐私协议和服务协议都可访问，且讲的是同一套有个计划产品，因此按strong处理。"
       },
       "benchmarks": [
-        "SmoreAI|小智日历"
+        "SmoreAI",
+        "小智日历"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6483804953|https://www.xcdz123.com/|https://www.xcdz123.com/a-plan.html|https://www.xcdz123.com/a-plan-privacy.html|https://www.xcdz123.com/a-plan-terms.html"
+        "https://apps.apple.com/cn/app/id6483804953",
+        "https://www.xcdz123.com/",
+        "https://www.xcdz123.com/a-plan.html",
+        "https://www.xcdz123.com/a-plan-privacy.html",
+        "https://www.xcdz123.com/a-plan-terms.html"
       ],
       "dailyNotes": [
         {
@@ -1033,7 +1062,8 @@
       "id": "proj.duxiang-ai-companion-feed",
       "canonicalName": "独响",
       "aliases": [
-        "独响|独响—你的AI朋友圈"
+        "独响",
+        "独响—你的AI朋友圈"
       ],
       "slug": "duxiang-ai-companion-feed",
       "discoveredSeq": 120,
@@ -1054,10 +1084,14 @@
         "note": "App Store清楚说明它在做私密生活记录、AI陪伴聊天和角色互动，并公开了会员与响石价格；sellerUrl、官网、隐私政策和用户协议都能访问，且讲的是同一套独响产品，因此按strong处理。"
       },
       "benchmarks": [
-        "心光|猫箱"
+        "心光",
+        "猫箱"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6473223364|https://www.duxiangai.com|https://www.duxiangai.com/privacy.html|https://www.duxiangai.com/terms.html"
+        "https://apps.apple.com/cn/app/id6473223364",
+        "https://www.duxiangai.com",
+        "https://www.duxiangai.com/privacy.html",
+        "https://www.duxiangai.com/terms.html"
       ],
       "dailyNotes": [
         {
@@ -1072,7 +1106,8 @@
       "id": "proj.smoreai-calendar-assistant",
       "canonicalName": "SmoreAI",
       "aliases": [
-        "SmoreAI|SmoreAI - AI日历",
+        "SmoreAI",
+        "SmoreAI - AI日历",
         "生活助理",
         "日程管理",
         "提醒事项"
@@ -1096,10 +1131,15 @@
         "note": "App Store清楚说明它在做AI日历、提醒、待办和笔记复盘，并公开了月费与年费价格；sellerUrl、官网、会员协议、隐私政策和用户协议都在讲同一套产品，因此按strong处理。"
       },
       "benchmarks": [
-        "小智日历|DuoDo"
+        "小智日历",
+        "DuoDo"
       ],
       "sources": [
-        "https://apps.apple.com/cn/app/id6743120531|https://smoreai.com/|https://smoreai.com/membership.html|https://smoreai.com/privacy.html|https://smoreai.com/terms.html"
+        "https://apps.apple.com/cn/app/id6743120531",
+        "https://smoreai.com/",
+        "https://smoreai.com/membership.html",
+        "https://smoreai.com/privacy.html",
+        "https://smoreai.com/terms.html"
       ],
       "dailyNotes": [
         {

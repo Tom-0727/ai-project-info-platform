@@ -35,6 +35,22 @@ const main = async () => {
         continue;
       }
       seenSources.set(source, project.id);
+
+      if (source.includes("|")) {
+        failures.push(`Pipe-joined source entry in ${project.id}: ${source}`);
+      }
+    }
+
+    for (const alias of project.aliases ?? []) {
+      if (alias.includes("|")) {
+        failures.push(`Pipe-joined alias entry in ${project.id}: ${alias}`);
+      }
+    }
+
+    for (const benchmark of project.benchmarks ?? []) {
+      if (benchmark.includes("|")) {
+        failures.push(`Pipe-joined benchmark entry in ${project.id}: ${benchmark}`);
+      }
     }
 
     const seenDailyNotes = new Set();
