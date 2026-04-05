@@ -1,6 +1,47 @@
 {
   "projects": [
     {
+      "id": "proj.moodtalker-forest-room",
+      "canonicalName": "林间聊愈室",
+      "aliases": [
+        "林间聊愈室-AI伙伴懂你情绪，陪你成长"
+      ],
+      "slug": "moodtalker-forest-room",
+      "discoveredSeq": 143,
+      "status": "active",
+      "firstSeen": "2026-04-05",
+      "lastUpdated": "2026-04-05",
+      "productForm": "AI情绪陪伴与成长训练工具",
+      "targetCustomers": "情绪低落用户、容易内耗和焦虑的年轻人、学生、职场白领和希望通过轻陪伴做长期成长练习的个人用户",
+      "painPoint": "很多情绪陪伴产品只能提供短暂安慰，很难把倾诉、情绪识别、日常练习和持续成长串成闭环；当用户既想被接住，又想真正改变沟通方式和生活状态时，普通树洞或聊天工具支持不足",
+      "monetization": "主要靠会员订阅、聊愈时长包和重启人生计划等增值项目变现，当前公开价格信号包括连续包月 22 元、VIP 30天 28 元、半年之约卡 58 元、Pro 连续包月 48 元、连续包年折扣 88 元，以及 30分钟聊愈时间 5 元和重启人生计划 68 元",
+      "barriers": "要把 AI 情绪陪伴、小动物人格设计、情绪工具库、成长计划和长期留存做顺，需要较强的心理学内容设计、对话体验、个性化推荐和安全边界控制能力",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "seller 根页直接点名 林间聊愈室;中国区 App Store 详细说明 AI小动物陪伴、情绪工具、早晚音频和 21天重启人生计划;App Store 可直接抓到会员、时长包和计划包价格，但当前未拿到同样稳定的同域协议链"
+        ],
+        "note": "林间聊愈室的 seller 根页和中国区 App Store 都能对上同一套 AI 情绪陪伴与成长训练产品，App Store 还直接公开了会员、聊愈时长和重启人生计划等多档价格信号；但当前没有拿到同样稳定的同域协议链，因此先按 medium 入库。"
+      },
+      "benchmarks": [
+        "星云星空",
+        "MoFlow"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6453689112",
+        "https://moodtalker.com"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-05",
+          "kind": "New",
+          "summary": "这是一个面向情绪低落和容易内耗用户的 AI 情绪陪伴工具，通过小动物伙伴、情绪工具、早晚音频和 21 天成长计划帮助用户做长期自我梳理，主要靠会员订阅和增值计划包变现。",
+          "update": "新增 林间聊愈室，作为 AI情绪陪伴与成长训练样本收录；它把情绪陪伴、工具库和 21 天重启计划做成了更完整的成长闭环，但同域协议链仍待补证，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.youdao-meeting-transcribe",
       "canonicalName": "有道会议转写",
       "aliases": [
