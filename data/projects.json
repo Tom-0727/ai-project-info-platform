@@ -608,7 +608,7 @@
       "discoveredSeq": 131,
       "status": "active",
       "firstSeen": "2026-04-04",
-      "lastUpdated": "2026-04-04",
+      "lastUpdated": "2026-04-05",
       "productForm": "AI饮食记录与轻断食减脂工具",
       "targetCustomers": "减脂用户、轻断食用户、健身人群和希望用拍照记录饮食的个人健康管理用户",
       "painPoint": "很多人减肥时记不住每餐热量，也很难长期坚持饮食记录和轻断食计划，既缺执行工具，也缺持续陪伴反馈",
@@ -618,11 +618,11 @@
         "level": "medium",
         "marketingRisk": "low",
         "signals": [
-          "中国区 App Store 清楚说明 AI拍照识热量、饮食记录和轻断食工作流",
+          "中国区 App Store 已详细说明 AI 拍照识热量、轻断食计划和饮食陪伴工作流",
           "App Store 公开月会员和多档高级会员价格",
-          "同域协议页可访问但缺稳定官方产品首页"
+          "App Store 给出的 gugu.zomoplan.com 协议页正文实际写的是 减脂食谱 而不是 小乖健康，因此当前官方协议链不能作为同产品强证据"
         ],
-        "note": "小乖健康的 App Store 产品页已经把拍照识热量、轻断食计划和 AI 陪伴写清楚，也公开了月会员和多档高级会员价格；但当前能稳定拿到的官方面主要是协议页，还缺一个同样清楚的官网产品首页，所以按 medium 入库。"
+        "note": "小乖健康的 App Store 产品页已经把拍照识热量、轻断食计划和 AI 陪伴写清楚，也公开了月会员和多档高级会员价格；但 App Store 给出的 gugu.zomoplan.com 隐私政策和用户协议正文实际对应的是另一款产品 减脂食谱，而不是 小乖健康。当前又缺一个同样清楚的官方产品首页，所以继续按 medium 处理。"
       },
       "benchmarks": [
         "体重小本",
@@ -634,6 +634,12 @@
         "https://gugu.zomoplan.com/agreement/iOS"
       ],
       "dailyNotes": [
+        {
+          "date": "2026-04-05",
+          "kind": "Update",
+          "summary": "这是一个面向减脂和轻断食用户的 AI 饮食记录工具，能通过拍照识别热量、生成计划并做饮食陪伴，主要靠会员订阅变现。",
+          "update": "复查小乖健康后，确认 App Store 给出的两条官方协议正文实际对应 减脂食谱，而不是 小乖健康，因此维持 medium，并把边界说明写得更具体。"
+        },
         {
           "date": "2026-04-04",
           "kind": "New",
