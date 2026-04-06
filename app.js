@@ -283,6 +283,7 @@ const getInternalBenchmarkProjects = (project, projects) => {
 const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   state.query = "";
   state.evidence = "all";
+  state.mediumGap = "all";
   state.scenario = scenario;
   state.form = form;
   state.compareIds = [];
@@ -292,8 +293,20 @@ const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
 const applyFocusedStrongFilter = ({ scenario = "all", form = "all" }) => {
   state.query = "";
   state.evidence = "strong";
+  state.mediumGap = "all";
   state.scenario = scenario;
   state.form = form;
+  state.compareIds = [];
+  renderApp(window.__projectsCache__);
+};
+
+const applyFocusedMediumGapFilter = (mediumGap) => {
+  state.query = "";
+  state.evidence = "medium";
+  state.mediumGap = mediumGap;
+  state.scenario = "all";
+  state.form = "all";
+  state.refreshed = false;
   state.compareIds = [];
   renderApp(window.__projectsCache__);
 };
@@ -301,6 +314,7 @@ const applyFocusedStrongFilter = ({ scenario = "all", form = "all" }) => {
 const applyBenchmarkCompareFilter = (project, benchmarkProjects) => {
   state.query = "";
   state.evidence = "all";
+  state.mediumGap = "all";
   state.scenario = "all";
   state.form = "all";
   state.refreshed = false;
@@ -642,16 +656,34 @@ const renderDetailView = (project, projects) => {
   }
 
   if (project.evidenceQuality.level === "medium") {
+    const gapLabel = getEvidenceGapLabel(project) ?? "待复查";
+    const sameGapProjects = pendingProjects.filter((candidate) => (getEvidenceGapLabel(candidate) ?? "待复查") === gapLabel);
+    const sameGapIndex = sameGapProjects.findIndex((candidate) => candidate.id === project.id);
     const pendingProgress = document.createElement("p");
     pendingProgress.className = "detail-note-text";
     pendingProgress.textContent = `待补证复查进度：${pendingIndex + 1} / ${pendingProjects.length}`;
     shortcutsSection.appendChild(pendingProgress);
 
+    if (sameGapProjects.length > 0) {
+      const sameGapProgress = document.createElement("p");
+      sameGapProgress.className = "detail-note-text";
+      sameGapProgress.textContent = `同类缺口队列：${gapLabel} · ${sameGapIndex + 1} / ${sameGapProjects.length}`;
+      shortcutsSection.appendChild(sameGapProgress);
+    }
+
     shortcuts.push({
       label: "只看待补证清单",
       onClick: () => {
         state.evidence = "medium";
+        state.mediumGap = "all";
         renderApp(window.__projectsCache__);
+      },
+    });
+
+    shortcuts.push({
+      label: `只看同类缺口：${gapLabel}（${sameGapProjects.length}）`,
+      onClick: () => {
+        applyFocusedMediumGapFilter(gapLabel);
       },
     });
 
@@ -662,6 +694,7 @@ const renderDetailView = (project, projects) => {
         label: `上一个待补证样本：${previousPending.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
+          state.mediumGap = "all";
           state.selectedProjectId = previousPending.id;
           renderApp(window.__projectsCache__);
         },
@@ -670,7 +703,31 @@ const renderDetailView = (project, projects) => {
         label: `下一个待补证样本：${nextPending.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
+          state.mediumGap = "all";
           state.selectedProjectId = nextPending.id;
+          renderApp(window.__projectsCache__);
+        },
+      });
+    }
+
+    if (sameGapProjects.length > 1 && sameGapIndex !== -1) {
+      const previousGapProject = sameGapProjects[(sameGapIndex - 1 + sameGapProjects.length) % sameGapProjects.length];
+      const nextGapProject = sameGapProjects[(sameGapIndex + 1) % sameGapProjects.length];
+      shortcuts.push({
+        label: `上一个同类缺口：${previousGapProject.canonicalName}`,
+        onClick: () => {
+          state.evidence = "medium";
+          state.mediumGap = gapLabel;
+          state.selectedProjectId = previousGapProject.id;
+          renderApp(window.__projectsCache__);
+        },
+      });
+      shortcuts.push({
+        label: `下一个同类缺口：${nextGapProject.canonicalName}`,
+        onClick: () => {
+          state.evidence = "medium";
+          state.mediumGap = gapLabel;
+          state.selectedProjectId = nextGapProject.id;
           renderApp(window.__projectsCache__);
         },
       });
