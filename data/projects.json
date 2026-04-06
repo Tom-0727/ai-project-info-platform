@@ -1,6 +1,50 @@
 {
   "projects": [
     {
+      "id": "proj.shanjian-ai-video-creation",
+      "canonicalName": "闪剪AI",
+      "aliases": [
+        "闪剪",
+        "闪剪 AI - 一句话做视频"
+      ],
+      "slug": "shanjian-ai-video-creation",
+      "discoveredSeq": 145,
+      "status": "active",
+      "firstSeen": "2026-04-06",
+      "lastUpdated": "2026-04-06",
+      "productForm": "AI数字人口播与短视频创作平台",
+      "targetCustomers": "短视频创作者、直播带货团队、本地商家、知识博主和需要批量制作口播视频的小团队",
+      "painPoint": "很多团队会在脚本、人像、配音、剪辑和多场景分发之间反复切工具，口播视频生产链路长、成本高且不稳定。",
+      "monetization": "通过连续订阅周会员、月会员、年会员、直播快剪月会员、图文快剪月会员、照片数字人周会员，以及算力/金币包变现，公开价格包括39元周会员、258元月会员、398元年会员、198元直播快剪月会员、298元图文快剪月会员、49元照片数字人周会员、19.9元400算力和99元2100算力。",
+      "barriers": "需要把数字人生成、AI文案、智能成片、场景模板、口播工作台和多种视频生产模式整合进一套稳定产品，还要兼顾企业合作和API能力。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "seller根页直接说明闪剪在做AI视频生成、数字人定制和短视频智能创作",
+          "App Store公开多档会员与算力价格",
+          "官网导航已出现价格、API、下载APP和工作台入口"
+        ],
+        "note": "shanjian.tv根页与App Store标题/价格能稳定对上同一套AI口播视频产品，但App Store页面内部抽出的productDescription写成了万兴播爆，外露官方协议候选也多数指向别的产品，因此当前按medium处理，不直接升strong。"
+      },
+      "benchmarks": [
+        "开拍",
+        "说得AI"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1579618651",
+        "https://shanjian.tv/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-06",
+          "kind": "New",
+          "summary": "这是一个面向短视频创作者和带货团队的AI数字人口播与短视频创作平台，主要靠会员订阅和算力包变现。",
+          "update": "新增闪剪AI，作为AI数字人口播与短视频创作样本收录；产品和价格面清楚，但App Store深层描述与外露协议候选存在错配，所以先按medium入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.moki-ai-calendar",
       "canonicalName": "Moki AI日历",
       "aliases": [
