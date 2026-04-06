@@ -424,6 +424,18 @@ const getMediumGapStats = (projects) =>
       return accumulator;
     }, {});
 
+const getMediumGapFilterCards = (projects) =>
+  Object.entries(getMediumGapStats(projects))
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 2)
+    .map(([label, count]) => ({
+      label: "待补证分组",
+      mediumGap: label,
+      evidence: "medium",
+      value: `${label} · ${count} 个`,
+      note: "点击只看这一类待补证样本。",
+    }));
+
 const renderRelatedProjects = (container, related, emptyText) => {
   if (related.length === 0) {
     const empty = document.createElement("p");
@@ -780,6 +792,7 @@ const focusDetailPanel = () => {
 const state = {
   query: "",
   evidence: "all",
+  mediumGap: "all",
   form: "all",
   sort: "discovered",
   scenario: "all",
@@ -797,6 +810,10 @@ const writeStateToUrl = () => {
 
   if (state.evidence !== "all") {
     params.set("evidence", state.evidence);
+  }
+
+  if (state.mediumGap !== "all") {
+    params.set("gap", state.mediumGap);
   }
 
   if (state.form !== "all") {
@@ -834,9 +851,11 @@ const hydrateStateFromUrl = (projects) => {
   const evidenceOptions = new Set(["all", "strong", "medium", "weak"]);
   const sortOptions = new Set(["discovered", "refreshed", "evidence", "name"]);
   const projectIds = new Set(projects.map((project) => project.id));
+  const mediumGapOptions = new Set(["all", ...projects.map((project) => getEvidenceGapLabel(project)).filter(Boolean)]);
 
   state.query = params.get("q") ?? "";
   state.evidence = evidenceOptions.has(params.get("evidence")) ? params.get("evidence") : "all";
+  state.mediumGap = mediumGapOptions.has(params.get("gap")) ? params.get("gap") : "all";
   state.form = formOptions.has(params.get("form")) ? params.get("form") : "all";
   state.scenario = scenarioOptions.has(params.get("scenario")) ? params.get("scenario") : "all";
   state.sort = sortOptions.has(params.get("sort")) ? params.get("sort") : "discovered";
@@ -914,6 +933,7 @@ const syncFilterControls = () => {
   const hasActiveFilter =
     state.query !== "" ||
     state.evidence !== "all" ||
+    state.mediumGap !== "all" ||
     state.form !== "all" ||
     state.scenario !== "all" ||
     state.refreshed ||
@@ -1044,10 +1064,11 @@ const renderStructureSummary = (projects) => {
           ? `${mediumGapStats.length > 0 ? `当前主要缺口：${mediumGapStats.join(" / ")}。` : ""}${mediumSummaries.join(" / ")}。点击只看这些边界样本。`
           : "当前结果里没有待补证样本。",
     },
+    ...getMediumGapFilterCards(projects),
   ];
 
   cards.forEach((card) => {
-    const isInteractive = Boolean(card.scenario || card.refreshed || card.evidence || card.filters);
+    const isInteractive = Boolean(card.scenario || card.refreshed || card.evidence || card.filters || card.mediumGap);
     const element = document.createElement(isInteractive ? "button" : "article");
     element.className = "summary-card";
     if (isInteractive) {
@@ -1058,6 +1079,8 @@ const renderStructureSummary = (projects) => {
           (card.sort ? state.sort === card.sort : true)
         : card.refreshed
           ? state.refreshed && (card.sort ? state.sort === card.sort : true)
+          : card.mediumGap
+            ? state.evidence === (card.evidence ?? "medium") && state.mediumGap === card.mediumGap
           : card.evidence
             ? state.evidence === card.evidence
             : state.scenario === card.scenario;
@@ -1079,15 +1102,22 @@ const renderStructureSummary = (projects) => {
             sortFilter.value = state.sort;
           }
           evidenceFilter.value = state.evidence;
+          state.mediumGap = "all";
         } else if (card.refreshed) {
           state.refreshed = !state.refreshed;
           if (card.sort) {
             state.sort = state.refreshed ? card.sort : "discovered";
             sortFilter.value = state.sort;
           }
+        } else if (card.mediumGap) {
+          const nextGapActive = !(state.evidence === (card.evidence ?? "medium") && state.mediumGap === card.mediumGap);
+          state.evidence = nextGapActive ? (card.evidence ?? "medium") : "all";
+          state.mediumGap = nextGapActive ? card.mediumGap : "all";
+          evidenceFilter.value = state.evidence;
         } else if (card.evidence) {
           state.evidence = state.evidence === card.evidence ? "all" : card.evidence;
           evidenceFilter.value = state.evidence;
+          state.mediumGap = "all";
         } else {
           state.scenario = state.scenario === card.scenario ? "all" : card.scenario;
           scenarioFilter.value = state.scenario;
@@ -1146,10 +1176,12 @@ const projectMatchesBase = (project) => {
 
   const matchesQuery = !state.query || haystack.includes(normalizeText(state.query));
   const matchesEvidence = state.evidence === "all" || project.evidenceQuality.level === state.evidence;
+  const matchesMediumGap =
+    state.mediumGap === "all" || (project.evidenceQuality.level === "medium" && getEvidenceGapLabel(project) === state.mediumGap);
   const matchesForm = state.form === "all" || project.productForm === state.form;
   const matchesRefresh = !state.refreshed || hasEvidenceRefresh(project);
   const matchesCompare = state.compareIds.length === 0 || state.compareIds.includes(project.id);
-  return matchesQuery && matchesEvidence && matchesForm && matchesRefresh && matchesCompare;
+  return matchesQuery && matchesEvidence && matchesMediumGap && matchesForm && matchesRefresh && matchesCompare;
 };
 
 const projectMatches = (project) =>
@@ -1166,6 +1198,7 @@ const renderResultsHint = (visibleProjects, allProjects) => {
   const filterNotes = [
     state.query ? `关键词：${state.query}` : null,
     state.evidence !== "all" ? `证据：${evidenceLevelLabel[state.evidence]}` : null,
+    state.mediumGap !== "all" ? `待补证分组：${state.mediumGap}` : null,
     state.form !== "all" ? `形态：${state.form}` : null,
     state.scenario !== "all" ? `场景：${state.scenario}` : null,
     state.refreshed ? "状态：只看最近补证" : null,
@@ -1256,16 +1289,24 @@ const bootstrap = async () => {
 
   evidenceFilter.addEventListener("change", (event) => {
     state.evidence = event.target.value;
+    if (state.evidence !== "medium") {
+      state.mediumGap = "all";
+    }
     renderApp(projects);
   });
 
   strongFilterButton?.addEventListener("click", () => {
     state.evidence = state.evidence === "strong" ? "all" : "strong";
+    state.mediumGap = "all";
     renderApp(projects);
   });
 
   mediumFilterButton?.addEventListener("click", () => {
-    state.evidence = state.evidence === "medium" ? "all" : "medium";
+    const nextEvidence = state.evidence === "medium" && state.mediumGap === "all" ? "all" : "medium";
+    state.evidence = nextEvidence;
+    if (nextEvidence === "all") {
+      state.mediumGap = "all";
+    }
     renderApp(projects);
   });
 
@@ -1297,6 +1338,7 @@ const bootstrap = async () => {
   resetFiltersButton.addEventListener("click", () => {
     state.query = "";
     state.evidence = "all";
+    state.mediumGap = "all";
     state.form = "all";
     state.scenario = "all";
     state.sort = "discovered";
