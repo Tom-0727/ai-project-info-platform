@@ -110,6 +110,14 @@ const getEvidenceGapLabel = (project) => {
 
   const note = project.evidenceQuality.note ?? "";
 
+  if (/(另一款产品|别的产品|错配|写成了|指向别的产品|正文实际对应)/.test(note)) {
+    return "官方链路错配";
+  }
+
+  if (/(证书|SSL|hostname|Cloudflare|404|不可访问|无法稳定访问|不稳定官方面|根页.*404|不可稳定核验)/i.test(note)) {
+    return "官方面不可稳定核验";
+  }
+
   if (/(价格|定价|价格数字).*(不完整|不透明|较弱|不足|不稳定)/.test(note)) {
     return "缺稳定价格面";
   }
