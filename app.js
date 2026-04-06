@@ -415,6 +415,15 @@ const getPendingEvidenceProjects = (projects) =>
     .filter((candidate) => candidate.evidenceQuality.level === "medium")
     .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
 
+const getMediumGapStats = (projects) =>
+  projects
+    .filter((candidate) => candidate.evidenceQuality.level === "medium")
+    .reduce((accumulator, candidate) => {
+      const label = getEvidenceGapLabel(candidate) ?? "待复查";
+      accumulator[label] = (accumulator[label] ?? 0) + 1;
+      return accumulator;
+    }, {});
+
 const renderRelatedProjects = (container, related, emptyText) => {
   if (related.length === 0) {
     const empty = document.createElement("p");
@@ -968,6 +977,10 @@ const renderStructureSummary = (projects) => {
   const refreshedStrongCount = projects.filter(
     (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
   ).length;
+  const mediumGapStats = Object.entries(getMediumGapStats(projects))
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 2)
+    .map(([label, count]) => `${label} ${count}`);
   const mediumSummaries = projects
     .filter((project) => project.evidenceQuality.level === "medium")
     .slice(0, 3)
@@ -1028,7 +1041,7 @@ const renderStructureSummary = (projects) => {
       value: `${mediumCount} 个`,
       note:
         mediumCount > 0
-          ? `${mediumSummaries.join(" / ")}。点击只看这些边界样本。`
+          ? `${mediumGapStats.length > 0 ? `当前主要缺口：${mediumGapStats.join(" / ")}。` : ""}${mediumSummaries.join(" / ")}。点击只看这些边界样本。`
           : "当前结果里没有待补证样本。",
     },
   ];
