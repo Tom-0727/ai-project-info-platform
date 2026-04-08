@@ -1,4 +1,4 @@
-const { createApp, computed, ref, onMounted, watch, nextTick } = Vue;
+const { createApp, computed, ref, onMounted, onUnmounted, watch, nextTick } = Vue;
 
 const dataUrl = "/api/projects";
 const INITIAL_LIMIT = 36;
@@ -133,6 +133,8 @@ createApp({
     const selectedProjectId = ref("");
     const feedLimit = ref(INITIAL_LIMIT);
     const listRef = ref(null);
+    const activeSection = ref("#browse-controls");
+    const showScrollTop = ref(false);
 
     const filters = ref({
       view: "library",
@@ -377,6 +379,21 @@ createApp({
       await navigator.clipboard.writeText(window.location.href);
     };
 
+    const syncScrollUi = () => {
+      const sections = ["#browse-controls", "#project-list", "#project-detail"];
+      let nextActive = sections[0];
+      sections.forEach((selector) => {
+        const node = document.querySelector(selector);
+        if (!node) return;
+        const rect = node.getBoundingClientRect();
+        if (rect.top <= 140) {
+          nextActive = selector;
+        }
+      });
+      activeSection.value = nextActive;
+      showScrollTop.value = window.scrollY > 640;
+    };
+
     const groupedEntries = computed(() => {
       const grouped = [];
       let current = null;
@@ -406,6 +423,8 @@ createApp({
     });
 
     onMounted(async () => {
+      window.addEventListener("scroll", syncScrollUi, { passive: true });
+      syncScrollUi();
       syncFromUrl();
       try {
         const response = await fetch(dataUrl);
@@ -421,6 +440,10 @@ createApp({
       } finally {
         loading.value = false;
       }
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", syncScrollUi);
     });
 
     return {
@@ -453,8 +476,13 @@ createApp({
       moveSelection,
       resetFilters,
       copyProjectLink,
+      activeSection,
+      showScrollTop,
       loadMore: () => {
         feedLimit.value += INITIAL_LIMIT;
+      },
+      scrollToTop: () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       },
     };
   },
@@ -475,9 +503,9 @@ createApp({
       </header>
 
       <nav class="page-nav" aria-label="页面导航">
-        <a class="page-nav-link" href="#browse-controls">浏览总览</a>
-        <a class="page-nav-link" href="#project-list">项目列表</a>
-        <a class="page-nav-link" href="#project-detail">项目详情</a>
+        <a class="page-nav-link" :data-active="activeSection === '#browse-controls' || null" href="#browse-controls">浏览总览</a>
+        <a class="page-nav-link" :data-active="activeSection === '#project-list' || null" href="#project-list">项目列表</a>
+        <a class="page-nav-link" :data-active="activeSection === '#project-detail' || null" href="#project-detail">项目详情</a>
       </nav>
 
       <div v-if="!filters.usageDismissed" class="usage-strip" aria-label="使用方式">
@@ -776,6 +804,8 @@ createApp({
           </div>
         </aside>
       </main>
+
+      <button v-if="showScrollTop" class="scroll-top-button" type="button" @click="scrollToTop">回到顶部</button>
     </div>
   `,
 }).mount("#app");
