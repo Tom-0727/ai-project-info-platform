@@ -5,7 +5,7 @@ FastAPI-served web frontend for daily AI project scouting.
 ## Goal
 
 Track China-market AI software projects with explicit monetization paths, publish daily additions, and avoid duplicates before publishing.
-The UI uses a summary-first layout: Daily Feed cards show concise intros, and the right-hand detail panel expands the selected project.
+The UI uses a summary-first layout: the left panel defaults to a project library view for large-sample browsing, while the update feed remains available as a secondary mode.
 Projects are displayed by discovery order descending by default, so the newest scoped item stays at the top.
 The page is now served by FastAPI and loads project data from `/api/projects` instead of reading a local JSON file directly in static mode.
 

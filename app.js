@@ -4,6 +4,9 @@ const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
 const resultsHint = document.querySelector("#results-hint");
 const summaryStrip = document.querySelector("#summary-strip");
+const feedPanelLabel = document.querySelector("#feed-panel-label");
+const feedPanelTitle = document.querySelector("#feed-panel-title");
+const feedPanelHint = document.querySelector("#feed-panel-hint");
 const detailEmpty = document.querySelector("#detail-empty");
 const detailView = document.querySelector("#detail-view");
 const detailPanel = document.querySelector(".panel-side");
@@ -20,6 +23,8 @@ const gapClearButton = document.querySelector("#gap-clear");
 const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 const loadMoreFeedButton = document.querySelector("#load-more-feed");
+const viewLibraryButton = document.querySelector("#view-library");
+const viewUpdatesButton = document.querySelector("#view-updates");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -256,6 +261,34 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
 
   if (dailyFeed.childElementCount === 0) {
     dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的动态。</p>";
+  }
+};
+
+const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
+  dailyFeed.innerHTML = "";
+  syncFeedLimit(projects.length);
+
+  projects.slice(0, state.feedLimit).forEach((project) => {
+    const itemNode = feedItemTemplate.content.firstElementChild.cloneNode(true);
+    itemNode.dataset.projectId = project.id;
+    itemNode.setAttribute("aria-pressed", String(project.id === selectedProjectId));
+    itemNode.setAttribute("aria-label", `${project.canonicalName}，${project.feedIntro ?? buildFeedIntro(project)}`);
+    itemNode.querySelector(".feed-type").textContent = hasEvidenceRefresh(project) ? "最近补证" : "项目总表";
+    itemNode.querySelector(".feed-name").textContent = project.canonicalName;
+    itemNode.querySelector(".feed-tag").textContent = project.productForm;
+    itemNode.querySelector(".feed-summary").textContent = project.feedIntro ?? buildFeedIntro(project);
+    const meta = itemNode.querySelector(".feed-meta");
+    renderFeedMeta(meta, project);
+    const timing = document.createElement("span");
+    timing.className = "feed-pill";
+    timing.textContent = buildEvidenceTimingLabel(project);
+    meta.appendChild(timing);
+    itemNode.addEventListener("click", () => onSelectProject(project.id));
+    dailyFeed.appendChild(itemNode);
+  });
+
+  if (dailyFeed.childElementCount === 0) {
+    dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的项目。</p>";
   }
 };
 
@@ -864,6 +897,7 @@ const focusDetailPanel = () => {
 };
 
 const state = {
+  view: "library",
   query: "",
   evidence: "all",
   mediumGap: "all",
@@ -878,6 +912,10 @@ const state = {
 
 const writeStateToUrl = () => {
   const params = new URLSearchParams();
+
+  if (state.view !== "library") {
+    params.set("view", state.view);
+  }
 
   if (state.query) {
     params.set("q", state.query);
@@ -925,6 +963,7 @@ const writeStateToUrl = () => {
 
 const hydrateStateFromUrl = (projects) => {
   const params = new URLSearchParams(window.location.search);
+  const viewOptions = new Set(["library", "updates"]);
   const scenarioOptions = new Set(["all", ...projects.map((project) => summarizeScenario(project))]);
   const formOptions = new Set(["all", ...projects.map((project) => project.productForm)]);
   const evidenceOptions = new Set(["all", "strong", "medium", "weak"]);
@@ -932,6 +971,7 @@ const hydrateStateFromUrl = (projects) => {
   const projectIds = new Set(projects.map((project) => project.id));
   const mediumGapOptions = new Set(["all", ...projects.map((project) => getEvidenceGapLabel(project)).filter(Boolean)]);
 
+  state.view = viewOptions.has(params.get("view")) ? params.get("view") : "library";
   state.query = params.get("q") ?? "";
   state.evidence = evidenceOptions.has(params.get("evidence")) ? params.get("evidence") : "all";
   state.mediumGap = mediumGapOptions.has(params.get("gap")) ? params.get("gap") : "all";
@@ -961,8 +1001,26 @@ const syncFeedLimit = (totalEntries) => {
   const hasMore = totalEntries > state.feedLimit;
   loadMoreFeedButton.hidden = !hasMore;
   if (hasMore) {
-    loadMoreFeedButton.textContent = `继续加载更多（剩余 ${totalEntries - state.feedLimit}）`;
+    const unit = state.view === "library" ? "个项目" : "条动态";
+    loadMoreFeedButton.textContent = `继续加载更多（剩余 ${totalEntries - state.feedLimit}${unit}）`;
   }
+};
+
+const syncBrowseMode = () => {
+  const libraryMode = state.view === "library";
+  if (feedPanelLabel) {
+    feedPanelLabel.textContent = libraryMode ? "Project Library" : "Daily Feed";
+  }
+  if (feedPanelTitle) {
+    feedPanelTitle.textContent = libraryMode ? "项目总表" : "每日新增与更新";
+  }
+  if (feedPanelHint) {
+    feedPanelHint.textContent = libraryMode
+      ? "默认按项目总表浏览，每个项目只显示一次，更适合大样本库。"
+      : "保留按日期查看的动态流，更适合复查最近新增与补证。";
+  }
+  viewLibraryButton?.toggleAttribute("data-active", libraryMode);
+  viewUpdatesButton?.toggleAttribute("data-active", !libraryMode);
 };
 
 const fallbackCopyText = (value) => {
@@ -1295,6 +1353,7 @@ const projectMatches = (project) =>
 const renderResultsHint = (visibleProjects, allProjects) => {
   const visibleEntries = visibleProjects.reduce((count, project) => count + project.dailyNotes.length, 0);
   const shownEntries = Math.min(visibleEntries, state.feedLimit);
+  const shownProjects = Math.min(visibleProjects.length, state.feedLimit);
   const compareProjectNames =
     state.compareIds.length > 0
       ? allProjects
@@ -1316,7 +1375,10 @@ const renderResultsHint = (visibleProjects, allProjects) => {
 
   const suffix =
     filterNotes.length > 0 ? `当前筛选为 ${filterNotes.join(" / ")}。` : "当前为全量视图。";
-  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries}/${visibleEntries} 条动态。${suffix} 点击左侧卡片在右侧查看完整详情。`;
+  resultsHint.textContent =
+    state.view === "library"
+      ? `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownProjects}/${visibleProjects.length} 个项目。${suffix} 点击左侧卡片在右侧查看完整详情。`
+      : `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries}/${visibleEntries} 条动态。${suffix} 点击左侧卡片在右侧查看完整详情。`;
 };
 
 const sortProjects = (projects) => {
@@ -1369,11 +1431,17 @@ const renderApp = (projects) => {
   state.selectedProjectId = selectedProject?.id ?? null;
   renderMetrics(visibleProjects);
   renderStructureSummary(baseProjects);
-  renderDailyFeed(visibleProjects, state.selectedProjectId, (projectId) => {
+  syncBrowseMode();
+  const onSelectProject = (projectId) => {
     state.selectedProjectId = projectId;
     renderApp(projects);
     focusDetailPanel();
-  });
+  };
+  if (state.view === "library") {
+    renderProjectLibrary(visibleProjects, state.selectedProjectId, onSelectProject);
+  } else {
+    renderDailyFeed(visibleProjects, state.selectedProjectId, onSelectProject);
+  }
   renderDetailView(selectedProject, projects);
   renderResultsHint(visibleProjects, projects);
   syncFilterControls();
@@ -1473,6 +1541,18 @@ const bootstrap = async () => {
 
   copyViewLinkButton?.addEventListener("click", () => {
     copyCurrentViewLink();
+  });
+
+  viewLibraryButton?.addEventListener("click", () => {
+    state.view = "library";
+    resetFeedLimit();
+    renderApp(projects);
+  });
+
+  viewUpdatesButton?.addEventListener("click", () => {
+    state.view = "updates";
+    resetFeedLimit();
+    renderApp(projects);
   });
 
   loadMoreFeedButton?.addEventListener("click", () => {
