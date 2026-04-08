@@ -4,6 +4,7 @@ const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
 const resultsHint = document.querySelector("#results-hint");
 const summaryStrip = document.querySelector("#summary-strip");
+const activeFilters = document.querySelector("#active-filters");
 const feedPanelLabel = document.querySelector("#feed-panel-label");
 const feedPanelTitle = document.querySelector("#feed-panel-title");
 const feedPanelHint = document.querySelector("#feed-panel-hint");
@@ -1642,6 +1643,108 @@ const renderResultsHint = (visibleProjects, allProjects) => {
       : `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries}/${visibleEntries} 条动态。${suffix} 点击左侧卡片在右侧查看完整详情。`;
 };
 
+const renderActiveFilters = (allProjects) => {
+  if (!activeFilters) {
+    return;
+  }
+
+  activeFilters.innerHTML = "";
+  const compareProjectNames =
+    state.compareIds.length > 0
+      ? allProjects
+          .filter((project) => state.compareIds.includes(project.id))
+          .map((project) => project.canonicalName)
+      : [];
+
+  const filters = [
+    state.query
+      ? {
+          label: `关键词：${state.query}`,
+          onClear: () => {
+            state.query = "";
+            searchInput.value = "";
+          },
+        }
+      : null,
+    state.evidence !== "all"
+      ? {
+          label: `证据：${evidenceLevelLabel[state.evidence]}`,
+          onClear: () => {
+            state.evidence = "all";
+            state.mediumGap = "all";
+            evidenceFilter.value = "all";
+          },
+        }
+      : null,
+    state.mediumGap !== "all"
+      ? {
+          label: `待补证分组：${state.mediumGap}`,
+          onClear: () => {
+            state.mediumGap = "all";
+          },
+        }
+      : null,
+    state.form !== "all"
+      ? {
+          label: `形态：${state.form}`,
+          onClear: () => {
+            state.form = "all";
+            formFilter.value = "all";
+          },
+        }
+      : null,
+    state.scenario !== "all"
+      ? {
+          label: `场景：${state.scenario}`,
+          onClear: () => {
+            state.scenario = "all";
+            scenarioFilter.value = "all";
+          },
+        }
+      : null,
+    state.refreshed
+      ? {
+          label: "状态：只看最近补证",
+          onClear: () => {
+            state.refreshed = false;
+          },
+        }
+      : null,
+    state.compareIds.length > 0
+      ? {
+          label: `对标：${compareProjectNames.slice(0, 3).join(" / ")}${compareProjectNames.length > 3 ? " 等" : ""}`,
+          onClear: () => {
+            state.compareIds = [];
+          },
+        }
+      : null,
+    state.sort !== "discovered"
+      ? {
+          label: `排序：${sortFilter.selectedOptions[0]?.textContent ?? state.sort}`,
+          onClear: () => {
+            state.sort = "discovered";
+            sortFilter.value = "discovered";
+          },
+        }
+      : null,
+  ].filter(Boolean);
+
+  activeFilters.hidden = filters.length === 0;
+
+  filters.forEach((filter) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "active-filter-chip";
+    button.innerHTML = `<span>${filter.label}</span><strong>清除</strong>`;
+    button.addEventListener("click", () => {
+      filter.onClear();
+      resetFeedLimit();
+      renderApp(window.__projectsCache__);
+    });
+    activeFilters.appendChild(button);
+  });
+};
+
 const sortProjects = (projects) => {
   const copy = [...projects];
 
@@ -1705,6 +1808,7 @@ const renderApp = (projects) => {
   }
   renderDetailView(selectedProject, projects, visibleProjects);
   renderResultsHint(visibleProjects, projects);
+  renderActiveFilters(projects);
   syncFilterControls();
   writeStateToUrl();
 };
