@@ -605,6 +605,30 @@ createApp({
       return sameGapQueue.value.findIndex((project) => project.id === selectedProject.value.id);
     });
 
+    const selectedContextChips = computed(() => {
+      if (!selectedProject.value) {
+        return [];
+      }
+
+      const chips = [];
+      if (filters.value.compareIds.length) {
+        const names = projects.value
+          .filter((project) => filters.value.compareIds.includes(project.id))
+          .map((project) => project.canonicalName);
+        chips.push(`当前对标 · ${names.slice(0, 3).join(" / ")}${names.length > 3 ? " 等" : ""}`);
+      }
+
+      if (selectedGapLabel.value) {
+        chips.push(`待补证 · ${selectedGapLabel.value}`);
+      }
+
+      if (sameGapQueue.value.length && sameGapIndex.value >= 0) {
+        chips.push(`同类缺口 · ${sameGapIndex.value + 1}/${sameGapQueue.value.length}`);
+      }
+
+      return chips;
+    });
+
     const sameFormRelated = computed(() => {
       if (!selectedProject.value) {
         return [];
@@ -916,6 +940,7 @@ createApp({
       emptyState,
       activeFilterChips,
       selectedStatusChips,
+      selectedContextChips,
       selectedGapLabel,
       evidencePreview,
       latestNotePreview,
@@ -1240,6 +1265,7 @@ createApp({
                 </div>
                 <div class="detail-header-status">
                   <span v-for="chip in selectedStatusChips" :key="chip" class="feed-pill">{{ chip }}</span>
+                  <span v-for="chip in selectedContextChips" :key="'context-' + chip" class="feed-pill">{{ chip }}</span>
                 </div>
               </div>
 
