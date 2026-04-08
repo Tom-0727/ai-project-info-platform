@@ -45,10 +45,15 @@
               </div>
               <p id="feed-panel-hint" class="panel-hint">默认按项目总表浏览，每个项目只显示一次，更适合大样本库。</p>
             </div>
+            <div class="control-group">
+              <p class="control-group-label">浏览模式</p>
             <div class="view-switch" role="tablist" aria-label="浏览模式">
               <button id="view-library" class="view-switch-button" type="button">项目总表</button>
               <button id="view-updates" class="view-switch-button" type="button">动态流</button>
             </div>
+            </div>
+            <div class="control-group">
+              <p class="control-group-label">筛选条件</p>
             <div class="filters">
               <label class="filter-field filter-field-search">
                 <span>搜索项目</span>
@@ -104,9 +109,13 @@
               </details>
               <button id="reset-filters" class="filters-reset" type="button">清空筛选</button>
             </div>
+            </div>
+            <div class="control-group">
+              <p class="control-group-label">结构概览</p>
             <div id="summary-strip" class="summary-strip" aria-label="样本结构摘要"></div>
             <p class="results-hint" id="results-hint"></p>
             <div id="active-filters" class="active-filters" hidden></div>
+            </div>
           </div>
           <div id="project-list" class="daily-feed"></div>
           <div class="feed-actions">
