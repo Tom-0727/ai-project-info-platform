@@ -522,6 +522,19 @@ button.summary-card[aria-pressed="true"] .summary-label {
   overflow: hidden;
 }
 
+.feed-card-compact {
+  padding: 14px;
+}
+
+.feed-card-compact .feed-name {
+  margin-top: 2px;
+}
+
+.feed-card-compact .feed-summary {
+  margin-top: 10px;
+  line-height: 1.58;
+}
+
 .feed-card:focus-visible {
   outline: 2px solid rgba(188, 75, 39, 0.38);
   outline-offset: 2px;
@@ -628,6 +641,7 @@ button.summary-card[aria-pressed="true"] .summary-label {
 
 .feed-meta-compact {
   gap: 6px;
+  margin-top: 10px;
 }
 
 .feed-pill {
