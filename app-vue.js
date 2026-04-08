@@ -309,6 +309,27 @@ createApp({
       return chips;
     });
 
+    const sameFormRelated = computed(() => {
+      if (!selectedProject.value) {
+        return [];
+      }
+
+      return filteredProjects.value
+        .filter((project) => project.id !== selectedProject.value.id && project.productForm === selectedProject.value.productForm)
+        .slice(0, 3);
+    });
+
+    const sameScenarioRelated = computed(() => {
+      if (!selectedProject.value) {
+        return [];
+      }
+
+      const currentScenario = summarizeScenario(selectedProject.value);
+      return filteredProjects.value
+        .filter((project) => project.id !== selectedProject.value.id && summarizeScenario(project) === currentScenario)
+        .slice(0, 3);
+    });
+
     const ensureSelection = () => {
       if (!filteredProjects.value.length) {
         selectedProjectId.value = "";
@@ -476,6 +497,8 @@ createApp({
       resultHint,
       activeFilterChips,
       selectedStatusChips,
+      sameFormRelated,
+      sameScenarioRelated,
       listRef,
       evidenceLevelLabel,
       shortList,
@@ -815,6 +838,40 @@ createApp({
                   </div>
                   <div v-if="selectedProject.benchmarks && selectedProject.benchmarks.length" class="benchmark-links">
                     <span v-for="benchmark in selectedProject.benchmarks" :key="benchmark" class="benchmark-chip">{{ benchmark }}</span>
+                  </div>
+                </section>
+
+                <section v-if="sameFormRelated.length || sameScenarioRelated.length" class="detail-section">
+                  <h4 class="detail-section-title">快速对比</h4>
+
+                  <div v-if="sameFormRelated.length" class="related-projects">
+                    <p class="detail-subsection-label">同形态项目</p>
+                    <button
+                      v-for="project in sameFormRelated"
+                      :key="'form-' + project.id"
+                      class="related-card"
+                      type="button"
+                      @click="selectProject(project.id)"
+                    >
+                      <strong>{{ project.canonicalName }}</strong>
+                      <span>{{ project.productForm }}</span>
+                      <span>面向{{ shortList(project.targetCustomers, 1) }}</span>
+                    </button>
+                  </div>
+
+                  <div v-if="sameScenarioRelated.length" class="related-projects">
+                    <p class="detail-subsection-label">同场景项目</p>
+                    <button
+                      v-for="project in sameScenarioRelated"
+                      :key="'scenario-' + project.id"
+                      class="related-card"
+                      type="button"
+                      @click="selectProject(project.id)"
+                    >
+                      <strong>{{ project.canonicalName }}</strong>
+                      <span>{{ firstClause(project.painPoint) }}</span>
+                      <span>证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
+                    </button>
                   </div>
                 </section>
               </div>

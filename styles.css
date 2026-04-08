@@ -1250,6 +1250,14 @@ article.summary-card .summary-note {
   margin-top: 10px;
 }
 
+.detail-subsection-label {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .related-card {
   display: grid;
   gap: 6px;
