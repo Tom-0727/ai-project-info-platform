@@ -36,6 +36,7 @@ const dayTemplate = document.querySelector("#day-template");
 const feedItemTemplate = document.querySelector("#feed-item-template");
 const detailTemplate = document.querySelector("#detail-template");
 let copyFeedbackTimer = null;
+let detailCopyFeedbackTimer = null;
 let pendingFeedScrollTop = null;
 const INITIAL_FEED_LIMIT = 36;
 
@@ -797,6 +798,15 @@ const renderDetailView = (project, projects, visibleProjects) => {
     });
   }
 
+  const copyProjectButton = document.createElement("button");
+  copyProjectButton.type = "button";
+  copyProjectButton.className = "detail-nav-chip";
+  copyProjectButton.textContent = "复制项目链接";
+  copyProjectButton.addEventListener("click", () => {
+    copyProjectLink(copyProjectButton);
+  });
+  detailHeaderNav.appendChild(copyProjectButton);
+
   const latestNote = getLatestNote(project);
   const noteBlock = node.querySelector(".detail-note");
   noteBlock.innerHTML = "";
@@ -1317,6 +1327,18 @@ const flashCopyButton = (label) => {
   }, 1800);
 };
 
+const flashInlineButton = (button, label, fallbackLabel) => {
+  if (!button) {
+    return;
+  }
+
+  button.textContent = label;
+  window.clearTimeout(detailCopyFeedbackTimer);
+  detailCopyFeedbackTimer = window.setTimeout(() => {
+    button.textContent = fallbackLabel;
+  }, 1800);
+};
+
 const copyCurrentViewLink = async () => {
   const value = window.location.href;
 
@@ -1332,6 +1354,23 @@ const copyCurrentViewLink = async () => {
 
   const copied = fallbackCopyText(value);
   flashCopyButton(copied ? "已复制链接" : "复制失败");
+};
+
+const copyProjectLink = async (button) => {
+  const value = window.location.href;
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      flashInlineButton(button, "已复制项目链接", "复制项目链接");
+      return;
+    }
+  } catch (error) {
+    // Fall through to the legacy copy path when clipboard access is unavailable.
+  }
+
+  const copied = fallbackCopyText(value);
+  flashInlineButton(button, copied ? "已复制项目链接" : "复制失败", "复制项目链接");
 };
 
 const syncFilterControls = () => {
