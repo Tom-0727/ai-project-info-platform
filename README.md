@@ -14,8 +14,8 @@ The page is now served by FastAPI and loads project data from `/api/projects` in
 - `server.py`: FastAPI app that serves the UI, static assets, and `/api/projects`.
 - `index.html`: browser entry page.
 - `styles.css`: visual system and responsive layout.
-- `app.js`: renders daily feed and the selected project detail from `/api/projects`.
-  Includes client-side search, filters, click-through detail selection, newest-first ordering, and incremental feed loading.
+- `app-vue.js`: Vue-based client that renders the browse shell, filters, project list, and detail pane from `/api/projects`.
+- `app.js`: previous vanilla client implementation kept temporarily as fallback/reference during migration.
 - `data/projects.json`: source of truth for tracked projects.
   Includes `discoveredSeq`, which is the stable ordering key for newest-first display.
 - `requirements.txt`: web runtime dependencies for FastAPI deployment.
@@ -38,7 +38,7 @@ Useful endpoints:
 
 - `/api/health`
 - `/api/projects`
-- `/static/app.js`
+- `/static/app-vue.js`
 - `/static/styles.css`
 
 For a production-style local run that matches the deployed port:

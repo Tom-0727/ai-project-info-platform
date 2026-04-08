@@ -35,6 +35,6 @@ def index() -> FileResponse:
 
 @app.get("/static/{asset_name}")
 def static_asset(asset_name: str) -> FileResponse:
-    if asset_name not in {"app.js", "styles.css"}:
+    if asset_name not in {"app.js", "app-vue.js", "styles.css"}:
         raise HTTPException(status_code=404, detail="Asset not found")
     return FileResponse(BASE_DIR / asset_name)
