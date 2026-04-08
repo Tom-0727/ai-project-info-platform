@@ -930,6 +930,19 @@ button.summary-card[aria-pressed="true"] .summary-label {
   line-height: 1.55;
 }
 
+.project-detail-value,
+.project-detail-text {
+  margin: 0;
+}
+
+.project-detail-disclosure {
+  margin-top: 8px;
+}
+
+.project-detail-text-full {
+  margin-top: 10px;
+}
+
 @keyframes lift-in {
   to {
     transform: translateY(0);

@@ -614,6 +614,42 @@ const renderCompareSnapshot = (container, currentProject, related) => {
   container.appendChild(table);
 };
 
+const buildDetailValue = (value) => {
+  if (value && typeof value === "object" && "text" in value) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "project-detail-value";
+    const { shortText, fullText, truncated } = buildCompactNote(value.text, value.maxLength ?? 120);
+
+    const textNode = document.createElement("p");
+    textNode.className = "project-detail-text";
+    textNode.textContent = truncated ? shortText : fullText;
+    wrapper.appendChild(textNode);
+
+    if (truncated) {
+      const disclosure = document.createElement("details");
+      disclosure.className = "project-detail-disclosure";
+      const summary = document.createElement("summary");
+      summary.className = "detail-note-toggle";
+      summary.textContent = "展开全文";
+      const fullTextNode = document.createElement("p");
+      fullTextNode.className = "project-detail-text project-detail-text-full";
+      fullTextNode.textContent = fullText;
+      disclosure.append(summary, fullTextNode);
+      disclosure.addEventListener("toggle", () => {
+        summary.textContent = disclosure.open ? "收起全文" : "展开全文";
+      });
+      wrapper.appendChild(disclosure);
+    }
+
+    return wrapper;
+  }
+
+  const textNode = document.createElement("p");
+  textNode.className = "project-detail-text";
+  textNode.textContent = value;
+  return textNode;
+};
+
 const buildDetailList = (items) => {
   const list = document.createElement("dl");
   list.className = "project-detail-list";
@@ -622,7 +658,7 @@ const buildDetailList = (items) => {
     const dt = document.createElement("dt");
     dt.textContent = label;
     const dd = document.createElement("dd");
-    dd.textContent = value;
+    dd.appendChild(buildDetailValue(value));
     list.append(dt, dd);
   });
 
@@ -741,7 +777,7 @@ const renderDetailView = (project, projects) => {
       ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
       ...(getEvidenceGapLabel(project) ? [["待补证点", getEvidenceGapLabel(project)]] : []),
       ["证据信号", project.evidenceQuality.signals.join(" / ")],
-      ["判断说明", project.evidenceQuality.note],
+      ["判断说明", { text: project.evidenceQuality.note, maxLength: 140 }],
     ])
   );
 
