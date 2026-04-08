@@ -153,8 +153,10 @@ createApp({
     const activeSection = ref("#browse-controls");
     const showScrollTop = ref(false);
     const copyViewLabel = ref("复制当前视图");
+    const copyProjectLabel = ref("复制项目链接");
     const expandedFields = ref({ evidence: false, latestNote: false });
     let copyViewTimer = null;
+    let copyProjectTimer = null;
 
     const filters = ref({
       view: "library",
@@ -421,6 +423,11 @@ createApp({
       if (!selectedProjectId.value) return;
       syncUrl();
       await navigator.clipboard.writeText(window.location.href);
+      copyProjectLabel.value = "已复制项目链接";
+      window.clearTimeout(copyProjectTimer);
+      copyProjectTimer = window.setTimeout(() => {
+        copyProjectLabel.value = "复制项目链接";
+      }, 1800);
     };
 
     const copyCurrentView = async () => {
@@ -496,6 +503,8 @@ createApp({
 
     watch(selectedProjectId, () => {
       expandedFields.value = { evidence: false, latestNote: false };
+      copyProjectLabel.value = "复制项目链接";
+      window.clearTimeout(copyProjectTimer);
     });
 
     onMounted(async () => {
@@ -521,6 +530,7 @@ createApp({
     onUnmounted(() => {
       window.removeEventListener("scroll", syncScrollUi);
       window.clearTimeout(copyViewTimer);
+      window.clearTimeout(copyProjectTimer);
     });
 
     return {
@@ -559,6 +569,7 @@ createApp({
       moveSelection,
       resetFilters,
       copyProjectLink,
+      copyProjectLabel,
       copyViewLabel,
       copyCurrentView,
       focusCluster,
@@ -823,7 +834,7 @@ createApp({
                   <button class="detail-nav-chip" type="button" :disabled="selectedIndex === 0" @click="moveSelection(-1)">上一个结果</button>
                   <span class="detail-nav-chip detail-nav-chip-static">当前结果 {{ filteredProjects.length ? selectedIndex + 1 : 0 }} / {{ filteredProjects.length }}</span>
                   <button class="detail-nav-chip" type="button" :disabled="selectedIndex >= filteredProjects.length - 1" @click="moveSelection(1)">下一个结果</button>
-                  <button class="detail-nav-chip" type="button" @click="copyProjectLink">复制项目链接</button>
+                  <button class="detail-nav-chip" type="button" @click="copyProjectLink">{{ copyProjectLabel }}</button>
                 </div>
                 <div class="detail-header-status">
                   <span v-for="chip in selectedStatusChips" :key="chip" class="feed-pill">{{ chip }}</span>
