@@ -639,6 +639,20 @@ createApp({
         .slice(0, 3);
     });
 
+    const sameFormStats = computed(() => {
+      if (!selectedProject.value) {
+        return { total: 0, strong: 0 };
+      }
+
+      const scoped = projects.value.filter(
+        (project) => project.id !== selectedProject.value.id && project.productForm === selectedProject.value.productForm
+      );
+      return {
+        total: scoped.length,
+        strong: scoped.filter((project) => project.evidenceQuality.level === "strong").length,
+      };
+    });
+
     const sameScenarioRelated = computed(() => {
       if (!selectedProject.value) {
         return [];
@@ -648,6 +662,21 @@ createApp({
       return filteredProjects.value
         .filter((project) => project.id !== selectedProject.value.id && summarizeScenario(project) === currentScenario)
         .slice(0, 3);
+    });
+
+    const sameScenarioStats = computed(() => {
+      if (!selectedProject.value) {
+        return { total: 0, strong: 0 };
+      }
+
+      const currentScenario = summarizeScenario(selectedProject.value);
+      const scoped = projects.value.filter(
+        (project) => project.id !== selectedProject.value.id && summarizeScenario(project) === currentScenario
+      );
+      return {
+        total: scoped.length,
+        strong: scoped.filter((project) => project.evidenceQuality.level === "strong").length,
+      };
     });
 
     const selectedBenchmarkLinks = computed(() => {
@@ -948,7 +977,9 @@ createApp({
       sameGapQueue,
       sameGapIndex,
       sameFormRelated,
+      sameFormStats,
       sameScenarioRelated,
+      sameScenarioStats,
       selectedBenchmarkLinks,
       matchedBenchmarkProjects,
       sameFormSnapshot,
@@ -1464,15 +1495,15 @@ createApp({
                 <section v-if="sameFormRelated.length || sameScenarioRelated.length" class="detail-section">
                   <h4 class="detail-section-title">快速对比</h4>
                   <div class="detail-shortcut-actions">
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form')">只看同形态</button>
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form', true)">只看同形态清楚样本</button>
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景</button>
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form')">只看同形态（{{ sameFormStats.total }}）</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form', true)">只看同形态清楚样本（{{ sameFormStats.strong }}）</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景（{{ sameScenarioStats.total }}）</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本（{{ sameScenarioStats.strong }}）</button>
                   </div>
 
                   <details v-if="sameFormRelated.length" class="detail-disclosure">
                     <summary class="detail-disclosure-summary">
-                      <span class="detail-subsection-label">同形态项目（{{ sameFormRelated.length }}）</span>
+                      <span class="detail-subsection-label">同形态项目（{{ sameFormStats.total }}，清楚 {{ sameFormStats.strong }}）</span>
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
@@ -1494,7 +1525,7 @@ createApp({
 
                   <details v-if="sameScenarioRelated.length" class="detail-disclosure">
                     <summary class="detail-disclosure-summary">
-                      <span class="detail-subsection-label">同场景项目（{{ sameScenarioRelated.length }}）</span>
+                      <span class="detail-subsection-label">同场景项目（{{ sameScenarioStats.total }}，清楚 {{ sameScenarioStats.strong }}）</span>
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
