@@ -782,7 +782,8 @@ createApp({
       if (!filteredProjects.value.length) {
         return;
       }
-      const nextIndex = Math.max(0, Math.min(filteredProjects.value.length - 1, selectedIndex.value + delta));
+      const total = filteredProjects.value.length;
+      const nextIndex = (selectedIndex.value + delta + total) % total;
       selectProject(filteredProjects.value[nextIndex].id);
     };
 
@@ -1304,9 +1305,9 @@ createApp({
                   <span class="project-status">{{ evidenceLevelLabel[selectedProject.evidenceQuality.level] }}</span>
                 </div>
                 <div class="detail-header-nav">
-                  <button class="detail-nav-chip" type="button" :disabled="selectedIndex === 0" @click="moveSelection(-1)">上一个结果</button>
+                  <button class="detail-nav-chip" type="button" @click="moveSelection(-1)">上一个结果</button>
                   <span class="detail-nav-chip detail-nav-chip-static">当前结果 {{ filteredProjects.length ? selectedIndex + 1 : 0 }} / {{ filteredProjects.length }}</span>
-                  <button class="detail-nav-chip" type="button" :disabled="selectedIndex >= filteredProjects.length - 1" @click="moveSelection(1)">下一个结果</button>
+                  <button class="detail-nav-chip" type="button" @click="moveSelection(1)">下一个结果</button>
                   <button class="detail-nav-chip" type="button" @click="copyProjectLink">{{ copyProjectLabel }}</button>
                 </div>
                 <div class="detail-header-status">
@@ -1464,47 +1465,57 @@ createApp({
                 <section v-if="sameFormSnapshot || benchmarkSnapshot" class="detail-section">
                   <h4 class="detail-section-title">快照对比</h4>
 
-                  <div v-if="benchmarkSnapshot" class="detail-subsection">
-                    <p class="detail-subsection-label">对标快照</p>
-                    <div class="compare-snapshot">
-                      <div class="compare-table">
-                        <div v-for="row in benchmarkSnapshot.rows" :key="'benchmark-' + row.label" class="compare-row">
-                          <span class="compare-label">{{ row.label }}</span>
-                          <button
-                            v-for="value in row.values"
-                            :key="'benchmark-' + row.label + '-' + value.projectId"
-                            class="compare-cell"
-                            :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
-                            type="button"
-                            @click="selectProject(value.projectId)"
-                          >
-                            {{ value.text }}
-                          </button>
+                  <details v-if="benchmarkSnapshot" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">对标快照（{{ benchmarkSnapshot.projects.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="compare-snapshot">
+                        <div class="compare-table">
+                          <div v-for="row in benchmarkSnapshot.rows" :key="'benchmark-' + row.label" class="compare-row">
+                            <span class="compare-label">{{ row.label }}</span>
+                            <button
+                              v-for="value in row.values"
+                              :key="'benchmark-' + row.label + '-' + value.projectId"
+                              class="compare-cell"
+                              :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
+                              type="button"
+                              @click="selectProject(value.projectId)"
+                            >
+                              {{ value.text }}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </details>
 
-                  <div v-if="sameFormSnapshot" class="detail-subsection">
-                    <p class="detail-subsection-label">同形态快照对比</p>
-                    <div class="compare-snapshot">
-                      <div class="compare-table">
-                        <div v-for="row in sameFormSnapshot.rows" :key="'same-form-' + row.label" class="compare-row">
-                          <span class="compare-label">{{ row.label }}</span>
-                          <button
-                            v-for="value in row.values"
-                            :key="'same-form-' + row.label + '-' + value.projectId"
-                            class="compare-cell"
-                            :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
-                            type="button"
-                            @click="selectProject(value.projectId)"
-                          >
-                            {{ value.text }}
-                          </button>
+                  <details v-if="sameFormSnapshot" class="detail-disclosure" open>
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">同形态快照对比（{{ sameFormSnapshot.projects.length }}）</span>
+                      <span class="detail-disclosure-hint">默认展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="compare-snapshot">
+                        <div class="compare-table">
+                          <div v-for="row in sameFormSnapshot.rows" :key="'same-form-' + row.label" class="compare-row">
+                            <span class="compare-label">{{ row.label }}</span>
+                            <button
+                              v-for="value in row.values"
+                              :key="'same-form-' + row.label + '-' + value.projectId"
+                              class="compare-cell"
+                              :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
+                              type="button"
+                              @click="selectProject(value.projectId)"
+                            >
+                              {{ value.text }}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </details>
                 </section>
 
                 <section v-if="sameFormRelated.length || sameScenarioRelated.length" class="detail-section">
