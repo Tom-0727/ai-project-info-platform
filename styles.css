@@ -489,6 +489,17 @@ article.summary-card .summary-note {
   background: var(--card-strong);
 }
 
+.detail-header {
+  position: sticky;
+  top: -18px;
+  z-index: 3;
+  margin: -18px -18px 0;
+  padding: 18px 18px 14px;
+  background: linear-gradient(180deg, rgba(251, 247, 240, 0.98) 0%, rgba(251, 247, 240, 0.94) 100%);
+  border-bottom: 1px solid rgba(29, 26, 22, 0.08);
+  backdrop-filter: blur(8px);
+}
+
 .day-title,
 .project-name {
   margin-top: 4px;
@@ -517,7 +528,7 @@ article.summary-card .summary-note {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .project-status-badge {
@@ -625,6 +636,10 @@ article.summary-card .summary-note {
 .detail-empty {
   margin: 14px 0 0;
   line-height: 1.65;
+}
+
+.detail-header + .detail-intro {
+  margin-top: 18px;
 }
 
 .feed-meta,
@@ -1120,5 +1135,10 @@ article.summary-card .summary-note {
   .feed-item-top,
   .project-top {
     flex-direction: column;
+  }
+
+  .detail-header {
+    top: -18px;
+    backdrop-filter: none;
   }
 }

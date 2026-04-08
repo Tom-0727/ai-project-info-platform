@@ -959,7 +959,7 @@ const renderDetailView = (project, projects) => {
   }
 
   if (statusStrip.childElementCount > 0) {
-    node.insertBefore(statusStrip, noteBlock);
+    node.querySelector(".detail-header-status").appendChild(statusStrip);
   }
 
   primaryShortcuts.forEach((shortcut) => {
