@@ -28,6 +28,7 @@ const copyViewLinkButton = document.querySelector("#copy-view-link");
 const loadMoreFeedButton = document.querySelector("#load-more-feed");
 const viewLibraryButton = document.querySelector("#view-library");
 const viewUpdatesButton = document.querySelector("#view-updates");
+const scrollTopButton = document.querySelector("#scroll-top");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -1230,6 +1231,14 @@ const syncAdvancedFilters = () => {
   }
 };
 
+const syncScrollTopButton = () => {
+  if (!scrollTopButton) {
+    return;
+  }
+
+  scrollTopButton.hidden = window.scrollY < 720;
+};
+
 const fallbackCopyText = (value) => {
   const input = document.createElement("textarea");
   input.value = value;
@@ -1779,6 +1788,13 @@ const bootstrap = async () => {
     state.feedLimit += INITIAL_FEED_LIMIT;
     renderApp(projects);
   });
+
+  scrollTopButton?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", syncScrollTopButton, { passive: true });
+  syncScrollTopButton();
 
   renderApp(projects);
 };
