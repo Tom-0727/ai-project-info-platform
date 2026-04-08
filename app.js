@@ -168,6 +168,12 @@ const buildFeedIntro = (project) => {
   return `${project.productForm}，面向${audience}，解决${pain}。`;
 };
 
+const buildLibraryFeedIntro = (project) => {
+  const audience = shortList(project.targetCustomers, 1);
+  const pain = firstClause(project.painPoint);
+  return `面向${audience}，解决${pain}。`;
+};
+
 const getLatestNote = (project) => project.dailyNotes[0];
 
 const renderFeedMeta = (container, project, { compact = false } = {}) => {
@@ -298,13 +304,15 @@ const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
 
   projects.slice(0, state.feedLimit).forEach((project) => {
     const itemNode = feedItemTemplate.content.firstElementChild.cloneNode(true);
+    itemNode.classList.add("feed-card-compact");
     itemNode.dataset.projectId = project.id;
+    const libraryIntro = buildLibraryFeedIntro(project);
     itemNode.setAttribute("aria-pressed", String(project.id === selectedProjectId));
-    itemNode.setAttribute("aria-label", `${project.canonicalName}，${project.feedIntro ?? buildFeedIntro(project)}`);
+    itemNode.setAttribute("aria-label", `${project.canonicalName}，${libraryIntro}`);
     itemNode.querySelector(".feed-type").textContent = hasEvidenceRefresh(project) ? "最近补证" : "项目总表";
     itemNode.querySelector(".feed-name").textContent = project.canonicalName;
     itemNode.querySelector(".feed-tag").textContent = project.productForm;
-    itemNode.querySelector(".feed-summary").textContent = project.feedIntro ?? buildFeedIntro(project);
+    itemNode.querySelector(".feed-summary").textContent = libraryIntro;
     const meta = itemNode.querySelector(".feed-meta");
     renderFeedMeta(meta, project, { compact: true });
     itemNode.addEventListener("click", () => onSelectProject(project.id));
