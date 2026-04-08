@@ -224,6 +224,7 @@ createApp({
       view: "library",
       query: "",
       evidence: "all",
+      refreshed: false,
       mediumGap: "all",
       form: "all",
       scenario: "all",
@@ -255,6 +256,7 @@ createApp({
     const filteredProjects = computed(() => {
       const matched = projects.value.filter((project) => {
         const matchesEvidence = filters.value.evidence === "all" || project.evidenceQuality.level === filters.value.evidence;
+        const matchesRefreshed = !filters.value.refreshed || hasEvidenceRefresh(project);
         const matchesMediumGap =
           filters.value.mediumGap === "all" ||
           (project.evidenceQuality.level === "medium" && getEvidenceGapLabel(project) === filters.value.mediumGap);
@@ -263,6 +265,7 @@ createApp({
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         return (
           matchesEvidence &&
+          matchesRefreshed &&
           matchesMediumGap &&
           matchesForm &&
           matchesScenario &&
@@ -362,6 +365,10 @@ createApp({
       const topScenarios = Object.entries(scenarioCounts)
         .sort((left, right) => right[1] - left[1])
         .slice(0, 2);
+      const refreshedCount = scoped.filter((project) => hasEvidenceRefresh(project)).length;
+      const refreshedStrongCount = scoped.filter(
+        (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
+      ).length;
 
       return [
         {
@@ -402,6 +409,30 @@ createApp({
           active: filters.value.evidence === "medium",
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "medium" ? "all" : "medium";
+          },
+        },
+        {
+          key: "refreshed",
+          label: "最近补证样本",
+          value: `${refreshedCount} 个`,
+          active: filters.value.refreshed && filters.value.evidence === "all",
+          onClick: () => {
+            const isActive = filters.value.refreshed && filters.value.evidence === "all";
+            filters.value.refreshed = !isActive;
+            filters.value.evidence = "all";
+            filters.value.sort = !isActive ? "refreshed" : "discovered";
+          },
+        },
+        {
+          key: "refreshed-strong",
+          label: "最近补证清楚样本",
+          value: `${refreshedStrongCount} 个`,
+          active: filters.value.refreshed && filters.value.evidence === "strong",
+          onClick: () => {
+            const isActive = filters.value.refreshed && filters.value.evidence === "strong";
+            filters.value.refreshed = !isActive;
+            filters.value.evidence = !isActive ? "strong" : "all";
+            filters.value.sort = !isActive ? "refreshed" : "discovered";
           },
         },
       ];
@@ -501,6 +532,19 @@ createApp({
           clear: () => {
             filters.value.evidence = "all";
             filters.value.mediumGap = "all";
+          },
+        });
+      }
+
+      if (filters.value.refreshed) {
+        chips.push({
+          key: "refreshed",
+          label: "最近补证",
+          clear: () => {
+            filters.value.refreshed = false;
+            if (filters.value.sort === "refreshed") {
+              filters.value.sort = "discovered";
+            }
           },
         });
       }
@@ -727,6 +771,7 @@ createApp({
       if (filters.value.view !== "library") params.set("view", filters.value.view);
       if (filters.value.query) params.set("q", filters.value.query);
       if (filters.value.evidence !== "all") params.set("evidence", filters.value.evidence);
+      if (filters.value.refreshed) params.set("refreshed", "1");
       if (filters.value.mediumGap !== "all") params.set("gap", filters.value.mediumGap);
       if (filters.value.form !== "all") params.set("form", filters.value.form);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
@@ -742,6 +787,7 @@ createApp({
       filters.value.view = params.get("view") || "library";
       filters.value.query = params.get("q") || "";
       filters.value.evidence = params.get("evidence") || "all";
+      filters.value.refreshed = params.get("refreshed") === "1";
       filters.value.mediumGap = params.get("gap") || "all";
       filters.value.form = params.get("form") || "all";
       filters.value.scenario = params.get("scenario") || "all";
@@ -757,6 +803,7 @@ createApp({
       filters.value.view = "library";
       filters.value.query = "";
       filters.value.evidence = "all";
+      filters.value.refreshed = false;
       filters.value.mediumGap = "all";
       filters.value.form = "all";
       filters.value.scenario = "all";
@@ -901,7 +948,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.mediumGap, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
