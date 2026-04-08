@@ -415,6 +415,61 @@ createApp({
       return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleEntries.value.length} 条动态。左侧点项目，右侧看完整详情。`;
     });
 
+    const emptyState = computed(() => {
+      const title = filters.value.view === "library" ? "当前筛选下没有匹配的项目。" : "当前筛选下没有匹配的动态。";
+      const actions = [
+        {
+          label: "清空筛选",
+          secondary: false,
+          onClick: () => {
+            resetFilters();
+          },
+        },
+      ];
+
+      if (filters.value.compareIds.length) {
+        actions.push({
+          label: "退出对标视图",
+          secondary: true,
+          onClick: () => {
+            filters.value.compareIds = [];
+          },
+        });
+      }
+
+      if (filters.value.mediumGap !== "all") {
+        actions.push({
+          label: "退出同类缺口",
+          secondary: true,
+          onClick: () => {
+            filters.value.mediumGap = "all";
+          },
+        });
+      }
+
+      if (filters.value.view === "updates") {
+        actions.push({
+          label: "切到项目总表",
+          secondary: true,
+          onClick: () => {
+            filters.value.view = "library";
+          },
+        });
+      }
+
+      const noteParts = [];
+      if (filters.value.compareIds.length) noteParts.push("当前处在对标视图");
+      if (filters.value.mediumGap !== "all") noteParts.push(`当前只看 ${filters.value.mediumGap}`);
+      if (filters.value.view === "updates") noteParts.push("当前是动态流模式");
+      if (noteParts.length === 0) noteParts.push("可以先清空筛选，重新缩小范围");
+
+      return {
+        title,
+        note: noteParts.join("，") + "。",
+        actions,
+      };
+    });
+
     const loadMoreLabel = computed(() => {
       if (filters.value.view === "library") {
         const remaining = Math.max(filteredProjects.value.length - visibleProjects.value.length, 0);
@@ -858,6 +913,7 @@ createApp({
       overviewCards,
       resultHint,
       loadMoreLabel,
+      emptyState,
       activeFilterChips,
       selectedStatusChips,
       selectedGapLabel,
@@ -1126,11 +1182,19 @@ createApp({
             </template>
 
             <div v-else class="feed-empty-state">
-              <p class="feed-empty-title">{{ filters.view === 'library' ? '当前筛选下没有匹配的项目。' : '当前筛选下没有匹配的动态。' }}</p>
-              <p class="feed-empty-note">可以先清空筛选，或者切回项目总表重新缩小范围。</p>
+              <p class="feed-empty-title">{{ emptyState.title }}</p>
+              <p class="feed-empty-note">{{ emptyState.note }}</p>
               <div class="feed-empty-actions">
-                <button class="feed-empty-action" type="button" @click="resetFilters">清空筛选</button>
-                <button v-if="filters.view === 'updates'" class="feed-empty-action feed-empty-action-secondary" type="button" @click="filters.view = 'library'">切到项目总表</button>
+                <button
+                  v-for="action in emptyState.actions"
+                  :key="action.label"
+                  class="feed-empty-action"
+                  :class="{ 'feed-empty-action-secondary': action.secondary }"
+                  type="button"
+                  @click="action.onClick"
+                >
+                  {{ action.label }}
+                </button>
               </div>
             </div>
           </div>
