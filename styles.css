@@ -159,6 +159,16 @@ h1 {
   min-width: 0;
 }
 
+.panel-main-top {
+  position: sticky;
+  top: 18px;
+  z-index: 3;
+  margin: -8px -8px 0;
+  padding: 8px 8px 14px;
+  background: linear-gradient(180deg, rgba(255, 248, 238, 0.96), rgba(255, 248, 238, 0.84) 82%, rgba(255, 248, 238, 0));
+  backdrop-filter: blur(8px);
+}
+
 .panel-side {
   min-width: 0;
   display: flex;
@@ -187,7 +197,7 @@ h1 {
 .daily-feed {
   display: grid;
   gap: 16px;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .view-switch {
@@ -1016,6 +1026,14 @@ article.summary-card .summary-note {
 @media (max-width: 1080px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  .panel-main-top {
+    position: static;
+    margin: 0;
+    padding: 0 0 14px;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .panel-sticky {
