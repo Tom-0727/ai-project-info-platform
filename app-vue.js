@@ -1276,7 +1276,22 @@ createApp({
             <p class="panel-hint">先在左侧选项目，再在这里看完整信息。</p>
           </div>
 
-          <div v-if="!selectedProject" class="detail-empty">当前筛选结果里还没有可展示的项目。</div>
+          <div v-if="!selectedProject" class="detail-empty">
+            <p class="feed-empty-title">当前筛选结果里还没有可展示的项目。</p>
+            <p class="feed-empty-note">{{ emptyState.note }}</p>
+            <div class="feed-empty-actions">
+              <button
+                v-for="action in emptyState.actions"
+                :key="'detail-' + action.label"
+                class="feed-empty-action"
+                :class="{ 'feed-empty-action-secondary': action.secondary }"
+                type="button"
+                @click="action.onClick"
+              >
+                {{ action.label }}
+              </button>
+            </div>
+          </div>
 
           <div v-else ref="detailViewRef" class="detail-view">
             <article class="detail-card">
