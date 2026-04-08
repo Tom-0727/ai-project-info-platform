@@ -1336,6 +1336,11 @@ createApp({
                       <span class="feed-tag">{{ entry.productForm }}</span>
                     </div>
                     <p class="feed-summary">{{ entry.summary }}</p>
+                    <div class="feed-meta">
+                      <span class="feed-pill">变现：{{ firstClause(entry.project.monetization) }}</span>
+                      <span class="feed-pill">证据：{{ evidenceLevelLabel[entry.project.evidenceQuality.level] }}</span>
+                      <span class="feed-pill">场景：{{ firstClause(entry.project.painPoint) }}</span>
+                    </div>
                   </button>
                 </div>
               </article>
