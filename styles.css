@@ -215,6 +215,11 @@ h1 {
     transform 140ms ease;
 }
 
+.page-nav-link[data-active] {
+  background: rgba(188, 75, 39, 0.12);
+  color: var(--signal);
+}
+
 .page-nav-link:hover,
 .page-nav-link:focus-visible {
   background: rgba(188, 75, 39, 0.08);
@@ -225,6 +230,13 @@ h1 {
 .page-nav-link:focus-visible {
   outline: 2px solid rgba(188, 75, 39, 0.28);
   outline-offset: 2px;
+}
+
+#browse-controls,
+#advanced-filters,
+#project-list,
+#project-detail {
+  scroll-margin-top: 92px;
 }
 
 .panel {

@@ -30,6 +30,7 @@ const loadMoreFeedButton = document.querySelector("#load-more-feed");
 const viewLibraryButton = document.querySelector("#view-library");
 const viewUpdatesButton = document.querySelector("#view-updates");
 const scrollTopButton = document.querySelector("#scroll-top");
+const pageNavLinks = [...document.querySelectorAll(".page-nav-link")];
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
@@ -1313,6 +1314,15 @@ const syncScrollTopButton = () => {
   scrollTopButton.hidden = window.scrollY < 720;
 };
 
+const syncPageNav = () => {
+  const activeHash = window.location.hash || "#browse-controls";
+  pageNavLinks.forEach((link) => {
+    const isActive = link.getAttribute("href") === activeHash;
+    link.toggleAttribute("data-active", isActive);
+    link.setAttribute("aria-current", isActive ? "location" : "false");
+  });
+};
+
 const fallbackCopyText = (value) => {
   const input = document.createElement("textarea");
   input.value = value;
@@ -1974,6 +1984,14 @@ const bootstrap = async () => {
     copyCurrentViewLink();
   });
 
+  pageNavLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      window.requestAnimationFrame(syncPageNav);
+    });
+  });
+
+  window.addEventListener("hashchange", syncPageNav);
+
   toggleAdvancedFiltersButton?.addEventListener("click", () => {
     state.advancedOpen = !state.advancedOpen;
     syncAdvancedFilters();
@@ -2002,6 +2020,7 @@ const bootstrap = async () => {
 
   window.addEventListener("scroll", syncScrollTopButton, { passive: true });
   syncScrollTopButton();
+  syncPageNav();
 
   renderApp(projects);
 };
