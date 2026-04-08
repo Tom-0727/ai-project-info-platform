@@ -30,6 +30,8 @@ const loadMoreFeedButton = document.querySelector("#load-more-feed");
 const viewLibraryButton = document.querySelector("#view-library");
 const viewUpdatesButton = document.querySelector("#view-updates");
 const scrollTopButton = document.querySelector("#scroll-top");
+const usageStrip = document.querySelector("#usage-strip");
+const dismissUsageStripButton = document.querySelector("#dismiss-usage-strip");
 const pageNavLinks = [...document.querySelectorAll(".page-nav-link")];
 
 const metricTemplate = document.querySelector("#metric-template");
@@ -40,6 +42,7 @@ let copyFeedbackTimer = null;
 let detailCopyFeedbackTimer = null;
 let pendingFeedScrollTop = null;
 const INITIAL_FEED_LIMIT = 36;
+const USAGE_STRIP_DISMISSED_KEY = "ai-project-scout:usage-strip-dismissed";
 
 const formatCount = (value) => String(value).padStart(2, "0");
 const evidenceLevelLabel = {
@@ -63,6 +66,26 @@ const normalizeDate = (value) =>
     day: "numeric",
     weekday: "short",
   }).format(new Date(value));
+
+const readLocalFlag = (key) => {
+  try {
+    return window.localStorage.getItem(key) === "1";
+  } catch (error) {
+    return false;
+  }
+};
+
+const writeLocalFlag = (key, enabled) => {
+  try {
+    if (enabled) {
+      window.localStorage.setItem(key, "1");
+    } else {
+      window.localStorage.removeItem(key);
+    }
+  } catch (error) {
+    // Ignore storage failures and fall back to in-memory state.
+  }
+};
 
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
@@ -1181,6 +1204,7 @@ const state = {
   compareIds: [],
   selectedProjectId: null,
   feedLimit: INITIAL_FEED_LIMIT,
+  usageStripDismissed: readLocalFlag(USAGE_STRIP_DISMISSED_KEY),
 };
 
 const writeStateToUrl = () => {
@@ -1312,6 +1336,14 @@ const syncScrollTopButton = () => {
   }
 
   scrollTopButton.hidden = window.scrollY < 720;
+};
+
+const syncUsageStrip = () => {
+  if (!usageStrip) {
+    return;
+  }
+
+  usageStrip.hidden = state.usageStripDismissed;
 };
 
 const syncPageNav = () => {
@@ -1997,9 +2029,16 @@ const bootstrap = async () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  dismissUsageStripButton?.addEventListener("click", () => {
+    state.usageStripDismissed = true;
+    writeLocalFlag(USAGE_STRIP_DISMISSED_KEY, true);
+    syncUsageStrip();
+  });
+
   window.addEventListener("scroll", syncScrollTopButton, { passive: true });
   syncScrollTopButton();
   syncPageNav();
+  syncUsageStrip();
 
   renderApp(projects);
 };
