@@ -490,6 +490,26 @@ createApp({
       return chips;
     });
 
+    const selectedGapLabel = computed(() => getEvidenceGapLabel(selectedProject.value));
+
+    const sameGapQueue = computed(() => {
+      if (!selectedProject.value || !selectedGapLabel.value) {
+        return [];
+      }
+
+      return projects.value
+        .filter((project) => project.evidenceQuality.level === "medium" && getEvidenceGapLabel(project) === selectedGapLabel.value)
+        .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+    });
+
+    const sameGapIndex = computed(() => {
+      if (!selectedProject.value || !sameGapQueue.value.length) {
+        return -1;
+      }
+
+      return sameGapQueue.value.findIndex((project) => project.id === selectedProject.value.id);
+    });
+
     const sameFormRelated = computed(() => {
       if (!selectedProject.value) {
         return [];
@@ -669,6 +689,31 @@ createApp({
       feedLimit.value = INITIAL_LIMIT;
     };
 
+    const focusSameGap = () => {
+      if (!selectedProject.value || !selectedGapLabel.value) {
+        return;
+      }
+
+      filters.value.view = "library";
+      filters.value.query = "";
+      filters.value.evidence = "medium";
+      filters.value.mediumGap = selectedGapLabel.value;
+      filters.value.form = "all";
+      filters.value.scenario = "all";
+      filters.value.sort = "discovered";
+      filters.value.compareIds = [];
+      feedLimit.value = INITIAL_LIMIT;
+    };
+
+    const moveSameGapSelection = (delta) => {
+      if (!sameGapQueue.value.length || sameGapIndex.value < 0) {
+        return;
+      }
+
+      const nextIndex = Math.max(0, Math.min(sameGapQueue.value.length - 1, sameGapIndex.value + delta));
+      selectProject(sameGapQueue.value[nextIndex].id);
+    };
+
     const syncScrollUi = () => {
       const sections = ["#browse-controls", "#project-list", "#project-detail"];
       let nextActive = sections[0];
@@ -768,9 +813,12 @@ createApp({
       loadMoreLabel,
       activeFilterChips,
       selectedStatusChips,
+      selectedGapLabel,
       evidencePreview,
       latestNotePreview,
       expandedFields,
+      sameGapQueue,
+      sameGapIndex,
       sameFormRelated,
       sameScenarioRelated,
       selectedBenchmarkLinks,
@@ -797,6 +845,8 @@ createApp({
       copyCurrentView,
       focusCluster,
       activateBenchmarkCompare,
+      focusSameGap,
+      moveSameGapSelection,
       activeSection,
       showScrollTop,
       loadMore: () => {
@@ -1156,6 +1206,31 @@ createApp({
                       </dd>
                     </div>
                   </dl>
+                  <div v-if="selectedGapLabel" class="detail-subsection">
+                    <p class="detail-subsection-label">同类缺口队列</p>
+                    <div class="detail-shortcut-actions">
+                      <button class="detail-shortcut-chip" type="button" @click="focusSameGap">只看同类缺口</button>
+                      <button
+                        class="detail-nav-chip"
+                        type="button"
+                        :disabled="sameGapIndex <= 0"
+                        @click="moveSameGapSelection(-1)"
+                      >
+                        上一个同类缺口
+                      </button>
+                      <span class="detail-nav-chip detail-nav-chip-static">
+                        {{ selectedGapLabel }} · {{ sameGapQueue.length ? sameGapIndex + 1 : 0 }} / {{ sameGapQueue.length }}
+                      </span>
+                      <button
+                        class="detail-nav-chip"
+                        type="button"
+                        :disabled="sameGapIndex < 0 || sameGapIndex >= sameGapQueue.length - 1"
+                        @click="moveSameGapSelection(1)"
+                      >
+                        下一个同类缺口
+                      </button>
+                    </div>
+                  </div>
                 </section>
 
                 <section class="detail-section">
