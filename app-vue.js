@@ -135,6 +135,8 @@ createApp({
     const listRef = ref(null);
     const activeSection = ref("#browse-controls");
     const showScrollTop = ref(false);
+    const copyViewLabel = ref("复制当前视图");
+    let copyViewTimer = null;
 
     const filters = ref({
       view: "library",
@@ -379,6 +381,16 @@ createApp({
       await navigator.clipboard.writeText(window.location.href);
     };
 
+    const copyCurrentView = async () => {
+      syncUrl();
+      await navigator.clipboard.writeText(window.location.href);
+      copyViewLabel.value = "已复制当前视图";
+      window.clearTimeout(copyViewTimer);
+      copyViewTimer = window.setTimeout(() => {
+        copyViewLabel.value = "复制当前视图";
+      }, 1800);
+    };
+
     const syncScrollUi = () => {
       const sections = ["#browse-controls", "#project-list", "#project-detail"];
       let nextActive = sections[0];
@@ -444,6 +456,7 @@ createApp({
 
     onUnmounted(() => {
       window.removeEventListener("scroll", syncScrollUi);
+      window.clearTimeout(copyViewTimer);
     });
 
     return {
@@ -476,6 +489,8 @@ createApp({
       moveSelection,
       resetFilters,
       copyProjectLink,
+      copyViewLabel,
+      copyCurrentView,
       activeSection,
       showScrollTop,
       loadMore: () => {
@@ -584,6 +599,9 @@ createApp({
             <div class="control-group">
               <p class="control-group-label">结构概览</p>
               <p class="results-hint">{{ resultHint }}</p>
+              <div class="filters-actions filters-actions-compact">
+                <button class="filters-reset filters-secondary" type="button" @click="copyCurrentView">{{ copyViewLabel }}</button>
+              </div>
               <div v-if="activeFilterChips.length" class="active-filters">
                 <button
                   v-for="chip in activeFilterChips"
