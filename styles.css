@@ -255,6 +255,7 @@ h1 {
   justify-content: flex-end;
   margin-top: 12px;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .filters-actions-compact {
@@ -291,6 +292,26 @@ h1 {
   color: var(--signal);
   border-color: rgba(188, 75, 39, 0.28);
   background: rgba(255, 244, 234, 0.94);
+}
+
+.utility-actions {
+  min-width: 0;
+}
+
+.utility-actions > summary {
+  list-style: none;
+}
+
+.utility-actions > summary::-webkit-details-marker {
+  display: none;
+}
+
+.utility-actions-body {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .filters-secondary {

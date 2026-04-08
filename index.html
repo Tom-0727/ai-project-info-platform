@@ -87,9 +87,14 @@
             </label>
           </div>
           <div class="filters-actions">
-            <button id="gap-clear" class="filters-reset filters-secondary" type="button" hidden>退出同类缺口视图</button>
-            <button id="compare-clear" class="filters-reset filters-secondary" type="button" hidden>退出对标视图</button>
-            <button id="copy-view-link" class="filters-reset filters-secondary" type="button">复制当前视图</button>
+            <details id="utility-actions" class="utility-actions">
+              <summary class="filters-reset filters-secondary">更多操作</summary>
+              <div class="utility-actions-body">
+                <button id="gap-clear" class="filters-reset filters-secondary" type="button" hidden>退出同类缺口视图</button>
+                <button id="compare-clear" class="filters-reset filters-secondary" type="button" hidden>退出对标视图</button>
+                <button id="copy-view-link" class="filters-reset filters-secondary" type="button">复制当前视图</button>
+              </div>
+            </details>
             <button id="reset-filters" class="filters-reset" type="button">清空筛选</button>
           </div>
           <div id="summary-strip" class="summary-strip" aria-label="样本结构摘要"></div>

@@ -21,6 +21,7 @@ const mediumFilterButton = document.querySelector("#medium-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
 const toggleAdvancedFiltersButton = document.querySelector("#toggle-advanced-filters");
 const advancedFilters = document.querySelector("#advanced-filters");
+const utilityActions = document.querySelector("#utility-actions");
 const gapClearButton = document.querySelector("#gap-clear");
 const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
@@ -1295,6 +1296,9 @@ const syncFilterControls = () => {
   }
   if (compareClearButton) {
     compareClearButton.hidden = state.compareIds.length === 0;
+  }
+  if (utilityActions) {
+    utilityActions.open = state.mediumGap !== "all" || state.compareIds.length > 0;
   }
 
   const hasActiveFilter =
