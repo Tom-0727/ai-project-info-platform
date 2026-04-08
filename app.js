@@ -260,6 +260,113 @@ const renderMetrics = (projects) => {
   });
 };
 
+const resetAllBrowseFilters = () => {
+  state.query = "";
+  state.evidence = "all";
+  state.mediumGap = "all";
+  state.form = "all";
+  state.scenario = "all";
+  state.sort = "discovered";
+  state.refreshed = false;
+  state.advancedOpen = false;
+  state.compareIds = [];
+  searchInput.value = "";
+  evidenceFilter.value = "all";
+  formFilter.value = "all";
+  scenarioFilter.value = "all";
+  sortFilter.value = "discovered";
+};
+
+const buildEmptyFeedState = (mode) => {
+  const box = document.createElement("div");
+  box.className = "feed-empty-state";
+
+  const title = document.createElement("p");
+  title.className = "feed-empty-title";
+  title.textContent = mode === "updates" ? "当前筛选下没有匹配的动态。" : "当前筛选下没有匹配的项目。";
+
+  const note = document.createElement("p");
+  note.className = "feed-empty-note";
+
+  const actions = document.createElement("div");
+  actions.className = "feed-empty-actions";
+
+  const addAction = (label, onClick, secondary = false) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `feed-empty-action${secondary ? " feed-empty-action-secondary" : ""}`;
+    button.textContent = label;
+    button.addEventListener("click", () => {
+      onClick();
+      resetFeedLimit();
+      renderApp(window.__projectsCache__);
+    });
+    actions.appendChild(button);
+  };
+
+  const suggestions = [];
+  const hasAnyFilter =
+    state.query ||
+    state.evidence !== "all" ||
+    state.mediumGap !== "all" ||
+    state.form !== "all" ||
+    state.scenario !== "all" ||
+    state.refreshed ||
+    state.sort !== "discovered" ||
+    state.compareIds.length > 0;
+
+  if (hasAnyFilter) {
+    suggestions.push("可以先清空筛选，再重新缩小范围。");
+    addAction("清空筛选", () => {
+      resetAllBrowseFilters();
+    });
+  }
+
+  if (state.mediumGap !== "all") {
+    suggestions.push("当前停在待补证子分组里，可以先退出这个子队列。");
+    addAction(
+      "退出同类缺口",
+      () => {
+        state.mediumGap = "all";
+        if (state.evidence === "all") {
+          state.evidence = "medium";
+        }
+      },
+      true
+    );
+  }
+
+  if (state.compareIds.length > 0) {
+    suggestions.push("当前停在对标视图里，可以先回到完整结果集。");
+    addAction(
+      "退出对标视图",
+      () => {
+        state.compareIds = [];
+      },
+      true
+    );
+  }
+
+  if (mode === "updates" && state.view !== "library") {
+    suggestions.push("如果只是想先看项目库全貌，可以切回项目总表。");
+    addAction(
+      "切到项目总表",
+      () => {
+        state.view = "library";
+      },
+      true
+    );
+  }
+
+  note.textContent = suggestions[0] ?? "可以放宽筛选条件，或先回到项目总表再继续浏览。";
+
+  box.append(title, note);
+  if (actions.childElementCount > 0) {
+    box.appendChild(actions);
+  }
+  return box;
+};
+
 const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
   dailyFeed.innerHTML = "";
   const entries = projects.flatMap((project) =>
@@ -323,7 +430,7 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
     });
 
   if (dailyFeed.childElementCount === 0) {
-    dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的动态。</p>";
+    dailyFeed.appendChild(buildEmptyFeedState("updates"));
   }
 
   if (pendingFeedScrollTop !== null) {
@@ -354,7 +461,7 @@ const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
   });
 
   if (dailyFeed.childElementCount === 0) {
-    dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的项目。</p>";
+    dailyFeed.appendChild(buildEmptyFeedState("library"));
   }
 
   if (pendingFeedScrollTop !== null) {
