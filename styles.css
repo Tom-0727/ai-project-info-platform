@@ -534,6 +534,7 @@ button.summary-card[aria-pressed="true"] .summary-label {
   flex-wrap: wrap;
   gap: 8px;
   align-items: flex-start;
+  margin-top: 10px;
 }
 
 .source-chip {
@@ -633,6 +634,19 @@ button.summary-card[aria-pressed="true"] .summary-label {
   padding: 14px 16px;
   border-radius: 18px;
   background: rgba(188, 75, 39, 0.08);
+}
+
+.project-detail-sections {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.detail-section {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(29, 26, 22, 0.06);
 }
 
 .detail-shortcuts {

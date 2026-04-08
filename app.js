@@ -595,6 +595,31 @@ const renderCompareSnapshot = (container, currentProject, related) => {
   container.appendChild(table);
 };
 
+const buildDetailList = (items) => {
+  const list = document.createElement("dl");
+  list.className = "project-detail-list";
+
+  items.forEach(([label, value]) => {
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    list.append(dt, dd);
+  });
+
+  return list;
+};
+
+const buildDetailSection = (title, items) => {
+  const section = document.createElement("section");
+  section.className = "detail-section";
+  const heading = document.createElement("p");
+  heading.className = "detail-note-label";
+  heading.textContent = title;
+  section.append(heading, buildDetailList(items));
+  return section;
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -632,33 +657,39 @@ const renderDetailView = (project, projects) => {
   noteBlock.append(noteTitle, noteText);
 
   const scenarioStats = getScenarioStats(project, projects);
-  const detailList = node.querySelector(".project-detail-list");
-  [
-    ["目标客群", project.targetCustomers],
-    ["核心痛点", project.painPoint],
-    ["变现模式", project.monetization],
-    ["工作流场景", summarizeScenario(project)],
-    ["场景样本概览", scenarioStats],
-    ["样本状态", hasEvidenceRefresh(project) ? `已收录 / 最近一次补证于 ${project.lastUpdated}` : "已收录"],
-    ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
-    ...(getEvidenceGapLabel(project) ? [["待补证点", getEvidenceGapLabel(project)]] : []),
-    ["证据信号", project.evidenceQuality.signals.join(" / ")],
-    ["判断说明", project.evidenceQuality.note],
-    ["技术与合规门槛", project.barriers],
-  ].forEach(([label, value]) => {
-    const dt = document.createElement("dt");
-    dt.textContent = label;
-    const dd = document.createElement("dd");
-    dd.textContent = value;
-    detailList.append(dt, dd);
-  });
+  const detailSections = node.querySelector(".project-detail-sections");
+  detailSections.appendChild(
+    buildDetailSection("核心画像", [
+      ["目标客群", project.targetCustomers],
+      ["核心痛点", project.painPoint],
+      ["变现模式", project.monetization],
+      ["技术与合规门槛", project.barriers],
+    ])
+  );
+  detailSections.appendChild(
+    buildDetailSection("证据与状态", [
+      ["工作流场景", summarizeScenario(project)],
+      ["场景样本概览", scenarioStats],
+      ["样本状态", hasEvidenceRefresh(project) ? `已收录 / 最近一次补证于 ${project.lastUpdated}` : "已收录"],
+      ["商业化清晰度", `${evidenceLevelLabel[project.evidenceQuality.level]} / ${riskLabel[project.evidenceQuality.marketingRisk]}`],
+      ...(getEvidenceGapLabel(project) ? [["待补证点", getEvidenceGapLabel(project)]] : []),
+      ["证据信号", project.evidenceQuality.signals.join(" / ")],
+      ["判断说明", project.evidenceQuality.note],
+    ])
+  );
 
-  const benchmarkTitle = document.createElement("dt");
-  benchmarkTitle.textContent = "真实对标";
-  const benchmarkValue = document.createElement("dd");
+  const marketSection = document.createElement("section");
+  marketSection.className = "detail-section";
+  marketSection.innerHTML = `<p class="detail-note-label">来源与对标</p>`;
+  const benchmarkValue = document.createElement("div");
   benchmarkValue.className = "benchmark-links";
   renderBenchmarkLinks(benchmarkValue, project, projects);
-  detailList.append(benchmarkTitle, benchmarkValue);
+  marketSection.appendChild(benchmarkValue);
+  const sourceLinks = document.createElement("div");
+  sourceLinks.className = "source-links";
+  renderSourceLinks(sourceLinks, project.sources);
+  marketSection.appendChild(sourceLinks);
+  detailSections.appendChild(marketSection);
 
   const shortcutsSection = document.createElement("section");
   shortcutsSection.className = "detail-shortcuts";
@@ -799,8 +830,6 @@ const renderDetailView = (project, projects) => {
   });
   shortcutsSection.appendChild(shortcutActions);
   node.appendChild(shortcutsSection);
-
-  renderSourceLinks(node.querySelector(".source-links"), project.sources);
 
   const sameFormRelated = getRelatedProjects(project, projects, "same-form");
   const internalBenchmarkProjects = getInternalBenchmarkProjects(project, projects);
