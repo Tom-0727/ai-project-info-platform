@@ -1655,8 +1655,8 @@ createApp({
                   <div class="detail-shortcut-actions">
                     <button class="detail-shortcut-chip" type="button" @click="focusCluster('form')">只看同形态（{{ sameFormStats.total }}）</button>
                     <button class="detail-shortcut-chip" type="button" @click="focusCluster('form', true)">只看同形态清楚样本（{{ sameFormStats.strong }}）</button>
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景（{{ sameScenarioStats.total }}）</button>
-                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本（{{ sameScenarioStats.strong }}）</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景（跨形态 {{ sameScenarioStats.total }}）</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本（跨形态 {{ sameScenarioStats.strong }}）</button>
                   </div>
 
                   <details v-if="sameFormRelated.length" class="detail-disclosure">
