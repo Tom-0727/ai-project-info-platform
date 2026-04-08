@@ -717,9 +717,11 @@ const renderDetailView = (project, projects) => {
 
   const shortcutsSection = document.createElement("section");
   shortcutsSection.className = "detail-shortcuts";
-  shortcutsSection.innerHTML = `<p class="detail-note-label">快速筛选</p>`;
+  shortcutsSection.innerHTML = `<p class="detail-note-label">主浏览动作</p>`;
   const shortcutActions = document.createElement("div");
   shortcutActions.className = "detail-shortcut-actions";
+  const maintenanceNotes = [];
+  const maintenanceShortcuts = [];
   const pendingProjects = getPendingEvidenceProjects(projects);
   const pendingIndex = pendingProjects.findIndex((candidate) => candidate.id === project.id);
   const { sameFormCount, sameScenarioCount } = getComparableCounts(project, projects);
@@ -728,7 +730,7 @@ const renderDetailView = (project, projects) => {
   const compareProjects = projects.filter((candidate) => state.compareIds.includes(candidate.id));
   const compareProjectNames = compareProjects.map((candidate) => candidate.canonicalName);
 
-  const shortcuts = [
+  const primaryShortcuts = [
     {
       label: `查看同场景项目（${sameScenarioCount}）`,
       onClick: () => applyFocusedFilter({ scenario: summarizeScenario(project) }),
@@ -753,7 +755,7 @@ const renderDetailView = (project, projects) => {
     compareStatus.textContent = `当前处于对标视图：${compareProjectNames.slice(0, 4).join(" / ")}${compareProjectNames.length > 4 ? " 等" : ""}`;
     shortcutsSection.appendChild(compareStatus);
 
-    shortcuts.unshift({
+    primaryShortcuts.unshift({
       label: "退出对标视图",
       onClick: () => {
         state.compareIds = [];
@@ -766,19 +768,13 @@ const renderDetailView = (project, projects) => {
     const gapLabel = getEvidenceGapLabel(project) ?? "待复查";
     const sameGapProjects = pendingProjects.filter((candidate) => (getEvidenceGapLabel(candidate) ?? "待复查") === gapLabel);
     const sameGapIndex = sameGapProjects.findIndex((candidate) => candidate.id === project.id);
-    const pendingProgress = document.createElement("p");
-    pendingProgress.className = "detail-note-text";
-    pendingProgress.textContent = `待补证复查进度：${pendingIndex + 1} / ${pendingProjects.length}`;
-    shortcutsSection.appendChild(pendingProgress);
+    maintenanceNotes.push(`待补证复查进度：${pendingIndex + 1} / ${pendingProjects.length}`);
 
     if (sameGapProjects.length > 0) {
-      const sameGapProgress = document.createElement("p");
-      sameGapProgress.className = "detail-note-text";
-      sameGapProgress.textContent = `同类缺口队列：${gapLabel} · ${sameGapIndex + 1} / ${sameGapProjects.length}`;
-      shortcutsSection.appendChild(sameGapProgress);
+      maintenanceNotes.push(`同类缺口队列：${gapLabel} · ${sameGapIndex + 1} / ${sameGapProjects.length}`);
     }
 
-    shortcuts.push({
+    maintenanceShortcuts.push({
       label: "只看待补证清单",
       onClick: () => {
         state.evidence = "medium";
@@ -787,7 +783,7 @@ const renderDetailView = (project, projects) => {
       },
     });
 
-    shortcuts.push({
+    maintenanceShortcuts.push({
       label: `只看同类缺口：${gapLabel}（${sameGapProjects.length}）`,
       onClick: () => {
         applyFocusedMediumGapFilter(gapLabel);
@@ -797,7 +793,7 @@ const renderDetailView = (project, projects) => {
     if (pendingProjects.length > 1 && pendingIndex !== -1) {
       const previousPending = pendingProjects[(pendingIndex - 1 + pendingProjects.length) % pendingProjects.length];
       const nextPending = pendingProjects[(pendingIndex + 1) % pendingProjects.length];
-      shortcuts.push({
+      maintenanceShortcuts.push({
         label: `上一个待补证样本：${previousPending.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
@@ -806,7 +802,7 @@ const renderDetailView = (project, projects) => {
           renderApp(window.__projectsCache__);
         },
       });
-      shortcuts.push({
+      maintenanceShortcuts.push({
         label: `下一个待补证样本：${nextPending.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
@@ -820,7 +816,7 @@ const renderDetailView = (project, projects) => {
     if (sameGapProjects.length > 1 && sameGapIndex !== -1) {
       const previousGapProject = sameGapProjects[(sameGapIndex - 1 + sameGapProjects.length) % sameGapProjects.length];
       const nextGapProject = sameGapProjects[(sameGapIndex + 1) % sameGapProjects.length];
-      shortcuts.push({
+      maintenanceShortcuts.push({
         label: `上一个同类缺口：${previousGapProject.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
@@ -829,7 +825,7 @@ const renderDetailView = (project, projects) => {
           renderApp(window.__projectsCache__);
         },
       });
-      shortcuts.push({
+      maintenanceShortcuts.push({
         label: `下一个同类缺口：${nextGapProject.canonicalName}`,
         onClick: () => {
           state.evidence = "medium";
@@ -841,7 +837,7 @@ const renderDetailView = (project, projects) => {
     }
   }
 
-  shortcuts.forEach((shortcut) => {
+  primaryShortcuts.forEach((shortcut) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "detail-shortcut-chip";
@@ -853,6 +849,32 @@ const renderDetailView = (project, projects) => {
     shortcutActions.appendChild(button);
   });
   shortcutsSection.appendChild(shortcutActions);
+
+  if (maintenanceShortcuts.length > 0) {
+    const { section: maintenanceSection, body: maintenanceBody } = buildDisclosureSection("复查与维护动作");
+    maintenanceNotes.forEach((note) => {
+      const paragraph = document.createElement("p");
+      paragraph.className = "detail-note-text";
+      paragraph.textContent = note;
+      maintenanceBody.appendChild(paragraph);
+    });
+    const maintenanceActions = document.createElement("div");
+    maintenanceActions.className = "detail-shortcut-actions";
+    maintenanceShortcuts.forEach((shortcut) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "detail-shortcut-chip";
+      button.textContent = shortcut.label;
+      button.addEventListener("click", () => {
+        shortcut.onClick();
+        focusDetailPanel();
+      });
+      maintenanceActions.appendChild(button);
+    });
+    maintenanceBody.appendChild(maintenanceActions);
+    shortcutsSection.appendChild(maintenanceSection);
+  }
+
   node.appendChild(shortcutsSection);
 
   const sameFormRelated = getRelatedProjects(project, projects, "same-form");
