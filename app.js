@@ -36,6 +36,7 @@ const dayTemplate = document.querySelector("#day-template");
 const feedItemTemplate = document.querySelector("#feed-item-template");
 const detailTemplate = document.querySelector("#detail-template");
 let copyFeedbackTimer = null;
+let pendingFeedScrollTop = null;
 const INITIAL_FEED_LIMIT = 36;
 
 const formatCount = (value) => String(value).padStart(2, "0");
@@ -299,6 +300,11 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
   if (dailyFeed.childElementCount === 0) {
     dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的动态。</p>";
   }
+
+  if (pendingFeedScrollTop !== null) {
+    dailyFeed.scrollTop = pendingFeedScrollTop;
+    pendingFeedScrollTop = null;
+  }
 };
 
 const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
@@ -324,6 +330,11 @@ const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
 
   if (dailyFeed.childElementCount === 0) {
     dailyFeed.innerHTML = "<p>当前筛选条件下没有匹配的项目。</p>";
+  }
+
+  if (pendingFeedScrollTop !== null) {
+    dailyFeed.scrollTop = pendingFeedScrollTop;
+    pendingFeedScrollTop = null;
   }
 };
 
@@ -1797,6 +1808,7 @@ const renderApp = (projects) => {
   renderStructureSummary(baseProjects);
   syncBrowseMode();
   const onSelectProject = (projectId) => {
+    pendingFeedScrollTop = dailyFeed.scrollTop;
     state.selectedProjectId = projectId;
     renderApp(projects);
     focusDetailPanel();
