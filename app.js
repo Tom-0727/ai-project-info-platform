@@ -726,7 +726,7 @@ const buildCompactMetaLine = (items) => {
   return line;
 };
 
-const renderDetailView = (project, projects) => {
+const renderDetailView = (project, projects, visibleProjects) => {
   if (!project) {
     detailEmpty.hidden = false;
     detailView.hidden = true;
@@ -743,6 +743,47 @@ const renderDetailView = (project, projects) => {
   node.querySelector(".project-status").textContent = project.status === "active" ? "已收录" : "观察中";
   node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
   node.querySelector(".detail-intro").textContent = buildFeedIntro(project);
+
+  const detailHeaderNav = node.querySelector(".detail-header-nav");
+  const visibleIndex = visibleProjects.findIndex((candidate) => candidate.id === project.id);
+  if (visibleProjects.length > 1 && visibleIndex !== -1) {
+    const previousProject = visibleProjects[(visibleIndex - 1 + visibleProjects.length) % visibleProjects.length];
+    const nextProject = visibleProjects[(visibleIndex + 1) % visibleProjects.length];
+    [
+      {
+        label: `上一个结果：${previousProject.canonicalName}`,
+        onClick: () => {
+          state.selectedProjectId = previousProject.id;
+          renderApp(window.__projectsCache__);
+          focusDetailPanel();
+        },
+      },
+      {
+        label: `当前结果 ${visibleIndex + 1} / ${visibleProjects.length}`,
+        disabled: true,
+      },
+      {
+        label: `下一个结果：${nextProject.canonicalName}`,
+        onClick: () => {
+          state.selectedProjectId = nextProject.id;
+          renderApp(window.__projectsCache__);
+          focusDetailPanel();
+        },
+      },
+    ].forEach((action) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "detail-nav-chip";
+      button.textContent = action.label;
+      if (action.disabled) {
+        button.disabled = true;
+        button.classList.add("detail-nav-chip-static");
+      } else {
+        button.addEventListener("click", action.onClick);
+      }
+      detailHeaderNav.appendChild(button);
+    });
+  }
 
   const latestNote = getLatestNote(project);
   const noteBlock = node.querySelector(".detail-note");
@@ -1662,7 +1703,7 @@ const renderApp = (projects) => {
   } else {
     renderDailyFeed(visibleProjects, state.selectedProjectId, onSelectProject);
   }
-  renderDetailView(selectedProject, projects);
+  renderDetailView(selectedProject, projects, visibleProjects);
   renderResultsHint(visibleProjects, projects);
   syncFilterControls();
   writeStateToUrl();

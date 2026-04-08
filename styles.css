@@ -500,6 +500,13 @@ article.summary-card .summary-note {
   backdrop-filter: blur(8px);
 }
 
+.detail-header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
 .day-title,
 .project-name {
   margin-top: 4px;
@@ -853,6 +860,41 @@ article.summary-card .summary-note {
 .detail-shortcut-chip:focus-visible {
   outline: 2px solid rgba(188, 75, 39, 0.32);
   outline-offset: 2px;
+}
+
+.detail-nav-chip {
+  appearance: none;
+  border: 1px solid rgba(29, 26, 22, 0.08);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease;
+}
+
+.detail-nav-chip:hover,
+.detail-nav-chip:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(188, 75, 39, 0.08);
+  border-color: rgba(188, 75, 39, 0.24);
+}
+
+.detail-nav-chip:focus-visible {
+  outline: 2px solid rgba(188, 75, 39, 0.32);
+  outline-offset: 2px;
+}
+
+.detail-nav-chip-static,
+.detail-nav-chip:disabled {
+  cursor: default;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.52);
 }
 
 .related-section,
