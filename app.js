@@ -620,6 +620,30 @@ const buildDetailSection = (title, items) => {
   return section;
 };
 
+const buildDisclosureSection = (title, { open = false } = {}) => {
+  const section = document.createElement("details");
+  section.className = "detail-disclosure";
+  section.open = open;
+
+  const summary = document.createElement("summary");
+  summary.className = "detail-disclosure-summary";
+  const label = document.createElement("span");
+  label.className = "detail-note-label";
+  label.textContent = title;
+  summary.appendChild(label);
+
+  const hint = document.createElement("span");
+  hint.className = "detail-disclosure-hint";
+  hint.textContent = open ? "默认展开" : "点击展开";
+  summary.appendChild(hint);
+
+  const body = document.createElement("div");
+  body.className = "detail-disclosure-body";
+
+  section.append(summary, body);
+  return { section, body };
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -835,19 +859,20 @@ const renderDetailView = (project, projects) => {
   const internalBenchmarkProjects = getInternalBenchmarkProjects(project, projects);
 
   if (internalBenchmarkProjects.length > 0) {
-    const benchmarkCompareSection = document.createElement("section");
-    benchmarkCompareSection.className = "related-section";
-    benchmarkCompareSection.innerHTML = `
-      <p class="detail-note-label">对标快照（${internalBenchmarkProjects.length}）</p>
+    const { section: benchmarkCompareSection, body: benchmarkCompareBody } = buildDisclosureSection(
+      `对标快照（${internalBenchmarkProjects.length}）`,
+      { open: state.compareIds.length > 0 }
+    );
+    benchmarkCompareBody.innerHTML = `
       <div class="compare-snapshot"></div>
       <div class="compare-actions"></div>
     `;
     renderCompareSnapshot(
-      benchmarkCompareSection.querySelector(".compare-snapshot"),
+      benchmarkCompareBody.querySelector(".compare-snapshot"),
       project,
       internalBenchmarkProjects
     );
-    const benchmarkActions = benchmarkCompareSection.querySelector(".compare-actions");
+    const benchmarkActions = benchmarkCompareBody.querySelector(".compare-actions");
     const benchmarkButton = document.createElement("button");
     benchmarkButton.type = "button";
     benchmarkButton.className = "detail-shortcut-chip";
@@ -860,15 +885,13 @@ const renderDetailView = (project, projects) => {
     node.appendChild(benchmarkCompareSection);
   }
 
-  const compareSection = document.createElement("section");
-  compareSection.className = "related-section";
-  compareSection.innerHTML = `
-    <p class="detail-note-label">同形态快照对比</p>
+  const { section: compareSection, body: compareBody } = buildDisclosureSection("同形态快照对比", { open: true });
+  compareBody.innerHTML = `
     <div class="compare-snapshot"></div>
     <div class="compare-actions"></div>
   `;
-  renderCompareSnapshot(compareSection.querySelector(".compare-snapshot"), project, sameFormRelated);
-  const compareActions = compareSection.querySelector(".compare-actions");
+  renderCompareSnapshot(compareBody.querySelector(".compare-snapshot"), project, sameFormRelated);
+  const compareActions = compareBody.querySelector(".compare-actions");
   [
     {
       label: `看完整同形态列表（${sameFormStats.total}）`,
@@ -891,27 +914,23 @@ const renderDetailView = (project, projects) => {
   });
   node.appendChild(compareSection);
 
-  const sameFormSection = document.createElement("section");
-  sameFormSection.className = "related-section";
-  sameFormSection.innerHTML = `
-    <p class="detail-note-label">同形态项目（${sameFormStats.total}，清楚 ${sameFormStats.strong}）</p>
-    <div class="related-projects"></div>
-  `;
+  const { section: sameFormSection, body: sameFormBody } = buildDisclosureSection(
+    `同形态项目（${sameFormStats.total}，清楚 ${sameFormStats.strong}）`
+  );
+  sameFormBody.innerHTML = `<div class="related-projects"></div>`;
   renderRelatedProjects(
-    sameFormSection.querySelector(".related-projects"),
+    sameFormBody.querySelector(".related-projects"),
     sameFormRelated,
     "当前库里还没有更多同形态项目。"
   );
   node.appendChild(sameFormSection);
 
-  const relatedSection = document.createElement("section");
-  relatedSection.className = "related-section";
-  relatedSection.innerHTML = `
-    <p class="detail-note-label">同场景项目（${sameScenarioStats.total}，清楚 ${sameScenarioStats.strong}）</p>
-    <div class="related-projects"></div>
-  `;
+  const { section: relatedSection, body: relatedBody } = buildDisclosureSection(
+    `同场景项目（${sameScenarioStats.total}，清楚 ${sameScenarioStats.strong}）`
+  );
+  relatedBody.innerHTML = `<div class="related-projects"></div>`;
   renderRelatedProjects(
-    relatedSection.querySelector(".related-projects"),
+    relatedBody.querySelector(".related-projects"),
     getRelatedProjects(project, projects, "same-scenario"),
     "当前库里还没有更多同场景项目。"
   );

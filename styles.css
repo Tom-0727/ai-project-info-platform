@@ -690,9 +690,37 @@ button.summary-card[aria-pressed="true"] .summary-label {
   outline-offset: 2px;
 }
 
-.related-section {
+.related-section,
+.detail-disclosure {
   margin-top: 18px;
   padding-top: 4px;
+}
+
+.detail-disclosure {
+  border-top: 1px solid rgba(29, 26, 22, 0.06);
+}
+
+.detail-disclosure-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.detail-disclosure-summary::-webkit-details-marker {
+  display: none;
+}
+
+.detail-disclosure-hint {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.detail-disclosure-body {
+  margin-top: 10px;
 }
 
 .compare-snapshot {
