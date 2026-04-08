@@ -227,6 +227,7 @@ createApp({
       refreshed: false,
       mediumGap: "all",
       form: "all",
+      excludeForm: "",
       scenario: "all",
       sort: "discovered",
       compareIds: [],
@@ -261,6 +262,7 @@ createApp({
           filters.value.mediumGap === "all" ||
           (project.evidenceQuality.level === "medium" && getEvidenceGapLabel(project) === filters.value.mediumGap);
         const matchesForm = filters.value.form === "all" || project.productForm === filters.value.form;
+        const matchesExcludeForm = !filters.value.excludeForm || project.productForm !== filters.value.excludeForm;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         return (
@@ -268,6 +270,7 @@ createApp({
           matchesRefreshed &&
           matchesMediumGap &&
           matchesForm &&
+          matchesExcludeForm &&
           matchesScenario &&
           matchesCompare &&
           projectMatchesQuery(project, filters.value.query)
@@ -569,6 +572,16 @@ createApp({
         });
       }
 
+      if (filters.value.excludeForm) {
+        chips.push({
+          key: "exclude-form",
+          label: `跨形态：排除 ${filters.value.excludeForm}`,
+          clear: () => {
+            filters.value.excludeForm = "";
+          },
+        });
+      }
+
       if (filters.value.scenario !== "all") {
         chips.push({
           key: "scenario",
@@ -800,6 +813,7 @@ createApp({
       if (filters.value.refreshed) params.set("refreshed", "1");
       if (filters.value.mediumGap !== "all") params.set("gap", filters.value.mediumGap);
       if (filters.value.form !== "all") params.set("form", filters.value.form);
+      if (filters.value.excludeForm) params.set("excludeForm", filters.value.excludeForm);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
@@ -816,6 +830,7 @@ createApp({
       filters.value.refreshed = params.get("refreshed") === "1";
       filters.value.mediumGap = params.get("gap") || "all";
       filters.value.form = params.get("form") || "all";
+      filters.value.excludeForm = params.get("excludeForm") || "";
       filters.value.scenario = params.get("scenario") || "all";
       filters.value.sort = params.get("sort") || "discovered";
       filters.value.compareIds = (params.get("compare") || "")
@@ -832,6 +847,7 @@ createApp({
       filters.value.refreshed = false;
       filters.value.mediumGap = "all";
       filters.value.form = "all";
+      filters.value.excludeForm = "";
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
@@ -895,10 +911,12 @@ createApp({
 
       if (mode === "form") {
         filters.value.form = selectedProject.value.productForm;
+        filters.value.excludeForm = "";
         filters.value.scenario = "all";
       } else if (mode === "scenario") {
         filters.value.scenario = summarizeScenario(selectedProject.value);
         filters.value.form = "all";
+        filters.value.excludeForm = selectedProject.value.productForm;
       }
     };
 
@@ -915,6 +933,7 @@ createApp({
       filters.value.query = "";
       filters.value.compareIds = [selectedProject.value.id, ...matchedIds];
       filters.value.mediumGap = "all";
+      filters.value.excludeForm = "";
       feedLimit.value = INITIAL_LIMIT;
     };
 
@@ -928,6 +947,7 @@ createApp({
       filters.value.evidence = "medium";
       filters.value.mediumGap = selectedGapLabel.value;
       filters.value.form = "all";
+      filters.value.excludeForm = "";
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
@@ -950,6 +970,7 @@ createApp({
       filters.value.refreshed = false;
       filters.value.mediumGap = "all";
       filters.value.form = "all";
+      filters.value.excludeForm = "";
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
@@ -997,7 +1018,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
