@@ -42,14 +42,14 @@ body::before {
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 32px 20px 64px;
 }
 
 .hero {
   display: grid;
-  gap: 28px;
+  gap: 22px;
   align-items: end;
-  padding: 28px;
+  padding: 22px;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: linear-gradient(135deg, rgba(255, 248, 238, 0.9), rgba(255, 253, 249, 0.74));
@@ -78,9 +78,9 @@ h4 {
 }
 
 h1 {
-  max-width: 10ch;
-  font-size: clamp(2.6rem, 6vw, 5rem);
-  line-height: 1.02;
+  max-width: 9ch;
+  font-size: clamp(2.35rem, 5.4vw, 4.4rem);
+  line-height: 1.04;
 }
 
 .hero-text,
@@ -92,16 +92,16 @@ h1 {
 }
 
 .hero-text {
-  max-width: 58ch;
-  margin: 18px 0 0;
-  font-size: 1.02rem;
-  line-height: 1.7;
+  max-width: 52ch;
+  margin: 14px 0 0;
+  font-size: 0.96rem;
+  line-height: 1.62;
 }
 
 .hero-metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 10px;
 }
 
 .metric-card,
@@ -117,9 +117,9 @@ h1 {
 .metric-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 18px;
-  transform: translateY(12px);
+  gap: 6px;
+  padding: 14px;
+  transform: translateY(8px);
   opacity: 0;
   animation: lift-in 0.7s ease forwards;
 }
@@ -133,13 +133,13 @@ h1 {
 }
 
 .metric-value {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 
 .metric-label {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
 }
 
 .layout {
