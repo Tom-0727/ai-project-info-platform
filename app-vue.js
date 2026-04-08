@@ -58,6 +58,7 @@ const domainFromUrl = (value) => {
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
 const summarizeScenario = (project) => firstClause(project.painPoint);
+const normalizeLookupKey = (value) => String(value || "").trim().toLowerCase();
 
 const buildCompactNote = (value, maxLength = 120) => {
   if (!value) {
@@ -166,7 +167,21 @@ createApp({
       form: "all",
       scenario: "all",
       sort: "discovered",
+      compareIds: [],
       usageDismissed: readFlag("ai-project-scout:usage-strip-dismissed"),
+    });
+
+    const projectLookup = computed(() => {
+      const lookup = new Map();
+      projects.value.forEach((project) => {
+        [project.canonicalName, ...(project.aliases || [])].forEach((name) => {
+          const key = normalizeLookupKey(name);
+          if (key) {
+            lookup.set(key, project);
+          }
+        });
+      });
+      return lookup;
     });
 
     const forms = computed(() =>
@@ -181,10 +196,12 @@ createApp({
         const matchesEvidence = filters.value.evidence === "all" || project.evidenceQuality.level === filters.value.evidence;
         const matchesForm = filters.value.form === "all" || project.productForm === filters.value.form;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
+        const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         return (
           matchesEvidence &&
           matchesForm &&
           matchesScenario &&
+          matchesCompare &&
           projectMatchesQuery(project, filters.value.query)
         );
       });
@@ -242,6 +259,62 @@ createApp({
         { value: String(newestCount).padStart(2, "0"), label: "当日动态" },
         { value: String(projects.value.filter((project) => project.status === "active").length).padStart(2, "0"), label: "活跃样本" },
         { value: String(projects.value.filter((project) => project.evidenceQuality.level === "strong").length).padStart(2, "0"), label: "商业化清楚" },
+      ];
+    });
+
+    const overviewCards = computed(() => {
+      const scoped = filteredProjects.value;
+      const scenarioCounts = scoped.reduce((map, project) => {
+        const key = summarizeScenario(project);
+        map[key] = (map[key] || 0) + 1;
+        return map;
+      }, {});
+
+      const topScenarios = Object.entries(scenarioCounts)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 2);
+
+      return [
+        {
+          key: "top-scenario-1",
+          label: "当前最密集场景",
+          value: topScenarios[0] ? `${topScenarios[0][0]} · ${topScenarios[0][1]}个` : "暂无",
+          active: topScenarios[0] ? filters.value.scenario === topScenarios[0][0] : false,
+          onClick: topScenarios[0]
+            ? () => {
+                filters.value.scenario = filters.value.scenario === topScenarios[0][0] ? "all" : topScenarios[0][0];
+              }
+            : null,
+        },
+        {
+          key: "top-scenario-2",
+          label: "第二密集场景",
+          value: topScenarios[1] ? `${topScenarios[1][0]} · ${topScenarios[1][1]}个` : "暂无",
+          active: topScenarios[1] ? filters.value.scenario === topScenarios[1][0] : false,
+          onClick: topScenarios[1]
+            ? () => {
+                filters.value.scenario = filters.value.scenario === topScenarios[1][0] ? "all" : topScenarios[1][0];
+              }
+            : null,
+        },
+        {
+          key: "strong",
+          label: "商业化清楚",
+          value: `${summary.value.strong} 个`,
+          active: filters.value.evidence === "strong",
+          onClick: () => {
+            filters.value.evidence = filters.value.evidence === "strong" ? "all" : "strong";
+          },
+        },
+        {
+          key: "medium",
+          label: "待补证",
+          value: `${summary.value.medium} 个`,
+          active: filters.value.evidence === "medium",
+          onClick: () => {
+            filters.value.evidence = filters.value.evidence === "medium" ? "all" : "medium";
+          },
+        },
       ];
     });
 
@@ -323,6 +396,19 @@ createApp({
         });
       }
 
+      if (filters.value.compareIds.length) {
+        const names = projects.value
+          .filter((project) => filters.value.compareIds.includes(project.id))
+          .map((project) => project.canonicalName);
+        chips.push({
+          key: "compare",
+          label: `对标：${names.slice(0, 3).join(" / ")}${names.length > 3 ? " 等" : ""}`,
+          clear: () => {
+            filters.value.compareIds = [];
+          },
+        });
+      }
+
       return chips;
     });
 
@@ -365,6 +451,17 @@ createApp({
         .slice(0, 3);
     });
 
+    const selectedBenchmarkLinks = computed(() => {
+      if (!selectedProject.value) {
+        return [];
+      }
+
+      return (selectedProject.value.benchmarks || []).map((benchmark) => {
+        const matchedProject = projectLookup.value.get(normalizeLookupKey(benchmark)) || null;
+        return { label: benchmark, matchedProject };
+      });
+    });
+
     const ensureSelection = () => {
       if (!filteredProjects.value.length) {
         selectedProjectId.value = "";
@@ -384,6 +481,7 @@ createApp({
       if (filters.value.form !== "all") params.set("form", filters.value.form);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
+      if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
       if (selectedProjectId.value) params.set("project", selectedProjectId.value);
       const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
       window.history.replaceState({}, "", next);
@@ -397,6 +495,10 @@ createApp({
       filters.value.form = params.get("form") || "all";
       filters.value.scenario = params.get("scenario") || "all";
       filters.value.sort = params.get("sort") || "discovered";
+      filters.value.compareIds = (params.get("compare") || "")
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
       selectedProjectId.value = params.get("project") || "";
     };
 
@@ -407,6 +509,7 @@ createApp({
       filters.value.form = "all";
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
+      filters.value.compareIds = [];
       feedLimit.value = INITIAL_LIMIT;
     };
 
@@ -459,6 +562,7 @@ createApp({
 
       filters.value.view = "library";
       filters.value.query = "";
+      filters.value.compareIds = [];
       feedLimit.value = INITIAL_LIMIT;
 
       if (mode === "form") {
@@ -468,6 +572,21 @@ createApp({
         filters.value.scenario = summarizeScenario(selectedProject.value);
         filters.value.form = "all";
       }
+    };
+
+    const activateBenchmarkCompare = () => {
+      if (!selectedProject.value) {
+        return;
+      }
+
+      const matchedIds = selectedBenchmarkLinks.value
+        .map((item) => item.matchedProject?.id)
+        .filter(Boolean);
+
+      filters.value.view = "library";
+      filters.value.query = "";
+      filters.value.compareIds = [selectedProject.value.id, ...matchedIds];
+      feedLimit.value = INITIAL_LIMIT;
     };
 
     const syncScrollUi = () => {
@@ -501,7 +620,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.form, filters.value.scenario, filters.value.sort],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
@@ -563,6 +682,7 @@ createApp({
       selectedIndex,
       summary,
       heroMetrics,
+      overviewCards,
       resultHint,
       loadMoreLabel,
       activeFilterChips,
@@ -572,6 +692,7 @@ createApp({
       expandedFields,
       sameFormRelated,
       sameScenarioRelated,
+      selectedBenchmarkLinks,
       listRef,
       detailViewRef,
       evidenceLevelLabel,
@@ -591,6 +712,7 @@ createApp({
       copyViewLabel,
       copyCurrentView,
       focusCluster,
+      activateBenchmarkCompare,
       activeSection,
       showScrollTop,
       loadMore: () => {
@@ -721,18 +843,19 @@ createApp({
                     <span class="summary-label">当前结果</span>
                     <strong class="summary-value">{{ summary.total }} / {{ summary.all }}</strong>
                   </article>
-                  <article class="summary-card">
-                    <span class="summary-label">商业化清楚</span>
-                    <strong class="summary-value">{{ summary.strong }}</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">待补证</span>
-                    <strong class="summary-value">{{ summary.medium }}</strong>
-                  </article>
-                  <article class="summary-card">
-                    <span class="summary-label">活跃样本</span>
-                    <strong class="summary-value">{{ summary.active }}</strong>
-                  </article>
+                  <component
+                    :is="card.onClick ? 'button' : 'article'"
+                    v-for="card in overviewCards"
+                    :key="card.key"
+                    class="summary-card"
+                    :class="{ 'summary-card-active': card.active }"
+                    :aria-pressed="card.onClick ? String(card.active) : null"
+                    :type="card.onClick ? 'button' : null"
+                    @click="card.onClick && card.onClick()"
+                  >
+                    <span class="summary-label">{{ card.label }}</span>
+                    <strong class="summary-value">{{ card.value }}</strong>
+                  </component>
                 </div>
               </details>
             </div>
@@ -933,8 +1056,21 @@ createApp({
                       {{ index === 0 ? '首要来源' : '补充来源' }} · {{ domainFromUrl(source) }}
                     </a>
                   </div>
-                  <div v-if="selectedProject.benchmarks && selectedProject.benchmarks.length" class="benchmark-links">
-                    <span v-for="benchmark in selectedProject.benchmarks" :key="benchmark" class="benchmark-chip">{{ benchmark }}</span>
+                  <div v-if="selectedBenchmarkLinks.length" class="detail-shortcut-actions">
+                    <button class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
+                  </div>
+                  <div v-if="selectedBenchmarkLinks.length" class="benchmark-links">
+                    <template v-for="item in selectedBenchmarkLinks" :key="item.label">
+                      <button
+                        v-if="item.matchedProject"
+                        class="benchmark-chip benchmark-chip-link"
+                        type="button"
+                        @click="selectProject(item.matchedProject.id)"
+                      >
+                        {{ item.label }}
+                      </button>
+                      <span v-else class="benchmark-chip">{{ item.label }}</span>
+                    </template>
                   </div>
                 </section>
 
