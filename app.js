@@ -1,4 +1,4 @@
-const dataUrl = "./data/projects.json";
+const dataUrl = "/api/projects";
 
 const heroMetrics = document.querySelector("#hero-metrics");
 const dailyFeed = document.querySelector("#daily-feed");
@@ -19,12 +19,14 @@ const refreshFilterButton = document.querySelector("#refresh-filter");
 const gapClearButton = document.querySelector("#gap-clear");
 const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
+const loadMoreFeedButton = document.querySelector("#load-more-feed");
 
 const metricTemplate = document.querySelector("#metric-template");
 const dayTemplate = document.querySelector("#day-template");
 const feedItemTemplate = document.querySelector("#feed-item-template");
 const detailTemplate = document.querySelector("#detail-template");
 let copyFeedbackTimer = null;
+const INITIAL_FEED_LIMIT = 36;
 
 const formatCount = (value) => String(value).padStart(2, "0");
 const evidenceLevelLabel = {
@@ -207,8 +209,18 @@ const renderDailyFeed = (projects, selectedProjectId, onSelectProject) => {
       feedIntro: project.feedIntro ?? buildFeedIntro(project),
     }))
   );
+  entries.sort((left, right) => {
+    const dateDelta = right.date.localeCompare(left.date);
+    if (dateDelta !== 0) {
+      return dateDelta;
+    }
 
-  const grouped = entries.reduce((accumulator, entry) => {
+    return right.discoveredSeq - left.discoveredSeq;
+  });
+  const visibleEntries = entries.slice(0, state.feedLimit);
+  syncFeedLimit(entries.length);
+
+  const grouped = visibleEntries.reduce((accumulator, entry) => {
     accumulator[entry.date] ??= [];
     accumulator[entry.date].push(entry);
     return accumulator;
@@ -288,6 +300,7 @@ const applyFocusedFilter = ({ scenario = "all", form = "all" }) => {
   state.scenario = scenario;
   state.form = form;
   state.compareIds = [];
+  resetFeedLimit();
   renderApp(window.__projectsCache__);
 };
 
@@ -298,6 +311,7 @@ const applyFocusedStrongFilter = ({ scenario = "all", form = "all" }) => {
   state.scenario = scenario;
   state.form = form;
   state.compareIds = [];
+  resetFeedLimit();
   renderApp(window.__projectsCache__);
 };
 
@@ -309,6 +323,7 @@ const applyFocusedMediumGapFilter = (mediumGap) => {
   state.form = "all";
   state.refreshed = false;
   state.compareIds = [];
+  resetFeedLimit();
   renderApp(window.__projectsCache__);
 };
 
@@ -321,6 +336,7 @@ const applyBenchmarkCompareFilter = (project, benchmarkProjects) => {
   state.refreshed = false;
   state.compareIds = [project.id, ...benchmarkProjects.map((candidate) => candidate.id)];
   state.selectedProjectId = project.id;
+  resetFeedLimit();
   renderApp(window.__projectsCache__);
 };
 
@@ -857,6 +873,7 @@ const state = {
   refreshed: false,
   compareIds: [],
   selectedProjectId: null,
+  feedLimit: INITIAL_FEED_LIMIT,
 };
 
 const writeStateToUrl = () => {
@@ -898,6 +915,10 @@ const writeStateToUrl = () => {
     params.set("project", state.selectedProjectId);
   }
 
+  if (state.feedLimit > INITIAL_FEED_LIMIT) {
+    params.set("limit", String(state.feedLimit));
+  }
+
   const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
   window.history.replaceState({}, "", nextUrl);
 };
@@ -922,6 +943,26 @@ const hydrateStateFromUrl = (projects) => {
     .split(",")
     .filter((id) => projectIds.has(id));
   state.selectedProjectId = projectIds.has(params.get("project")) ? params.get("project") : null;
+  state.feedLimit = Number.parseInt(params.get("limit") ?? `${INITIAL_FEED_LIMIT}`, 10);
+  if (!Number.isFinite(state.feedLimit) || state.feedLimit < INITIAL_FEED_LIMIT) {
+    state.feedLimit = INITIAL_FEED_LIMIT;
+  }
+};
+
+const resetFeedLimit = () => {
+  state.feedLimit = INITIAL_FEED_LIMIT;
+};
+
+const syncFeedLimit = (totalEntries) => {
+  if (!loadMoreFeedButton) {
+    return;
+  }
+
+  const hasMore = totalEntries > state.feedLimit;
+  loadMoreFeedButton.hidden = !hasMore;
+  if (hasMore) {
+    loadMoreFeedButton.textContent = `继续加载更多（剩余 ${totalEntries - state.feedLimit}）`;
+  }
 };
 
 const fallbackCopyText = (value) => {
@@ -1252,6 +1293,8 @@ const projectMatches = (project) =>
   (state.scenario === "all" || summarizeScenario(project) === state.scenario);
 
 const renderResultsHint = (visibleProjects, allProjects) => {
+  const visibleEntries = visibleProjects.reduce((count, project) => count + project.dailyNotes.length, 0);
+  const shownEntries = Math.min(visibleEntries, state.feedLimit);
   const compareProjectNames =
     state.compareIds.length > 0
       ? allProjects
@@ -1273,7 +1316,7 @@ const renderResultsHint = (visibleProjects, allProjects) => {
 
   const suffix =
     filterNotes.length > 0 ? `当前筛选为 ${filterNotes.join(" / ")}。` : "当前为全量视图。";
-  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目。${suffix} 点击左侧卡片在右侧查看完整详情。`;
+  resultsHint.textContent = `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries}/${visibleEntries} 条动态。${suffix} 点击左侧卡片在右侧查看完整详情。`;
 };
 
 const sortProjects = (projects) => {
@@ -1347,6 +1390,7 @@ const bootstrap = async () => {
 
   searchInput.addEventListener("input", (event) => {
     state.query = event.target.value;
+    resetFeedLimit();
     renderApp(projects);
   });
 
@@ -1355,12 +1399,14 @@ const bootstrap = async () => {
     if (state.evidence !== "medium") {
       state.mediumGap = "all";
     }
+    resetFeedLimit();
     renderApp(projects);
   });
 
   strongFilterButton?.addEventListener("click", () => {
     state.evidence = state.evidence === "strong" ? "all" : "strong";
     state.mediumGap = "all";
+    resetFeedLimit();
     renderApp(projects);
   });
 
@@ -1370,16 +1416,19 @@ const bootstrap = async () => {
     if (nextEvidence === "all") {
       state.mediumGap = "all";
     }
+    resetFeedLimit();
     renderApp(projects);
   });
 
   formFilter.addEventListener("change", (event) => {
     state.form = event.target.value;
+    resetFeedLimit();
     renderApp(projects);
   });
 
   refreshFilterButton?.addEventListener("click", () => {
     state.refreshed = !state.refreshed;
+    resetFeedLimit();
     renderApp(projects);
   });
 
@@ -1393,16 +1442,19 @@ const bootstrap = async () => {
     if (state.evidence === "all") {
       state.evidence = "medium";
     }
+    resetFeedLimit();
     renderApp(projects);
   });
 
   scenarioFilter.addEventListener("change", (event) => {
     state.scenario = event.target.value;
+    resetFeedLimit();
     renderApp(projects);
   });
 
   sortFilter.addEventListener("change", (event) => {
     state.sort = event.target.value;
+    resetFeedLimit();
     renderApp(projects);
   });
 
@@ -1415,11 +1467,17 @@ const bootstrap = async () => {
     state.sort = "discovered";
     state.refreshed = false;
     state.compareIds = [];
+    resetFeedLimit();
     renderApp(projects);
   });
 
   copyViewLinkButton?.addEventListener("click", () => {
     copyCurrentViewLink();
+  });
+
+  loadMoreFeedButton?.addEventListener("click", () => {
+    state.feedLimit += INITIAL_FEED_LIMIT;
+    renderApp(projects);
   });
 
   renderApp(projects);

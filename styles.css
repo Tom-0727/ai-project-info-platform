@@ -190,6 +190,12 @@ h1 {
   margin-top: 18px;
 }
 
+.feed-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
 .filters {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) repeat(4, minmax(150px, 0.55fr));

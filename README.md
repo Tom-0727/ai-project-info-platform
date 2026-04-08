@@ -1,25 +1,45 @@
 # AI Project Info Platform
 
-Static web frontend for daily AI project scouting.
+FastAPI-served web frontend for daily AI project scouting.
 
 ## Goal
 
-Track China-market AI software projects with explicit monetization paths, publish daily additions, and avoid duplicates before publishing to GitHub Pages.
-The UI now uses a summary-first layout: Daily Feed cards show concise intros, and the right-hand detail panel expands the selected project.
+Track China-market AI software projects with explicit monetization paths, publish daily additions, and avoid duplicates before publishing.
+The UI uses a summary-first layout: Daily Feed cards show concise intros, and the right-hand detail panel expands the selected project.
 Projects are displayed by discovery order descending by default, so the newest scoped item stays at the top.
+The page is now served by FastAPI and loads project data from `/api/projects` instead of reading a local JSON file directly in static mode.
 
 ## Structure
 
-- `index.html`: static entry page for GitHub Pages.
+- `server.py`: FastAPI app that serves the UI, static assets, and `/api/projects`.
+- `index.html`: browser entry page.
 - `styles.css`: visual system and responsive layout.
-- `app.js`: renders daily feed and the selected project detail from JSON data.
-  Includes client-side search, filters, click-through detail selection, and newest-first ordering.
+- `app.js`: renders daily feed and the selected project detail from `/api/projects`.
+  Includes client-side search, filters, click-through detail selection, newest-first ordering, and incremental feed loading.
 - `data/projects.json`: source of truth for tracked projects.
   Includes `discoveredSeq`, which is the stable ordering key for newest-first display.
+- `requirements.txt`: web runtime dependencies for FastAPI deployment.
 - `scripts/add-project.mjs`: add a new project with its first daily note.
 - `scripts/add-daily-note.mjs`: append a daily update to an existing project.
 - `scripts/update-project.mjs`: update an existing project’s evidence fields, sources, monetization text, and optionally append a new daily note in one pass.
 - `scripts/validate-projects.mjs`: duplicate guard for ids, normalized names, slugs, source URLs, and repeated daily notes.
+
+## Run locally
+
+1. Start the web app:
+
+   ```bash
+   uv run --with fastapi --with uvicorn uvicorn server:app --reload --app-dir workspace/ai-project-info-platform
+   ```
+
+2. Open `http://127.0.0.1:8000`.
+
+Useful endpoints:
+
+- `/api/health`
+- `/api/projects`
+- `/static/app.js`
+- `/static/styles.css`
 
 ## Daily update workflow
 
@@ -86,6 +106,7 @@ The update-project script is useful for medium-to-strong upgrades because it upd
 List-style CLI fields such as `--aliases`, `--evidence-signals`, `--benchmarks`, and `--sources` now accept either commas or `|`, so older one-line shell habits still parse correctly.
 The validator now rejects meta-style daily note summaries such as `纳入正式名单，原因是……`; public summaries should describe what the product is, who it helps, and how it makes money in plain language.
 
-## GitHub Pages
+## Deployment direction
 
-This repository is static by default. Publishing the repository root is enough for GitHub Pages.
+The app is no longer limited to GitHub Pages-style static hosting.
+Use the FastAPI service as the primary deployment shape when the project list and interaction complexity outgrow static delivery.
