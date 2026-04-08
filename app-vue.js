@@ -555,7 +555,7 @@ createApp({
       }, 1800);
     };
 
-    const focusCluster = (mode) => {
+    const focusCluster = (mode, onlyStrong = false) => {
       if (!selectedProject.value) {
         return;
       }
@@ -563,6 +563,7 @@ createApp({
       filters.value.view = "library";
       filters.value.query = "";
       filters.value.compareIds = [];
+      filters.value.evidence = onlyStrong ? "strong" : "all";
       feedLimit.value = INITIAL_LIMIT;
 
       if (mode === "form") {
@@ -1078,7 +1079,9 @@ createApp({
                   <h4 class="detail-section-title">快速对比</h4>
                   <div class="detail-shortcut-actions">
                     <button class="detail-shortcut-chip" type="button" @click="focusCluster('form')">只看同形态</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form', true)">只看同形态清楚样本</button>
                     <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本</button>
                   </div>
 
                   <div v-if="sameFormRelated.length" class="related-projects">
