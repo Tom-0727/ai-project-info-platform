@@ -706,6 +706,13 @@ const appendStatusBadge = (container, text) => {
   container.appendChild(badge);
 };
 
+const buildCompactMetaLine = (items) => {
+  const line = document.createElement("p");
+  line.className = "detail-note-text detail-meta-line";
+  line.textContent = items.join(" / ");
+  return line;
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -784,14 +791,26 @@ const renderDetailView = (project, projects) => {
   const marketSection = document.createElement("section");
   marketSection.className = "detail-section";
   marketSection.innerHTML = `<p class="detail-note-label">来源与对标</p>`;
-  const benchmarkValue = document.createElement("div");
-  benchmarkValue.className = "benchmark-links";
-  renderBenchmarkLinks(benchmarkValue, project, projects);
-  marketSection.appendChild(benchmarkValue);
+  const benchmarkCount = (project.benchmarks ?? []).length;
+  marketSection.appendChild(
+    buildCompactMetaLine([`来源 ${project.sources.length} 条`, `已记录对标 ${benchmarkCount} 个`])
+  );
+
+  if (benchmarkCount > 0) {
+    const { section: benchmarkSection, body: benchmarkBody } = buildDisclosureSection(`已记录对标（${benchmarkCount}）`);
+    const benchmarkValue = document.createElement("div");
+    benchmarkValue.className = "benchmark-links";
+    renderBenchmarkLinks(benchmarkValue, project, projects);
+    benchmarkBody.appendChild(benchmarkValue);
+    marketSection.appendChild(benchmarkSection);
+  }
+
+  const { section: sourceSection, body: sourceBody } = buildDisclosureSection(`来源链接（${project.sources.length}）`);
   const sourceLinks = document.createElement("div");
   sourceLinks.className = "source-links";
   renderSourceLinks(sourceLinks, project.sources);
-  marketSection.appendChild(sourceLinks);
+  sourceBody.appendChild(sourceLinks);
+  marketSection.appendChild(sourceSection);
   detailSections.appendChild(marketSection);
 
   const shortcutsSection = document.createElement("section");

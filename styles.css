@@ -916,6 +916,10 @@ button.summary-card[aria-pressed="true"] .summary-label {
   margin-top: 8px;
 }
 
+.detail-meta-line {
+  color: var(--muted);
+}
+
 .project-detail-list {
   display: grid;
   gap: 12px;
