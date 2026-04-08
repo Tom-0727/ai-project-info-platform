@@ -225,6 +225,68 @@ createApp({
       return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleEntries.value.length} 条动态。左侧点项目，右侧看完整详情。`;
     });
 
+    const activeFilterChips = computed(() => {
+      const chips = [];
+
+      if (filters.value.query) {
+        chips.push({
+          key: "query",
+          label: `关键词：${filters.value.query}`,
+          clear: () => {
+            filters.value.query = "";
+          },
+        });
+      }
+
+      if (filters.value.evidence !== "all") {
+        chips.push({
+          key: "evidence",
+          label: `证据：${evidenceLevelLabel[filters.value.evidence]}`,
+          clear: () => {
+            filters.value.evidence = "all";
+          },
+        });
+      }
+
+      if (filters.value.form !== "all") {
+        chips.push({
+          key: "form",
+          label: `形态：${filters.value.form}`,
+          clear: () => {
+            filters.value.form = "all";
+          },
+        });
+      }
+
+      if (filters.value.scenario !== "all") {
+        chips.push({
+          key: "scenario",
+          label: `场景：${filters.value.scenario}`,
+          clear: () => {
+            filters.value.scenario = "all";
+          },
+        });
+      }
+
+      if (filters.value.sort !== "discovered") {
+        const sortLabel =
+          {
+            refreshed: "最近补证优先",
+            evidence: "证据强度优先",
+            name: "名称 A-Z",
+          }[filters.value.sort] || filters.value.sort;
+        chips.push({
+          key: "sort",
+          label: `排序：${sortLabel}`,
+          clear: () => {
+            filters.value.sort = "discovered";
+          },
+        });
+      }
+
+      return chips;
+    });
+
     const selectedIndex = computed(() => {
       const index = filteredProjects.value.findIndex((project) => project.id === selectedProjectId.value);
       return index >= 0 ? index : 0;
@@ -376,6 +438,7 @@ createApp({
       summary,
       heroMetrics,
       resultHint,
+      activeFilterChips,
       selectedStatusChips,
       listRef,
       evidenceLevelLabel,
@@ -493,6 +556,18 @@ createApp({
             <div class="control-group">
               <p class="control-group-label">结构概览</p>
               <p class="results-hint">{{ resultHint }}</p>
+              <div v-if="activeFilterChips.length" class="active-filters">
+                <button
+                  v-for="chip in activeFilterChips"
+                  :key="chip.key"
+                  type="button"
+                  class="active-filter-chip"
+                  @click="chip.clear"
+                >
+                  <span>{{ chip.label }}</span>
+                  <strong>清除</strong>
+                </button>
+              </div>
               <details class="overview-disclosure">
                 <summary class="overview-disclosure-summary">查看样本结构概览</summary>
                 <div class="summary-strip">
