@@ -16,6 +16,7 @@ const resetFiltersButton = document.querySelector("#reset-filters");
 const strongFilterButton = document.querySelector("#strong-filter");
 const mediumFilterButton = document.querySelector("#medium-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
+const gapClearButton = document.querySelector("#gap-clear");
 const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
 
@@ -983,6 +984,10 @@ const syncFilterControls = () => {
   if (refreshFilterButton) {
     refreshFilterButton.textContent = `只看最近补证（${refreshedCount}）`;
   }
+  if (gapClearButton) {
+    gapClearButton.hidden = state.mediumGap === "all";
+    gapClearButton.textContent = state.mediumGap === "all" ? "退出同类缺口视图" : `退出同类缺口视图：${state.mediumGap}`;
+  }
   if (compareClearButton) {
     compareClearButton.hidden = state.compareIds.length === 0;
   }
@@ -999,6 +1004,7 @@ const syncFilterControls = () => {
   strongFilterButton?.toggleAttribute("data-active", state.evidence === "strong");
   mediumFilterButton?.toggleAttribute("data-active", state.evidence === "medium");
   refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
+  gapClearButton?.toggleAttribute("data-active", state.mediumGap !== "all");
   compareClearButton?.toggleAttribute("data-active", state.compareIds.length > 0);
 };
 
@@ -1379,6 +1385,14 @@ const bootstrap = async () => {
 
   compareClearButton?.addEventListener("click", () => {
     state.compareIds = [];
+    renderApp(projects);
+  });
+
+  gapClearButton?.addEventListener("click", () => {
+    state.mediumGap = "all";
+    if (state.evidence === "all") {
+      state.evidence = "medium";
+    }
     renderApp(projects);
   });
 
