@@ -41,6 +41,12 @@ Useful endpoints:
 - `/static/app.js`
 - `/static/styles.css`
 
+For a production-style local run that matches the deployed port:
+
+```bash
+HOST=127.0.0.1 PORT=8790 ./scripts/run-web.sh
+```
+
 ## Daily update workflow
 
 1. Add a new project:
@@ -110,3 +116,38 @@ The validator now rejects meta-style daily note summaries such as `纳入正式�
 
 The app is no longer limited to GitHub Pages-style static hosting.
 Use the FastAPI service as the primary deployment shape when the project list and interaction complexity outgrow static delivery.
+
+## Server deployment
+
+The current server deployment shape is:
+
+- Caddy on ports `80/443`
+- FastAPI app on `127.0.0.1:8790`
+- reverse proxy from `ai-projects-scout.tom-blogs.top` to the local FastAPI app
+
+Recommended process entry:
+
+```bash
+HOST=127.0.0.1 PORT=8790 ./scripts/run-web.sh
+```
+
+If you want to install the app as a long-running systemd service, use this unit file as the reference:
+
+```ini
+[Unit]
+Description=AI Project Scout Web
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/agents/ai-project-scout/workspace/ai-project-info-platform
+Environment=HOST=127.0.0.1
+Environment=PORT=8790
+ExecStart=/home/ubuntu/agents/ai-project-scout/workspace/ai-project-info-platform/scripts/run-web.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+```

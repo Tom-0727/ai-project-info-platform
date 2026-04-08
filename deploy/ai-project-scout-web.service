@@ -1,0 +1,16 @@
+[Unit]
+Description=AI Project Scout Web
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/agents/ai-project-scout/workspace/ai-project-info-platform
+Environment=HOST=127.0.0.1
+Environment=PORT=8790
+ExecStart=/home/ubuntu/agents/ai-project-scout/workspace/ai-project-info-platform/scripts/run-web.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
