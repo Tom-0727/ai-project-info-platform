@@ -412,6 +412,24 @@ createApp({
       }, 1800);
     };
 
+    const focusCluster = (mode) => {
+      if (!selectedProject.value) {
+        return;
+      }
+
+      filters.value.view = "library";
+      filters.value.query = "";
+      feedLimit.value = INITIAL_LIMIT;
+
+      if (mode === "form") {
+        filters.value.form = selectedProject.value.productForm;
+        filters.value.scenario = "all";
+      } else if (mode === "scenario") {
+        filters.value.scenario = summarizeScenario(selectedProject.value);
+        filters.value.form = "all";
+      }
+    };
+
     const syncScrollUi = () => {
       const sections = ["#browse-controls", "#project-list", "#project-detail"];
       let nextActive = sections[0];
@@ -514,6 +532,7 @@ createApp({
       copyProjectLink,
       copyViewLabel,
       copyCurrentView,
+      focusCluster,
       activeSection,
       showScrollTop,
       loadMore: () => {
@@ -843,6 +862,10 @@ createApp({
 
                 <section v-if="sameFormRelated.length || sameScenarioRelated.length" class="detail-section">
                   <h4 class="detail-section-title">快速对比</h4>
+                  <div class="detail-shortcut-actions">
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('form')">只看同形态</button>
+                    <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario')">只看同场景</button>
+                  </div>
 
                   <div v-if="sameFormRelated.length" class="related-projects">
                     <p class="detail-subsection-label">同形态项目</p>
