@@ -440,6 +440,24 @@ button.summary-card[aria-pressed="true"] .summary-label {
   color: #295a40;
 }
 
+.project-status-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.project-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.94);
+  border: 1px solid rgba(188, 75, 39, 0.12);
+  color: var(--signal);
+  font-size: 0.8rem;
+}
+
 .status-strong {
   background: rgba(52, 117, 84, 0.16);
   color: #295a40;

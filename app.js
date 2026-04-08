@@ -644,6 +644,13 @@ const buildDisclosureSection = (title, { open = false } = {}) => {
   return { section, body };
 };
 
+const appendStatusBadge = (container, text) => {
+  const badge = document.createElement("span");
+  badge.className = "project-status-badge";
+  badge.textContent = text;
+  container.appendChild(badge);
+};
+
 const renderDetailView = (project, projects) => {
   if (!project) {
     detailEmpty.hidden = false;
@@ -661,13 +668,6 @@ const renderDetailView = (project, projects) => {
   node.querySelector(".project-status").textContent = project.status === "active" ? "已收录" : "观察中";
   node.querySelector(".project-status").classList.add(`status-${project.evidenceQuality.level}`);
   node.querySelector(".detail-intro").textContent = buildFeedIntro(project);
-
-  if (hasEvidenceRefresh(project)) {
-    const refreshFlag = document.createElement("span");
-    refreshFlag.className = "project-refresh-flag";
-    refreshFlag.textContent = "最近补证";
-    node.querySelector(".project-top").appendChild(refreshFlag);
-  }
 
   const latestNote = getLatestNote(project);
   const noteBlock = node.querySelector(".detail-note");
@@ -729,6 +729,19 @@ const renderDetailView = (project, projects) => {
   const sameScenarioStats = getComparableStats(project, projects, "same-scenario");
   const compareProjects = projects.filter((candidate) => state.compareIds.includes(candidate.id));
   const compareProjectNames = compareProjects.map((candidate) => candidate.canonicalName);
+  const statusStrip = document.createElement("div");
+  statusStrip.className = "project-status-strip";
+
+  if (hasEvidenceRefresh(project)) {
+    appendStatusBadge(statusStrip, `最近补证 · ${project.lastUpdated}`);
+  }
+
+  if (state.compareIds.length > 0) {
+    appendStatusBadge(
+      statusStrip,
+      `当前对标 · ${compareProjectNames.slice(0, 3).join(" / ")}${compareProjectNames.length > 3 ? " 等" : ""}`
+    );
+  }
 
   const primaryShortcuts = [
     {
@@ -750,11 +763,6 @@ const renderDetailView = (project, projects) => {
   ];
 
   if (state.compareIds.length > 0) {
-    const compareStatus = document.createElement("p");
-    compareStatus.className = "detail-note-text";
-    compareStatus.textContent = `当前处于对标视图：${compareProjectNames.slice(0, 4).join(" / ")}${compareProjectNames.length > 4 ? " 等" : ""}`;
-    shortcutsSection.appendChild(compareStatus);
-
     primaryShortcuts.unshift({
       label: "退出对标视图",
       onClick: () => {
@@ -768,6 +776,8 @@ const renderDetailView = (project, projects) => {
     const gapLabel = getEvidenceGapLabel(project) ?? "待复查";
     const sameGapProjects = pendingProjects.filter((candidate) => (getEvidenceGapLabel(candidate) ?? "待复查") === gapLabel);
     const sameGapIndex = sameGapProjects.findIndex((candidate) => candidate.id === project.id);
+    appendStatusBadge(statusStrip, `待补证 · ${gapLabel}`);
+    appendStatusBadge(statusStrip, `复查进度 · ${pendingIndex + 1}/${pendingProjects.length}`);
     maintenanceNotes.push(`待补证复查进度：${pendingIndex + 1} / ${pendingProjects.length}`);
 
     if (sameGapProjects.length > 0) {
@@ -835,6 +845,10 @@ const renderDetailView = (project, projects) => {
         },
       });
     }
+  }
+
+  if (statusStrip.childElementCount > 0) {
+    node.insertBefore(statusStrip, noteBlock);
   }
 
   primaryShortcuts.forEach((shortcut) => {
