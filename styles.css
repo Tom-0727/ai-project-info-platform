@@ -346,7 +346,7 @@ h1 {
 }
 
 .summary-card {
-  padding: 16px;
+  padding: 14px;
   border: 1px solid rgba(29, 26, 22, 0.08);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.58);
@@ -399,15 +399,23 @@ button.summary-card[aria-pressed="true"] .summary-label {
 }
 
 .summary-value {
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 1.08rem;
 }
 
 .summary-note {
-  margin: 10px 0 0;
+  display: none;
+  margin: 8px 0 0;
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.5;
+}
+
+.summary-card-active .summary-note,
+button.summary-card:hover .summary-note,
+button.summary-card:focus-visible .summary-note,
+article.summary-card .summary-note {
+  display: block;
 }
 
 .day-card,
