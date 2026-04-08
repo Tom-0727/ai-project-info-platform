@@ -631,6 +631,20 @@ createApp({
 
     const selectedGapLabel = computed(() => getEvidenceGapLabel(selectedProject.value));
 
+    const pendingEvidenceProjects = computed(() =>
+      projects.value
+        .filter((project) => project.evidenceQuality.level === "medium")
+        .sort((left, right) => right.discoveredSeq - left.discoveredSeq)
+    );
+
+    const pendingEvidenceIndex = computed(() => {
+      if (!selectedProject.value || !pendingEvidenceProjects.value.length) {
+        return -1;
+      }
+
+      return pendingEvidenceProjects.value.findIndex((project) => project.id === selectedProject.value.id);
+    });
+
     const sameGapQueue = computed(() => {
       if (!selectedProject.value || !selectedGapLabel.value) {
         return [];
@@ -664,6 +678,10 @@ createApp({
 
       if (selectedGapLabel.value) {
         chips.push(`待补证 · ${selectedGapLabel.value}`);
+      }
+
+      if (pendingEvidenceProjects.value.length && pendingEvidenceIndex.value >= 0) {
+        chips.push(`复查进度 · ${pendingEvidenceIndex.value + 1}/${pendingEvidenceProjects.value.length}`);
       }
 
       if (sameGapQueue.value.length && sameGapIndex.value >= 0) {
@@ -913,8 +931,31 @@ createApp({
         return;
       }
 
-      const nextIndex = Math.max(0, Math.min(sameGapQueue.value.length - 1, sameGapIndex.value + delta));
+      const nextIndex = (sameGapIndex.value + delta + sameGapQueue.value.length) % sameGapQueue.value.length;
       selectProject(sameGapQueue.value[nextIndex].id);
+    };
+
+    const focusPendingReview = () => {
+      filters.value.view = "library";
+      filters.value.query = "";
+      filters.value.evidence = "medium";
+      filters.value.refreshed = false;
+      filters.value.mediumGap = "all";
+      filters.value.form = "all";
+      filters.value.scenario = "all";
+      filters.value.sort = "discovered";
+      filters.value.compareIds = [];
+      feedLimit.value = INITIAL_LIMIT;
+    };
+
+    const movePendingSelection = (delta) => {
+      if (!pendingEvidenceProjects.value.length || pendingEvidenceIndex.value < 0) {
+        return;
+      }
+
+      const nextIndex = (pendingEvidenceIndex.value + delta + pendingEvidenceProjects.value.length) % pendingEvidenceProjects.value.length;
+      focusPendingReview();
+      selectProject(pendingEvidenceProjects.value[nextIndex].id);
     };
 
     const syncScrollUi = () => {
@@ -1019,6 +1060,8 @@ createApp({
       selectedStatusChips,
       selectedContextChips,
       selectedGapLabel,
+      pendingEvidenceProjects,
+      pendingEvidenceIndex,
       evidencePreview,
       latestNotePreview,
       expandedFields,
@@ -1057,6 +1100,8 @@ createApp({
       activateBenchmarkCompare,
       focusSameGap,
       moveSameGapSelection,
+      focusPendingReview,
+      movePendingSelection,
       activeSection,
       showScrollTop,
       loadMore: () => {
@@ -1441,13 +1486,37 @@ createApp({
                     </div>
                   </dl>
                   <div v-if="selectedGapLabel" class="detail-subsection">
+                    <p class="detail-subsection-label">待补证复查</p>
+                    <div class="detail-shortcut-actions">
+                      <button class="detail-shortcut-chip" type="button" @click="focusPendingReview">只看待补证清单</button>
+                      <button
+                        class="detail-nav-chip"
+                        type="button"
+                        :disabled="pendingEvidenceIndex < 0"
+                        @click="movePendingSelection(-1)"
+                      >
+                        上一个待补证样本
+                      </button>
+                      <span class="detail-nav-chip detail-nav-chip-static">
+                        {{ pendingEvidenceProjects.length ? pendingEvidenceIndex + 1 : 0 }} / {{ pendingEvidenceProjects.length }}
+                      </span>
+                      <button
+                        class="detail-nav-chip"
+                        type="button"
+                        :disabled="pendingEvidenceIndex < 0"
+                        @click="movePendingSelection(1)"
+                      >
+                        下一个待补证样本
+                      </button>
+                    </div>
+                  </div>
+                  <div v-if="selectedGapLabel" class="detail-subsection">
                     <p class="detail-subsection-label">同类缺口队列</p>
                     <div class="detail-shortcut-actions">
                       <button class="detail-shortcut-chip" type="button" @click="focusSameGap">只看同类缺口</button>
                       <button
                         class="detail-nav-chip"
                         type="button"
-                        :disabled="sameGapIndex <= 0"
                         @click="moveSameGapSelection(-1)"
                       >
                         上一个同类缺口
@@ -1458,7 +1527,7 @@ createApp({
                       <button
                         class="detail-nav-chip"
                         type="button"
-                        :disabled="sameGapIndex < 0 || sameGapIndex >= sameGapQueue.length - 1"
+                        :disabled="sameGapIndex < 0"
                         @click="moveSameGapSelection(1)"
                       >
                         下一个同类缺口
