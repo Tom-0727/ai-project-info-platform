@@ -76,6 +76,23 @@ const buildCompactNote = (value, maxLength = 120) => {
   };
 };
 
+const buildPreviewText = (value, maxLength = 140) => {
+  if (!value) {
+    return { shortText: "未补充。", fullText: "未补充。", truncated: false };
+  }
+
+  const text = value.trim();
+  if (text.length <= maxLength) {
+    return { shortText: text, fullText: text, truncated: false };
+  }
+
+  return {
+    shortText: `${text.slice(0, maxLength).trim()}…`,
+    fullText: text,
+    truncated: true,
+  };
+};
+
 const projectMatchesQuery = (project, query) => {
   if (!query) {
     return true;
@@ -136,6 +153,7 @@ createApp({
     const activeSection = ref("#browse-controls");
     const showScrollTop = ref(false);
     const copyViewLabel = ref("复制当前视图");
+    const expandedFields = ref({ evidence: false, latestNote: false });
     let copyViewTimer = null;
 
     const filters = ref({
@@ -197,6 +215,9 @@ createApp({
     const selectedProject = computed(
       () => filteredProjects.value.find((project) => project.id === selectedProjectId.value) || filteredProjects.value[0] || null
     );
+
+    const evidencePreview = computed(() => buildPreviewText(selectedProject.value?.evidenceQuality?.note || "", 160));
+    const latestNotePreview = computed(() => buildPreviewText(selectedProject.value?.dailyNotes?.[0]?.update || "", 160));
 
     const summary = computed(() => {
       const scoped = filteredProjects.value;
@@ -473,6 +494,10 @@ createApp({
       ensureSelection();
     });
 
+    watch(selectedProjectId, () => {
+      expandedFields.value = { evidence: false, latestNote: false };
+    });
+
     onMounted(async () => {
       window.addEventListener("scroll", syncScrollUi, { passive: true });
       syncScrollUi();
@@ -515,6 +540,9 @@ createApp({
       resultHint,
       activeFilterChips,
       selectedStatusChips,
+      evidencePreview,
+      latestNotePreview,
+      expandedFields,
       sameFormRelated,
       sameScenarioRelated,
       listRef,
@@ -525,6 +553,7 @@ createApp({
       hasEvidenceRefresh,
       domainFromUrl,
       buildCompactNote,
+      buildPreviewText,
       dismissUsage,
       selectProject,
       moveSelection,
@@ -835,7 +864,17 @@ createApp({
                     </div>
                     <div class="detail-row">
                       <dt>判断说明</dt>
-                      <dd>{{ selectedProject.evidenceQuality.note }}</dd>
+                      <dd>
+                        {{ expandedFields.evidence ? evidencePreview.fullText : evidencePreview.shortText }}
+                        <button
+                          v-if="evidencePreview.truncated"
+                          class="detail-inline-toggle"
+                          type="button"
+                          @click="expandedFields.evidence = !expandedFields.evidence"
+                        >
+                          {{ expandedFields.evidence ? '收起全文' : '展开全文' }}
+                        </button>
+                      </dd>
                     </div>
                     <div class="detail-row">
                       <dt>证据信号</dt>
@@ -843,7 +882,17 @@ createApp({
                     </div>
                     <div v-if="selectedProject.dailyNotes && selectedProject.dailyNotes.length" class="detail-row">
                       <dt>最新动态</dt>
-                      <dd>{{ buildCompactNote(selectedProject.dailyNotes[0].update).shortText }}</dd>
+                      <dd>
+                        {{ expandedFields.latestNote ? latestNotePreview.fullText : latestNotePreview.shortText }}
+                        <button
+                          v-if="latestNotePreview.truncated"
+                          class="detail-inline-toggle"
+                          type="button"
+                          @click="expandedFields.latestNote = !expandedFields.latestNote"
+                        >
+                          {{ expandedFields.latestNote ? '收起全文' : '展开全文' }}
+                        </button>
+                      </dd>
                     </div>
                   </dl>
                 </section>

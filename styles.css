@@ -1258,6 +1258,28 @@ article.summary-card .summary-note {
   letter-spacing: 0.04em;
 }
 
+.detail-inline-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--signal);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-left: 8px;
+  padding: 0;
+}
+
+.detail-inline-toggle:hover,
+.detail-inline-toggle:focus-visible {
+  text-decoration: underline;
+}
+
+.detail-inline-toggle:focus-visible {
+  outline: none;
+}
+
 .related-card {
   display: grid;
   gap: 6px;
