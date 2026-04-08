@@ -114,6 +114,46 @@ const buildPreviewText = (value, maxLength = 140) => {
   };
 };
 
+const buildEvidenceTimingLabel = (project) =>
+  hasEvidenceRefresh(project) ? `最近补证 · ${project.lastUpdated}` : `首次挖掘 · ${project.firstSeen || "未标注"}`;
+
+const buildCompareSnapshot = (currentProject, relatedProjects = []) => {
+  if (!currentProject) {
+    return null;
+  }
+
+  const compareProjects = [currentProject, ...relatedProjects.slice(0, 2)];
+  if (compareProjects.length <= 1) {
+    return null;
+  }
+
+  return {
+    projects: compareProjects,
+    rows: [
+      {
+        label: "产品",
+        values: compareProjects.map((project) => ({ projectId: project.id, text: project.canonicalName })),
+      },
+      {
+        label: "客群",
+        values: compareProjects.map((project) => ({ projectId: project.id, text: shortList(project.targetCustomers, 2) })),
+      },
+      {
+        label: "变现",
+        values: compareProjects.map((project) => ({ projectId: project.id, text: firstClause(project.monetization) })),
+      },
+      {
+        label: "商业化",
+        values: compareProjects.map((project) => ({ projectId: project.id, text: evidenceLevelLabel[project.evidenceQuality.level] })),
+      },
+      {
+        label: "证据时间",
+        values: compareProjects.map((project) => ({ projectId: project.id, text: buildEvidenceTimingLabel(project) })),
+      },
+    ],
+  };
+};
+
 const projectMatchesQuery = (project, query) => {
   if (!query) {
     return true;
@@ -542,6 +582,13 @@ createApp({
       });
     });
 
+    const matchedBenchmarkProjects = computed(() =>
+      selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
+    );
+
+    const sameFormSnapshot = computed(() => buildCompareSnapshot(selectedProject.value, sameFormRelated.value));
+    const benchmarkSnapshot = computed(() => buildCompareSnapshot(selectedProject.value, matchedBenchmarkProjects.value));
+
     const selectedScenarioStats = computed(() => {
       if (!selectedProject.value) {
         return null;
@@ -822,6 +869,9 @@ createApp({
       sameFormRelated,
       sameScenarioRelated,
       selectedBenchmarkLinks,
+      matchedBenchmarkProjects,
+      sameFormSnapshot,
+      benchmarkSnapshot,
       selectedScenarioStats,
       listRef,
       detailViewRef,
@@ -1255,6 +1305,52 @@ createApp({
                       </button>
                       <span v-else class="benchmark-chip">{{ item.label }}</span>
                     </template>
+                  </div>
+                </section>
+
+                <section v-if="sameFormSnapshot || benchmarkSnapshot" class="detail-section">
+                  <h4 class="detail-section-title">快照对比</h4>
+
+                  <div v-if="benchmarkSnapshot" class="detail-subsection">
+                    <p class="detail-subsection-label">对标快照</p>
+                    <div class="compare-snapshot">
+                      <div class="compare-table">
+                        <div v-for="row in benchmarkSnapshot.rows" :key="'benchmark-' + row.label" class="compare-row">
+                          <span class="compare-label">{{ row.label }}</span>
+                          <button
+                            v-for="value in row.values"
+                            :key="'benchmark-' + row.label + '-' + value.projectId"
+                            class="compare-cell"
+                            :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
+                            type="button"
+                            @click="selectProject(value.projectId)"
+                          >
+                            {{ value.text }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div v-if="sameFormSnapshot" class="detail-subsection">
+                    <p class="detail-subsection-label">同形态快照对比</p>
+                    <div class="compare-snapshot">
+                      <div class="compare-table">
+                        <div v-for="row in sameFormSnapshot.rows" :key="'same-form-' + row.label" class="compare-row">
+                          <span class="compare-label">{{ row.label }}</span>
+                          <button
+                            v-for="value in row.values"
+                            :key="'same-form-' + row.label + '-' + value.projectId"
+                            class="compare-cell"
+                            :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
+                            type="button"
+                            @click="selectProject(value.projectId)"
+                          >
+                            {{ value.text }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </section>
 
