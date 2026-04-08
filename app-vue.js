@@ -1300,9 +1300,12 @@ createApp({
                 </div>
                 <p class="feed-summary">面向{{ shortList(project.targetCustomers, 1) }}，解决{{ firstClause(project.painPoint) }}。</p>
                 <div class="feed-meta feed-meta-compact">
+                  <span class="feed-pill">变现：{{ firstClause(project.monetization) }}</span>
                   <span class="feed-pill">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
                   <span class="feed-pill">场景：{{ firstClause(project.painPoint) }}</span>
-                  <span class="feed-pill">{{ hasEvidenceRefresh(project) ? '最近补证' : '首次挖掘' }}</span>
+                  <span class="feed-pill">客群：{{ shortList(project.targetCustomers, 2) }}</span>
+                  <span v-if="getEvidenceGapLabel(project)" class="feed-pill">待补证：{{ getEvidenceGapLabel(project) }}</span>
+                  <span v-else class="feed-pill">{{ hasEvidenceRefresh(project) ? '最近补证' : '首次挖掘' }}</span>
                 </div>
               </button>
             </template>
