@@ -236,9 +236,17 @@ h1 {
 
 .filters {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) repeat(4, minmax(150px, 0.55fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-top: 20px;
+}
+
+.filter-field-search {
+  grid-column: span 2;
+}
+
+.filters-advanced {
+  margin-top: 12px;
 }
 
 .filters-actions {
@@ -246,6 +254,11 @@ h1 {
   gap: 10px;
   justify-content: flex-end;
   margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.filters-actions-compact {
+  justify-content: flex-start;
 }
 
 .filters-reset {

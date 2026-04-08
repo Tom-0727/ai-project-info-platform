@@ -43,7 +43,7 @@
             <button id="view-updates" class="view-switch-button" type="button">动态流</button>
           </div>
           <div class="filters">
-            <label class="filter-field">
+            <label class="filter-field filter-field-search">
               <span>搜索项目</span>
               <input id="search-input" type="search" placeholder="输入项目名、别名、对标或客群关键词" />
             </label>
@@ -56,6 +56,14 @@
                 <option value="weak">弱证据</option>
               </select>
             </label>
+          </div>
+          <div class="filters-actions filters-actions-compact">
+            <button id="toggle-advanced-filters" class="filters-reset filters-secondary" type="button">展开高级筛选</button>
+            <button id="strong-filter" class="filters-reset" type="button">只看商业化清楚</button>
+            <button id="medium-filter" class="filters-reset" type="button">只看待补证</button>
+            <button id="refresh-filter" class="filters-reset" type="button">只看最近补证</button>
+          </div>
+          <div id="advanced-filters" class="filters filters-advanced" hidden>
             <label class="filter-field">
               <span>产品形态</span>
               <select id="form-filter">
@@ -79,9 +87,6 @@
             </label>
           </div>
           <div class="filters-actions">
-            <button id="strong-filter" class="filters-reset" type="button">只看商业化清楚</button>
-            <button id="medium-filter" class="filters-reset" type="button">只看待补证</button>
-            <button id="refresh-filter" class="filters-reset" type="button">只看最近补证</button>
             <button id="gap-clear" class="filters-reset filters-secondary" type="button" hidden>退出同类缺口视图</button>
             <button id="compare-clear" class="filters-reset filters-secondary" type="button" hidden>退出对标视图</button>
             <button id="copy-view-link" class="filters-reset filters-secondary" type="button">复制当前视图</button>

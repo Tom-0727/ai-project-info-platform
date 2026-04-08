@@ -19,6 +19,8 @@ const resetFiltersButton = document.querySelector("#reset-filters");
 const strongFilterButton = document.querySelector("#strong-filter");
 const mediumFilterButton = document.querySelector("#medium-filter");
 const refreshFilterButton = document.querySelector("#refresh-filter");
+const toggleAdvancedFiltersButton = document.querySelector("#toggle-advanced-filters");
+const advancedFilters = document.querySelector("#advanced-filters");
 const gapClearButton = document.querySelector("#gap-clear");
 const compareClearButton = document.querySelector("#compare-clear");
 const copyViewLinkButton = document.querySelector("#copy-view-link");
@@ -905,6 +907,7 @@ const state = {
   sort: "discovered",
   scenario: "all",
   refreshed: false,
+  advancedOpen: false,
   compareIds: [],
   selectedProjectId: null,
   feedLimit: INITIAL_FEED_LIMIT,
@@ -1023,6 +1026,16 @@ const syncBrowseMode = () => {
   viewUpdatesButton?.toggleAttribute("data-active", !libraryMode);
 };
 
+const syncAdvancedFilters = () => {
+  const forcedOpen = state.form !== "all" || state.scenario !== "all" || state.sort !== "discovered";
+  const isOpen = state.advancedOpen || forcedOpen;
+  advancedFilters?.toggleAttribute("hidden", !isOpen);
+  toggleAdvancedFiltersButton?.toggleAttribute("data-active", isOpen);
+  if (toggleAdvancedFiltersButton) {
+    toggleAdvancedFiltersButton.textContent = isOpen ? "收起高级筛选" : "展开高级筛选";
+  }
+};
+
 const fallbackCopyText = (value) => {
   const input = document.createElement("textarea");
   input.value = value;
@@ -1105,6 +1118,7 @@ const syncFilterControls = () => {
   refreshFilterButton?.toggleAttribute("data-active", state.refreshed);
   gapClearButton?.toggleAttribute("data-active", state.mediumGap !== "all");
   compareClearButton?.toggleAttribute("data-active", state.compareIds.length > 0);
+  syncAdvancedFilters();
 };
 
 const normalizeText = (value) => value.toLowerCase().trim();
@@ -1490,6 +1504,7 @@ const bootstrap = async () => {
 
   formFilter.addEventListener("change", (event) => {
     state.form = event.target.value;
+    state.advancedOpen = true;
     resetFeedLimit();
     renderApp(projects);
   });
@@ -1516,12 +1531,14 @@ const bootstrap = async () => {
 
   scenarioFilter.addEventListener("change", (event) => {
     state.scenario = event.target.value;
+    state.advancedOpen = true;
     resetFeedLimit();
     renderApp(projects);
   });
 
   sortFilter.addEventListener("change", (event) => {
     state.sort = event.target.value;
+    state.advancedOpen = true;
     resetFeedLimit();
     renderApp(projects);
   });
@@ -1534,6 +1551,7 @@ const bootstrap = async () => {
     state.scenario = "all";
     state.sort = "discovered";
     state.refreshed = false;
+    state.advancedOpen = false;
     state.compareIds = [];
     resetFeedLimit();
     renderApp(projects);
@@ -1541,6 +1559,11 @@ const bootstrap = async () => {
 
   copyViewLinkButton?.addEventListener("click", () => {
     copyCurrentViewLink();
+  });
+
+  toggleAdvancedFiltersButton?.addEventListener("click", () => {
+    state.advancedOpen = !state.advancedOpen;
+    syncAdvancedFilters();
   });
 
   viewLibraryButton?.addEventListener("click", () => {
