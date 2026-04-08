@@ -1470,35 +1470,49 @@ createApp({
                     <button class="detail-shortcut-chip" type="button" @click="focusCluster('scenario', true)">只看同场景清楚样本</button>
                   </div>
 
-                  <div v-if="sameFormRelated.length" class="related-projects">
-                    <p class="detail-subsection-label">同形态项目</p>
-                    <button
-                      v-for="project in sameFormRelated"
-                      :key="'form-' + project.id"
-                      class="related-card"
-                      type="button"
-                      @click="selectProject(project.id)"
-                    >
-                      <strong>{{ project.canonicalName }}</strong>
-                      <span>{{ project.productForm }}</span>
-                      <span>面向{{ shortList(project.targetCustomers, 1) }}</span>
-                    </button>
-                  </div>
+                  <details v-if="sameFormRelated.length" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">同形态项目（{{ sameFormRelated.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="related-projects">
+                        <button
+                          v-for="project in sameFormRelated"
+                          :key="'form-' + project.id"
+                          class="related-card"
+                          type="button"
+                          @click="selectProject(project.id)"
+                        >
+                          <strong>{{ project.canonicalName }}</strong>
+                          <span>{{ project.productForm }}</span>
+                          <span>面向{{ shortList(project.targetCustomers, 1) }}</span>
+                        </button>
+                      </div>
+                    </div>
+                  </details>
 
-                  <div v-if="sameScenarioRelated.length" class="related-projects">
-                    <p class="detail-subsection-label">同场景项目</p>
-                    <button
-                      v-for="project in sameScenarioRelated"
-                      :key="'scenario-' + project.id"
-                      class="related-card"
-                      type="button"
-                      @click="selectProject(project.id)"
-                    >
-                      <strong>{{ project.canonicalName }}</strong>
-                      <span>{{ firstClause(project.painPoint) }}</span>
-                      <span>证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
-                    </button>
-                  </div>
+                  <details v-if="sameScenarioRelated.length" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">同场景项目（{{ sameScenarioRelated.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="related-projects">
+                        <button
+                          v-for="project in sameScenarioRelated"
+                          :key="'scenario-' + project.id"
+                          class="related-card"
+                          type="button"
+                          @click="selectProject(project.id)"
+                        >
+                          <strong>{{ project.canonicalName }}</strong>
+                          <span>{{ firstClause(project.painPoint) }}</span>
+                          <span>证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
+                        </button>
+                      </div>
+                    </div>
+                  </details>
                 </section>
               </div>
             </article>
