@@ -184,6 +184,7 @@ createApp({
       view: "library",
       query: "",
       evidence: "all",
+      mediumGap: "all",
       form: "all",
       scenario: "all",
       sort: "discovered",
@@ -214,11 +215,15 @@ createApp({
     const filteredProjects = computed(() => {
       const matched = projects.value.filter((project) => {
         const matchesEvidence = filters.value.evidence === "all" || project.evidenceQuality.level === filters.value.evidence;
+        const matchesMediumGap =
+          filters.value.mediumGap === "all" ||
+          (project.evidenceQuality.level === "medium" && getEvidenceGapLabel(project) === filters.value.mediumGap);
         const matchesForm = filters.value.form === "all" || project.productForm === filters.value.form;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         return (
           matchesEvidence &&
+          matchesMediumGap &&
           matchesForm &&
           matchesScenario &&
           matchesCompare &&
@@ -280,6 +285,30 @@ createApp({
         { value: String(projects.value.filter((project) => project.status === "active").length).padStart(2, "0"), label: "活跃样本" },
         { value: String(projects.value.filter((project) => project.evidenceQuality.level === "strong").length).padStart(2, "0"), label: "商业化清楚" },
       ];
+    });
+
+    const mediumGapCards = computed(() => {
+      const counts = projects.value
+        .filter((project) => project.evidenceQuality.level === "medium")
+        .reduce((map, project) => {
+          const gap = getEvidenceGapLabel(project);
+          if (!gap) return map;
+          map[gap] = (map[gap] || 0) + 1;
+          return map;
+        }, {});
+
+      return Object.entries(counts)
+        .sort((left, right) => right[1] - left[1])
+        .map(([gap, count]) => ({
+          key: gap,
+          label: gap,
+          value: `${count} 个`,
+          active: filters.value.mediumGap === gap,
+          onClick: () => {
+            filters.value.evidence = "medium";
+            filters.value.mediumGap = filters.value.mediumGap === gap ? "all" : gap;
+          },
+        }));
     });
 
     const overviewCards = computed(() => {
@@ -376,6 +405,17 @@ createApp({
           label: `证据：${evidenceLevelLabel[filters.value.evidence]}`,
           clear: () => {
             filters.value.evidence = "all";
+            filters.value.mediumGap = "all";
+          },
+        });
+      }
+
+      if (filters.value.mediumGap !== "all") {
+        chips.push({
+          key: "medium-gap",
+          label: `待补证分组：${filters.value.mediumGap}`,
+          clear: () => {
+            filters.value.mediumGap = "all";
           },
         });
       }
@@ -512,6 +552,7 @@ createApp({
       if (filters.value.view !== "library") params.set("view", filters.value.view);
       if (filters.value.query) params.set("q", filters.value.query);
       if (filters.value.evidence !== "all") params.set("evidence", filters.value.evidence);
+      if (filters.value.mediumGap !== "all") params.set("gap", filters.value.mediumGap);
       if (filters.value.form !== "all") params.set("form", filters.value.form);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
@@ -526,6 +567,7 @@ createApp({
       filters.value.view = params.get("view") || "library";
       filters.value.query = params.get("q") || "";
       filters.value.evidence = params.get("evidence") || "all";
+      filters.value.mediumGap = params.get("gap") || "all";
       filters.value.form = params.get("form") || "all";
       filters.value.scenario = params.get("scenario") || "all";
       filters.value.sort = params.get("sort") || "discovered";
@@ -540,6 +582,7 @@ createApp({
       filters.value.view = "library";
       filters.value.query = "";
       filters.value.evidence = "all";
+      filters.value.mediumGap = "all";
       filters.value.form = "all";
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
@@ -598,6 +641,7 @@ createApp({
       filters.value.query = "";
       filters.value.compareIds = [];
       filters.value.evidence = onlyStrong ? "strong" : "all";
+      filters.value.mediumGap = "all";
       feedLimit.value = INITIAL_LIMIT;
 
       if (mode === "form") {
@@ -621,6 +665,7 @@ createApp({
       filters.value.view = "library";
       filters.value.query = "";
       filters.value.compareIds = [selectedProject.value.id, ...matchedIds];
+      filters.value.mediumGap = "all";
       feedLimit.value = INITIAL_LIMIT;
     };
 
@@ -655,7 +700,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.mediumGap, filters.value.form, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
@@ -717,6 +762,7 @@ createApp({
       selectedIndex,
       summary,
       heroMetrics,
+      mediumGapCards,
       overviewCards,
       resultHint,
       loadMoreLabel,
@@ -890,6 +936,19 @@ createApp({
                     :aria-pressed="card.onClick ? String(card.active) : null"
                     :type="card.onClick ? 'button' : null"
                     @click="card.onClick && card.onClick()"
+                  >
+                    <span class="summary-label">{{ card.label }}</span>
+                    <strong class="summary-value">{{ card.value }}</strong>
+                  </component>
+                  <component
+                    :is="'button'"
+                    v-for="card in mediumGapCards"
+                    :key="'gap-' + card.key"
+                    class="summary-card"
+                    :class="{ 'summary-card-active': card.active }"
+                    :aria-pressed="String(card.active)"
+                    type="button"
+                    @click="card.onClick()"
                   >
                     <span class="summary-label">{{ card.label }}</span>
                     <strong class="summary-value">{{ card.value }}</strong>
