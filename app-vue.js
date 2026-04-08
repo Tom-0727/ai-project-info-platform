@@ -154,6 +154,17 @@ const buildCompareSnapshot = (currentProject, relatedProjects = []) => {
   };
 };
 
+const sortComparableProjects = (projects) => {
+  const weight = { strong: 3, medium: 2, weak: 1 };
+  return [...projects].sort((left, right) => {
+    const evidenceDelta = (weight[right.evidenceQuality.level] || 0) - (weight[left.evidenceQuality.level] || 0);
+    if (evidenceDelta !== 0) {
+      return evidenceDelta;
+    }
+    return right.discoveredSeq - left.discoveredSeq;
+  });
+};
+
 const projectMatchesQuery = (project, query) => {
   if (!query) {
     return true;
@@ -709,8 +720,9 @@ createApp({
         return [];
       }
 
-      return filteredProjects.value
-        .filter((project) => project.id !== selectedProject.value.id && project.productForm === selectedProject.value.productForm)
+      return sortComparableProjects(
+        projects.value.filter((project) => project.id !== selectedProject.value.id && project.productForm === selectedProject.value.productForm)
+      )
         .slice(0, 3);
     });
 
@@ -734,13 +746,14 @@ createApp({
       }
 
       const currentScenario = summarizeScenario(selectedProject.value);
-      return filteredProjects.value
-        .filter(
+      return sortComparableProjects(
+        projects.value.filter(
           (project) =>
             project.id !== selectedProject.value.id &&
             summarizeScenario(project) === currentScenario &&
             project.productForm !== selectedProject.value.productForm
         )
+      )
         .slice(0, 3);
     });
 
