@@ -517,7 +517,28 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 12px;
+}
+
+.overview-disclosure {
+  margin-top: 12px;
+}
+
+.overview-disclosure-summary {
+  list-style: none;
+  cursor: pointer;
+  color: var(--signal);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.overview-disclosure-summary::-webkit-details-marker {
+  display: none;
+}
+
+.overview-disclosure-summary:hover,
+.overview-disclosure-summary:focus-visible {
+  color: var(--ink);
 }
 
 .summary-card {
