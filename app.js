@@ -170,20 +170,27 @@ const buildFeedIntro = (project) => {
 
 const getLatestNote = (project) => project.dailyNotes[0];
 
-const renderFeedMeta = (container, project) => {
-  const items = [
-    `变现：${firstClause(project.monetization)}`,
-    `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
-    `场景：${summarizeScenario(project)}`,
-    `客群：${shortList(project.targetCustomers, 2)}`,
-  ];
+const renderFeedMeta = (container, project, { compact = false } = {}) => {
+  container.classList.toggle("feed-meta-compact", compact);
+  const items = compact
+    ? [
+        `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
+        `场景：${summarizeScenario(project)}`,
+        buildEvidenceTimingLabel(project),
+      ]
+    : [
+        `变现：${firstClause(project.monetization)}`,
+        `证据：${evidenceLevelLabel[project.evidenceQuality.level]}`,
+        `场景：${summarizeScenario(project)}`,
+        `客群：${shortList(project.targetCustomers, 2)}`,
+      ];
   const gapLabel = getEvidenceGapLabel(project);
 
   if (gapLabel) {
     items.push(`待补证：${gapLabel}`);
   }
 
-  if (hasEvidenceRefresh(project)) {
+  if (!compact && hasEvidenceRefresh(project)) {
     items.push("状态：最近补证");
   }
 
@@ -299,11 +306,7 @@ const renderProjectLibrary = (projects, selectedProjectId, onSelectProject) => {
     itemNode.querySelector(".feed-tag").textContent = project.productForm;
     itemNode.querySelector(".feed-summary").textContent = project.feedIntro ?? buildFeedIntro(project);
     const meta = itemNode.querySelector(".feed-meta");
-    renderFeedMeta(meta, project);
-    const timing = document.createElement("span");
-    timing.className = "feed-pill";
-    timing.textContent = buildEvidenceTimingLabel(project);
-    meta.appendChild(timing);
+    renderFeedMeta(meta, project, { compact: true });
     itemNode.addEventListener("click", () => onSelectProject(project.id));
     dailyFeed.appendChild(itemNode);
   });
