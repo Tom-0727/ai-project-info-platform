@@ -722,7 +722,12 @@ createApp({
 
       const currentScenario = summarizeScenario(selectedProject.value);
       return filteredProjects.value
-        .filter((project) => project.id !== selectedProject.value.id && summarizeScenario(project) === currentScenario)
+        .filter(
+          (project) =>
+            project.id !== selectedProject.value.id &&
+            summarizeScenario(project) === currentScenario &&
+            project.productForm !== selectedProject.value.productForm
+        )
         .slice(0, 3);
     });
 
@@ -733,7 +738,10 @@ createApp({
 
       const currentScenario = summarizeScenario(selectedProject.value);
       const scoped = projects.value.filter(
-        (project) => project.id !== selectedProject.value.id && summarizeScenario(project) === currentScenario
+        (project) =>
+          project.id !== selectedProject.value.id &&
+          summarizeScenario(project) === currentScenario &&
+          project.productForm !== selectedProject.value.productForm
       );
       return {
         total: scoped.length,
@@ -1667,7 +1675,7 @@ createApp({
 
                   <details v-if="sameScenarioRelated.length" class="detail-disclosure">
                     <summary class="detail-disclosure-summary">
-                      <span class="detail-subsection-label">同场景项目（{{ sameScenarioStats.total }}，清楚 {{ sameScenarioStats.strong }}）</span>
+                      <span class="detail-subsection-label">同场景跨形态项目（{{ sameScenarioStats.total }}，清楚 {{ sameScenarioStats.strong }}）</span>
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
