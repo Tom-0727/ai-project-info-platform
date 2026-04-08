@@ -253,6 +253,17 @@ createApp({
       return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleEntries.value.length} 条动态。左侧点项目，右侧看完整详情。`;
     });
 
+    const loadMoreLabel = computed(() => {
+      if (filters.value.view === "library") {
+        const remaining = Math.max(filteredProjects.value.length - visibleProjects.value.length, 0);
+        return remaining > 0 ? `加载更多（剩余 ${remaining} 个项目）` : "加载更多";
+      }
+
+      const totalEntries = filteredProjects.value.reduce((count, project) => count + (project.dailyNotes?.length || 0), 0);
+      const remaining = Math.max(totalEntries - visibleEntries.value.length, 0);
+      return remaining > 0 ? `加载更多（剩余 ${remaining} 条动态）` : "加载更多";
+    });
+
     const activeFilterChips = computed(() => {
       const chips = [];
 
@@ -553,6 +564,7 @@ createApp({
       summary,
       heroMetrics,
       resultHint,
+      loadMoreLabel,
       activeFilterChips,
       selectedStatusChips,
       evidencePreview,
@@ -810,7 +822,7 @@ createApp({
               type="button"
               @click="loadMore"
             >
-              加载更多
+              {{ loadMoreLabel }}
             </button>
           </div>
         </section>
