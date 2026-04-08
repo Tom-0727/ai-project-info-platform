@@ -150,6 +150,7 @@ createApp({
     const selectedProjectId = ref("");
     const feedLimit = ref(INITIAL_LIMIT);
     const listRef = ref(null);
+    const detailViewRef = ref(null);
     const activeSection = ref("#browse-controls");
     const showScrollTop = ref(false);
     const copyViewLabel = ref("复制当前视图");
@@ -501,10 +502,14 @@ createApp({
       ensureSelection();
     });
 
-    watch(selectedProjectId, () => {
+    watch(selectedProjectId, async () => {
       expandedFields.value = { evidence: false, latestNote: false };
       copyProjectLabel.value = "复制项目链接";
       window.clearTimeout(copyProjectTimer);
+      await nextTick();
+      if (detailViewRef.value) {
+        detailViewRef.value.scrollTop = 0;
+      }
     });
 
     onMounted(async () => {
@@ -556,6 +561,7 @@ createApp({
       sameFormRelated,
       sameScenarioRelated,
       listRef,
+      detailViewRef,
       evidenceLevelLabel,
       shortList,
       firstClause,
@@ -820,7 +826,7 @@ createApp({
 
           <div v-if="!selectedProject" class="detail-empty">当前筛选结果里还没有可展示的项目。</div>
 
-          <div v-else class="detail-view">
+          <div v-else ref="detailViewRef" class="detail-view">
             <article class="detail-card">
               <div class="detail-header">
                 <div class="project-top">
