@@ -1687,31 +1687,10 @@ const renderResultsHint = (visibleProjects, allProjects) => {
   const visibleEntries = visibleProjects.reduce((count, project) => count + project.dailyNotes.length, 0);
   const shownEntries = Math.min(visibleEntries, state.feedLimit);
   const shownProjects = Math.min(visibleProjects.length, state.feedLimit);
-  const compareProjectNames =
-    state.compareIds.length > 0
-      ? allProjects
-          .filter((project) => state.compareIds.includes(project.id))
-          .map((project) => project.canonicalName)
-      : [];
-  const filterNotes = [
-    state.query ? `关键词：${state.query}` : null,
-    state.evidence !== "all" ? `证据：${evidenceLevelLabel[state.evidence]}` : null,
-    state.mediumGap !== "all" ? `待补证分组：${state.mediumGap}` : null,
-    state.form !== "all" ? `形态：${state.form}` : null,
-    state.scenario !== "all" ? `场景：${state.scenario}` : null,
-    state.refreshed ? "状态：只看最近补证" : null,
-    state.compareIds.length > 0
-      ? `对比：${compareProjectNames.slice(0, 4).join(" / ")}${compareProjectNames.length > 4 ? " 等" : ""}`
-      : null,
-    state.sort !== "discovered" ? `排序：${sortFilter.selectedOptions[0]?.textContent ?? state.sort}` : null,
-  ].filter(Boolean);
-
-  const suffix =
-    filterNotes.length > 0 ? `当前筛选为 ${filterNotes.join(" / ")}。` : "当前为全量视图。";
   resultsHint.textContent =
     state.view === "library"
-      ? `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownProjects}/${visibleProjects.length} 个项目。${suffix} 点击左侧卡片在右侧查看完整详情。`
-      : `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries}/${visibleEntries} 条动态。${suffix} 点击左侧卡片在右侧查看完整详情。`;
+      ? `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownProjects} 个。左侧点项目，右侧看完整详情。`
+      : `当前命中 ${visibleProjects.length} / ${allProjects.length} 个项目，已展示 ${shownEntries} 条动态。左侧点项目，右侧看完整详情。`;
 };
 
 const renderActiveFilters = (allProjects) => {
