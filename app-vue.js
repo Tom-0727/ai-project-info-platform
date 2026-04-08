@@ -1375,27 +1375,44 @@ createApp({
 
                 <section class="detail-section">
                   <h4 class="detail-section-title">来源与对标</h4>
-                  <div class="source-links">
-                    <a v-for="(source, index) in selectedProject.sources" :key="source" class="source-chip" :href="source" target="_blank" rel="noreferrer">
-                      {{ index === 0 ? '首要来源' : '补充来源' }} · {{ domainFromUrl(source) }}
-                    </a>
-                  </div>
+                  <p class="detail-subsection-label">来源 {{ selectedProject.sources.length }} 条 / 已记录对标 {{ selectedBenchmarkLinks.length }} 个</p>
                   <div v-if="selectedBenchmarkLinks.length" class="detail-shortcut-actions">
                     <button class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
                   </div>
-                  <div v-if="selectedBenchmarkLinks.length" class="benchmark-links">
-                    <template v-for="item in selectedBenchmarkLinks" :key="item.label">
-                      <button
-                        v-if="item.matchedProject"
-                        class="benchmark-chip benchmark-chip-link"
-                        type="button"
-                        @click="selectProject(item.matchedProject.id)"
-                      >
-                        {{ item.label }}
-                      </button>
-                      <span v-else class="benchmark-chip">{{ item.label }}</span>
-                    </template>
-                  </div>
+                  <details v-if="selectedBenchmarkLinks.length" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">已记录对标（{{ selectedBenchmarkLinks.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="benchmark-links">
+                        <template v-for="item in selectedBenchmarkLinks" :key="item.label">
+                          <button
+                            v-if="item.matchedProject"
+                            class="benchmark-chip benchmark-chip-link"
+                            type="button"
+                            @click="selectProject(item.matchedProject.id)"
+                          >
+                            {{ item.label }}
+                          </button>
+                          <span v-else class="benchmark-chip">{{ item.label }}</span>
+                        </template>
+                      </div>
+                    </div>
+                  </details>
+                  <details class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">来源链接（{{ selectedProject.sources.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="source-links">
+                        <a v-for="(source, index) in selectedProject.sources" :key="source" class="source-chip" :href="source" target="_blank" rel="noreferrer">
+                          {{ index === 0 ? '首要来源' : '补充来源' }} · {{ domainFromUrl(source) }}
+                        </a>
+                      </div>
+                    </div>
+                  </details>
                 </section>
 
                 <section v-if="sameFormSnapshot || benchmarkSnapshot" class="detail-section">
