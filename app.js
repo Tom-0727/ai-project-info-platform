@@ -768,6 +768,7 @@ const renderDetailView = (project, projects, visibleProjects) => {
         onClick: () => {
           state.selectedProjectId = previousProject.id;
           renderApp(window.__projectsCache__);
+          revealSelectedProjectInFeed();
           focusDetailPanel();
         },
       },
@@ -780,6 +781,7 @@ const renderDetailView = (project, projects, visibleProjects) => {
         onClick: () => {
           state.selectedProjectId = nextProject.id;
           renderApp(window.__projectsCache__);
+          revealSelectedProjectInFeed();
           focusDetailPanel();
         },
       },
@@ -1154,6 +1156,15 @@ const focusDetailPanel = () => {
   if (window.matchMedia("(max-width: 1080px)").matches) {
     detailPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+};
+
+const revealSelectedProjectInFeed = () => {
+  if (!state.selectedProjectId) {
+    return;
+  }
+
+  const selectedNode = dailyFeed.querySelector(`[data-project-id="${state.selectedProjectId}"]`);
+  selectedNode?.scrollIntoView({ block: "nearest", inline: "nearest" });
 };
 
 const state = {
