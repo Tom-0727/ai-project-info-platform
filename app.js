@@ -1281,7 +1281,7 @@ const syncFeedLimit = (totalEntries) => {
 const syncBrowseMode = () => {
   const libraryMode = state.view === "library";
   if (feedPanelLabel) {
-    feedPanelLabel.textContent = libraryMode ? "Project Library" : "Daily Feed";
+    feedPanelLabel.textContent = libraryMode ? "项目浏览" : "动态浏览";
   }
   if (feedPanelTitle) {
     feedPanelTitle.textContent = libraryMode ? "项目总表" : "每日新增与更新";
