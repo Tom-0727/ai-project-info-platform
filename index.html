@@ -28,10 +28,16 @@
         </div>
         <div class="hero-metrics" id="hero-metrics"></div>
       </header>
+      <nav class="page-nav" aria-label="页面导航">
+        <a class="page-nav-link" href="#browse-controls">浏览总览</a>
+        <a class="page-nav-link" href="#advanced-filters">筛选条件</a>
+        <a class="page-nav-link" href="#project-list">项目列表</a>
+        <a class="page-nav-link" href="#project-detail">项目详情</a>
+      </nav>
 
       <main class="layout">
         <section class="panel panel-main">
-          <div class="panel-main-top">
+          <div id="browse-controls" class="panel-main-top">
             <div class="panel-heading">
               <div>
                 <p id="feed-panel-label" class="panel-label">Project Library</p>
@@ -102,13 +108,13 @@
             <p class="results-hint" id="results-hint"></p>
             <div id="active-filters" class="active-filters" hidden></div>
           </div>
-          <div id="daily-feed" class="daily-feed"></div>
+          <div id="project-list" class="daily-feed"></div>
           <div class="feed-actions">
             <button id="load-more-feed" class="filters-reset filters-secondary" type="button" hidden>加载更多项目</button>
           </div>
         </section>
 
-        <aside class="panel panel-side panel-sticky">
+        <aside id="project-detail" class="panel panel-side panel-sticky">
           <div class="panel-heading">
             <div>
               <p class="panel-label">Project Detail</p>
