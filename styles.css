@@ -654,6 +654,35 @@ button.summary-card[aria-pressed="true"] .summary-label {
   background: rgba(188, 75, 39, 0.08);
 }
 
+.detail-note-summary {
+  margin-bottom: 0;
+}
+
+.detail-note-disclosure {
+  margin-top: 10px;
+}
+
+.detail-note-toggle {
+  list-style: none;
+  cursor: pointer;
+  color: var(--signal);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.detail-note-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.detail-note-toggle:hover,
+.detail-note-toggle:focus-visible {
+  color: var(--ink);
+}
+
+.detail-note-full {
+  margin-top: 10px;
+}
+
 .project-detail-sections {
   display: grid;
   gap: 14px;

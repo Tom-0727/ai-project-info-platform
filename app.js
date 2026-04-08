@@ -105,6 +105,25 @@ const firstClause = (value) => {
   return value.split(/[，。；;]/)[0].trim();
 };
 
+const buildCompactNote = (value, maxLength = 110) => {
+  if (!value) {
+    return { shortText: "暂无动态。", fullText: "暂无动态。", truncated: false };
+  }
+
+  const text = value.trim();
+  if (text.length <= maxLength) {
+    return { shortText: text, fullText: text, truncated: false };
+  }
+
+  const sentence = text.match(/^(.{1,110}?[。！？；])/);
+  const shortText = sentence?.[1]?.trim() ?? `${text.slice(0, maxLength).trim()}…`;
+  return {
+    shortText,
+    fullText: text,
+    truncated: shortText !== text,
+  };
+};
+
 const buildEvidenceTimingLabel = (project) => {
   if (hasEvidenceRefresh(project)) {
     return `最近补证 · ${project.lastUpdated}`;
@@ -675,10 +694,34 @@ const renderDetailView = (project, projects) => {
   const noteTitle = document.createElement("p");
   noteTitle.className = "detail-note-label";
   noteTitle.textContent = "最新动态";
-  const noteText = document.createElement("p");
-  noteText.className = "detail-note-text";
-  noteText.textContent = latestNote ? latestNote.update : "暂无动态。";
-  noteBlock.append(noteTitle, noteText);
+  const { shortText, fullText, truncated } = buildCompactNote(latestNote?.update);
+  noteBlock.appendChild(noteTitle);
+
+  if (!truncated) {
+    const noteText = document.createElement("p");
+    noteText.className = "detail-note-text";
+    noteText.textContent = fullText;
+    noteBlock.appendChild(noteText);
+  } else {
+    const summaryText = document.createElement("p");
+    summaryText.className = "detail-note-text detail-note-summary";
+    summaryText.textContent = shortText;
+    noteBlock.appendChild(summaryText);
+
+    const fullNote = document.createElement("details");
+    fullNote.className = "detail-note-disclosure";
+    const summary = document.createElement("summary");
+    summary.className = "detail-note-toggle";
+    summary.textContent = "展开全文";
+    const fullTextNode = document.createElement("p");
+    fullTextNode.className = "detail-note-text detail-note-full";
+    fullTextNode.textContent = fullText;
+    fullNote.append(summary, fullTextNode);
+    fullNote.addEventListener("toggle", () => {
+      summary.textContent = fullNote.open ? "收起全文" : "展开全文";
+    });
+    noteBlock.appendChild(fullNote);
+  }
 
   const scenarioStats = getScenarioStats(project, projects);
   const detailSections = node.querySelector(".project-detail-sections");
