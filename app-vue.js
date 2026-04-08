@@ -9,6 +9,12 @@ const evidenceLevelLabel = {
   weak: "商业化待补证",
 };
 
+const riskLabel = {
+  low: "低营销风险",
+  medium: "中营销风险",
+  high: "高营销风险",
+};
+
 const readFlag = (key) => {
   try {
     return window.localStorage.getItem(key) === "1";
@@ -59,6 +65,20 @@ const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.f
 
 const summarizeScenario = (project) => firstClause(project.painPoint);
 const normalizeLookupKey = (value) => String(value || "").trim().toLowerCase();
+
+const getEvidenceGapLabel = (project) => {
+  if (!project || project.evidenceQuality.level === "strong") {
+    return null;
+  }
+
+  const note = project.evidenceQuality.note || "";
+  if (/(另一款产品|别的产品|错配|写成了|指向别的产品|正文实际对应)/.test(note)) return "官方链路错配";
+  if (/(证书|SSL|hostname|Cloudflare|404|不可访问|无法稳定访问|不稳定官方面|根页.*404|不可稳定核验)/i.test(note)) return "官方面不可稳定核验";
+  if (/(价格|定价|价格数字).*(不完整|不透明|较弱|不足|不稳定)/.test(note)) return "缺稳定价格面";
+  if (/(企业|采购|报价|席位).*(弱|不透明|咨询)/.test(note)) return "缺公开套餐价";
+  if (/(抓取|检索|获取|retriev)/i.test(note)) return "缺稳定可检索证据";
+  return "缺更强商业化证据";
+};
 
 const buildCompactNote = (value, maxLength = 120) => {
   if (!value) {
@@ -462,6 +482,20 @@ createApp({
       });
     });
 
+    const selectedScenarioStats = computed(() => {
+      if (!selectedProject.value) {
+        return null;
+      }
+
+      const scenario = summarizeScenario(selectedProject.value);
+      const scoped = projects.value.filter((project) => summarizeScenario(project) === scenario);
+      return {
+        total: scoped.length,
+        strong: scoped.filter((project) => project.evidenceQuality.level === "strong").length,
+        medium: scoped.filter((project) => project.evidenceQuality.level === "medium").length,
+      };
+    });
+
     const ensureSelection = () => {
       if (!filteredProjects.value.length) {
         selectedProjectId.value = "";
@@ -694,9 +728,12 @@ createApp({
       sameFormRelated,
       sameScenarioRelated,
       selectedBenchmarkLinks,
+      selectedScenarioStats,
       listRef,
       detailViewRef,
       evidenceLevelLabel,
+      riskLabel,
+      getEvidenceGapLabel,
       shortList,
       firstClause,
       formatDate,
@@ -1014,6 +1051,18 @@ createApp({
                     <div class="detail-row">
                       <dt>证据等级</dt>
                       <dd>{{ evidenceLevelLabel[selectedProject.evidenceQuality.level] }}</dd>
+                    </div>
+                    <div class="detail-row">
+                      <dt>营销风险</dt>
+                      <dd>{{ riskLabel[selectedProject.marketingRisk] }}</dd>
+                    </div>
+                    <div v-if="getEvidenceGapLabel(selectedProject)" class="detail-row">
+                      <dt>待补证点</dt>
+                      <dd>{{ getEvidenceGapLabel(selectedProject) }}</dd>
+                    </div>
+                    <div v-if="selectedScenarioStats" class="detail-row">
+                      <dt>场景样本概览</dt>
+                      <dd>{{ selectedScenarioStats.total }} 个样本，其中商业化清楚 {{ selectedScenarioStats.strong }} 个，待补证 {{ selectedScenarioStats.medium }} 个。</dd>
                     </div>
                     <div class="detail-row">
                       <dt>判断说明</dt>
