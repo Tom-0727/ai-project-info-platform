@@ -454,6 +454,14 @@ createApp({
       const refreshedStrongCount = scoped.filter(
         (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
       ).length;
+      const newEntryCount = scoped.reduce(
+        (count, project) => count + (project.dailyNotes || []).filter((note) => note.kind === "New").length,
+        0
+      );
+      const updateEntryCount = scoped.reduce(
+        (count, project) => count + (project.dailyNotes || []).filter((note) => note.kind === "Update").length,
+        0
+      );
 
       return [
         {
@@ -518,6 +526,30 @@ createApp({
             filters.value.refreshed = !isActive;
             filters.value.evidence = !isActive ? "strong" : "all";
             filters.value.sort = !isActive ? "refreshed" : "discovered";
+          },
+        },
+        {
+          key: "new-notes",
+          label: "新增动态",
+          value: `${newEntryCount} 条`,
+          active: filters.value.view === "updates" && filters.value.noteKind === "New",
+          onClick: () => {
+            const isActive = filters.value.view === "updates" && filters.value.noteKind === "New";
+            filters.value.view = "updates";
+            filters.value.noteKind = isActive ? "all" : "New";
+            feedLimit.value = INITIAL_LIMIT;
+          },
+        },
+        {
+          key: "update-notes",
+          label: "补证更新",
+          value: `${updateEntryCount} 条`,
+          active: filters.value.view === "updates" && filters.value.noteKind === "Update",
+          onClick: () => {
+            const isActive = filters.value.view === "updates" && filters.value.noteKind === "Update";
+            filters.value.view = "updates";
+            filters.value.noteKind = isActive ? "all" : "Update";
+            feedLimit.value = INITIAL_LIMIT;
           },
         },
       ];
