@@ -476,6 +476,16 @@ createApp({
       const topScenarios = Object.entries(scenarioCounts)
         .sort((left, right) => right[1] - left[1])
         .slice(0, 2);
+      const formCounts = scoped.reduce((map, project) => {
+        if (!project.productForm) {
+          return map;
+        }
+        map[project.productForm] = (map[project.productForm] || 0) + 1;
+        return map;
+      }, {});
+      const topForms = Object.entries(formCounts)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 2);
       const refreshedCount = scoped.filter((project) => hasEvidenceRefresh(project)).length;
       const refreshedStrongCount = scoped.filter(
         (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
@@ -520,6 +530,30 @@ createApp({
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "strong" ? "all" : "strong";
           },
+        },
+        {
+          key: "top-form-1",
+          label: "当前最密集形态",
+          value: topForms[0] ? `${topForms[0][0]} · ${topForms[0][1]}个` : "暂无",
+          active: topForms[0] ? filters.value.form === topForms[0][0] : false,
+          onClick: topForms[0]
+            ? () => {
+                filters.value.form = filters.value.form === topForms[0][0] ? "all" : topForms[0][0];
+                filters.value.excludeForm = "";
+              }
+            : null,
+        },
+        {
+          key: "top-form-2",
+          label: "第二密集形态",
+          value: topForms[1] ? `${topForms[1][0]} · ${topForms[1][1]}个` : "暂无",
+          active: topForms[1] ? filters.value.form === topForms[1][0] : false,
+          onClick: topForms[1]
+            ? () => {
+                filters.value.form = filters.value.form === topForms[1][0] ? "all" : topForms[1][0];
+                filters.value.excludeForm = "";
+              }
+            : null,
         },
         {
           key: "medium",
