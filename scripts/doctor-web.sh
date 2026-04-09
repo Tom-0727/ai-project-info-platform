@@ -105,8 +105,20 @@ else
   fi
 fi
 
+if [ "$LOCAL_REMOTE_DRIFT" = "drift" ] && [ "$LIVE_REMOTE_DRIFT" = "drift" ]; then
+  RECOMMENDED_ACTION="push_then_restart"
+elif [ "$LOCAL_REMOTE_DRIFT" = "drift" ]; then
+  RECOMMENDED_ACTION="push"
+elif [ "$LIVE_REMOTE_DRIFT" = "drift" ]; then
+  RECOMMENDED_ACTION="restart"
+elif [ "$SERVICE_STATE" != "active" ]; then
+  RECOMMENDED_ACTION="check_service"
+else
+  RECOMMENDED_ACTION="none"
+fi
+
 if [ "$OUTPUT_FORMAT" = "json" ]; then
-  export CURRENT_BRANCH LOCAL_REVISION TREE_STATUS SERVICE_NAME SERVICE_STATE HEALTH_URL HEALTH_PAYLOAD LIVE_REVISION DRIFT_STATUS REMOTE_REVISION LOCAL_REMOTE_DRIFT LIVE_REMOTE_DRIFT
+  export CURRENT_BRANCH LOCAL_REVISION TREE_STATUS SERVICE_NAME SERVICE_STATE HEALTH_URL HEALTH_PAYLOAD LIVE_REVISION DRIFT_STATUS REMOTE_REVISION LOCAL_REMOTE_DRIFT LIVE_REMOTE_DRIFT RECOMMENDED_ACTION
   python3 - <<'PY'
 import json
 import os
@@ -129,6 +141,7 @@ print(json.dumps({
     "drift": os.environ["DRIFT_STATUS"],
     "local_remote_drift": os.environ["LOCAL_REMOTE_DRIFT"],
     "live_remote_drift": os.environ["LIVE_REMOTE_DRIFT"],
+    "recommended_action": os.environ["RECOMMENDED_ACTION"],
 }, ensure_ascii=False, indent=2))
 PY
   exit 0
@@ -146,7 +159,8 @@ echo "[doctor:web] health payload: $HEALTH_PAYLOAD"
 if [ "$DRIFT_STATUS" = "drift" ]; then
   echo "[doctor:web] drift: live revision ($LIVE_REVISION) differs from local HEAD ($LOCAL_REVISION)"
 else
-  echo "[doctor:web] drift: aligned"
+echo "[doctor:web] drift: aligned"
 fi
 echo "[doctor:web] local vs remote: $LOCAL_REMOTE_DRIFT"
 echo "[doctor:web] live vs remote: $LIVE_REMOTE_DRIFT"
+echo "[doctor:web] recommended action: $RECOMMENDED_ACTION"
