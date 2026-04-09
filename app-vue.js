@@ -239,6 +239,7 @@ createApp({
     const filters = ref({
       view: "library",
       query: "",
+      noteKind: "all",
       evidence: "all",
       refreshed: false,
       mediumGap: "all",
@@ -312,6 +313,23 @@ createApp({
           label: `${value} (${count})`,
         }));
     });
+    const noteKindOptions = computed(() => {
+      const counts = projects.value.reduce((map, project) => {
+        (project.dailyNotes || []).forEach((note) => {
+          const kind = note.kind;
+          if (!kind) {
+            return;
+          }
+          map.set(kind, (map.get(kind) || 0) + 1);
+        });
+        return map;
+      }, new Map());
+
+      return ["New", "Update"].map((value) => ({
+        value,
+        label: `${noteKindLabel[value]} (${counts.get(value) || 0})`,
+      }));
+    });
 
     const filteredProjects = computed(() => {
       const matched = projects.value.filter((project) => {
@@ -350,8 +368,10 @@ createApp({
           project,
         }))
       );
+      const scopedEntries =
+        filters.value.noteKind === "all" ? entries : entries.filter((entry) => entry.kind === filters.value.noteKind);
 
-      entries.sort((left, right) => {
+      scopedEntries.sort((left, right) => {
         const dateDelta = String(right.date || "").localeCompare(String(left.date || ""));
         if (dateDelta !== 0) {
           return dateDelta;
@@ -359,7 +379,7 @@ createApp({
         return right.project.discoveredSeq - left.project.discoveredSeq;
       });
 
-      return entries.slice(0, feedLimit.value);
+      return scopedEntries.slice(0, feedLimit.value);
     });
 
     const selectedProject = computed(
@@ -508,7 +528,8 @@ createApp({
         return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleProjects.value.length} 个。左侧点项目，右侧看完整详情。`;
       }
 
-      return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleEntries.value.length} 条动态。左侧点项目，右侧看完整详情。`;
+      const kindSuffix = filters.value.noteKind !== "all" ? `，当前只看${noteKindLabel[filters.value.noteKind]}` : "";
+      return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleEntries.value.length} 条动态${kindSuffix}。左侧点项目，右侧看完整详情。`;
     });
 
     const emptyState = computed(() => {
@@ -557,6 +578,7 @@ createApp({
       if (filters.value.compareIds.length) noteParts.push("当前处在对标视图");
       if (filters.value.mediumGap !== "all") noteParts.push(`当前只看 ${filters.value.mediumGap}`);
       if (filters.value.view === "updates") noteParts.push("当前是动态流模式");
+      if (filters.value.noteKind !== "all") noteParts.push(`当前只看${noteKindLabel[filters.value.noteKind]}`);
       if (noteParts.length === 0) noteParts.push("可以先清空筛选，重新缩小范围");
 
       return {
@@ -572,7 +594,12 @@ createApp({
         return remaining > 0 ? `加载更多（剩余 ${remaining} 个项目）` : "加载更多";
       }
 
-      const totalEntries = filteredProjects.value.reduce((count, project) => count + (project.dailyNotes?.length || 0), 0);
+      const totalEntries = filteredProjects.value.reduce(
+        (count, project) =>
+          count +
+          (project.dailyNotes || []).filter((note) => filters.value.noteKind === "all" || note.kind === filters.value.noteKind).length,
+        0
+      );
       const remaining = Math.max(totalEntries - visibleEntries.value.length, 0);
       return remaining > 0 ? `加载更多（剩余 ${remaining} 条动态）` : "加载更多";
     });
@@ -610,6 +637,16 @@ createApp({
             if (filters.value.sort === "refreshed") {
               filters.value.sort = "discovered";
             }
+          },
+        });
+      }
+
+      if (filters.value.view === "updates" && filters.value.noteKind !== "all") {
+        chips.push({
+          key: "note-kind",
+          label: `动态类型：${noteKindLabel[filters.value.noteKind] || filters.value.noteKind}`,
+          clear: () => {
+            filters.value.noteKind = "all";
           },
         });
       }
@@ -873,6 +910,7 @@ createApp({
       const params = new URLSearchParams();
       if (filters.value.view !== "library") params.set("view", filters.value.view);
       if (filters.value.query) params.set("q", filters.value.query);
+      if (filters.value.noteKind !== "all") params.set("noteKind", filters.value.noteKind);
       if (filters.value.evidence !== "all") params.set("evidence", filters.value.evidence);
       if (filters.value.refreshed) params.set("refreshed", "1");
       if (filters.value.mediumGap !== "all") params.set("gap", filters.value.mediumGap);
@@ -890,6 +928,7 @@ createApp({
       const params = new URLSearchParams(window.location.search);
       filters.value.view = params.get("view") || "library";
       filters.value.query = params.get("q") || "";
+      filters.value.noteKind = params.get("noteKind") || "all";
       filters.value.evidence = params.get("evidence") || "all";
       filters.value.refreshed = params.get("refreshed") === "1";
       filters.value.mediumGap = params.get("gap") || "all";
@@ -907,6 +946,7 @@ createApp({
     const resetFilters = () => {
       filters.value.view = "library";
       filters.value.query = "";
+      filters.value.noteKind = "all";
       filters.value.evidence = "all";
       filters.value.refreshed = false;
       filters.value.mediumGap = "all";
@@ -1267,6 +1307,13 @@ createApp({
                   <select v-model="filters.evidence">
                     <option value="all">全部</option>
                     <option v-for="option in evidenceOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
+                  </select>
+                </label>
+                <label v-if="filters.view === 'updates'" class="filter-field">
+                  <span>动态类型</span>
+                  <select v-model="filters.noteKind">
+                    <option value="all">全部动态</option>
+                    <option v-for="option in noteKindOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
                   </select>
                 </label>
                 <label class="filter-field">
