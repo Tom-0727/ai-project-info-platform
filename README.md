@@ -24,7 +24,7 @@ The page is now served by FastAPI and loads project data from `/api/projects` in
 - `scripts/add-daily-note.mjs`: append a daily update to an existing project.
 - `scripts/update-project.mjs`: update an existing project’s evidence fields, sources, monetization text, and optionally append a new daily note in one pass.
 - `scripts/validate-projects.mjs`: duplicate guard for ids, normalized names, slugs, source URLs, and repeated daily notes.
-- `scripts/smoke-web.mjs`: Playwright smoke test for homepage render and a known project deep link.
+- `scripts/smoke-web.mjs`: Playwright smoke test for homepage render, a known project deep link, and a few stateful governance URLs.
 
 ## Run locally
 
@@ -70,7 +70,11 @@ Or run the one-command verification bundle:
 npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
-The smoke test verifies that the homepage renders, that a known `?project=...` deep link does not fall into a blank Vue screen, and that a governance-style `?sourceType=价格页` filter URL still renders normally.
+The smoke test verifies that the homepage renders, that a known `?project=...` deep link does not fall into a blank Vue screen, and that several stateful URLs still render normally:
+
+- `?sourceType=价格页`
+- `?project=...&compare=...`
+- `?project=...&sourceDomain=...`
 
 ## Daily update workflow
 
