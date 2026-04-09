@@ -66,6 +66,24 @@ const domainFromUrl = (value) => {
   }
 };
 
+const classifySource = (value) => {
+  const lower = String(value || "").toLowerCase();
+
+  if (lower.includes("apps.apple.com")) {
+    return "App Store";
+  }
+  if (/(privacy|policy|terms|agreement|xieyi|yinsi|autorenew|vipagreement|memberservice)/.test(lower)) {
+    return "协议页";
+  }
+  if (/(price|pricing|billing|subscribe|subscription|pay|vip|member|renewal|coins|points)/.test(lower)) {
+    return "价格页";
+  }
+  if (/(download|register|signup|login|trial|demo|contact|consult)/.test(lower)) {
+    return "转化页";
+  }
+  return "官网页";
+};
+
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
 const summarizeScenario = (project) => firstClause(project.painPoint);
@@ -905,6 +923,18 @@ createApp({
         return { label: benchmark, matchedProject };
       });
     });
+    const selectedSources = computed(() => {
+      if (!selectedProject.value) {
+        return [];
+      }
+
+      return (selectedProject.value.sources || []).map((source, index) => ({
+        url: source,
+        domain: domainFromUrl(source),
+        slotLabel: index === 0 ? "首要来源" : "补充来源",
+        typeLabel: classifySource(source),
+      }));
+    });
 
     const matchedBenchmarkProjects = computed(() =>
       selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
@@ -1240,6 +1270,7 @@ createApp({
       sameScenarioRelated,
       sameScenarioStats,
       selectedBenchmarkLinks,
+      selectedSources,
       matchedBenchmarkProjects,
       sameFormSnapshot,
       benchmarkSnapshot,
@@ -1255,6 +1286,7 @@ createApp({
       formatDate,
       hasEvidenceRefresh,
       domainFromUrl,
+      classifySource,
       buildCompactNote,
       buildPreviewText,
       dismissUsage,
@@ -1765,13 +1797,13 @@ createApp({
                   </details>
                   <details class="detail-disclosure">
                     <summary class="detail-disclosure-summary">
-                      <span class="detail-subsection-label">来源链接（{{ selectedProject.sources.length }}）</span>
+                      <span class="detail-subsection-label">来源链接（{{ selectedSources.length }}）</span>
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
                       <div class="source-links">
-                        <a v-for="(source, index) in selectedProject.sources" :key="source" class="source-chip" :href="source" target="_blank" rel="noreferrer">
-                          {{ index === 0 ? '首要来源' : '补充来源' }} · {{ domainFromUrl(source) }}
+                        <a v-for="source in selectedSources" :key="source.url" class="source-chip" :href="source.url" target="_blank" rel="noreferrer">
+                          {{ source.slotLabel }} · {{ source.typeLabel }} · {{ source.domain }}
                         </a>
                       </div>
                     </div>
