@@ -66,6 +66,7 @@ If you want the common release flow in one command, use:
 By default it pushes `HEAD` to `origin main`, restarts the service, and runs `verify:web` against the production domain.
 The helper refuses to run if the working tree is dirty, so it does not accidentally deploy uncommitted changes.
 It also refuses to run unless the current branch is `publish-cases` (override with `EXPECTED_BRANCH=` if needed).
+If you only want to preview the release steps, run `DRY_RUN=1 ./scripts/deploy-web.sh`; in dry-run mode the script prints dirty-tree or wrong-branch warnings but does not abort.
 
 ## Browser smoke test
 
