@@ -274,6 +274,7 @@ createApp({
       scenario: "all",
       sort: "discovered",
       compareIds: [],
+      sameDomainIds: [],
       usageDismissed: readFlag("ai-project-scout:usage-strip-dismissed"),
     });
 
@@ -368,6 +369,7 @@ createApp({
         const matchesExcludeForm = !filters.value.excludeForm || project.productForm !== filters.value.excludeForm;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
+        const matchesSameDomain = !filters.value.sameDomainIds.length || filters.value.sameDomainIds.includes(project.id);
         return (
           matchesEvidence &&
           matchesRefreshed &&
@@ -376,6 +378,7 @@ createApp({
           matchesExcludeForm &&
           matchesScenario &&
           matchesCompare &&
+          matchesSameDomain &&
           projectMatchesQuery(project, filters.value.query)
         );
       });
@@ -646,6 +649,16 @@ createApp({
         });
       }
 
+      if (filters.value.sameDomainIds.length) {
+        actions.push({
+          label: "退出同域样本",
+          secondary: true,
+          onClick: () => {
+            filters.value.sameDomainIds = [];
+          },
+        });
+      }
+
       if (filters.value.mediumGap !== "all") {
         actions.push({
           label: "退出同类缺口",
@@ -668,6 +681,7 @@ createApp({
 
       const noteParts = [];
       if (filters.value.compareIds.length) noteParts.push("当前处在对标视图");
+      if (filters.value.sameDomainIds.length) noteParts.push("当前只看同域样本");
       if (filters.value.mediumGap !== "all") noteParts.push(`当前只看 ${filters.value.mediumGap}`);
       if (filters.value.view === "updates") noteParts.push("当前是动态流模式");
       if (filters.value.noteKind !== "all") noteParts.push(`当前只看${noteKindLabel[filters.value.noteKind]}`);
@@ -812,6 +826,16 @@ createApp({
         });
       }
 
+      if (filters.value.sameDomainIds.length && selectedSourceDomains.value.length) {
+        chips.push({
+          key: "same-domain",
+          label: `同域：${selectedSourceDomains.value.slice(0, 2).join(" / ")}${selectedSourceDomains.value.length > 2 ? " 等" : ""}`,
+          clear: () => {
+            filters.value.sameDomainIds = [];
+          },
+        });
+      }
+
       return chips;
     });
 
@@ -878,6 +902,10 @@ createApp({
           .filter((project) => filters.value.compareIds.includes(project.id))
           .map((project) => project.canonicalName);
         chips.push(`当前对标 · ${names.slice(0, 3).join(" / ")}${names.length > 3 ? " 等" : ""}`);
+      }
+
+      if (filters.value.sameDomainIds.length && selectedSourceDomains.value.length) {
+        chips.push(`当前同域 · ${selectedSourceDomains.value.slice(0, 2).join(" / ")}${selectedSourceDomains.value.length > 2 ? " 等" : ""}`);
       }
 
       if (selectedGapLabel.value) {
@@ -1004,6 +1032,9 @@ createApp({
         })
         .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
     });
+    const sameDomainViewIds = computed(() =>
+      selectedProject.value ? [selectedProject.value.id, ...sameDomainProjects.value.map((project) => project.id)] : []
+    );
 
     const matchedBenchmarkProjects = computed(() =>
       selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
@@ -1050,6 +1081,7 @@ createApp({
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
+      if (filters.value.sameDomainIds.length) params.set("sameDomain", filters.value.sameDomainIds.join(","));
       if (selectedProjectId.value) params.set("project", selectedProjectId.value);
       const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
       window.history.replaceState({}, "", next);
@@ -1071,6 +1103,10 @@ createApp({
         .split(",")
         .map((value) => value.trim())
         .filter(Boolean);
+      filters.value.sameDomainIds = (params.get("sameDomain") || "")
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
       selectedProjectId.value = params.get("project") || "";
     };
 
@@ -1086,6 +1122,7 @@ createApp({
       filters.value.scenario = "all";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
+      filters.value.sameDomainIds = [];
       feedLimit.value = INITIAL_LIMIT;
     };
 
@@ -1167,6 +1204,21 @@ createApp({
       filters.value.view = "library";
       filters.value.query = "";
       filters.value.compareIds = [selectedProject.value.id, ...matchedIds];
+      filters.value.sameDomainIds = [];
+      filters.value.mediumGap = "all";
+      filters.value.excludeForm = "";
+      feedLimit.value = INITIAL_LIMIT;
+    };
+
+    const focusSameDomain = () => {
+      if (!sameDomainViewIds.value.length) {
+        return;
+      }
+
+      filters.value.view = "library";
+      filters.value.query = "";
+      filters.value.compareIds = [];
+      filters.value.sameDomainIds = [...sameDomainViewIds.value];
       filters.value.mediumGap = "all";
       filters.value.excludeForm = "";
       feedLimit.value = INITIAL_LIMIT;
@@ -1253,7 +1305,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
@@ -1344,6 +1396,7 @@ createApp({
       selectedSourceDomains,
       selectedSourceGroups,
       sameDomainProjects,
+      sameDomainViewIds,
       matchedBenchmarkProjects,
       sameFormSnapshot,
       benchmarkSnapshot,
@@ -1372,6 +1425,7 @@ createApp({
       copyCurrentView,
       focusCluster,
       activateBenchmarkCompare,
+      focusSameDomain,
       focusSameGap,
       moveSameGapSelection,
       focusPendingReview,
@@ -1846,8 +1900,9 @@ createApp({
                   <p class="detail-subsection-label">来源 {{ selectedProject.sources.length }} 条 / 已记录对标 {{ selectedBenchmarkLinks.length }} 个</p>
                   <p v-if="selectedSourceCoverage.length" class="detail-subsection-copy">证据覆盖：{{ selectedSourceCoverage.join(' / ') }}</p>
                   <p v-if="selectedSourceDomains.length" class="detail-subsection-copy">来源域名：{{ selectedSourceDomains.join(' / ') }}</p>
-                  <div v-if="selectedBenchmarkLinks.length" class="detail-shortcut-actions">
-                    <button class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
+                  <div v-if="selectedBenchmarkLinks.length || sameDomainProjects.length" class="detail-shortcut-actions">
+                    <button v-if="selectedBenchmarkLinks.length" class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
+                    <button v-if="sameDomainProjects.length" class="detail-shortcut-chip" type="button" @click="focusSameDomain">只看同域样本（{{ sameDomainProjects.length + 1 }}）</button>
                   </div>
                   <details v-if="selectedBenchmarkLinks.length" class="detail-disclosure">
                     <summary class="detail-disclosure-summary">
