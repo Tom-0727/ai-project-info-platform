@@ -1708,6 +1708,7 @@ createApp({
       benchmarkSnapshot,
       selectedScenarioStats,
       runtimeLabel,
+      runtimeHealthUrl: healthUrl,
       listRef,
       detailViewRef,
       evidenceLevelLabel,
@@ -2461,7 +2462,7 @@ createApp({
       </main>
 
       <footer v-if="runtimeLabel" class="runtime-footer">
-        <span class="runtime-badge">{{ runtimeLabel }}</span>
+        <a class="runtime-badge" :href="runtimeHealthUrl" target="_blank" rel="noreferrer">{{ runtimeLabel }}</a>
       </footer>
 
       <button v-if="showScrollTop" class="scroll-top-button" type="button" @click="scrollToTop">回到顶部</button>
