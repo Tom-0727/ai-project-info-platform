@@ -71,6 +71,10 @@ SERVICE_STATE="$(sudo systemctl is-active "$SERVICE_NAME" 2>/dev/null || true)"
 if [ -z "$SERVICE_STATE" ]; then
   SERVICE_STATE="unknown"
 fi
+REMOTE_REVISION="$(git ls-remote --heads origin main 2>/dev/null | awk '{print substr($1,1,7)}' || true)"
+if [ -z "$REMOTE_REVISION" ]; then
+  REMOTE_REVISION="unknown"
+fi
 
 if HEALTH_PAYLOAD="$(curl --fail --silent --show-error "$HEALTH_URL" 2>/dev/null)"; then
   LIVE_REVISION="$(printf '%s' "$HEALTH_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("revision",""))')"
@@ -85,8 +89,24 @@ else
   DRIFT_STATUS="aligned"
 fi
 
+if [ "$REMOTE_REVISION" = "unknown" ]; then
+  LOCAL_REMOTE_DRIFT="unknown"
+  LIVE_REMOTE_DRIFT="unknown"
+else
+  if [ "$REMOTE_REVISION" != "$LOCAL_REVISION" ]; then
+    LOCAL_REMOTE_DRIFT="drift"
+  else
+    LOCAL_REMOTE_DRIFT="aligned"
+  fi
+  if [ -n "$LIVE_REVISION" ] && [ "$LIVE_REVISION" != "$REMOTE_REVISION" ]; then
+    LIVE_REMOTE_DRIFT="drift"
+  else
+    LIVE_REMOTE_DRIFT="aligned"
+  fi
+fi
+
 if [ "$OUTPUT_FORMAT" = "json" ]; then
-  export CURRENT_BRANCH LOCAL_REVISION TREE_STATUS SERVICE_NAME SERVICE_STATE HEALTH_URL HEALTH_PAYLOAD LIVE_REVISION DRIFT_STATUS
+  export CURRENT_BRANCH LOCAL_REVISION TREE_STATUS SERVICE_NAME SERVICE_STATE HEALTH_URL HEALTH_PAYLOAD LIVE_REVISION DRIFT_STATUS REMOTE_REVISION LOCAL_REMOTE_DRIFT LIVE_REMOTE_DRIFT
   python3 - <<'PY'
 import json
 import os
@@ -99,6 +119,7 @@ payload = json.loads(os.environ["HEALTH_PAYLOAD"])
 print(json.dumps({
     "branch": os.environ["CURRENT_BRANCH"],
     "local_revision": os.environ["LOCAL_REVISION"],
+    "remote_revision": os.environ["REMOTE_REVISION"],
     "working_tree": working_tree,
     "service": os.environ["SERVICE_NAME"],
     "service_state": os.environ["SERVICE_STATE"],
@@ -106,6 +127,8 @@ print(json.dumps({
     "health_payload": payload,
     "live_revision": os.environ["LIVE_REVISION"],
     "drift": os.environ["DRIFT_STATUS"],
+    "local_remote_drift": os.environ["LOCAL_REMOTE_DRIFT"],
+    "live_remote_drift": os.environ["LIVE_REMOTE_DRIFT"],
 }, ensure_ascii=False, indent=2))
 PY
   exit 0
@@ -113,6 +136,7 @@ fi
 
 echo "[doctor:web] branch: $CURRENT_BRANCH"
 echo "[doctor:web] local revision: $LOCAL_REVISION"
+echo "[doctor:web] remote revision: $REMOTE_REVISION"
 echo "[doctor:web] working tree:"
 printf '%s\n' "$TREE_STATUS"
 echo "[doctor:web] service: $SERVICE_NAME"
@@ -124,3 +148,5 @@ if [ "$DRIFT_STATUS" = "drift" ]; then
 else
   echo "[doctor:web] drift: aligned"
 fi
+echo "[doctor:web] local vs remote: $LOCAL_REMOTE_DRIFT"
+echo "[doctor:web] live vs remote: $LIVE_REMOTE_DRIFT"
