@@ -67,6 +67,7 @@ npm run doctor:web
 ```
 
 That prints the current branch, local revision, working tree status, systemd service state, live `/api/health` payload, and whether live/local revisions are aligned.
+If you want to feed that state into another script, run `./scripts/doctor-web.sh --json`.
 
 If you want the common release flow in one command, use:
 
