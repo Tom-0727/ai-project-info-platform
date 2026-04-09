@@ -181,6 +181,24 @@ const captureFailureArtifacts = async () => {
 
 try {
   try {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(baseUrl, { waitUntil: "networkidle", timeout: 30000 });
+    await page.waitForSelector("text=项目总表", { timeout: 15000 });
+    await page.locator('[data-project-id="proj.shanjian-ai-video-creation"]').first().click();
+    await page.waitForFunction(
+      () => {
+        const detail = document.getElementById("project-detail");
+        if (!detail) return false;
+        const rect = detail.getBoundingClientRect();
+        return rect.top >= 0 && rect.top < 140;
+      },
+      { timeout: 15000 }
+    );
+    assertNoCriticalRequestFailures();
+    assertNoConsoleErrors("mobile-detail-focus");
+    assert(pageErrors.length === 0, `mobile-detail-focus pageerror: ${pageErrors[0]}`);
+
+    await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(baseUrl, { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForSelector("text=项目总表", { timeout: 15000 });
     await page.waitForSelector("text=项目详情", { timeout: 15000 });
