@@ -19,10 +19,12 @@ The page is now served by FastAPI and loads project data from `/api/projects` in
 - `data/projects.json`: source of truth for tracked projects.
   Includes `discoveredSeq`, which is the stable ordering key for newest-first display.
 - `requirements.txt`: web runtime dependencies for FastAPI deployment.
+- `package.json`: minimal Node dev setup for browser smoke testing.
 - `scripts/add-project.mjs`: add a new project with its first daily note.
 - `scripts/add-daily-note.mjs`: append a daily update to an existing project.
 - `scripts/update-project.mjs`: update an existing project’s evidence fields, sources, monetization text, and optionally append a new daily note in one pass.
 - `scripts/validate-projects.mjs`: duplicate guard for ids, normalized names, slugs, source URLs, and repeated daily notes.
+- `scripts/smoke-web.mjs`: Playwright smoke test for homepage render and a known project deep link.
 
 ## Run locally
 
@@ -46,6 +48,23 @@ For a production-style local run that matches the deployed port:
 ```bash
 HOST=127.0.0.1 PORT=8790 ./scripts/run-web.sh
 ```
+
+## Browser smoke test
+
+Install the browser test dependency once:
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+Then run the smoke check against the deployed site:
+
+```bash
+npm run smoke:web -- https://ai-projects-scout.tom-blogs.top
+```
+
+The smoke test verifies that the homepage renders and that a known `?project=...` deep link does not fall into a blank Vue screen.
 
 ## Daily update workflow
 

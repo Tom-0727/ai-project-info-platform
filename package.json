@@ -1,0 +1,11 @@
+{
+  "name": "ai-project-info-platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "smoke:web": "node scripts/smoke-web.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1"
+  }
+}
