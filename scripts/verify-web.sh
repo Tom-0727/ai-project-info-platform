@@ -69,6 +69,7 @@ LIVE_REVISION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; pr
 DRIFT_STATUS="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("drift",""))')"
 LOCAL_REMOTE_DRIFT="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("local_remote_drift",""))')"
 LIVE_REMOTE_DRIFT="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("live_remote_drift",""))')"
+RECOMMENDED_ACTION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("recommended_action",""))')"
 VALIDATE_OUTPUT="$(node scripts/validate-projects.mjs)"
 SMOKE_OUTPUT="$(npm run smoke:web -- "$BASE_URL")"
 
@@ -113,5 +114,6 @@ if [ "$DRIFT_STATUS" = "drift" ] && [ -n "$LIVE_REVISION" ] && [ -n "$LOCAL_REVI
 fi
 echo "[verify:web] local vs remote: ${LOCAL_REMOTE_DRIFT:-unknown}"
 echo "[verify:web] live vs remote: ${LIVE_REMOTE_DRIFT:-unknown}"
+echo "[verify:web] recommended action: ${RECOMMENDED_ACTION:-none}"
 echo "[verify:web] run browser smoke"
 printf '%s\n' "$SMOKE_OUTPUT"
