@@ -2,17 +2,94 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
 
-const baseUrl = process.argv[2] || "https://ai-projects-scout.tom-blogs.top";
-const projectPath = process.argv[3] || "/?project=proj.shanjian-ai-video-creation";
-const coveragePath = process.argv[4] || "/?sourceType=%E4%BB%B7%E6%A0%BC%E9%A1%B5";
-const comparePath =
-  process.argv[5] ||
-  "/?project=proj.shanjian-ai-video-creation&compare=proj.kaipai,proj.shuode-ai";
-const domainPath =
-  process.argv[6] || "/?project=proj.shanjian-ai-video-creation&sourceDomain=shanjian.tv";
-const mediumGapPath =
-  process.argv[7] ||
-  "/?project=proj.shanjian-ai-video-creation&gap=%E5%AE%98%E6%96%B9%E9%93%BE%E8%B7%AF%E9%94%99%E9%85%8D";
+const defaults = {
+  baseUrl: "https://ai-projects-scout.tom-blogs.top",
+  projectPath: "/?project=proj.shanjian-ai-video-creation",
+  coveragePath: "/?sourceType=%E4%BB%B7%E6%A0%BC%E9%A1%B5",
+  comparePath: "/?project=proj.shanjian-ai-video-creation&compare=proj.kaipai,proj.shuode-ai",
+  domainPath: "/?project=proj.shanjian-ai-video-creation&sourceDomain=shanjian.tv",
+  mediumGapPath: "/?project=proj.shanjian-ai-video-creation&gap=%E5%AE%98%E6%96%B9%E9%93%BE%E8%B7%AF%E9%94%99%E9%85%8D",
+};
+
+const usage = () => {
+  console.log(`Usage:
+  node scripts/smoke-web.mjs
+  node scripts/smoke-web.mjs --base-url https://ai-projects-scout.tom-blogs.top
+  node scripts/smoke-web.mjs https://ai-projects-scout.tom-blogs.top
+
+Options:
+  --base-url URL          Override the site base URL.
+  --project-path PATH     Override the direct project URL path.
+  --coverage-path PATH    Override the source-type governance URL path.
+  --compare-path PATH     Override the compare URL path.
+  --domain-path PATH      Override the source-domain URL path.
+  --medium-gap-path PATH  Override the medium-gap URL path.
+  --help                  Show this help message.
+
+Compatibility:
+  Positional arguments still work in the old order:
+  baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath`);
+};
+
+const readRequiredValue = (args, index, optionName) => {
+  const value = args[index + 1];
+  if (!value) {
+    throw new Error(`${optionName} requires a value`);
+  }
+  return value;
+};
+
+const rawArgs = process.argv.slice(2);
+const positional = [];
+const options = { ...defaults };
+
+for (let i = 0; i < rawArgs.length; i += 1) {
+  const arg = rawArgs[i];
+  switch (arg) {
+    case "--base-url":
+      options.baseUrl = readRequiredValue(rawArgs, i, "--base-url");
+      i += 1;
+      break;
+    case "--project-path":
+      options.projectPath = readRequiredValue(rawArgs, i, "--project-path");
+      i += 1;
+      break;
+    case "--coverage-path":
+      options.coveragePath = readRequiredValue(rawArgs, i, "--coverage-path");
+      i += 1;
+      break;
+    case "--compare-path":
+      options.comparePath = readRequiredValue(rawArgs, i, "--compare-path");
+      i += 1;
+      break;
+    case "--domain-path":
+      options.domainPath = readRequiredValue(rawArgs, i, "--domain-path");
+      i += 1;
+      break;
+    case "--medium-gap-path":
+      options.mediumGapPath = readRequiredValue(rawArgs, i, "--medium-gap-path");
+      i += 1;
+      break;
+    case "--help":
+      usage();
+      process.exit(0);
+      break;
+    default:
+      if (arg.startsWith("--")) {
+        throw new Error(`unknown option: ${arg}`);
+      }
+      positional.push(arg);
+  }
+}
+
+if (positional[0]) options.baseUrl = positional[0];
+if (positional[1]) options.projectPath = positional[1];
+if (positional[2]) options.coveragePath = positional[2];
+if (positional[3]) options.comparePath = positional[3];
+if (positional[4]) options.domainPath = positional[4];
+if (positional[5]) options.mediumGapPath = positional[5];
+
+const { baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath } = options;
 
 const assert = (condition, message) => {
   if (!condition) {

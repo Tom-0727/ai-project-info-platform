@@ -89,6 +89,8 @@ Then run the smoke check against the deployed site:
 npm run smoke:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
+You can also call the script directly with explicit flags, for example `node scripts/smoke-web.mjs --base-url https://ai-projects-scout.tom-blogs.top`; the old positional argument order is still supported for compatibility.
+
 Or run the one-command verification bundle:
 
 ```bash
