@@ -68,6 +68,7 @@ npm run doctor:web
 
 That prints the current branch, local revision, remote `origin/main` revision, working tree status, systemd service state, live `/api/health` payload, whether local/live/remote revisions are aligned, and a short `recommended action`.
 If you want to feed that state into another script, run `./scripts/doctor-web.sh --json`.
+There is also a shortcut npm entry: `npm run doctor:web:json`.
 
 If you want the common release flow in one command, use:
 
@@ -109,6 +110,7 @@ npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 
 `verify:web` also supports explicit flags via `./scripts/verify-web.sh --base-url https://ai-projects-scout.tom-blogs.top` and `./scripts/verify-web.sh --json`, while keeping the older positional base-URL form for compatibility.
 It now reuses `doctor-web.sh --json` for runtime state, so the health payload, service state, remote revision, local/live/remote drift signals, and `recommended action` all come from the same diagnostic source before the browser smoke runs.
+There is also a shortcut npm entry: `npm run verify:web:json -- --base-url https://ai-projects-scout.tom-blogs.top`.
 
 The smoke test verifies that the homepage renders without unexpectedly carrying a stale `?project=...` state, that the footer runtime badge matches `/api/health`, that an explicit project click does write `project=...` back into the URL, that a known project deep link does not fall into a blank Vue screen, that the key frontend bundle and `/api/projects` load successfully, that browser `console.error` stays clean, and that several stateful URLs still render normally:
 

@@ -4,8 +4,10 @@
   "type": "module",
   "scripts": {
     "doctor:web": "./scripts/doctor-web.sh",
+    "doctor:web:json": "./scripts/doctor-web.sh --json",
     "smoke:web": "node scripts/smoke-web.mjs",
-    "verify:web": "./scripts/verify-web.sh"
+    "verify:web": "./scripts/verify-web.sh",
+    "verify:web:json": "./scripts/verify-web.sh --json"
   },
   "devDependencies": {
     "playwright": "^1.59.1"
