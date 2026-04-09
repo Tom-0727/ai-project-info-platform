@@ -95,7 +95,8 @@ Or run the one-command verification bundle:
 npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
-`verify:web` now runs three layers in order and prints a short label before each one: project-data validation, `/api/health` reachability plus the returned health payload, and the browser smoke test. It also prints local `HEAD`, and warns when the live revision returned by `/api/health` differs from local `HEAD`.
+`verify:web` also supports explicit flags via `./scripts/verify-web.sh --base-url https://ai-projects-scout.tom-blogs.top`, while keeping the older positional base-URL form for compatibility.
+It runs three layers in order and prints a short label before each one: project-data validation, `/api/health` reachability plus the returned health payload, and the browser smoke test. It also prints local `HEAD`, and warns when the live revision returned by `/api/health` differs from local `HEAD`.
 
 The smoke test verifies that the homepage renders without unexpectedly carrying a stale `?project=...` state, that the footer runtime badge matches `/api/health`, that an explicit project click does write `project=...` back into the URL, that a known project deep link does not fall into a blank Vue screen, that the key frontend bundle and `/api/projects` load successfully, that browser `console.error` stays clean, and that several stateful URLs still render normally:
 
