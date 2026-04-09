@@ -75,6 +75,7 @@ The smoke test verifies that the homepage renders, that a known `?project=...` d
 - `?sourceType=价格页`
 - `?project=...&compare=...`
 - `?project=...&sourceDomain=...`
+- `?project=...&gap=官方链路错配`
 
 ## Daily update workflow
 

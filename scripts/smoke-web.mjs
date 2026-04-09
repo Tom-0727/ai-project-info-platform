@@ -8,6 +8,9 @@ const comparePath =
   "/?project=proj.shanjian-ai-video-creation&compare=proj.kaipai,proj.shuode-ai";
 const domainPath =
   process.argv[6] || "/?project=proj.shanjian-ai-video-creation&sourceDomain=shanjian.tv";
+const mediumGapPath =
+  process.argv[7] ||
+  "/?project=proj.shanjian-ai-video-creation&gap=%E5%AE%98%E6%96%B9%E9%93%BE%E8%B7%AF%E9%94%99%E9%85%8D";
 
 const assert = (condition, message) => {
   if (!condition) {
@@ -49,6 +52,11 @@ try {
   await page.waitForSelector("text=来源域名 · shanjian.tv", { timeout: 15000 });
   await page.waitForSelector("text=闪剪AI", { timeout: 15000 });
   assert(pageErrors.length === 0, `domain pageerror: ${pageErrors[0]}`);
+
+  await page.goto(new URL(mediumGapPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
+  await page.waitForSelector("text=待补证分组：官方链路错配", { timeout: 15000 });
+  await page.waitForSelector("text=闪剪AI", { timeout: 15000 });
+  assert(pageErrors.length === 0, `medium-gap pageerror: ${pageErrors[0]}`);
 
   console.log(`SMOKE_OK ${baseUrl}`);
 } finally {
