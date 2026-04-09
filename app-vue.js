@@ -273,6 +273,7 @@ createApp({
       excludeForm: "",
       scenario: "all",
       domainLinked: false,
+      sourceDomain: "",
       sort: "discovered",
       compareIds: [],
       sameDomainIds: [],
@@ -409,6 +410,8 @@ createApp({
         const matchesExcludeForm = !filters.value.excludeForm || project.productForm !== filters.value.excludeForm;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
         const matchesDomainLinked = !filters.value.domainLinked || sameDomainClueMap.value.has(project.id);
+        const matchesSourceDomain =
+          !filters.value.sourceDomain || (project.sources || []).some((source) => domainFromUrl(source) === filters.value.sourceDomain);
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         const matchesSameDomain = !filters.value.sameDomainIds.length || filters.value.sameDomainIds.includes(project.id);
         return (
@@ -419,6 +422,7 @@ createApp({
           matchesExcludeForm &&
           matchesScenario &&
           matchesDomainLinked &&
+          matchesSourceDomain &&
           matchesCompare &&
           matchesSameDomain &&
           projectMatchesQuery(project, filters.value.query)
@@ -736,6 +740,7 @@ createApp({
       if (filters.value.compareIds.length) noteParts.push("当前处在对标视图");
       if (filters.value.sameDomainIds.length) noteParts.push("当前只看同域样本");
       if (filters.value.domainLinked) noteParts.push("当前只看有同域线索的样本");
+      if (filters.value.sourceDomain) noteParts.push(`当前只看域名 ${filters.value.sourceDomain}`);
       if (filters.value.mediumGap !== "all") noteParts.push(`当前只看 ${filters.value.mediumGap}`);
       if (filters.value.view === "updates") noteParts.push("当前是动态流模式");
       if (filters.value.noteKind !== "all") noteParts.push(`当前只看${noteKindLabel[filters.value.noteKind]}`);
@@ -807,6 +812,16 @@ createApp({
           label: "只看有同域线索",
           clear: () => {
             filters.value.domainLinked = false;
+          },
+        });
+      }
+
+      if (filters.value.sourceDomain) {
+        chips.push({
+          key: "source-domain",
+          label: `域名：${filters.value.sourceDomain}`,
+          clear: () => {
+            filters.value.sourceDomain = "";
           },
         });
       }
@@ -974,6 +989,10 @@ createApp({
 
       if (filters.value.domainLinked) {
         chips.push("同域线索 · 已激活");
+      }
+
+      if (filters.value.sourceDomain) {
+        chips.push(`来源域名 · ${filters.value.sourceDomain}`);
       }
 
       if (selectedGapLabel.value) {
@@ -1154,6 +1173,7 @@ createApp({
       if (filters.value.excludeForm) params.set("excludeForm", filters.value.excludeForm);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
       if (filters.value.domainLinked) params.set("domainLinked", "1");
+      if (filters.value.sourceDomain) params.set("sourceDomain", filters.value.sourceDomain);
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
       if (filters.value.sameDomainIds.length) params.set("sameDomain", filters.value.sameDomainIds.join(","));
@@ -1174,6 +1194,7 @@ createApp({
       filters.value.excludeForm = params.get("excludeForm") || "";
       filters.value.scenario = params.get("scenario") || "all";
       filters.value.domainLinked = params.get("domainLinked") === "1";
+      filters.value.sourceDomain = params.get("sourceDomain") || "";
       filters.value.sort = params.get("sort") || "discovered";
       filters.value.compareIds = (params.get("compare") || "")
         .split(",")
@@ -1197,6 +1218,7 @@ createApp({
       filters.value.excludeForm = "";
       filters.value.scenario = "all";
       filters.value.domainLinked = false;
+      filters.value.sourceDomain = "";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [];
@@ -1300,9 +1322,32 @@ createApp({
       filters.value.form = "all";
       filters.value.scenario = "all";
       filters.value.domainLinked = false;
+      filters.value.sourceDomain = "";
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [...sameDomainViewIds.value];
+      filters.value.mediumGap = "all";
+      filters.value.excludeForm = "";
+      feedLimit.value = INITIAL_LIMIT;
+    };
+
+    const focusSourceDomain = (domain) => {
+      if (!domain) {
+        return;
+      }
+
+      filters.value.view = "library";
+      filters.value.query = "";
+      filters.value.noteKind = "all";
+      filters.value.evidence = "all";
+      filters.value.refreshed = false;
+      filters.value.form = "all";
+      filters.value.scenario = "all";
+      filters.value.domainLinked = false;
+      filters.value.sourceDomain = domain;
+      filters.value.sort = "discovered";
+      filters.value.compareIds = [];
+      filters.value.sameDomainIds = [];
       filters.value.mediumGap = "all";
       filters.value.excludeForm = "";
       feedLimit.value = INITIAL_LIMIT;
@@ -1389,7 +1434,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.domainLinked, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.domainLinked, filters.value.sourceDomain, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
@@ -1513,6 +1558,7 @@ createApp({
       focusCluster,
       activateBenchmarkCompare,
       focusSameDomain,
+      focusSourceDomain,
       focusSameGap,
       moveSameGapSelection,
       focusPendingReview,
@@ -1988,7 +2034,20 @@ createApp({
                   <h4 class="detail-section-title">来源与对标</h4>
                   <p class="detail-subsection-label">来源 {{ selectedProject.sources.length }} 条 / 已记录对标 {{ selectedBenchmarkLinks.length }} 个</p>
                   <p v-if="selectedSourceCoverage.length" class="detail-subsection-copy">证据覆盖：{{ selectedSourceCoverage.join(' / ') }}</p>
-                  <p v-if="selectedSourceDomains.length" class="detail-subsection-copy">来源域名：{{ selectedSourceDomains.join(' / ') }}</p>
+                  <div v-if="selectedSourceDomains.length" class="detail-subsection">
+                    <p class="detail-subsection-copy">来源域名</p>
+                    <div class="source-links">
+                      <button
+                        v-for="domain in selectedSourceDomains"
+                        :key="'source-domain-' + domain"
+                        class="source-chip"
+                        type="button"
+                        @click="focusSourceDomain(domain)"
+                      >
+                        {{ domain }}
+                      </button>
+                    </div>
+                  </div>
                   <div v-if="selectedBenchmarkLinks.length || sameDomainProjects.length" class="detail-shortcut-actions">
                     <button v-if="selectedBenchmarkLinks.length" class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
                     <button v-if="sameDomainProjects.length" class="detail-shortcut-chip" type="button" @click="focusSameDomain">只看同域样本（{{ sameDomainProjects.length + 1 }}）</button>
