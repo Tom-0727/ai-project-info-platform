@@ -948,6 +948,12 @@ createApp({
         (left, right) => (sourceTypeWeight[left] || 99) - (sourceTypeWeight[right] || 99)
       )
     );
+    const selectedSourceGroups = computed(() =>
+      selectedSourceCoverage.value.map((typeLabel) => ({
+        typeLabel,
+        sources: selectedSources.value.filter((source) => source.typeLabel === typeLabel),
+      }))
+    );
 
     const matchedBenchmarkProjects = computed(() =>
       selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
@@ -1285,6 +1291,7 @@ createApp({
       selectedBenchmarkLinks,
       selectedSources,
       selectedSourceCoverage,
+      selectedSourceGroups,
       matchedBenchmarkProjects,
       sameFormSnapshot,
       benchmarkSnapshot,
@@ -1816,10 +1823,15 @@ createApp({
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
-                      <div class="source-links">
-                        <a v-for="source in selectedSources" :key="source.url" class="source-chip" :href="source.url" target="_blank" rel="noreferrer">
-                          {{ source.slotLabel }} · {{ source.typeLabel }} · {{ source.domain }}
-                        </a>
+                      <div class="source-group-list">
+                        <section v-for="group in selectedSourceGroups" :key="group.typeLabel" class="source-group">
+                          <p class="detail-subsection-label">{{ group.typeLabel }}（{{ group.sources.length }}）</p>
+                          <div class="source-links">
+                            <a v-for="source in group.sources" :key="source.url" class="source-chip" :href="source.url" target="_blank" rel="noreferrer">
+                              {{ source.slotLabel }} · {{ source.domain }}
+                            </a>
+                          </div>
+                        </section>
                       </div>
                     </div>
                   </details>

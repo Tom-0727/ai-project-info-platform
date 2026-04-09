@@ -902,6 +902,19 @@ article.summary-card .summary-note {
   margin-top: 16px;
 }
 
+.source-group-list {
+  display: grid;
+  gap: 14px;
+}
+
+.source-group .detail-subsection-label {
+  margin-top: 0;
+}
+
+.source-group .source-links {
+  margin-top: 8px;
+}
+
 .benchmark-links {
   display: flex;
   flex-wrap: wrap;
