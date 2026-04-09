@@ -107,7 +107,7 @@ npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
 `verify:web` also supports explicit flags via `./scripts/verify-web.sh --base-url https://ai-projects-scout.tom-blogs.top` and `./scripts/verify-web.sh --json`, while keeping the older positional base-URL form for compatibility.
-It now reuses `doctor-web.sh --json` for runtime state, so the health payload, service state, and live/local revision drift all come from the same diagnostic source before the browser smoke runs.
+It now reuses `doctor-web.sh --json` for runtime state, so the health payload, service state, remote revision, and local/live/remote drift signals all come from the same diagnostic source before the browser smoke runs.
 
 The smoke test verifies that the homepage renders without unexpectedly carrying a stale `?project=...` state, that the footer runtime badge matches `/api/health`, that an explicit project click does write `project=...` back into the URL, that a known project deep link does not fall into a blank Vue screen, that the key frontend bundle and `/api/projects` load successfully, that browser `console.error` stays clean, and that several stateful URLs still render normally:
 
