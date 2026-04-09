@@ -272,6 +272,7 @@ createApp({
       form: "all",
       excludeForm: "",
       scenario: "all",
+      domainLinked: false,
       sort: "discovered",
       compareIds: [],
       sameDomainIds: [],
@@ -407,6 +408,7 @@ createApp({
         const matchesForm = filters.value.form === "all" || project.productForm === filters.value.form;
         const matchesExcludeForm = !filters.value.excludeForm || project.productForm !== filters.value.excludeForm;
         const matchesScenario = filters.value.scenario === "all" || summarizeScenario(project) === filters.value.scenario;
+        const matchesDomainLinked = !filters.value.domainLinked || sameDomainClueMap.value.has(project.id);
         const matchesCompare = !filters.value.compareIds.length || filters.value.compareIds.includes(project.id);
         const matchesSameDomain = !filters.value.sameDomainIds.length || filters.value.sameDomainIds.includes(project.id);
         return (
@@ -416,6 +418,7 @@ createApp({
           matchesForm &&
           matchesExcludeForm &&
           matchesScenario &&
+          matchesDomainLinked &&
           matchesCompare &&
           matchesSameDomain &&
           projectMatchesQuery(project, filters.value.query)
@@ -532,6 +535,7 @@ createApp({
       const refreshedStrongCount = scoped.filter(
         (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
       ).length;
+      const domainLinkedCount = scoped.filter((project) => sameDomainClueMap.value.has(project.id)).length;
       const newEntryCount = scoped.reduce(
         (count, project) => count + (project.dailyNotes || []).filter((note) => note.kind === "New").length,
         0
@@ -604,6 +608,16 @@ createApp({
           active: filters.value.evidence === "medium",
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "medium" ? "all" : "medium";
+          },
+        },
+        {
+          key: "domain-linked",
+          label: "同域线索样本",
+          value: `${domainLinkedCount} 个`,
+          active: filters.value.domainLinked,
+          onClick: () => {
+            filters.value.domainLinked = !filters.value.domainLinked;
+            filters.value.sameDomainIds = [];
           },
         },
         {
@@ -721,6 +735,7 @@ createApp({
       const noteParts = [];
       if (filters.value.compareIds.length) noteParts.push("当前处在对标视图");
       if (filters.value.sameDomainIds.length) noteParts.push("当前只看同域样本");
+      if (filters.value.domainLinked) noteParts.push("当前只看有同域线索的样本");
       if (filters.value.mediumGap !== "all") noteParts.push(`当前只看 ${filters.value.mediumGap}`);
       if (filters.value.view === "updates") noteParts.push("当前是动态流模式");
       if (filters.value.noteKind !== "all") noteParts.push(`当前只看${noteKindLabel[filters.value.noteKind]}`);
@@ -782,6 +797,16 @@ createApp({
             if (filters.value.sort === "refreshed") {
               filters.value.sort = "discovered";
             }
+          },
+        });
+      }
+
+      if (filters.value.domainLinked) {
+        chips.push({
+          key: "domain-linked",
+          label: "只看有同域线索",
+          clear: () => {
+            filters.value.domainLinked = false;
           },
         });
       }
@@ -945,6 +970,10 @@ createApp({
 
       if (filters.value.sameDomainIds.length && selectedSourceDomains.value.length) {
         chips.push(`当前同域 · ${selectedSourceDomains.value.slice(0, 2).join(" / ")}${selectedSourceDomains.value.length > 2 ? " 等" : ""}`);
+      }
+
+      if (filters.value.domainLinked) {
+        chips.push("同域线索 · 已激活");
       }
 
       if (selectedGapLabel.value) {
@@ -1124,6 +1153,7 @@ createApp({
       if (filters.value.form !== "all") params.set("form", filters.value.form);
       if (filters.value.excludeForm) params.set("excludeForm", filters.value.excludeForm);
       if (filters.value.scenario !== "all") params.set("scenario", filters.value.scenario);
+      if (filters.value.domainLinked) params.set("domainLinked", "1");
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
       if (filters.value.sameDomainIds.length) params.set("sameDomain", filters.value.sameDomainIds.join(","));
@@ -1143,6 +1173,7 @@ createApp({
       filters.value.form = params.get("form") || "all";
       filters.value.excludeForm = params.get("excludeForm") || "";
       filters.value.scenario = params.get("scenario") || "all";
+      filters.value.domainLinked = params.get("domainLinked") === "1";
       filters.value.sort = params.get("sort") || "discovered";
       filters.value.compareIds = (params.get("compare") || "")
         .split(",")
@@ -1165,6 +1196,7 @@ createApp({
       filters.value.form = "all";
       filters.value.excludeForm = "";
       filters.value.scenario = "all";
+      filters.value.domainLinked = false;
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [];
@@ -1267,6 +1299,7 @@ createApp({
       filters.value.refreshed = false;
       filters.value.form = "all";
       filters.value.scenario = "all";
+      filters.value.domainLinked = false;
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [...sameDomainViewIds.value];
@@ -1356,7 +1389,7 @@ createApp({
     });
 
     watch(
-      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
+      () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.domainLinked, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
       () => {
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
