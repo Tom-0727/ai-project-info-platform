@@ -80,6 +80,7 @@ The helper supports explicit flags, for example `./scripts/deploy-web.sh --base-
 It still keeps the old positional compatibility mode: if the first argument starts with `http://` or `https://`, the script treats it as `BASE_URL` instead of a git push target.
 The helper refuses to run if the working tree is dirty, so it does not accidentally deploy uncommitted changes.
 It also refuses to run unless the current branch is `publish-cases` (override with `EXPECTED_BRANCH=` if needed).
+Before mutating anything, it now prints a short preflight doctor summary: local revision, remote revision, live revision, and the current recommended action.
 If you only want to preview the release steps, run `DRY_RUN=1 ./scripts/deploy-web.sh`; in dry-run mode the script prints dirty-tree or wrong-branch warnings but does not abort.
 In normal mode it also does a final live/local revision alignment check after restart and verification, and that final check now reuses `doctor-web.sh --json` instead of re-fetching `/api/health` separately.
 

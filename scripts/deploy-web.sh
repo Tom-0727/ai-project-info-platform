@@ -96,8 +96,18 @@ if [ -n "$EXPECTED_BRANCH" ] && [ "$CURRENT_BRANCH" != "$EXPECTED_BRANCH" ]; the
   fi
 fi
 
+PREFLIGHT_DOCTOR_PAYLOAD="$(./scripts/doctor-web.sh --base-url "$BASE_URL" --json)"
+PREFLIGHT_LOCAL_REVISION="$(printf '%s' "$PREFLIGHT_DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("local_revision",""))')"
+PREFLIGHT_REMOTE_REVISION="$(printf '%s' "$PREFLIGHT_DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("remote_revision",""))')"
+PREFLIGHT_LIVE_REVISION="$(printf '%s' "$PREFLIGHT_DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("live_revision",""))')"
+PREFLIGHT_RECOMMENDED_ACTION="$(printf '%s' "$PREFLIGHT_DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("recommended_action",""))')"
+
 echo "[deploy:web] base url: $BASE_URL"
 echo "[deploy:web] push target: $PUSH_TARGET"
+echo "[deploy:web] preflight local revision: ${PREFLIGHT_LOCAL_REVISION:-unknown}"
+echo "[deploy:web] preflight remote revision: ${PREFLIGHT_REMOTE_REVISION:-unknown}"
+echo "[deploy:web] preflight live revision: ${PREFLIGHT_LIVE_REVISION:-unknown}"
+echo "[deploy:web] preflight recommended action: ${PREFLIGHT_RECOMMENDED_ACTION:-none}"
 if [ "$DRY_RUN" = "1" ]; then
   echo "[deploy:web] dry run: git push ${PUSH_TARGET}"
 else
