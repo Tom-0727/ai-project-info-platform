@@ -948,12 +948,28 @@ createApp({
         (left, right) => (sourceTypeWeight[left] || 99) - (sourceTypeWeight[right] || 99)
       )
     );
+    const selectedSourceDomains = computed(() => [...new Set(selectedSources.value.map((source) => source.domain).filter(Boolean))]);
     const selectedSourceGroups = computed(() =>
       selectedSourceCoverage.value.map((typeLabel) => ({
         typeLabel,
         sources: selectedSources.value.filter((source) => source.typeLabel === typeLabel),
       }))
     );
+    const sameDomainProjects = computed(() => {
+      if (!selectedProject.value || !selectedSourceDomains.value.length) {
+        return [];
+      }
+
+      const domainSet = new Set(selectedSourceDomains.value);
+      return projects.value
+        .filter((project) => {
+          if (project.id === selectedProject.value.id) {
+            return false;
+          }
+          return (project.sources || []).some((source) => domainSet.has(domainFromUrl(source)));
+        })
+        .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+    });
 
     const matchedBenchmarkProjects = computed(() =>
       selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
@@ -1291,7 +1307,9 @@ createApp({
       selectedBenchmarkLinks,
       selectedSources,
       selectedSourceCoverage,
+      selectedSourceDomains,
       selectedSourceGroups,
+      sameDomainProjects,
       matchedBenchmarkProjects,
       sameFormSnapshot,
       benchmarkSnapshot,
@@ -1793,6 +1811,7 @@ createApp({
                   <h4 class="detail-section-title">来源与对标</h4>
                   <p class="detail-subsection-label">来源 {{ selectedProject.sources.length }} 条 / 已记录对标 {{ selectedBenchmarkLinks.length }} 个</p>
                   <p v-if="selectedSourceCoverage.length" class="detail-subsection-copy">证据覆盖：{{ selectedSourceCoverage.join(' / ') }}</p>
+                  <p v-if="selectedSourceDomains.length" class="detail-subsection-copy">来源域名：{{ selectedSourceDomains.join(' / ') }}</p>
                   <div v-if="selectedBenchmarkLinks.length" class="detail-shortcut-actions">
                     <button class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
                   </div>
@@ -1832,6 +1851,25 @@ createApp({
                             </a>
                           </div>
                         </section>
+                      </div>
+                    </div>
+                  </details>
+                  <details v-if="sameDomainProjects.length" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">同域样本（{{ sameDomainProjects.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <div class="benchmark-links">
+                        <button
+                          v-for="project in sameDomainProjects"
+                          :key="'same-domain-' + project.id"
+                          class="benchmark-chip benchmark-chip-link"
+                          type="button"
+                          @click="selectProject(project.id)"
+                        >
+                          {{ project.canonicalName }}
+                        </button>
                       </div>
                     </div>
                   </details>
