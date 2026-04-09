@@ -57,6 +57,9 @@ For the deployed systemd service, use the restart helper when you need the runni
 ./scripts/restart-web.sh
 ```
 
+The helper also supports explicit flags such as `./scripts/restart-web.sh --base-url https://ai-projects-scout.tom-blogs.top` and `./scripts/restart-web.sh --service ai-project-scout-web.service`.
+It keeps the older positional compatibility mode too: a first positional argument is still treated as the service name.
+
 If you want the common release flow in one command, use:
 
 ```bash
