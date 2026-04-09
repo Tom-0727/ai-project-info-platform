@@ -258,9 +258,23 @@ createApp({
       return lookup;
     });
 
-    const forms = computed(() =>
-      [...new Set(projects.value.map((project) => project.productForm).filter(Boolean))].sort((a, b) => a.localeCompare(b, "zh-CN"))
-    );
+    const forms = computed(() => {
+      const counts = projects.value.reduce((map, project) => {
+        const form = project.productForm;
+        if (!form) {
+          return map;
+        }
+        map.set(form, (map.get(form) || 0) + 1);
+        return map;
+      }, new Map());
+
+      return [...counts.entries()]
+        .sort((left, right) => left[0].localeCompare(right[0], "zh-CN"))
+        .map(([value, count]) => ({
+          value,
+          label: `${value} (${count})`,
+        }));
+    });
     const scenarios = computed(() => {
       const counts = projects.value.reduce((map, project) => {
         const scenario = summarizeScenario(project);
@@ -1238,7 +1252,7 @@ createApp({
                   <span>产品形态</span>
                   <select v-model="filters.form">
                     <option value="all">全部</option>
-                    <option v-for="form in forms" :key="form" :value="form">{{ form }}</option>
+                    <option v-for="form in forms" :key="form.value" :value="form.value">{{ form.label }}</option>
                   </select>
                 </label>
                 <label class="filter-field">
