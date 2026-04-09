@@ -15,6 +15,11 @@ const riskLabel = {
   high: "高营销风险",
 };
 
+const noteKindLabel = {
+  New: "新增",
+  Update: "补证更新",
+};
+
 const readFlag = (key) => {
   try {
     return window.localStorage.getItem(key) === "1";
@@ -275,6 +280,21 @@ createApp({
           label: `${value} (${count})`,
         }));
     });
+    const evidenceOptions = computed(() => {
+      const counts = projects.value.reduce((map, project) => {
+        const level = project.evidenceQuality?.level;
+        if (!level) {
+          return map;
+        }
+        map.set(level, (map.get(level) || 0) + 1);
+        return map;
+      }, new Map());
+
+      return ["strong", "medium", "weak"].map((value) => ({
+        value,
+        label: `${evidenceLevelLabel[value]} (${counts.get(value) || 0})`,
+      }));
+    });
     const scenarios = computed(() => {
       const counts = projects.value.reduce((map, project) => {
         const scenario = summarizeScenario(project);
@@ -344,6 +364,9 @@ createApp({
 
     const selectedProject = computed(
       () => filteredProjects.value.find((project) => project.id === selectedProjectId.value) || filteredProjects.value[0] || null
+    );
+    const selectedTimeline = computed(() =>
+      [...(selectedProject.value?.dailyNotes || [])].sort((left, right) => String(right.date || "").localeCompare(String(left.date || "")))
     );
 
     const evidencePreview = computed(() => buildPreviewText(selectedProject.value?.evidenceQuality?.note || "", 160));
@@ -1243,9 +1266,7 @@ createApp({
                   <span>证据等级</span>
                   <select v-model="filters.evidence">
                     <option value="all">全部</option>
-                    <option value="strong">强证据</option>
-                    <option value="medium">中证据</option>
-                    <option value="weak">弱证据</option>
+                    <option v-for="option in evidenceOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
                   </select>
                 </label>
                 <label class="filter-field">
@@ -1563,6 +1584,24 @@ createApp({
                       </dd>
                     </div>
                   </dl>
+                  <details v-if="selectedTimeline.length > 1" class="detail-disclosure">
+                    <summary class="detail-disclosure-summary">
+                      <span class="detail-subsection-label">项目时间线（{{ selectedTimeline.length }}）</span>
+                      <span class="detail-disclosure-hint">点击展开</span>
+                    </summary>
+                    <div class="detail-disclosure-body">
+                      <ol class="project-timeline">
+                        <li v-for="(note, index) in selectedTimeline" :key="note.date + '-' + note.kind + '-' + index" class="timeline-item">
+                          <div class="timeline-head">
+                            <span class="timeline-date">{{ note.date || '未标注日期' }}</span>
+                            <span class="timeline-kind">{{ noteKindLabel[note.kind] || note.kind || '更新' }}</span>
+                          </div>
+                          <p class="timeline-summary">{{ note.summary }}</p>
+                          <p class="timeline-update">{{ note.update }}</p>
+                        </li>
+                      </ol>
+                    </div>
+                  </details>
                   <div v-if="selectedGapLabel" class="detail-subsection">
                     <p class="detail-subsection-label">待补证复查</p>
                     <div class="detail-shortcut-actions">

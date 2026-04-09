@@ -1170,6 +1170,64 @@ article.summary-card .summary-note {
   margin-top: 10px;
 }
 
+.project-timeline {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 1px solid rgba(29, 26, 22, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-date {
+  color: var(--signal);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.timeline-kind {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(188, 75, 39, 0.1);
+  color: var(--signal);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.timeline-summary,
+.timeline-update {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.timeline-summary {
+  color: var(--ink);
+  font-size: 0.88rem;
+}
+
+.timeline-update {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
 .compare-snapshot {
   margin-top: 10px;
 }
