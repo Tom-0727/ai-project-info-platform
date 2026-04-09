@@ -9,6 +9,7 @@ const defaults = {
   comparePath: "/?project=proj.shanjian-ai-video-creation&compare=proj.kaipai,proj.shuode-ai",
   domainPath: "/?project=proj.shanjian-ai-video-creation&sourceDomain=shanjian.tv",
   mediumGapPath: "/?project=proj.shanjian-ai-video-creation&gap=%E5%AE%98%E6%96%B9%E9%93%BE%E8%B7%AF%E9%94%99%E9%85%8D",
+  limitPath: "/?limit=72",
 };
 
 const usage = () => {
@@ -24,11 +25,12 @@ Options:
   --compare-path PATH     Override the compare URL path.
   --domain-path PATH      Override the source-domain URL path.
   --medium-gap-path PATH  Override the medium-gap URL path.
+  --limit-path PATH       Override the feed-depth URL path.
   --help                  Show this help message.
 
 Compatibility:
   Positional arguments still work in the old order:
-  baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath`);
+  baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath, limitPath`);
 };
 
 const readRequiredValue = (args, index, optionName) => {
@@ -70,6 +72,10 @@ for (let i = 0; i < rawArgs.length; i += 1) {
       options.mediumGapPath = readRequiredValue(rawArgs, i, "--medium-gap-path");
       i += 1;
       break;
+    case "--limit-path":
+      options.limitPath = readRequiredValue(rawArgs, i, "--limit-path");
+      i += 1;
+      break;
     case "--help":
       usage();
       process.exit(0);
@@ -88,8 +94,9 @@ if (positional[2]) options.coveragePath = positional[2];
 if (positional[3]) options.comparePath = positional[3];
 if (positional[4]) options.domainPath = positional[4];
 if (positional[5]) options.mediumGapPath = positional[5];
+if (positional[6]) options.limitPath = positional[6];
 
-const { baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath } = options;
+const { baseUrl, projectPath, coveragePath, comparePath, domainPath, mediumGapPath, limitPath } = options;
 
 const assert = (condition, message) => {
   if (!condition) {
@@ -229,6 +236,16 @@ try {
     assertNoCriticalRequestFailures();
     assertNoConsoleErrors("medium-gap");
     assert(pageErrors.length === 0, `medium-gap pageerror: ${pageErrors[0]}`);
+
+    await page.goto(new URL(limitPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
+    await page.waitForSelector("text=加载更多（剩余", { timeout: 15000 });
+    await page.waitForFunction(
+      () => new URL(window.location.href).searchParams.get("limit") === "72",
+      { timeout: 15000 }
+    );
+    assertNoCriticalRequestFailures();
+    assertNoConsoleErrors("limit");
+    assert(pageErrors.length === 0, `limit pageerror: ${pageErrors[0]}`);
   } catch (error) {
     const screenshotPath = await captureFailureArtifacts();
     console.error(`SMOKE_CURRENT_URL ${page.url()}`);

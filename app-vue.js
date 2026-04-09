@@ -274,6 +274,7 @@ createApp({
     const copyProjectLabel = ref("复制项目链接");
     const expandedFields = ref({ evidence: false, latestNote: false });
     const advancedFiltersOpen = ref(false);
+    let suppressFilterWatcher = false;
     let copyViewTimer = null;
     let copyProjectTimer = null;
 
@@ -1489,12 +1490,14 @@ createApp({
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
       if (filters.value.sameDomainIds.length) params.set("sameDomain", filters.value.sameDomainIds.join(","));
+      if (feedLimit.value > INITIAL_LIMIT) params.set("limit", String(feedLimit.value));
       if (projectPinned.value && selectedProjectId.value) params.set("project", selectedProjectId.value);
       const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
       window.history.replaceState({}, "", next);
     };
 
     const syncFromUrl = () => {
+      suppressFilterWatcher = true;
       const params = new URLSearchParams(window.location.search);
       filters.value.view = params.get("view") || "library";
       filters.value.query = params.get("q") || "";
@@ -1517,6 +1520,8 @@ createApp({
         .split(",")
         .map((value) => value.trim())
         .filter(Boolean);
+      const parsedLimit = Number.parseInt(params.get("limit") || "", 10);
+      feedLimit.value = Number.isFinite(parsedLimit) && parsedLimit > INITIAL_LIMIT ? parsedLimit : INITIAL_LIMIT;
       projectPinned.value = params.has("project");
       selectedProjectId.value = params.get("project") || "";
     };
@@ -1783,6 +1788,11 @@ createApp({
     watch(
       () => [filters.value.view, filters.value.query, filters.value.evidence, filters.value.refreshed, filters.value.mediumGap, filters.value.form, filters.value.excludeForm, filters.value.scenario, filters.value.domainLinked, filters.value.sourceDomain, filters.value.sourceType, filters.value.sort, filters.value.compareIds.join(","), filters.value.sameDomainIds.join(",")],
       () => {
+        if (suppressFilterWatcher) {
+          suppressFilterWatcher = false;
+          ensureSelection();
+          return;
+        }
         feedLimit.value = INITIAL_LIMIT;
         ensureSelection();
         syncUrl();
@@ -1936,6 +1946,7 @@ createApp({
       showScrollTop,
       loadMore: () => {
         feedLimit.value += INITIAL_LIMIT;
+        syncUrl();
       },
       scrollToTop: () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
