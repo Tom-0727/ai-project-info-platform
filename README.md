@@ -77,6 +77,8 @@ The smoke test verifies that the homepage renders without unexpectedly carrying 
 - `?project=...&sourceDomain=...`
 - `?project=...&gap=官方链路错配`
 
+If the smoke fails, it now also prints the failing URL, the first page/runtime error it saw, and writes a screenshot to `artifacts/smoke-failure.png`.
+
 ## Daily update workflow
 
 1. Add a new project:
