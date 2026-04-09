@@ -273,6 +273,7 @@ createApp({
     const copyViewLabel = ref("复制当前视图");
     const copyProjectLabel = ref("复制项目链接");
     const expandedFields = ref({ evidence: false, latestNote: false });
+    const advancedFiltersOpen = ref(false);
     let copyViewTimer = null;
     let copyProjectTimer = null;
 
@@ -396,6 +397,19 @@ createApp({
           label: `${value} (${count})`,
         }));
     });
+    const advancedFiltersActive = computed(
+      () => filters.value.form !== "all" || filters.value.scenario !== "all" || filters.value.sort !== "discovered"
+    );
+
+    watch(
+      advancedFiltersActive,
+      (isActive) => {
+        if (isActive) {
+          advancedFiltersOpen.value = true;
+        }
+      },
+      { immediate: true }
+    );
     const noteKindOptions = computed(() => {
       const counts = projects.value.reduce((map, project) => {
         (project.dailyNotes || []).forEach((note) => {
@@ -1039,6 +1053,62 @@ createApp({
       return chips;
     });
 
+    const utilityActions = computed(() => {
+      const actions = [];
+
+      if (filters.value.compareIds.length) {
+        actions.push({
+          key: "compare-clear",
+          label: "退出对标视图",
+          onClick: () => {
+            filters.value.compareIds = [];
+          },
+        });
+      }
+
+      if (filters.value.mediumGap !== "all") {
+        actions.push({
+          key: "medium-gap-clear",
+          label: "退出同类缺口视图",
+          onClick: () => {
+            filters.value.mediumGap = "all";
+          },
+        });
+      }
+
+      if (filters.value.sameDomainIds.length) {
+        actions.push({
+          key: "same-domain-clear",
+          label: "退出同域样本",
+          onClick: () => {
+            filters.value.sameDomainIds = [];
+          },
+        });
+      }
+
+      if (filters.value.sourceDomain) {
+        actions.push({
+          key: "source-domain-clear",
+          label: "退出域名视图",
+          onClick: () => {
+            filters.value.sourceDomain = "";
+          },
+        });
+      }
+
+      if (filters.value.sourceType) {
+        actions.push({
+          key: "source-type-clear",
+          label: "退出证据覆盖视图",
+          onClick: () => {
+            filters.value.sourceType = "";
+          },
+        });
+      }
+
+      return actions;
+    });
+
     const selectedIndex = computed(() => {
       const index = filteredProjects.value.findIndex((project) => project.id === selectedProjectId.value);
       return index >= 0 ? index : 0;
@@ -1361,6 +1431,7 @@ createApp({
       filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [];
+      advancedFiltersOpen.value = false;
       feedLimit.value = INITIAL_LIMIT;
     };
 
@@ -1662,6 +1733,8 @@ createApp({
       projects,
       filters,
       forms,
+      advancedFiltersOpen,
+      advancedFiltersActive,
       evidenceOptions,
       scenarios,
       noteKindOptions,
@@ -1680,6 +1753,7 @@ createApp({
       loadMoreLabel,
       emptyState,
       activeFilterChips,
+      utilityActions,
       selectedStatusChips,
       selectedContextChips,
       selectedGapLabel,
@@ -1823,6 +1897,18 @@ createApp({
                     <option v-for="option in noteKindOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
                   </select>
                 </label>
+              </div>
+              <div class="filters-actions filters-actions-compact">
+                <button
+                  class="filters-reset filters-secondary"
+                  type="button"
+                  :data-active="advancedFiltersOpen || null"
+                  @click="advancedFiltersOpen = !advancedFiltersOpen"
+                >
+                  {{ advancedFiltersOpen ? '收起高级筛选' : '展开高级筛选' }}
+                </button>
+              </div>
+              <div v-if="advancedFiltersOpen" class="filters filters-advanced">
                 <label class="filter-field">
                   <span>产品形态</span>
                   <select v-model="filters.form">
@@ -1857,6 +1943,15 @@ createApp({
               <p class="results-hint">{{ resultHint }}</p>
               <div class="filters-actions filters-actions-compact">
                 <button class="filters-reset filters-secondary" type="button" @click="copyCurrentView">{{ copyViewLabel }}</button>
+                <button
+                  v-for="action in utilityActions"
+                  :key="action.key"
+                  class="filters-reset filters-secondary"
+                  type="button"
+                  @click="action.onClick"
+                >
+                  {{ action.label }}
+                </button>
               </div>
               <div v-if="activeFilterChips.length" class="active-filters">
                 <button
