@@ -70,6 +70,8 @@ Or run the one-command verification bundle:
 npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
+`verify:web` now runs three layers in order: project-data validation, `/api/health` reachability, and the browser smoke test.
+
 The smoke test verifies that the homepage renders without unexpectedly carrying a stale `?project=...` state, that an explicit project click does write `project=...` back into the URL, that a known project deep link does not fall into a blank Vue screen, that the key frontend bundle and `/api/projects` load successfully, that browser `console.error` stays clean, and that several stateful URLs still render normally:
 
 - `?sourceType=价格页`
