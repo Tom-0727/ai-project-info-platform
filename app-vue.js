@@ -506,6 +506,7 @@ createApp({
         all: projects.value.length,
         strong: scoped.filter((project) => project.evidenceQuality.level === "strong").length,
         medium: scoped.filter((project) => project.evidenceQuality.level === "medium").length,
+        weak: scoped.filter((project) => project.evidenceQuality.level === "weak").length,
         active: scoped.filter((project) => project.status === "active").length,
       };
     });
@@ -1545,13 +1546,17 @@ createApp({
       writeFlag("ai-project-scout:usage-strip-dismissed", true);
     };
 
-    const selectProject = async (projectId) => {
+    const selectProject = async (projectId, options = {}) => {
+      const { focusDetail = false } = options;
       selectedProjectId.value = projectId;
       projectPinned.value = true;
       syncUrl();
       await nextTick();
       const node = listRef.value?.querySelector(`[data-project-id="${projectId}"]`);
       node?.scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (focusDetail && window.matchMedia("(max-width: 1080px)").matches) {
+        document.getElementById("project-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     };
 
     const moveSelection = (delta) => {
@@ -1560,7 +1565,7 @@ createApp({
       }
       const total = filteredProjects.value.length;
       const nextIndex = (selectedIndex.value + delta + total) % total;
-      selectProject(filteredProjects.value[nextIndex].id);
+      selectProject(filteredProjects.value[nextIndex].id, { focusDetail: true });
     };
 
     const copyProjectLink = async () => {
@@ -1718,7 +1723,7 @@ createApp({
       }
 
       const nextIndex = (sameGapIndex.value + delta + sameGapQueue.value.length) % sameGapQueue.value.length;
-      selectProject(sameGapQueue.value[nextIndex].id);
+      selectProject(sameGapQueue.value[nextIndex].id, { focusDetail: true });
     };
 
     const focusPendingReview = () => {
@@ -1742,7 +1747,7 @@ createApp({
 
       const nextIndex = (pendingEvidenceIndex.value + delta + pendingEvidenceProjects.value.length) % pendingEvidenceProjects.value.length;
       focusPendingReview();
-      selectProject(pendingEvidenceProjects.value[nextIndex].id);
+      selectProject(pendingEvidenceProjects.value[nextIndex].id, { focusDetail: true });
     };
 
     const syncScrollUi = () => {
@@ -2161,7 +2166,7 @@ createApp({
                 type="button"
                 :data-project-id="project.id"
                 :aria-pressed="String(selectedProject && project.id === selectedProject.id)"
-                @click="selectProject(project.id)"
+                @click="selectProject(project.id, { focusDetail: true })"
               >
                 <div class="feed-item-top">
                   <div>
@@ -2200,7 +2205,7 @@ createApp({
                     class="feed-item feed-card"
                     type="button"
                     :data-project-id="entry.projectId"
-                    @click="selectProject(entry.projectId)"
+                    @click="selectProject(entry.projectId, { focusDetail: true })"
                   >
                     <div class="feed-item-top">
                       <div>
@@ -2497,7 +2502,7 @@ createApp({
                             v-if="item.matchedProject"
                             class="benchmark-chip benchmark-chip-link"
                             type="button"
-                            @click="selectProject(item.matchedProject.id)"
+                            @click="selectProject(item.matchedProject.id, { focusDetail: true })"
                           >
                             {{ item.label }}
                           </button>
@@ -2534,7 +2539,7 @@ createApp({
                         <article v-for="item in sameDomainMatches" :key="'same-domain-' + item.project.id" class="related-card">
                           <div class="related-card-header">
                             <span class="related-card-form">{{ item.project.productForm }}</span>
-                            <button class="related-card-title" type="button" @click="selectProject(item.project.id)">{{ item.project.canonicalName }}</button>
+                            <button class="related-card-title" type="button" @click="selectProject(item.project.id, { focusDetail: true })">{{ item.project.canonicalName }}</button>
                           </div>
                           <p class="related-card-summary">{{ firstClause(item.project.painPoint) }}</p>
                           <div class="feed-meta">
@@ -2581,7 +2586,7 @@ createApp({
                               class="compare-cell"
                               :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
                               type="button"
-                              @click="selectProject(value.projectId)"
+                              @click="selectProject(value.projectId, { focusDetail: true })"
                             >
                               {{ value.text }}
                             </button>
@@ -2607,7 +2612,7 @@ createApp({
                               class="compare-cell"
                               :class="{ 'compare-cell-current': selectedProject && value.projectId === selectedProject.id }"
                               type="button"
-                              @click="selectProject(value.projectId)"
+                              @click="selectProject(value.projectId, { focusDetail: true })"
                             >
                               {{ value.text }}
                             </button>
@@ -2639,7 +2644,7 @@ createApp({
                           :key="'form-' + project.id"
                           class="related-card"
                           type="button"
-                          @click="selectProject(project.id)"
+                          @click="selectProject(project.id, { focusDetail: true })"
                         >
                           <strong class="related-name">{{ project.canonicalName }}</strong>
                           <span class="related-form">{{ project.productForm }}</span>
@@ -2663,7 +2668,7 @@ createApp({
                           :key="'scenario-' + project.id"
                           class="related-card"
                           type="button"
-                          @click="selectProject(project.id)"
+                          @click="selectProject(project.id, { focusDetail: true })"
                         >
                           <strong class="related-name">{{ project.canonicalName }}</strong>
                           <span class="related-form">{{ project.productForm }}</span>
