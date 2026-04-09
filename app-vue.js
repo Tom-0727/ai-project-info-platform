@@ -529,6 +529,42 @@ createApp({
         }));
     });
 
+    const auditShortcutCards = computed(() => {
+      const scoped = filteredProjects.value;
+      const sourceTypeCounts = scoped.reduce((map, project) => {
+        [...new Set((project.sources || []).map((source) => classifySource(source)))].forEach((typeLabel) => {
+          map[typeLabel] = (map[typeLabel] || 0) + 1;
+        });
+        return map;
+      }, {});
+
+      return [
+        {
+          key: "domain-linked",
+          label: "同域线索样本",
+          value: `${scoped.filter((project) => sameDomainClueMap.value.has(project.id)).length} 个`,
+          active: filters.value.domainLinked,
+          onClick: () => {
+            filters.value.domainLinked = !filters.value.domainLinked;
+            filters.value.sameDomainIds = [];
+            filters.value.sourceDomain = "";
+          },
+        },
+        ...["App Store", "价格页", "协议页"].map((typeLabel) => ({
+          key: `source-type-${typeLabel}`,
+          label: `${typeLabel}覆盖`,
+          value: `${sourceTypeCounts[typeLabel] || 0} 个`,
+          active: filters.value.sourceType === typeLabel,
+          onClick: () => {
+            filters.value.sourceType = filters.value.sourceType === typeLabel ? "" : typeLabel;
+            filters.value.sourceDomain = "";
+            filters.value.domainLinked = false;
+            filters.value.sameDomainIds = [];
+          },
+        })),
+      ];
+    });
+
     const overviewCards = computed(() => {
       const scoped = filteredProjects.value;
       const scenarioCounts = scoped.reduce((map, project) => {
@@ -1594,6 +1630,7 @@ createApp({
       summary,
       heroMetrics,
       mediumGapCards,
+      auditShortcutCards,
       overviewCards,
       resultHint,
       loadMoreLabel,
@@ -1822,6 +1859,25 @@ createApp({
                   </component>
                 </div>
               </details>
+            </div>
+
+            <div class="control-group">
+              <p class="control-group-label">证据巡检</p>
+              <div class="summary-strip">
+                <component
+                  :is="'button'"
+                  v-for="card in auditShortcutCards"
+                  :key="'audit-' + card.key"
+                  class="summary-card"
+                  :class="{ 'summary-card-active': card.active }"
+                  :aria-pressed="String(card.active)"
+                  type="button"
+                  @click="card.onClick()"
+                >
+                  <span class="summary-label">{{ card.label }}</span>
+                  <strong class="summary-value">{{ card.value }}</strong>
+                </component>
+              </div>
             </div>
           </div>
 
