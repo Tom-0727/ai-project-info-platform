@@ -67,6 +67,7 @@ By default it pushes `HEAD` to `origin main`, restarts the service, and runs `ve
 The helper refuses to run if the working tree is dirty, so it does not accidentally deploy uncommitted changes.
 It also refuses to run unless the current branch is `publish-cases` (override with `EXPECTED_BRANCH=` if needed).
 If you only want to preview the release steps, run `DRY_RUN=1 ./scripts/deploy-web.sh`; in dry-run mode the script prints dirty-tree or wrong-branch warnings but does not abort.
+In normal mode it also does a final live/local revision alignment check after restart and verification, and fails if the running revision still does not match local `HEAD`.
 
 ## Browser smoke test
 
