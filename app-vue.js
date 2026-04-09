@@ -779,6 +779,10 @@ createApp({
       ];
     });
 
+    const evidenceStructureSummary = computed(
+      () => `强 ${summary.value.strong} / 中 ${summary.value.medium} / 弱 ${summary.value.weak}`
+    );
+
     const resultHint = computed(() => {
       if (filters.value.view === "library") {
         return `当前命中 ${filteredProjects.value.length} / ${projects.value.length} 个项目，已展示 ${visibleProjects.value.length} 个。左侧点项目，右侧看完整详情。`;
@@ -1757,6 +1761,7 @@ createApp({
       previousProject,
       nextProject,
       summary,
+      evidenceStructureSummary,
       heroMetrics,
       mediumGapCards,
       auditShortcutCards,
@@ -1983,6 +1988,10 @@ createApp({
                   <article class="summary-card">
                     <span class="summary-label">当前结果</span>
                     <strong class="summary-value">{{ summary.total }} / {{ summary.all }}</strong>
+                  </article>
+                  <article class="summary-card">
+                    <span class="summary-label">证据结构</span>
+                    <strong class="summary-value">{{ evidenceStructureSummary }}</strong>
                   </article>
                   <component
                     :is="card.onClick ? 'button' : 'article'"
