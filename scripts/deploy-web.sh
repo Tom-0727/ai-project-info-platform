@@ -3,10 +3,20 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BASE_URL="${BASE_URL:-https://ai-projects-scout.tom-blogs.top}"
-HEALTH_URL="${HEALTH_URL:-${BASE_URL%/}/api/health}"
-PUSH_TARGET="${1:-origin HEAD:main}"
+PUSH_TARGET="origin HEAD:main"
 EXPECTED_BRANCH="${EXPECTED_BRANCH:-publish-cases}"
 DRY_RUN="${DRY_RUN:-0}"
+
+if [ "${1:-}" != "" ]; then
+  if [[ "$1" =~ ^https?:// ]]; then
+    BASE_URL="$1"
+    PUSH_TARGET="${2:-origin HEAD:main}"
+  else
+    PUSH_TARGET="$1"
+  fi
+fi
+
+HEALTH_URL="${HEALTH_URL:-${BASE_URL%/}/api/health}"
 
 cd "$ROOT_DIR"
 
@@ -31,6 +41,7 @@ if [ -n "$EXPECTED_BRANCH" ] && [ "$CURRENT_BRANCH" != "$EXPECTED_BRANCH" ]; the
   fi
 fi
 
+echo "[deploy:web] base url: $BASE_URL"
 echo "[deploy:web] push target: $PUSH_TARGET"
 if [ "$DRY_RUN" = "1" ]; then
   echo "[deploy:web] dry run: git push ${PUSH_TARGET}"
