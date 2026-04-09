@@ -1316,6 +1316,13 @@ article.summary-card .summary-note {
   letter-spacing: 0.04em;
 }
 
+.detail-subsection-copy {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
 .detail-inline-toggle {
   appearance: none;
   border: 0;

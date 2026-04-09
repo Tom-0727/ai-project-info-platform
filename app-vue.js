@@ -84,6 +84,14 @@ const classifySource = (value) => {
   return "官网页";
 };
 
+const sourceTypeWeight = {
+  "App Store": 1,
+  "价格页": 2,
+  "协议页": 3,
+  "转化页": 4,
+  "官网页": 5,
+};
+
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
 const summarizeScenario = (project) => firstClause(project.painPoint);
@@ -935,6 +943,11 @@ createApp({
         typeLabel: classifySource(source),
       }));
     });
+    const selectedSourceCoverage = computed(() =>
+      [...new Set(selectedSources.value.map((source) => source.typeLabel))].sort(
+        (left, right) => (sourceTypeWeight[left] || 99) - (sourceTypeWeight[right] || 99)
+      )
+    );
 
     const matchedBenchmarkProjects = computed(() =>
       selectedBenchmarkLinks.value.map((item) => item.matchedProject).filter(Boolean)
@@ -1271,6 +1284,7 @@ createApp({
       sameScenarioStats,
       selectedBenchmarkLinks,
       selectedSources,
+      selectedSourceCoverage,
       matchedBenchmarkProjects,
       sameFormSnapshot,
       benchmarkSnapshot,
@@ -1771,6 +1785,7 @@ createApp({
                 <section class="detail-section">
                   <h4 class="detail-section-title">来源与对标</h4>
                   <p class="detail-subsection-label">来源 {{ selectedProject.sources.length }} 条 / 已记录对标 {{ selectedBenchmarkLinks.length }} 个</p>
+                  <p v-if="selectedSourceCoverage.length" class="detail-subsection-copy">证据覆盖：{{ selectedSourceCoverage.join(' / ') }}</p>
                   <div v-if="selectedBenchmarkLinks.length" class="detail-shortcut-actions">
                     <button class="detail-shortcut-chip" type="button" @click="activateBenchmarkCompare">只看当前与对标</button>
                   </div>
