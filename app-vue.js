@@ -1147,6 +1147,17 @@ createApp({
         });
       }
 
+      if (feedLimit.value > INITIAL_LIMIT) {
+        chips.push({
+          key: "feed-depth",
+          label: filters.value.view === "library" ? `已展开：${feedLimit.value} 个项目` : `已展开：${feedLimit.value} 条动态`,
+          clear: () => {
+            feedLimit.value = INITIAL_LIMIT;
+            syncUrl();
+          },
+        });
+      }
+
       return chips;
     });
 
@@ -1179,6 +1190,17 @@ createApp({
           label: "退出同域样本",
           onClick: () => {
             filters.value.sameDomainIds = [];
+          },
+        });
+      }
+
+      if (feedLimit.value > INITIAL_LIMIT) {
+        actions.push({
+          key: "feed-depth-reset",
+          label: "重置展开深度",
+          onClick: () => {
+            feedLimit.value = INITIAL_LIMIT;
+            syncUrl();
           },
         });
       }
