@@ -57,6 +57,14 @@ For the deployed systemd service, use the restart helper when you need the runni
 ./scripts/restart-web.sh
 ```
 
+If you want the common release flow in one command, use:
+
+```bash
+./scripts/deploy-web.sh
+```
+
+By default it pushes `HEAD` to `origin main`, restarts the service, and runs `verify:web` against the production domain.
+
 ## Browser smoke test
 
 Install the browser test dependency once:
