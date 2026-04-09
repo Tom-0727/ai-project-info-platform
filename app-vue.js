@@ -538,6 +538,7 @@ createApp({
           key: gap,
           label: gap,
           value: `${count} 个`,
+          note: `点击只看当前缺口属于“${gap}”的边界样本。`,
           active: filters.value.mediumGap === gap,
           onClick: () => {
             filters.value.evidence = "medium";
@@ -568,6 +569,18 @@ createApp({
       return `待补证主因：${note}。`;
     });
 
+    const currentScopeNote = computed(() => {
+      if (!filteredProjects.value.length) {
+        return "当前范围为空，可以先清空筛选再重新缩小范围。";
+      }
+      if (filters.value.view === "updates") {
+        return "先看动态分布，再点左侧项目进入右侧完整详情。";
+      }
+      return filteredProjects.value.length === projects.value.length
+        ? "当前还在看全库，适合先从场景、形态或证据结构切一刀。"
+        : "当前已经缩小到一个子集，点卡片可以继续往下钻。";
+    });
+
     const auditShortcutCards = computed(() => {
       const scoped = filteredProjects.value;
       const sourceTypeCounts = scoped.reduce((map, project) => {
@@ -582,6 +595,7 @@ createApp({
           key: "domain-linked",
           label: "同域线索样本",
           value: `${scoped.filter((project) => sameDomainClueMap.value.has(project.id)).length} 个`,
+          note: "点击只看存在共享来源主体线索的项目。",
           active: filters.value.domainLinked,
           onClick: () => {
             filters.value.domainLinked = !filters.value.domainLinked;
@@ -593,6 +607,7 @@ createApp({
           key: `source-type-${typeLabel}`,
           label: `${typeLabel}覆盖`,
           value: `${sourceTypeCounts[typeLabel] || 0} 个`,
+          note: `点击只看已覆盖${typeLabel}证据的项目。`,
           active: filters.value.sourceType === typeLabel,
           onClick: () => {
             filters.value.sourceType = filters.value.sourceType === typeLabel ? "" : typeLabel;
@@ -648,12 +663,26 @@ createApp({
         (count, project) => count + (project.dailyNotes || []).filter((note) => note.kind === "Update").length,
         0
       );
+      const topMediumGaps = scoped
+        .filter((project) => project.evidenceQuality.level === "medium")
+        .reduce((map, project) => {
+          const gap = getEvidenceGapLabel(project);
+          if (!gap) return map;
+          map[gap] = (map[gap] || 0) + 1;
+          return map;
+        }, {});
+      const mediumGapPreview = Object.entries(topMediumGaps)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 2)
+        .map(([gap, count]) => `${gap} ${count} 个`)
+        .join("，");
 
       return [
         {
           key: "top-scenario-1",
           label: "当前最密集场景",
           value: topScenarios[0] ? `${topScenarios[0][0]} · ${topScenarios[0][1]}个` : "暂无",
+          note: topScenarios[0] ? "点击只看这个场景，快速进入当前最大样本簇。" : "当前结果集还不足以形成稳定主场景。",
           active: topScenarios[0] ? filters.value.scenario === topScenarios[0][0] : false,
           onClick: topScenarios[0]
             ? () => {
@@ -665,6 +694,7 @@ createApp({
           key: "top-scenario-2",
           label: "第二密集场景",
           value: topScenarios[1] ? `${topScenarios[1][0]} · ${topScenarios[1][1]}个` : "暂无",
+          note: topScenarios[1] ? "点击切到第二主场景，看是否存在另一条可借鉴应用线。" : "当前结果集没有第二个足够大的场景簇。",
           active: topScenarios[1] ? filters.value.scenario === topScenarios[1][0] : false,
           onClick: topScenarios[1]
             ? () => {
@@ -676,6 +706,10 @@ createApp({
           key: "strong",
           label: "商业化清楚",
           value: `${summary.value.strong} 个`,
+          note:
+            summary.value.strong > 0
+              ? "点击只看证据更完整的样本，适合直接找产品与变现灵感。"
+              : "当前结果集里还没有商业化清楚样本。",
           active: filters.value.evidence === "strong",
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "strong" ? "all" : "strong";
@@ -685,6 +719,7 @@ createApp({
           key: "top-form-1",
           label: "当前最密集形态",
           value: topForms[0] ? `${topForms[0][0]} · ${topForms[0][1]}个` : "暂无",
+          note: topForms[0] ? "点击进入当前最密集的产品形态簇。" : "当前结果集还没有形成明显的产品形态集中带。",
           active: topForms[0] ? filters.value.form === topForms[0][0] : false,
           onClick: topForms[0]
             ? () => {
@@ -697,6 +732,7 @@ createApp({
           key: "top-form-2",
           label: "第二密集形态",
           value: topForms[1] ? `${topForms[1][0]} · ${topForms[1][1]}个` : "暂无",
+          note: topForms[1] ? "点击切到第二形态簇，比较同一批需求的不同产品包装方式。" : "当前结果集没有第二个足够大的形态簇。",
           active: topForms[1] ? filters.value.form === topForms[1][0] : false,
           onClick: topForms[1]
             ? () => {
@@ -709,6 +745,10 @@ createApp({
           key: "medium",
           label: "待补证",
           value: `${summary.value.medium} 个`,
+          note:
+            summary.value.medium > 0
+              ? `${mediumGapPreview ? `当前主要卡在：${mediumGapPreview}。` : ""}点击只看这些边界样本。`
+              : "当前结果集里没有待补证样本。",
           active: filters.value.evidence === "medium",
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "medium" ? "all" : "medium";
@@ -718,6 +758,7 @@ createApp({
           key: "top-domain-1",
           label: "最密集来源域",
           value: topSourceDomains[0] ? `${topSourceDomains[0][0]} · ${topSourceDomains[0][1]}个` : "暂无",
+          note: topSourceDomains[0] ? "点击按来源主体域名巡检，看同主体下的相关样本。" : "当前结果集里还没有形成重复出现的来源主体域。",
           active: topSourceDomains[0] ? filters.value.sourceDomain === topSourceDomains[0][0] : false,
           onClick: topSourceDomains[0]
             ? () => {
@@ -731,6 +772,7 @@ createApp({
           key: "top-domain-2",
           label: "第二密集来源域",
           value: topSourceDomains[1] ? `${topSourceDomains[1][0]} · ${topSourceDomains[1][1]}个` : "暂无",
+          note: topSourceDomains[1] ? "点击切到第二大来源主体域，继续做同域巡检。" : "当前结果集里没有第二个明显的来源主体域。",
           active: topSourceDomains[1] ? filters.value.sourceDomain === topSourceDomains[1][0] : false,
           onClick: topSourceDomains[1]
             ? () => {
@@ -744,6 +786,10 @@ createApp({
           key: "domain-linked",
           label: "同域线索样本",
           value: `${domainLinkedCount} 个`,
+          note:
+            domainLinkedCount > 0
+              ? "点击只看共享来源主体的样本，适合做主体级线索巡检。"
+              : "当前结果集里还没有共享来源主体的线索。",
           active: filters.value.domainLinked,
           onClick: () => {
             filters.value.domainLinked = !filters.value.domainLinked;
@@ -754,6 +800,10 @@ createApp({
           key: "refreshed",
           label: "最近补证样本",
           value: `${refreshedCount} 个`,
+          note:
+            refreshedCount > 0
+              ? "点击只看后来补强过证据的项目。"
+              : "当前结果集里还没有后续补证过的样本。",
           active: filters.value.refreshed && filters.value.evidence === "all",
           onClick: () => {
             const isActive = filters.value.refreshed && filters.value.evidence === "all";
@@ -766,6 +816,10 @@ createApp({
           key: "refreshed-strong",
           label: "最近补证清楚样本",
           value: `${refreshedStrongCount} 个`,
+          note:
+            refreshedStrongCount > 0
+              ? "点击直达最近补证过、且商业化清楚的样本。"
+              : "当前结果集里还没有这类“补证后变清楚”的样本。",
           active: filters.value.refreshed && filters.value.evidence === "strong",
           onClick: () => {
             const isActive = filters.value.refreshed && filters.value.evidence === "strong";
@@ -778,6 +832,7 @@ createApp({
           key: "new-notes",
           label: "新增动态",
           value: `${newEntryCount} 条`,
+          note: newEntryCount > 0 ? "点击直接进入新增动态流。" : "当前结果集里没有新增动态。",
           active: filters.value.view === "updates" && filters.value.noteKind === "New",
           onClick: () => {
             const isActive = filters.value.view === "updates" && filters.value.noteKind === "New";
@@ -790,6 +845,7 @@ createApp({
           key: "update-notes",
           label: "补证更新",
           value: `${updateEntryCount} 条`,
+          note: updateEntryCount > 0 ? "点击直接进入补证更新流。" : "当前结果集里没有补证更新。",
           active: filters.value.view === "updates" && filters.value.noteKind === "Update",
           onClick: () => {
             const isActive = filters.value.view === "updates" && filters.value.noteKind === "Update";
@@ -804,6 +860,19 @@ createApp({
     const evidenceStructureSummary = computed(
       () => `强 ${summary.value.strong} / 中 ${summary.value.medium} / 弱 ${summary.value.weak}`
     );
+
+    const evidenceStructureNote = computed(() => {
+      if (!filteredProjects.value.length) {
+        return "当前没有可分析的证据结构。";
+      }
+      if (summary.value.strong >= summary.value.medium && summary.value.strong >= summary.value.weak) {
+        return "当前结果里清楚样本占优，适合直接看成熟产品与变现套路。";
+      }
+      if (summary.value.medium >= summary.value.strong && summary.value.medium >= summary.value.weak) {
+        return "当前结果里边界样本更多，优先结合待补证主因做复查。";
+      }
+      return "当前结果里弱证据样本偏多，适合先收窄到更清楚的子集。";
+    });
 
     const resultHint = computed(() => {
       if (filters.value.view === "library") {
@@ -1783,7 +1852,9 @@ createApp({
       previousProject,
       nextProject,
       summary,
+      currentScopeNote,
       evidenceStructureSummary,
+      evidenceStructureNote,
       heroMetrics,
       mediumGapCards,
       mediumGapSummaryNote,
@@ -2012,10 +2083,12 @@ createApp({
                   <article class="summary-card">
                     <span class="summary-label">当前结果</span>
                     <strong class="summary-value">{{ summary.total }} / {{ summary.all }}</strong>
+                    <p class="summary-note">{{ currentScopeNote }}</p>
                   </article>
                   <article class="summary-card">
                     <span class="summary-label">证据结构</span>
                     <strong class="summary-value">{{ evidenceStructureSummary }}</strong>
+                    <p class="summary-note">{{ evidenceStructureNote }}</p>
                   </article>
                   <component
                     :is="card.onClick ? 'button' : 'article'"
@@ -2029,6 +2102,7 @@ createApp({
                   >
                     <span class="summary-label">{{ card.label }}</span>
                     <strong class="summary-value">{{ card.value }}</strong>
+                    <p v-if="card.note" class="summary-note">{{ card.note }}</p>
                   </component>
                   <component
                     :is="'button'"
@@ -2042,6 +2116,7 @@ createApp({
                   >
                     <span class="summary-label">{{ card.label }}</span>
                     <strong class="summary-value">{{ card.value }}</strong>
+                    <p v-if="card.note" class="summary-note">{{ card.note }}</p>
                   </component>
                 </div>
               </details>
@@ -2062,6 +2137,7 @@ createApp({
                 >
                   <span class="summary-label">{{ card.label }}</span>
                   <strong class="summary-value">{{ card.value }}</strong>
+                  <p v-if="card.note" class="summary-note">{{ card.note }}</p>
                 </component>
               </div>
             </div>
