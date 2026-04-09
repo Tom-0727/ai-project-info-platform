@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "doctor:web": "./scripts/doctor-web.sh",
     "smoke:web": "node scripts/smoke-web.mjs",
     "verify:web": "./scripts/verify-web.sh"
   },

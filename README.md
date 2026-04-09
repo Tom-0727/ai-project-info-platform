@@ -60,6 +60,14 @@ For the deployed systemd service, use the restart helper when you need the runni
 The helper also supports explicit flags such as `./scripts/restart-web.sh --base-url https://ai-projects-scout.tom-blogs.top` and `./scripts/restart-web.sh --service ai-project-scout-web.service`.
 It keeps the older positional compatibility mode too: a first positional argument is still treated as the service name.
 
+If you want a quick runtime diagnosis before touching production, run:
+
+```bash
+npm run doctor:web
+```
+
+That prints the current branch, local revision, working tree status, systemd service state, live `/api/health` payload, and whether live/local revisions are aligned.
+
 If you want the common release flow in one command, use:
 
 ```bash
