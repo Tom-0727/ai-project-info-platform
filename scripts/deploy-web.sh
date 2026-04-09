@@ -7,12 +7,69 @@ PUSH_TARGET="origin HEAD:main"
 EXPECTED_BRANCH="${EXPECTED_BRANCH:-publish-cases}"
 DRY_RUN="${DRY_RUN:-0}"
 
-if [ "${1:-}" != "" ]; then
-  if [[ "$1" =~ ^https?:// ]]; then
-    BASE_URL="$1"
-    PUSH_TARGET="${2:-origin HEAD:main}"
+usage() {
+  cat <<'EOF'
+Usage:
+  ./scripts/deploy-web.sh
+  ./scripts/deploy-web.sh --base-url https://ai-projects-scout.tom-blogs.top
+  ./scripts/deploy-web.sh --push-target "origin HEAD:main"
+  ./scripts/deploy-web.sh https://ai-projects-scout.tom-blogs.top
+
+Options:
+  --base-url URL       Override the site base URL used for verify and health checks.
+  --push-target SPEC   Override the git push target.
+  --help               Show this help message.
+
+Compatibility:
+  If the first positional argument starts with http:// or https://, it is treated
+  as the base URL. Otherwise the first positional argument is treated as the push
+  target, matching the older script behavior.
+EOF
+}
+
+POSITIONAL=()
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --base-url)
+      if [ "${2:-}" = "" ]; then
+        echo "[deploy:web] abort: --base-url requires a value" >&2
+        exit 1
+      fi
+      BASE_URL="$2"
+      shift 2
+      ;;
+    --push-target)
+      if [ "${2:-}" = "" ]; then
+        echo "[deploy:web] abort: --push-target requires a value" >&2
+        exit 1
+      fi
+      PUSH_TARGET="$2"
+      shift 2
+      ;;
+    --help)
+      usage
+      exit 0
+      ;;
+    --*)
+      echo "[deploy:web] abort: unknown option $1" >&2
+      usage >&2
+      exit 1
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if [ "${#POSITIONAL[@]}" -gt 0 ]; then
+  if [[ "${POSITIONAL[0]}" =~ ^https?:// ]]; then
+    BASE_URL="${POSITIONAL[0]}"
+    if [ "${#POSITIONAL[@]}" -gt 1 ]; then
+      PUSH_TARGET="${POSITIONAL[1]}"
+    fi
   else
-    PUSH_TARGET="$1"
+    PUSH_TARGET="${POSITIONAL[0]}"
   fi
 fi
 

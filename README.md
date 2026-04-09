@@ -64,7 +64,8 @@ If you want the common release flow in one command, use:
 ```
 
 By default it pushes `HEAD` to `origin main`, restarts the service, and runs `verify:web` against the production domain.
-You can also pass the base URL positionally, for example `./scripts/deploy-web.sh https://ai-projects-scout.tom-blogs.top`; if the first argument starts with `http://` or `https://`, the script treats it as `BASE_URL` instead of a git push target.
+The helper supports explicit flags, for example `./scripts/deploy-web.sh --base-url https://ai-projects-scout.tom-blogs.top` or `./scripts/deploy-web.sh --push-target "origin HEAD:main"`.
+It still keeps the old positional compatibility mode: if the first argument starts with `http://` or `https://`, the script treats it as `BASE_URL` instead of a git push target.
 The helper refuses to run if the working tree is dirty, so it does not accidentally deploy uncommitted changes.
 It also refuses to run unless the current branch is `publish-cases` (override with `EXPECTED_BRANCH=` if needed).
 If you only want to preview the release steps, run `DRY_RUN=1 ./scripts/deploy-web.sh`; in dry-run mode the script prints dirty-tree or wrong-branch warnings but does not abort.
