@@ -1113,6 +1113,16 @@ createApp({
       const index = filteredProjects.value.findIndex((project) => project.id === selectedProjectId.value);
       return index >= 0 ? index : 0;
     });
+    const previousProject = computed(() => {
+      if (!filteredProjects.value.length) return null;
+      const previousIndex = (selectedIndex.value - 1 + filteredProjects.value.length) % filteredProjects.value.length;
+      return filteredProjects.value[previousIndex] || null;
+    });
+    const nextProject = computed(() => {
+      if (!filteredProjects.value.length) return null;
+      const nextIndex = (selectedIndex.value + 1) % filteredProjects.value.length;
+      return filteredProjects.value[nextIndex] || null;
+    });
 
     const selectedStatusChips = computed(() => {
       if (!selectedProject.value) {
@@ -1744,6 +1754,8 @@ createApp({
       selectedProject,
       selectedTimeline,
       selectedIndex,
+      previousProject,
+      nextProject,
       summary,
       heroMetrics,
       mediumGapCards,
@@ -2168,9 +2180,13 @@ createApp({
                   <span class="project-status">{{ evidenceLevelLabel[selectedProject.evidenceQuality.level] }}</span>
                 </div>
                 <div class="detail-header-nav">
-                  <button class="detail-nav-chip" type="button" @click="moveSelection(-1)">上一个结果</button>
+                  <button class="detail-nav-chip" type="button" @click="moveSelection(-1)">
+                    上一个结果<span v-if="previousProject">：{{ previousProject.canonicalName }}</span>
+                  </button>
                   <span class="detail-nav-chip detail-nav-chip-static">当前结果 {{ filteredProjects.length ? selectedIndex + 1 : 0 }} / {{ filteredProjects.length }}</span>
-                  <button class="detail-nav-chip" type="button" @click="moveSelection(1)">下一个结果</button>
+                  <button class="detail-nav-chip" type="button" @click="moveSelection(1)">
+                    下一个结果<span v-if="nextProject">：{{ nextProject.canonicalName }}</span>
+                  </button>
                   <button class="detail-nav-chip" type="button" @click="copyProjectLink">{{ copyProjectLabel }}</button>
                 </div>
                 <div class="detail-header-status">
