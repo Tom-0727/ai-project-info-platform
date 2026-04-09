@@ -64,7 +64,7 @@ Then run the smoke check against the deployed site:
 npm run smoke:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
-The smoke test verifies that the homepage renders and that a known `?project=...` deep link does not fall into a blank Vue screen.
+The smoke test verifies that the homepage renders, that a known `?project=...` deep link does not fall into a blank Vue screen, and that a governance-style `?sourceType=价格页` filter URL still renders normally.
 
 ## Daily update workflow
 
