@@ -4,12 +4,19 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BASE_URL="${BASE_URL:-https://ai-projects-scout.tom-blogs.top}"
 PUSH_TARGET="${1:-origin HEAD:main}"
+EXPECTED_BRANCH="${EXPECTED_BRANCH:-publish-cases}"
 
 cd "$ROOT_DIR"
 
 if [ -n "$(git status --short)" ]; then
   echo "[deploy:web] abort: working tree is not clean" >&2
   git status --short
+  exit 1
+fi
+
+CURRENT_BRANCH="$(git branch --show-current)"
+if [ -n "$EXPECTED_BRANCH" ] && [ "$CURRENT_BRANCH" != "$EXPECTED_BRANCH" ]; then
+  echo "[deploy:web] abort: expected branch $EXPECTED_BRANCH, got $CURRENT_BRANCH" >&2
   exit 1
 fi
 
