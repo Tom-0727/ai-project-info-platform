@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "smoke:web": "node scripts/smoke-web.mjs"
+    "smoke:web": "node scripts/smoke-web.mjs",
+    "verify:web": "./scripts/verify-web.sh"
   },
   "devDependencies": {
     "playwright": "^1.59.1"
