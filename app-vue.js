@@ -535,6 +535,16 @@ createApp({
       const topForms = Object.entries(formCounts)
         .sort((left, right) => right[1] - left[1])
         .slice(0, 2);
+      const sourceDomainCounts = scoped.reduce((map, project) => {
+        [...new Set((project.sources || []).map((source) => domainFromUrl(source)).filter(Boolean))].forEach((domain) => {
+          map[domain] = (map[domain] || 0) + 1;
+        });
+        return map;
+      }, {});
+      const topSourceDomains = Object.entries(sourceDomainCounts)
+        .filter(([, count]) => count > 1)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 2);
       const refreshedCount = scoped.filter((project) => hasEvidenceRefresh(project)).length;
       const refreshedStrongCount = scoped.filter(
         (project) => hasEvidenceRefresh(project) && project.evidenceQuality.level === "strong"
@@ -613,6 +623,32 @@ createApp({
           onClick: () => {
             filters.value.evidence = filters.value.evidence === "medium" ? "all" : "medium";
           },
+        },
+        {
+          key: "top-domain-1",
+          label: "最密集来源域",
+          value: topSourceDomains[0] ? `${topSourceDomains[0][0]} · ${topSourceDomains[0][1]}个` : "暂无",
+          active: topSourceDomains[0] ? filters.value.sourceDomain === topSourceDomains[0][0] : false,
+          onClick: topSourceDomains[0]
+            ? () => {
+                filters.value.sourceDomain = filters.value.sourceDomain === topSourceDomains[0][0] ? "" : topSourceDomains[0][0];
+                filters.value.domainLinked = false;
+                filters.value.sameDomainIds = [];
+              }
+            : null,
+        },
+        {
+          key: "top-domain-2",
+          label: "第二密集来源域",
+          value: topSourceDomains[1] ? `${topSourceDomains[1][0]} · ${topSourceDomains[1][1]}个` : "暂无",
+          active: topSourceDomains[1] ? filters.value.sourceDomain === topSourceDomains[1][0] : false,
+          onClick: topSourceDomains[1]
+            ? () => {
+                filters.value.sourceDomain = filters.value.sourceDomain === topSourceDomains[1][0] ? "" : topSourceDomains[1][0];
+                filters.value.domainLinked = false;
+                filters.value.sameDomainIds = [];
+              }
+            : null,
         },
         {
           key: "domain-linked",
