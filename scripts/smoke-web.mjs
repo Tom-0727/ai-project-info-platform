@@ -26,6 +26,7 @@ const pageErrors = [];
 const consoleErrors = [];
 const failedRequests = [];
 const successfulResponses = new Set();
+let healthRevision = "";
 
 page.on("pageerror", (error) => {
   pageErrors.push(error.message || String(error));
@@ -68,6 +69,24 @@ const assertNoConsoleErrors = (label) => {
   assert(consoleErrors.length === 0, `${label} console error: ${consoleErrors[0]}`);
 };
 
+const syncHealthRevision = async () => {
+  const response = await page.request.get(new URL("/api/health", baseUrl).toString());
+  assert(response.ok(), `health request failed: HTTP ${response.status()}`);
+  const payload = await response.json();
+  healthRevision = payload.revision || "";
+  assert(healthRevision, "health payload missing revision");
+};
+
+const assertRuntimeBadgeMatchesHealth = async (label) => {
+  if (!healthRevision) {
+    await syncHealthRevision();
+  }
+  const badge = page.locator(".runtime-badge");
+  await badge.waitFor({ state: "visible", timeout: 15000 });
+  const text = (await badge.textContent()) || "";
+  assert(text.includes(healthRevision), `${label} runtime badge mismatch: expected revision ${healthRevision}, got ${text}`);
+};
+
 const captureFailureArtifacts = async () => {
   const artifactDir = path.resolve("artifacts");
   const screenshotPath = path.join(artifactDir, "smoke-failure.png");
@@ -83,6 +102,7 @@ try {
     await page.waitForSelector("text=项目详情", { timeout: 15000 });
     const homepageUrl = new URL(page.url());
     assert(!homepageUrl.searchParams.has("project"), `homepage unexpectedly carried project param: ${page.url()}`);
+    await assertRuntimeBadgeMatchesHealth("homepage");
     assertKeyAssetsLoaded();
     assertNoCriticalRequestFailures();
     assertNoConsoleErrors("homepage");
