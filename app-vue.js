@@ -803,6 +803,26 @@ createApp({
         });
       }
 
+      if (filters.value.sourceDomain) {
+        actions.push({
+          label: "退出域名视图",
+          secondary: true,
+          onClick: () => {
+            filters.value.sourceDomain = "";
+          },
+        });
+      }
+
+      if (filters.value.sourceType) {
+        actions.push({
+          label: "退出证据覆盖视图",
+          secondary: true,
+          onClick: () => {
+            filters.value.sourceType = "";
+          },
+        });
+      }
+
       if (filters.value.mediumGap !== "all") {
         actions.push({
           label: "退出同类缺口",
