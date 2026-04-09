@@ -70,6 +70,8 @@ try {
   await page.goto(baseUrl, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector("text=项目总表", { timeout: 15000 });
   await page.waitForSelector("text=项目详情", { timeout: 15000 });
+  const homepageUrl = new URL(page.url());
+  assert(!homepageUrl.searchParams.has("project"), `homepage unexpectedly carried project param: ${page.url()}`);
   assertKeyAssetsLoaded();
   assertNoCriticalRequestFailures();
   assertNoConsoleErrors("homepage");

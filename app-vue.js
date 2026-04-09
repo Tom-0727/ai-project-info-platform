@@ -262,6 +262,7 @@ createApp({
     const loading = ref(true);
     const error = ref("");
     const selectedProjectId = ref("");
+    const projectPinned = ref(false);
     const feedLimit = ref(INITIAL_LIMIT);
     const listRef = ref(null);
     const detailViewRef = ref(null);
@@ -1300,7 +1301,7 @@ createApp({
       if (filters.value.sort !== "discovered") params.set("sort", filters.value.sort);
       if (filters.value.compareIds.length) params.set("compare", filters.value.compareIds.join(","));
       if (filters.value.sameDomainIds.length) params.set("sameDomain", filters.value.sameDomainIds.join(","));
-      if (selectedProjectId.value) params.set("project", selectedProjectId.value);
+      if (projectPinned.value && selectedProjectId.value) params.set("project", selectedProjectId.value);
       const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
       window.history.replaceState({}, "", next);
     };
@@ -1328,6 +1329,7 @@ createApp({
         .split(",")
         .map((value) => value.trim())
         .filter(Boolean);
+      projectPinned.value = params.has("project");
       selectedProjectId.value = params.get("project") || "";
     };
 
@@ -1357,6 +1359,7 @@ createApp({
 
     const selectProject = async (projectId) => {
       selectedProjectId.value = projectId;
+      projectPinned.value = true;
       syncUrl();
       await nextTick();
       const node = listRef.value?.querySelector(`[data-project-id="${projectId}"]`);
@@ -1374,6 +1377,7 @@ createApp({
 
     const copyProjectLink = async () => {
       if (!selectedProjectId.value) return;
+      projectPinned.value = true;
       syncUrl();
       await navigator.clipboard.writeText(window.location.href);
       copyProjectLabel.value = "已复制项目链接";
