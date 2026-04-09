@@ -261,9 +261,23 @@ createApp({
     const forms = computed(() =>
       [...new Set(projects.value.map((project) => project.productForm).filter(Boolean))].sort((a, b) => a.localeCompare(b, "zh-CN"))
     );
-    const scenarios = computed(() =>
-      [...new Set(projects.value.map((project) => summarizeScenario(project)).filter(Boolean))].sort((a, b) => a.localeCompare(b, "zh-CN"))
-    );
+    const scenarios = computed(() => {
+      const counts = projects.value.reduce((map, project) => {
+        const scenario = summarizeScenario(project);
+        if (!scenario) {
+          return map;
+        }
+        map.set(scenario, (map.get(scenario) || 0) + 1);
+        return map;
+      }, new Map());
+
+      return [...counts.entries()]
+        .sort((left, right) => left[0].localeCompare(right[0], "zh-CN"))
+        .map(([value, count]) => ({
+          value,
+          label: `${value} (${count})`,
+        }));
+    });
 
     const filteredProjects = computed(() => {
       const matched = projects.value.filter((project) => {
@@ -1231,7 +1245,7 @@ createApp({
                   <span>工作流场景</span>
                   <select v-model="filters.scenario">
                     <option value="all">全部</option>
-                    <option v-for="scenario in scenarios" :key="scenario" :value="scenario">{{ scenario }}</option>
+                    <option v-for="scenario in scenarios" :key="scenario.value" :value="scenario.value">{{ scenario.label }}</option>
                   </select>
                 </label>
                 <label class="filter-field">
