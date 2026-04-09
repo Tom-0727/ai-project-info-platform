@@ -51,6 +51,12 @@ For a production-style local run that matches the deployed port:
 HOST=127.0.0.1 PORT=8790 ./scripts/run-web.sh
 ```
 
+For the deployed systemd service, use the restart helper when you need the running revision to catch up to the latest checked-out code:
+
+```bash
+./scripts/restart-web.sh
+```
+
 ## Browser smoke test
 
 Install the browser test dependency once:
