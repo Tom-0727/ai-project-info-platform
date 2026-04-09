@@ -92,6 +92,17 @@ const sourceTypeWeight = {
   "官网页": 5,
 };
 
+const getSourceCoveragePreview = (project, limit = 3) => {
+  const types = [...new Set((project?.sources || []).map((source) => classifySource(source)))].sort(
+    (left, right) => (sourceTypeWeight[left] || 99) - (sourceTypeWeight[right] || 99)
+  );
+  if (!types.length) {
+    return "未标注";
+  }
+  const visible = types.slice(0, limit);
+  return `${visible.join("/")}${types.length > limit ? "等" : ""}`;
+};
+
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
 const summarizeScenario = (project) => firstClause(project.painPoint);
@@ -1625,6 +1636,7 @@ createApp({
       firstClause,
       formatDate,
       hasEvidenceRefresh,
+      getSourceCoveragePreview,
       domainFromUrl,
       classifySource,
       buildCompactNote,
@@ -1844,6 +1856,7 @@ createApp({
                 <div class="feed-meta feed-meta-compact">
                   <span class="feed-pill">变现：{{ firstClause(project.monetization) }}</span>
                   <span class="feed-pill">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
+                  <span class="feed-pill">覆盖：{{ getSourceCoveragePreview(project) }}</span>
                   <span class="feed-pill">场景：{{ firstClause(project.painPoint) }}</span>
                   <span class="feed-pill">客群：{{ shortList(project.targetCustomers, 2) }}</span>
                   <span v-if="getSameDomainClue(project)" class="feed-pill">同域：{{ getSameDomainClue(project).count }} 个</span>
@@ -1882,6 +1895,7 @@ createApp({
                     <div class="feed-meta">
                       <span class="feed-pill">变现：{{ firstClause(entry.project.monetization) }}</span>
                       <span class="feed-pill">证据：{{ evidenceLevelLabel[entry.project.evidenceQuality.level] }}</span>
+                      <span class="feed-pill">覆盖：{{ getSourceCoveragePreview(entry.project) }}</span>
                       <span class="feed-pill">场景：{{ firstClause(entry.project.painPoint) }}</span>
                       <span v-if="getSameDomainClue(entry.project)" class="feed-pill">同域：{{ getSameDomainClue(entry.project).count }} 个</span>
                     </div>
