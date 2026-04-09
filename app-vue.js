@@ -2145,7 +2145,20 @@ createApp({
                             <span class="meta-pill">{{ evidenceLevelLabel[item.project.evidenceQuality.level] }}</span>
                             <span class="meta-pill">{{ buildEvidenceTimingLabel(item.project) }}</span>
                           </div>
-                          <p class="detail-subsection-copy">共享域名：{{ item.sharedDomains.join(' / ') }}</p>
+                          <div class="detail-subsection">
+                            <p class="detail-subsection-copy">共享域名</p>
+                            <div class="source-links">
+                              <button
+                                v-for="domain in item.sharedDomains"
+                                :key="'same-domain-shared-' + item.project.id + '-' + domain"
+                                class="source-chip"
+                                type="button"
+                                @click="focusSourceDomain(domain)"
+                              >
+                                {{ domain }}
+                              </button>
+                            </div>
+                          </div>
                         </article>
                       </div>
                     </div>
