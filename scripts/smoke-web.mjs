@@ -201,6 +201,18 @@ try {
     assertNoConsoleErrors("homepage-click");
     assert(pageErrors.length === 0, `homepage-click pageerror: ${pageErrors[0]}`);
 
+    await page.evaluate(() => {
+      Object.defineProperty(navigator, "clipboard", {
+        value: undefined,
+        configurable: true,
+      });
+    });
+    await page.getByRole("button", { name: "复制当前视图" }).click();
+    await page.waitForSelector("text=已复制当前视图", { timeout: 15000 });
+    assertNoCriticalRequestFailures();
+    assertNoConsoleErrors("copy-fallback");
+    assert(pageErrors.length === 0, `copy-fallback pageerror: ${pageErrors[0]}`);
+
     await page.goto(new URL(projectPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForSelector("text=闪剪AI", { timeout: 15000 });
     await page.waitForSelector("text=项目详情", { timeout: 15000 });

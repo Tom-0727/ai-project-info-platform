@@ -1551,6 +1551,35 @@ createApp({
       writeFlag("ai-project-scout:usage-strip-dismissed", true);
     };
 
+    const fallbackCopyText = (value) => {
+      const input = document.createElement("textarea");
+      input.value = value;
+      input.setAttribute("readonly", "");
+      input.style.position = "absolute";
+      input.style.left = "-9999px";
+      document.body.appendChild(input);
+      input.select();
+      const copied = document.execCommand("copy");
+      document.body.removeChild(input);
+      return copied;
+    };
+
+    const flashCopyViewLabel = (label) => {
+      copyViewLabel.value = label;
+      window.clearTimeout(copyViewTimer);
+      copyViewTimer = window.setTimeout(() => {
+        copyViewLabel.value = "复制当前视图";
+      }, 1800);
+    };
+
+    const flashCopyProjectLabel = (label) => {
+      copyProjectLabel.value = label;
+      window.clearTimeout(copyProjectTimer);
+      copyProjectTimer = window.setTimeout(() => {
+        copyProjectLabel.value = "复制项目链接";
+      }, 1800);
+    };
+
     const selectProject = async (projectId, options = {}) => {
       const { focusDetail = false } = options;
       selectedProjectId.value = projectId;
@@ -1577,22 +1606,34 @@ createApp({
       if (!selectedProjectId.value) return;
       projectPinned.value = true;
       syncUrl();
-      await navigator.clipboard.writeText(window.location.href);
-      copyProjectLabel.value = "已复制项目链接";
-      window.clearTimeout(copyProjectTimer);
-      copyProjectTimer = window.setTimeout(() => {
-        copyProjectLabel.value = "复制项目链接";
-      }, 1800);
+      const value = window.location.href;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(value);
+          flashCopyProjectLabel("已复制项目链接");
+          return;
+        }
+      } catch (error) {
+        // Fall through to the legacy copy path when clipboard access is unavailable.
+      }
+
+      flashCopyProjectLabel(fallbackCopyText(value) ? "已复制项目链接" : "复制失败");
     };
 
     const copyCurrentView = async () => {
       syncUrl();
-      await navigator.clipboard.writeText(window.location.href);
-      copyViewLabel.value = "已复制当前视图";
-      window.clearTimeout(copyViewTimer);
-      copyViewTimer = window.setTimeout(() => {
-        copyViewLabel.value = "复制当前视图";
-      }, 1800);
+      const value = window.location.href;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(value);
+          flashCopyViewLabel("已复制当前视图");
+          return;
+        }
+      } catch (error) {
+        // Fall through to the legacy copy path when clipboard access is unavailable.
+      }
+
+      flashCopyViewLabel(fallbackCopyText(value) ? "已复制当前视图" : "复制失败");
     };
 
     const focusCluster = (mode, onlyStrong = false) => {
