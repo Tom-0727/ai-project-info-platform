@@ -52,16 +52,21 @@ if [ "${#POSITIONAL[@]}" -gt 0 ]; then
 fi
 
 HEALTH_URL="${BASE_URL%/}/api/health"
-LOCAL_REVISION="$(git rev-parse --short HEAD)"
 
 echo "[verify:web] validate project data"
 node scripts/validate-projects.mjs
+echo "[verify:web] check runtime state via doctor:web"
+DOCTOR_PAYLOAD="$(./scripts/doctor-web.sh --base-url "$BASE_URL" --json)"
+LOCAL_REVISION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("local_revision",""))')"
+SERVICE_STATE="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("service_state",""))')"
+HEALTH_PAYLOAD="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin).get("health_payload", {}), ensure_ascii=False))')"
+LIVE_REVISION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("live_revision",""))')"
+DRIFT_STATUS="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("drift",""))')"
 echo "[verify:web] local revision: $LOCAL_REVISION"
+echo "[verify:web] service state: ${SERVICE_STATE:-unknown}"
 echo "[verify:web] check service health: $HEALTH_URL"
-HEALTH_PAYLOAD="$(curl --fail --silent --show-error "$HEALTH_URL")"
 echo "[verify:web] health payload: $HEALTH_PAYLOAD"
-LIVE_REVISION="$(printf '%s' "$HEALTH_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("revision",""))')"
-if [ -n "$LIVE_REVISION" ] && [ "$LIVE_REVISION" != "$LOCAL_REVISION" ]; then
+if [ "$DRIFT_STATUS" = "drift" ] && [ -n "$LIVE_REVISION" ] && [ -n "$LOCAL_REVISION" ]; then
   echo "[verify:web] warning: live revision ($LIVE_REVISION) differs from local HEAD ($LOCAL_REVISION)"
 fi
 echo "[verify:web] run browser smoke"
