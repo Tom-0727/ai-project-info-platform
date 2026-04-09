@@ -81,7 +81,7 @@ It still keeps the old positional compatibility mode: if the first argument star
 The helper refuses to run if the working tree is dirty, so it does not accidentally deploy uncommitted changes.
 It also refuses to run unless the current branch is `publish-cases` (override with `EXPECTED_BRANCH=` if needed).
 If you only want to preview the release steps, run `DRY_RUN=1 ./scripts/deploy-web.sh`; in dry-run mode the script prints dirty-tree or wrong-branch warnings but does not abort.
-In normal mode it also does a final live/local revision alignment check after restart and verification, and fails if the running revision still does not match local `HEAD`.
+In normal mode it also does a final live/local revision alignment check after restart and verification, and that final check now reuses `doctor-web.sh --json` instead of re-fetching `/api/health` separately.
 
 ## Browser smoke test
 

@@ -73,8 +73,6 @@ if [ "${#POSITIONAL[@]}" -gt 0 ]; then
   fi
 fi
 
-HEALTH_URL="${HEALTH_URL:-${BASE_URL%/}/api/health}"
-
 cd "$ROOT_DIR"
 
 if [ -n "$(git status --short)" ]; then
@@ -116,9 +114,9 @@ if [ "$DRY_RUN" = "1" ]; then
   echo "[deploy:web] dry run: npm run verify:web -- $BASE_URL"
 else
   npm run verify:web -- "$BASE_URL"
-  HEALTH_PAYLOAD="$(curl --fail --silent --show-error "$HEALTH_URL")"
-  LIVE_REVISION="$(printf '%s' "$HEALTH_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("revision",""))')"
-  LOCAL_REVISION="$(git rev-parse --short HEAD)"
+  DOCTOR_PAYLOAD="$(./scripts/doctor-web.sh --base-url "$BASE_URL" --json)"
+  LIVE_REVISION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("live_revision",""))')"
+  LOCAL_REVISION="$(printf '%s' "$DOCTOR_PAYLOAD" | python3 -c 'import json,sys; print(json.load(sys.stdin).get("local_revision",""))')"
   if [ -n "$LIVE_REVISION" ] && [ "$LIVE_REVISION" != "$LOCAL_REVISION" ]; then
     echo "[deploy:web] abort: live revision ($LIVE_REVISION) differs from local HEAD ($LOCAL_REVISION)" >&2
     exit 1
