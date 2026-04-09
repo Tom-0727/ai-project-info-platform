@@ -77,6 +77,15 @@ try {
   assertNoConsoleErrors("homepage");
   assert(pageErrors.length === 0, `homepage pageerror: ${pageErrors[0]}`);
 
+  await page.locator('[data-project-id="proj.shanjian-ai-video-creation"]').first().click();
+  await page.waitForFunction(
+    () => new URL(window.location.href).searchParams.get("project") === "proj.shanjian-ai-video-creation",
+    { timeout: 15000 }
+  );
+  assertNoCriticalRequestFailures();
+  assertNoConsoleErrors("homepage-click");
+  assert(pageErrors.length === 0, `homepage-click pageerror: ${pageErrors[0]}`);
+
   await page.goto(new URL(projectPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForSelector("text=闪剪AI", { timeout: 15000 });
   await page.waitForSelector("text=项目详情", { timeout: 15000 });
