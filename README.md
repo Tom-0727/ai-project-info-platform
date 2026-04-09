@@ -70,7 +70,7 @@ Or run the one-command verification bundle:
 npm run verify:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
-The smoke test verifies that the homepage renders, that a known `?project=...` deep link does not fall into a blank Vue screen, and that several stateful URLs still render normally:
+The smoke test verifies that the homepage renders, that a known `?project=...` deep link does not fall into a blank Vue screen, that the key frontend bundle and `/api/projects` load successfully, and that several stateful URLs still render normally:
 
 - `?sourceType=价格页`
 - `?project=...&compare=...`
