@@ -1721,9 +1721,11 @@ createApp({
                           type="button"
                           @click="selectProject(project.id)"
                         >
-                          <strong>{{ project.canonicalName }}</strong>
-                          <span>{{ project.productForm }}</span>
-                          <span>面向{{ shortList(project.targetCustomers, 1) }}</span>
+                          <strong class="related-name">{{ project.canonicalName }}</strong>
+                          <span class="related-form">{{ project.productForm }}</span>
+                          <span class="related-summary">面向{{ shortList(project.targetCustomers, 1) }}</span>
+                          <span class="related-monetization">变现：{{ firstClause(project.monetization) }}</span>
+                          <span class="related-evidence">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }} · {{ hasEvidenceRefresh(project) ? '最近补证' : '首次挖掘' }}</span>
                         </button>
                       </div>
                     </div>
@@ -1743,9 +1745,11 @@ createApp({
                           type="button"
                           @click="selectProject(project.id)"
                         >
-                          <strong>{{ project.canonicalName }}</strong>
-                          <span>{{ firstClause(project.painPoint) }}</span>
-                          <span>证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
+                          <strong class="related-name">{{ project.canonicalName }}</strong>
+                          <span class="related-form">{{ project.productForm }}</span>
+                          <span class="related-summary">解决：{{ firstClause(project.painPoint) }}</span>
+                          <span class="related-monetization">变现：{{ firstClause(project.monetization) }}</span>
+                          <span class="related-evidence">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }} · {{ hasEvidenceRefresh(project) ? '最近补证' : '首次挖掘' }}</span>
                         </button>
                       </div>
                     </div>

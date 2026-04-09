@@ -1316,9 +1316,16 @@ article.summary-card .summary-note {
   font-weight: 700;
 }
 
+.related-summary {
+  color: var(--ink);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 .related-evidence {
   color: var(--ink);
   font-size: 0.83rem;
+  line-height: 1.45;
 }
 
 .related-monetization {
