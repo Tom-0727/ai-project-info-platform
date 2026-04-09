@@ -546,6 +546,28 @@ createApp({
         }));
     });
 
+    const mediumGapSummaryNote = computed(() => {
+      const counts = filteredProjects.value
+        .filter((project) => project.evidenceQuality.level === "medium")
+        .reduce((map, project) => {
+          const gap = getEvidenceGapLabel(project);
+          if (!gap) return map;
+          map[gap] = (map[gap] || 0) + 1;
+          return map;
+        }, {});
+
+      const top = Object.entries(counts)
+        .sort((left, right) => right[1] - left[1])
+        .slice(0, 2);
+
+      if (!top.length) {
+        return "当前结果集里没有待补证样本。";
+      }
+
+      const note = top.map(([gap, count]) => `${gap} ${count} 个`).join("，其次 ");
+      return `待补证主因：${note}。`;
+    });
+
     const auditShortcutCards = computed(() => {
       const scoped = filteredProjects.value;
       const sourceTypeCounts = scoped.reduce((map, project) => {
@@ -1764,6 +1786,7 @@ createApp({
       evidenceStructureSummary,
       heroMetrics,
       mediumGapCards,
+      mediumGapSummaryNote,
       auditShortcutCards,
       overviewCards,
       resultHint,
@@ -1958,6 +1981,7 @@ createApp({
             <div class="control-group">
               <p class="control-group-label">结构概览</p>
               <p class="results-hint">{{ resultHint }}</p>
+              <p class="results-hint">{{ mediumGapSummaryNote }}</p>
               <div class="filters-actions filters-actions-compact">
                 <button class="filters-reset filters-secondary" type="button" @click="copyCurrentView">{{ copyViewLabel }}</button>
                 <button
