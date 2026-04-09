@@ -290,6 +290,45 @@ createApp({
       });
       return lookup;
     });
+    const sameDomainClueMap = computed(() => {
+      const domainBuckets = new Map();
+      projects.value.forEach((project) => {
+        const domains = [...new Set((project.sources || []).map((source) => domainFromUrl(source)).filter(Boolean))];
+        domains.forEach((domain) => {
+          if (!domainBuckets.has(domain)) {
+            domainBuckets.set(domain, []);
+          }
+          domainBuckets.get(domain).push(project.id);
+        });
+      });
+
+      const clueMap = new Map();
+      projects.value.forEach((project) => {
+        const relatedIds = new Set();
+        const relatedDomains = new Set();
+        const domains = [...new Set((project.sources || []).map((source) => domainFromUrl(source)).filter(Boolean))];
+        domains.forEach((domain) => {
+          const projectIds = domainBuckets.get(domain) || [];
+          if (projectIds.some((id) => id !== project.id)) {
+            relatedDomains.add(domain);
+          }
+          projectIds.forEach((id) => {
+            if (id !== project.id) {
+              relatedIds.add(id);
+            }
+          });
+        });
+        if (relatedIds.size) {
+          clueMap.set(project.id, {
+            count: relatedIds.size,
+            domains: [...relatedDomains].sort(),
+          });
+        }
+      });
+
+      return clueMap;
+    });
+    const getSameDomainClue = (project) => sameDomainClueMap.value.get(project?.id) || null;
 
     const forms = computed(() => {
       const counts = projects.value.reduce((map, project) => {
@@ -1407,6 +1446,7 @@ createApp({
       selectedSourceCoverage,
       selectedSourceDomains,
       selectedSourceGroups,
+      getSameDomainClue,
       sameDomainMatches,
       sameDomainProjects,
       sameDomainViewIds,
@@ -1643,6 +1683,7 @@ createApp({
                   <span class="feed-pill">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
                   <span class="feed-pill">场景：{{ firstClause(project.painPoint) }}</span>
                   <span class="feed-pill">客群：{{ shortList(project.targetCustomers, 2) }}</span>
+                  <span v-if="getSameDomainClue(project)" class="feed-pill">同域：{{ getSameDomainClue(project).count }} 个</span>
                   <span v-if="getEvidenceGapLabel(project)" class="feed-pill">待补证：{{ getEvidenceGapLabel(project) }}</span>
                   <span v-else class="feed-pill">{{ hasEvidenceRefresh(project) ? '最近补证' : '首次挖掘' }}</span>
                 </div>
@@ -1679,6 +1720,7 @@ createApp({
                       <span class="feed-pill">变现：{{ firstClause(entry.project.monetization) }}</span>
                       <span class="feed-pill">证据：{{ evidenceLevelLabel[entry.project.evidenceQuality.level] }}</span>
                       <span class="feed-pill">场景：{{ firstClause(entry.project.painPoint) }}</span>
+                      <span v-if="getSameDomainClue(entry.project)" class="feed-pill">同域：{{ getSameDomainClue(entry.project).count }} 个</span>
                     </div>
                   </button>
                 </div>
