@@ -1017,21 +1017,27 @@ createApp({
         sources: selectedSources.value.filter((source) => source.typeLabel === typeLabel),
       }))
     );
-    const sameDomainProjects = computed(() => {
+    const sameDomainMatches = computed(() => {
       if (!selectedProject.value || !selectedSourceDomains.value.length) {
         return [];
       }
 
       const domainSet = new Set(selectedSourceDomains.value);
       return projects.value
-        .filter((project) => {
+        .map((project) => {
           if (project.id === selectedProject.value.id) {
-            return false;
+            return null;
           }
-          return (project.sources || []).some((source) => domainSet.has(domainFromUrl(source)));
+          const sharedDomains = [...new Set((project.sources || []).map((source) => domainFromUrl(source)).filter((domain) => domainSet.has(domain)))];
+          if (!sharedDomains.length) {
+            return null;
+          }
+          return { project, sharedDomains };
         })
-        .sort((left, right) => right.discoveredSeq - left.discoveredSeq);
+        .filter(Boolean)
+        .sort((left, right) => right.sharedDomains.length - left.sharedDomains.length || right.project.discoveredSeq - left.project.discoveredSeq);
     });
+    const sameDomainProjects = computed(() => sameDomainMatches.value.map((item) => item.project));
     const sameDomainViewIds = computed(() =>
       selectedProject.value ? [selectedProject.value.id, ...sameDomainProjects.value.map((project) => project.id)] : []
     );
@@ -1217,6 +1223,12 @@ createApp({
 
       filters.value.view = "library";
       filters.value.query = "";
+      filters.value.noteKind = "all";
+      filters.value.evidence = "all";
+      filters.value.refreshed = false;
+      filters.value.form = "all";
+      filters.value.scenario = "all";
+      filters.value.sort = "discovered";
       filters.value.compareIds = [];
       filters.value.sameDomainIds = [...sameDomainViewIds.value];
       filters.value.mediumGap = "all";
@@ -1395,6 +1407,7 @@ createApp({
       selectedSourceCoverage,
       selectedSourceDomains,
       selectedSourceGroups,
+      sameDomainMatches,
       sameDomainProjects,
       sameDomainViewIds,
       matchedBenchmarkProjects,
@@ -1415,6 +1428,7 @@ createApp({
       classifySource,
       buildCompactNote,
       buildPreviewText,
+      buildEvidenceTimingLabel,
       dismissUsage,
       selectProject,
       moveSelection,
@@ -1949,16 +1963,20 @@ createApp({
                       <span class="detail-disclosure-hint">点击展开</span>
                     </summary>
                     <div class="detail-disclosure-body">
-                      <div class="benchmark-links">
-                        <button
-                          v-for="project in sameDomainProjects"
-                          :key="'same-domain-' + project.id"
-                          class="benchmark-chip benchmark-chip-link"
-                          type="button"
-                          @click="selectProject(project.id)"
-                        >
-                          {{ project.canonicalName }}
-                        </button>
+                      <div class="related-list">
+                        <article v-for="item in sameDomainMatches" :key="'same-domain-' + item.project.id" class="related-card">
+                          <div class="related-card-header">
+                            <span class="related-card-form">{{ item.project.productForm }}</span>
+                            <button class="related-card-title" type="button" @click="selectProject(item.project.id)">{{ item.project.canonicalName }}</button>
+                          </div>
+                          <p class="related-card-summary">{{ firstClause(item.project.painPoint) }}</p>
+                          <div class="feed-meta">
+                            <span class="meta-pill">{{ firstClause(item.project.monetization) }}</span>
+                            <span class="meta-pill">{{ evidenceLevelLabel[item.project.evidenceQuality.level] }}</span>
+                            <span class="meta-pill">{{ buildEvidenceTimingLabel(item.project) }}</span>
+                          </div>
+                          <p class="detail-subsection-copy">共享域名：{{ item.sharedDomains.join(' / ') }}</p>
+                        </article>
                       </div>
                     </div>
                   </details>
