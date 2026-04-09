@@ -411,24 +411,6 @@ createApp({
       },
       { immediate: true }
     );
-    const noteKindOptions = computed(() => {
-      const counts = projects.value.reduce((map, project) => {
-        (project.dailyNotes || []).forEach((note) => {
-          const kind = note.kind;
-          if (!kind) {
-            return;
-          }
-          map.set(kind, (map.get(kind) || 0) + 1);
-        });
-        return map;
-      }, new Map());
-
-      return ["New", "Update"].map((value) => ({
-        value,
-        label: `${noteKindLabel[value]} (${counts.get(value) || 0})`,
-      }));
-    });
-
     const filteredProjects = computed(() => {
       const matched = projects.value.filter((project) => {
         const matchesEvidence = filters.value.evidence === "all" || project.evidenceQuality.level === filters.value.evidence;
@@ -463,6 +445,24 @@ createApp({
       });
 
       return sortProjects(matched, filters.value.sort);
+    });
+
+    const noteKindOptions = computed(() => {
+      const counts = filteredProjects.value.reduce((map, project) => {
+        (project.dailyNotes || []).forEach((note) => {
+          const kind = note.kind;
+          if (!kind) {
+            return;
+          }
+          map.set(kind, (map.get(kind) || 0) + 1);
+        });
+        return map;
+      }, new Map());
+
+      return ["New", "Update"].map((value) => ({
+        value,
+        label: `${noteKindLabel[value]} (${counts.get(value) || 0})`,
+      }));
     });
 
     const visibleProjects = computed(() => filteredProjects.value.slice(0, feedLimit.value));
