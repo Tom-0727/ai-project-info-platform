@@ -43,6 +43,8 @@ Useful endpoints:
 - `/static/app-vue.js`
 - `/static/styles.css`
 
+`/api/health` now returns both `status` and the current git `revision`, and the UI footer surfaces that revision as a lightweight runtime badge.
+
 For a production-style local run that matches the deployed port:
 
 ```bash

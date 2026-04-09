@@ -1,6 +1,7 @@
 const { createApp, computed, ref, onMounted, onUnmounted, watch, nextTick } = Vue;
 
 const dataUrl = "/api/projects";
+const healthUrl = "/api/health";
 const INITIAL_LIMIT = 36;
 
 const evidenceLevelLabel = {
@@ -261,6 +262,7 @@ createApp({
     const projects = ref([]);
     const loading = ref(true);
     const error = ref("");
+    const runtimeMeta = ref({ status: "", revision: "" });
     const selectedProjectId = ref("");
     const projectPinned = ref(false);
     const feedLimit = ref(INITIAL_LIMIT);
@@ -1273,6 +1275,16 @@ createApp({
       };
     });
 
+    const runtimeLabel = computed(() => {
+      if (runtimeMeta.value?.revision) {
+        return `线上版本 ${runtimeMeta.value.revision}`;
+      }
+      if (runtimeMeta.value?.status === "ok") {
+        return "服务在线";
+      }
+      return "";
+    });
+
     const ensureSelection = () => {
       if (!filteredProjects.value.length) {
         selectedProjectId.value = "";
@@ -1625,6 +1637,14 @@ createApp({
         syncUrl();
       } catch (fetchError) {
         error.value = fetchError.message;
+      }
+      try {
+        const response = await fetch(healthUrl);
+        if (response.ok) {
+          runtimeMeta.value = await response.json();
+        }
+      } catch (healthError) {
+        console.warn("health fetch failed", healthError);
       } finally {
         loading.value = false;
       }
@@ -1687,6 +1707,7 @@ createApp({
       sameFormSnapshot,
       benchmarkSnapshot,
       selectedScenarioStats,
+      runtimeLabel,
       listRef,
       detailViewRef,
       evidenceLevelLabel,
@@ -2438,6 +2459,10 @@ createApp({
           </div>
         </aside>
       </main>
+
+      <footer v-if="runtimeLabel" class="runtime-footer">
+        <span class="runtime-badge">{{ runtimeLabel }}</span>
+      </footer>
 
       <button v-if="showScrollTop" class="scroll-top-button" type="button" @click="scrollToTop">回到顶部</button>
     </div>

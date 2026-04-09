@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+from functools import lru_cache
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -18,9 +20,19 @@ def load_projects_payload() -> dict:
     return json.loads(DATA_FILE.read_text())
 
 
+@lru_cache(maxsize=1)
+def current_revision() -> str:
+    try:
+        return (
+            subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=BASE_DIR, text=True).strip() or "unknown"
+        )
+    except Exception:
+        return "unknown"
+
+
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok"}
+    return {"status": "ok", "revision": current_revision()}
 
 
 @app.get("/api/projects")

@@ -184,6 +184,25 @@ h1 {
   align-items: start;
 }
 
+.runtime-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.runtime-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.78);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .page-nav {
   position: sticky;
   top: 18px;
