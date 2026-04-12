@@ -489,6 +489,7 @@ createApp({
 
       return scopedEntries.slice(0, feedLimit.value);
     });
+    const displayedFeedCount = computed(() => (filters.value.view === "library" ? visibleProjects.value.length : visibleEntries.value.length));
 
     const selectedProject = computed(
       () => filteredProjects.value.find((project) => project.id === selectedProjectId.value) || filteredProjects.value[0] || null
@@ -1150,7 +1151,7 @@ createApp({
       if (feedLimit.value > INITIAL_LIMIT) {
         chips.push({
           key: "feed-depth",
-          label: filters.value.view === "library" ? `已展开：${feedLimit.value} 个项目` : `已展开：${feedLimit.value} 条动态`,
+          label: filters.value.view === "library" ? `已展开：${displayedFeedCount.value} 个项目` : `已展开：${displayedFeedCount.value} 条动态`,
           clear: () => {
             feedLimit.value = INITIAL_LIMIT;
             syncUrl();
@@ -1931,6 +1932,7 @@ createApp({
       groupedEntries,
       selectedProject,
       selectedTimeline,
+      displayedFeedCount,
       selectedIndex,
       previousProject,
       nextProject,
