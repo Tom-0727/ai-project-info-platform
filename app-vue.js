@@ -1658,6 +1658,11 @@ createApp({
       flashCopyViewLabel(fallbackCopyText(value) ? "已复制当前视图" : "复制失败");
     };
 
+    const resetFeedLimit = () => {
+      feedLimit.value = INITIAL_LIMIT;
+      syncUrl();
+    };
+
     const focusCluster = (mode, onlyStrong = false) => {
       if (!selectedProject.value) {
         return;
@@ -1996,6 +2001,7 @@ createApp({
       copyProjectLabel,
       copyViewLabel,
       copyCurrentView,
+      resetFeedLimit,
       focusCluster,
       activateBenchmarkCompare,
       focusSameDomain,
@@ -2375,6 +2381,7 @@ createApp({
                   <button class="detail-nav-chip" type="button" @click="moveSelection(1)">
                     下一个结果<span v-if="nextProject">：{{ nextProject.canonicalName }}</span>
                   </button>
+                  <button v-if="feedLimit > INITIAL_LIMIT" class="detail-nav-chip" type="button" @click="resetFeedLimit">重置展开深度</button>
                   <button class="detail-nav-chip" type="button" @click="copyProjectLink">{{ copyProjectLabel }}</button>
                 </div>
                 <div class="detail-header-status">
