@@ -1,6 +1,49 @@
 {
   "projects": [
     {
+      "id": "proj.chudankuaijian-ai-sales-video",
+      "canonicalName": "出单快剪",
+      "aliases": [
+        "出单快剪-原创带货视频一键生成神器"
+      ],
+      "slug": "chudankuaijian-ai-sales-video",
+      "discoveredSeq": 146,
+      "status": "active",
+      "firstSeen": "2026-04-13",
+      "lastUpdated": "2026-04-13",
+      "productForm": "AI带货短视频起号与原创混剪工具",
+      "targetCustomers": "抖音带货达人、店播团队、分销商家和希望低剪辑门槛快速批量出带货视频的小团队",
+      "painPoint": "很多带货团队卡在选品讲解、素材混剪、去重防搬运和橱窗挂链这几步，既要高频出片，又怕重复检测和转化话术不稳定，普通视频剪辑工具很难直接覆盖这条带货起号链路。",
+      "monetization": "主要靠连续订阅会员和积分包变现，当前公开价格信号包括一周会员 68 元、一月会员 128 元、一年会员 268 元、终生会员 288 元，以及 200 积分 48 元、600 积分 98 元、1500 积分 228 元；App Store 描述区还出现过一月会员 98 元/月，说明其订阅文案存在版本漂移，但付费转化本身是明确的。",
+      "barriers": "需要把商品讲解脚本、带货混剪、防重复处理、橱窗链接匹配和佣金数据提示整合进一条稳定的短视频生产链，还要持续处理平台重复检测规则、素材合规和带货内容风控。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "中国区 App Store 与 page-internal productDescription 都在讲 AI 原创带货视频、防重复混剪、橱窗匹配和佣金联动工作流",
+          "App Store 公开多档订阅会员与积分包价格",
+          "jumuduan 隐私政策页能明确对应到 出单快剪 产品名"
+        ],
+        "note": "出单快剪的 App Store 产品面、订阅价和可达隐私页已经足以证明它是一个真实付费中的 AI带货短视频工具，并且场景比通用口播工具更窄，偏向抖音带货起号；但 sellerUrl 缺失，外露官方链里仍有 404、维护接口和无关隐私页，协议主体也未能稳定对齐，因此当前只按 medium 收录。"
+      },
+      "benchmarks": [
+        "闪剪AI",
+        "开拍"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6746664744",
+        "https://daihuobao-h5.jumuduan.com/agreement/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-13",
+          "kind": "New",
+          "summary": "这是一个面向抖音带货团队的 AI 原创混剪与起号工具，主打防重复检测、橱窗挂链和批量带货视频生成，主要靠会员订阅与积分包变现。",
+          "update": "新增 出单快剪，作为更垂直的 AI 带货视频起号样本收录；它比通用口播工具更贴近抖音带货场景，但官方链仍有明显噪声，因此先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.shanjian-ai-video-creation",
       "canonicalName": "闪剪AI",
       "aliases": [
