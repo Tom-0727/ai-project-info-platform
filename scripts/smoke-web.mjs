@@ -269,7 +269,10 @@ try {
 
     await page.goto(new URL(limitPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
     await page.waitForSelector("text=加载更多（剩余", { timeout: 15000 });
-    await page.waitForSelector("text=已展开：72 个项目", { timeout: 15000 });
+    await page.waitForFunction(
+      () => document.body.innerText.includes("已展开：72 /") && document.body.innerText.includes("个项目"),
+      { timeout: 15000 }
+    );
     await page.waitForSelector("text=重置展开深度", { timeout: 15000 });
     await page.waitForFunction(
       () => new URL(window.location.href).searchParams.get("limit") === "72",
