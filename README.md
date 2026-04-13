@@ -100,7 +100,7 @@ Then run the smoke check against the deployed site:
 npm run smoke:web -- https://ai-projects-scout.tom-blogs.top
 ```
 
-You can also call the script directly with explicit flags, for example `node scripts/smoke-web.mjs --base-url https://ai-projects-scout.tom-blogs.top`; the old positional argument order is still supported for compatibility. The smoke helper now also accepts explicit state-path overrides such as `--project-path`, `--coverage-path`, `--compare-path`, `--domain-path`, `--medium-gap-path`, and `--limit-path`.
+You can also call the script directly with explicit flags, for example `node scripts/smoke-web.mjs --base-url https://ai-projects-scout.tom-blogs.top`; the old positional argument order is still supported for compatibility. The smoke helper now also accepts explicit state-path overrides such as `--project-path`, `--coverage-path`, `--compare-path`, `--domain-path`, `--medium-gap-path`, `--limit-path`, and `--updates-path`.
 
 Or run the one-command verification bundle:
 
@@ -119,6 +119,7 @@ The smoke test verifies that the homepage renders without unexpectedly carrying 
 - `?project=...&sourceDomain=...`
 - `?project=...&gap=官方链路错配`
 - `?limit=72`
+- `?view=updates&noteKind=Update&limit=72`
 
 If the smoke fails, it now also prints the failing URL, the first page/runtime error it saw, and writes a screenshot to `artifacts/smoke-failure.png`.
 
