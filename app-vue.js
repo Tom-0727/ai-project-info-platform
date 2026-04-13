@@ -988,17 +988,15 @@ createApp({
     const loadMoreLabel = computed(() => {
       if (filters.value.view === "library") {
         const remaining = Math.max(filteredProjects.value.length - visibleProjects.value.length, 0);
-        return remaining > 0 ? `加载更多（剩余 ${remaining} 个项目）` : "加载更多";
+        return remaining > 0
+          ? `加载更多（已看 ${visibleProjects.value.length} / ${filteredProjects.value.length}，剩余 ${remaining} 个项目）`
+          : "加载更多";
       }
 
-      const totalEntries = filteredProjects.value.reduce(
-        (count, project) =>
-          count +
-          (project.dailyNotes || []).filter((note) => filters.value.noteKind === "all" || note.kind === filters.value.noteKind).length,
-        0
-      );
-      const remaining = Math.max(totalEntries - visibleEntries.value.length, 0);
-      return remaining > 0 ? `加载更多（剩余 ${remaining} 条动态）` : "加载更多";
+      const remaining = Math.max(displayedFeedTotal.value - visibleEntries.value.length, 0);
+      return remaining > 0
+        ? `加载更多（已看 ${visibleEntries.value.length} / ${displayedFeedTotal.value}，剩余 ${remaining} 条动态）`
+        : "加载更多";
     });
 
     const activeFilterChips = computed(() => {
@@ -2340,9 +2338,9 @@ createApp({
             </div>
           </div>
 
-          <div class="feed-actions" v-if="!loading && !error">
+            <div class="feed-actions" v-if="!loading && !error">
             <button
-              v-if="(filters.view === 'library' && visibleProjects.length < filteredProjects.length) || (filters.view === 'updates' && groupedEntries.length)"
+              v-if="displayedFeedCount < displayedFeedTotal"
               class="filters-reset filters-secondary"
               type="button"
               @click="loadMore"

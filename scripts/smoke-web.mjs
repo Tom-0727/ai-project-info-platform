@@ -268,7 +268,10 @@ try {
     assert(pageErrors.length === 0, `medium-gap pageerror: ${pageErrors[0]}`);
 
     await page.goto(new URL(limitPath, baseUrl).toString(), { waitUntil: "networkidle", timeout: 30000 });
-    await page.waitForSelector("text=加载更多（剩余", { timeout: 15000 });
+    await page.waitForFunction(
+      () => document.body.innerText.includes("加载更多（已看 72 /") && document.body.innerText.includes("剩余"),
+      { timeout: 15000 }
+    );
     await page.waitForFunction(
       () => document.body.innerText.includes("已展开：72 /") && document.body.innerText.includes("个项目"),
       { timeout: 15000 }
