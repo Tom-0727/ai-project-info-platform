@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.yuliu-software-copyright-filing",
+      "canonicalName": "语流软著宝",
+      "aliases": [
+        "语流软著宝",
+        "LLMove",
+        "llmove"
+      ],
+      "slug": "yuliu-software-copyright-filing",
+      "discoveredSeq": 148,
+      "status": "active",
+      "firstSeen": "2026-04-14",
+      "lastUpdated": "2026-04-14",
+      "productForm": "AI软件著作权申报材料整理工具",
+      "targetCustomers": "软件开发者、独立开发团队、接软著申报单的代理机构，以及有批量软件著作权申报需求的小型企业",
+      "painPoint": "很多软著申报工作卡在操作手册、代码文档、申请表等材料整理上，人工写作和反复修改既耗时又难标准化，代理和开发团队都容易被低客单但高重复的文档工作拖慢。",
+      "monetization": "主要靠按单收费的软件著作权材料生成服务变现。官方购买协议明确写出标准价 198 元/项目，支持微信支付，并说明交付时效、修改规则、退款条件和发票服务；首页还公开了约 90-198 元/单的采购价区间和批量代理场景。",
+      "barriers": "需要把软件项目理解、申报材料生成、文档结构标准化和补正反馈处理做稳定，还要兼顾知识产权申报规则更新、代理协作和批量交付质量。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "low",
+        "signals": [
+          "官网首页明确是软件著作权申报材料整理平台，直接说明会生成操作手册、代码文档和申请表",
+          "官方购买协议公开标准价 198 元/项目、微信支付、10-30 分钟交付、退款和发票规则",
+          "帮助中心公开价格与套餐、代理和批量申请等使用场景，买方和交付方式都很清楚"
+        ],
+        "note": "语流软著宝的官网、购买协议和帮助中心已经把买方、工作流、交付形式和收费规则讲清楚：不仅有软件著作权材料整理这一条很窄的工作流，还有标准价 198 元/项目、交付时效、退款和发票条款，因此足以按 strong 收录。"
+      },
+      "benchmarks": [
+        "iTerms",
+        "法智"
+      ],
+      "sources": [
+        "https://llmove.com/",
+        "https://llmove.com/agreement/purchase",
+        "https://llmove.com/agreement/user",
+        "https://llmove.com/agreement/privacy",
+        "https://llmove.com/help"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-14",
+          "kind": "New",
+          "summary": "这是一个面向开发者和软著代理机构的 AI 软件著作权申报材料整理工具，主要靠按单收费的材料生成服务变现。",
+          "update": "新增 语流软著宝，作为软著申报自动化样本收录；它的官方购买协议已经公开标准价、交付时效和退款规则，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.okki-foreign-trade-sales-workflow",
       "canonicalName": "OKKI",
       "aliases": [
