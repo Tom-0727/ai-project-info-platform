@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.okki-foreign-trade-sales-workflow",
+      "canonicalName": "OKKI",
+      "aliases": [
+        "小满 OKKI",
+        "OKKI CRM",
+        "OKKI AiReach"
+      ],
+      "slug": "okki-foreign-trade-sales-workflow",
+      "discoveredSeq": 147,
+      "status": "active",
+      "firstSeen": "2026-04-14",
+      "lastUpdated": "2026-04-14",
+      "productForm": "AI外贸获客与客户管理工作台",
+      "targetCustomers": "外贸 B2B 商家、出口销售团队、需要把获客、跟进、客户管理和订单流程串起来的出海业务团队",
+      "painPoint": "很多外贸团队会把海关数据搜客、邮件触达、WhatsApp 跟进、客户管理和订单推进拆在多套工具里，获客链路长、线索沉淀差、复盘难，AI 能力也很难真正嵌进日常销售动作。",
+      "monetization": "主要靠企业订阅式 SaaS 和软件服务收费变现。公开价格没有直接外露，但官网提供立即体验、演示与留资入口，服务协议也明确写到收费软件服务、订单、服务期限、续购/重新订购和购买 OKKI CRM / OKKI AiReach 后的交付服务，足以证明其商业化路径是标准企业软件采购而非纯宣传。",
+      "barriers": "需要把外贸搜客、AI 客户洞察、CRM、独立站和多渠道触达整合成一体化工作流，同时处理企业线索质量、跨渠道协同、订单流程沉淀与数据合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页明确把 OKKI 描述为面向外贸 B2B 商家的营销获客、客户管理、订单管理一站式解决方案",
+          "官网服务协议明确出现收费软件服务、订单、服务期限、续购/重新订购等企业软件采购条款",
+          "官网存在立即体验、演示和客户案例入口，说明产品已处于标准化销售状态"
+        ],
+        "note": "OKKI 的官方产品面和服务协议已经足以证明它是一个真实付费中的外贸销售工作台，并且相较探迹更聚焦外贸获客、客户管理与订单流程；但官网没有公开价格或套餐分层，因此当前按 medium 收录，不直接升 strong。"
+      },
+      "benchmarks": [
+        "探迹",
+        "HubSpot Sales Hub"
+      ],
+      "sources": [
+        "https://ai-bot.cn/okki/",
+        "https://www.xiaoman.cn/",
+        "https://www.xiaoman.cn/software-services.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-14",
+          "kind": "New",
+          "summary": "这是一个面向外贸 B2B 商家和出口销售团队的 AI 外贸获客与客户管理工作台，主要靠企业订阅式 SaaS 和软件服务收费变现。",
+          "update": "新增 OKKI，作为外贸销售工作流样本收录；它比泛销售 SaaS 更聚焦外贸获客、客户管理和订单推进，但官网暂未公开价格，因此先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.chudankuaijian-ai-sales-video",
       "canonicalName": "出单快剪",
       "aliases": [
