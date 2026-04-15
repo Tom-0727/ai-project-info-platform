@@ -2054,6 +2054,7 @@ createApp({
       getEvidenceGapLabel,
       shortList,
       firstClause,
+      summarizeScenario,
       formatDate,
       hasEvidenceRefresh,
       getSourceCoveragePreview,
@@ -2329,7 +2330,7 @@ createApp({
                   <span class="feed-pill">变现：{{ firstClause(project.monetization) }}</span>
                   <span class="feed-pill">证据：{{ evidenceLevelLabel[project.evidenceQuality.level] }}</span>
                   <span class="feed-pill">覆盖：{{ getSourceCoveragePreview(project) }}</span>
-                  <span class="feed-pill">场景：{{ firstClause(project.painPoint) }}</span>
+                  <span class="feed-pill">场景：{{ summarizeScenario(project) }}</span>
                   <span class="feed-pill">客群：{{ shortList(project.targetCustomers, 2) }}</span>
                   <span v-if="getSameDomainClue(project)" class="feed-pill">同域：{{ getSameDomainClue(project).count }} 个</span>
                   <span v-if="getEvidenceGapLabel(project)" class="feed-pill">待补证：{{ getEvidenceGapLabel(project) }}</span>
@@ -2368,7 +2369,7 @@ createApp({
                       <span class="feed-pill">变现：{{ firstClause(entry.project.monetization) }}</span>
                       <span class="feed-pill">证据：{{ evidenceLevelLabel[entry.project.evidenceQuality.level] }}</span>
                       <span class="feed-pill">覆盖：{{ getSourceCoveragePreview(entry.project) }}</span>
-                      <span class="feed-pill">场景：{{ firstClause(entry.project.painPoint) }}</span>
+                      <span class="feed-pill">场景：{{ summarizeScenario(entry.project) }}</span>
                       <span v-if="getSameDomainClue(entry.project)" class="feed-pill">同域：{{ getSameDomainClue(entry.project).count }} 个</span>
                     </div>
                   </button>
