@@ -1,6 +1,51 @@
 {
   "projects": [
     {
+      "id": "proj.quickcreator-seo-growth-workflow",
+      "canonicalName": "QuickCreator",
+      "aliases": [
+        "QuickCreator",
+        "QuickCreator中国站"
+      ],
+      "slug": "quickcreator-seo-growth-workflow",
+      "discoveredSeq": 150,
+      "status": "active",
+      "firstSeen": "2026-04-15",
+      "lastUpdated": "2026-04-15",
+      "productForm": "AI SEO / GEO 内容增长工作台",
+      "targetCustomers": "出海企业、B2B 营销团队、内容增长团队、独立站运营者，以及需要批量做 SEO / GEO 内容生产和站点增长的小型营销团队",
+      "painPoint": "很多企业做内容增长时，要把关键词研究、品牌画像、ICP、内容生成、站点托管和转化组件拆在多套工具里，既难规模化出稿，也难把 SEO/GEO 内容真正接到站点和获客转化上。",
+      "monetization": "主要靠公开套餐订阅和高阶企业服务变现。官方定价页直接给出试用版 2880 元/季度、Starter 10800 元/年、Accelerator 18800 元/年、Professional 26800 元/年，并公开了按内容、图片、分析与咨询计费的增值结构，例如 300 积分/篇、10 积分/张、20 积分/次、10 元/篇和 20000 元起的企业对接服务。",
+      "barriers": "SEO/GEO 内容策略自动化、品牌与 ICP 建模、站点托管与转化组件整合、多 Agent 协同质量，以及企业数据、安全和跨区域合规。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页明确把产品定位为 AI 营销团队，覆盖策略规划、内容创作、SEO 优化和多渠道分发",
+          "官方定价页公开试用版、Starter、Accelerator、Professional 四档年/季价格和积分规则",
+          "同域隐私页可访问，定价页还公开企业对接和策略咨询等高阶收费项"
+        ],
+        "note": "QuickCreator 的官网首页和官方定价页已经把买方、工作流和收费结构讲得很完整：不仅有 2880 元/季度到 26800 元/年的公开套餐，还有积分、代运营式内容产出和企业对接价格，因此商业化透明度已经足以按 strong 收录。需要注意的是，terms/about/contact 等若干同域路由仍回到营销页，所以法律链不如价格链完整。"
+      },
+      "benchmarks": [
+        "Jasper",
+        "Surfer SEO"
+      ],
+      "sources": [
+        "https://quickcreator.cn/",
+        "https://quickcreator.cn/pricing",
+        "https://quickcreator.cn/privacy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-15",
+          "kind": "New",
+          "summary": "这是一个面向企业内容增长团队的 AI SEO / GEO 工作台，主要靠公开套餐订阅和企业级增值服务变现。",
+          "update": "新增 QuickCreator，作为 SEO/GEO 内容增长样本收录；官网定价页已公开多档年费套餐、积分规则和企业服务价格，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.weshop-product-imagery",
       "canonicalName": "WeShop唯象",
       "aliases": [
