@@ -106,7 +106,63 @@ const getSourceCoveragePreview = (project, limit = 3) => {
 
 const hasEvidenceRefresh = (project) => Boolean(project.lastUpdated && project.firstSeen && project.lastUpdated > project.firstSeen);
 
-const summarizeScenario = (project) => firstClause(project.painPoint);
+const buildScenarioSignal = (project) =>
+  [
+    project?.canonicalName,
+    ...(project?.aliases || []),
+    project?.productForm,
+    project?.targetCustomers,
+    project?.painPoint,
+    project?.monetization,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+const summarizeScenario = (project) => {
+  const signal = buildScenarioSignal(project);
+
+  if (/(seo|geo|关键词|brand profile|品牌档案|icp|站点托管|site hosting|内容策略|内容分发|搜索引擎)/i.test(signal)) {
+    return "SEO增长";
+  }
+
+  if (/(logo|设计|海报|修图|写真|图片|商品图|商拍|视觉|模特|试穿|抠图|换背景|电商图像)/i.test(signal)) {
+    return "视觉创作";
+  }
+
+  if (/(字幕|配音|转写|语音|视频|音频|同传|会议纪要|口播|数字人|翻译)/i.test(signal)) {
+    return "音视频处理";
+  }
+
+  if (/(合同|法务|法律|合规|软著|知识产权|条款|类案|申报材料)/i.test(signal)) {
+    return "法务与合规";
+  }
+
+  if (/(进销存|库存|开单|订货|财务|经销|外勤|供应链|收银|wms)/i.test(signal)) {
+    return "经营管理";
+  }
+
+  if (/(招聘|求职|简历|面试|人才匹配|候选人)/i.test(signal)) {
+    return "招聘与求职";
+  }
+
+  if (/(客服|工单|销售|listing|广告|获客|crm|订单|外贸|跨境|私域|营销自动化|线索)/i.test(signal)) {
+    return "增长与销售";
+  }
+
+  if (/(情绪|心理|助眠|疗愈|陪伴|日记|宠物|睡眠|健康|口语陪练|口语训练|复习|备考|闪卡|作文|论文|阅读|学习)/i.test(signal)) {
+    return "学习与陪伴";
+  }
+
+  if (/(笔记|知识|协作|白板|思维导图|反馈|问卷|原型|文档|工作台|流程图|图表|ppt|办公)/i.test(signal)) {
+    return "办公与知识";
+  }
+
+  if (/(编程|开发|代码|接口|api平台|调试)/i.test(signal)) {
+    return "开发提效";
+  }
+
+  return "通用效率";
+};
 const normalizeLookupKey = (value) => String(value || "").trim().toLowerCase();
 
 const getEvidenceGapLabel = (project) => {
