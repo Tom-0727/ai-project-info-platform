@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.weshop-product-imagery",
+      "canonicalName": "WeShop唯象",
+      "aliases": [
+        "WeShop",
+        "唯象",
+        "WeShop AI"
+      ],
+      "slug": "weshop-product-imagery",
+      "discoveredSeq": 149,
+      "status": "active",
+      "firstSeen": "2026-04-15",
+      "lastUpdated": "2026-04-15",
+      "productForm": "AI商拍与电商商品图生成工具",
+      "targetCustomers": "跨境品牌、电商卖家、服饰与消费品团队、商品视觉服务商，以及需要快速批量产出模特图和产品场景图的小团队",
+      "painPoint": "商品图和模特图拍摄成本高、出图周期长，品牌方和卖家很难高频测试不同模特、场景和市场版本；传统拍摄还会被模特、场地、摄影与后期排期拖慢。",
+      "monetization": "主要靠免费套餐引流后转向连续包月、算力包和 API 授权套餐变现。官方会员页明确露出免费套餐、连续包月、算力包、自动续订、购买历史和 API 授权套餐；API 文档还说明免费试用与已购买 API 套餐是两套不同权限，另有公开的图像/视频生成服务套餐价 $30、$90、$100 作为补充收费面。",
+      "barriers": "电商商品图与 AI 模特生成质量、服装与商品细节保真、多市场视觉适配、批量工作流稳定性，以及商用图片版权、人物形象和广告素材合规。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "low",
+        "signals": [
+          "官方首页明确聚焦 AI 商拍、AI 试穿、AI 商品图和 AI 模特图",
+          "官方会员页公开免费套餐、连续包月、算力包、API 授权套餐和自动续订结构",
+          "官方 API 文档明确 API 访问需要免费试用权限或已购买 API 授权套餐"
+        ],
+        "note": "WeShop 的官网、会员页和 API 文档已经能稳定证明它是一条真实的 AI 商拍 / 商品图工作流，并且存在可复述的套餐与购买结构；但核心会员档位的公开金额在这轮检查里还没有像价格表那样完整落出来，所以先按 medium 收录。"
+      },
+      "benchmarks": [
+        "Pic Copilot",
+        "美间"
+      ],
+      "sources": [
+        "https://www.weshop.com/",
+        "https://www.weshop.com/member",
+        "https://www.weshop.com/terms",
+        "https://www.weshop.com/privacy",
+        "https://open.weshop.com/authorization/apikey"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-15",
+          "kind": "New",
+          "summary": "这是一个面向电商品牌和卖家的 AI 商拍与商品图生成工具，主要靠连续包月、算力包和 API 授权套餐变现。",
+          "update": "新增 WeShop唯象，作为偏 AI 模特和电商商拍的商品视觉样本收录；会员页和 API 文档已经把套餐结构讲清楚，但核心会员价格还不够完整，因此先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.yuliu-software-copyright-filing",
       "canonicalName": "语流软著宝",
       "aliases": [
