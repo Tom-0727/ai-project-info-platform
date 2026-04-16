@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.cailiaoxing-secretarial-writing",
+      "canonicalName": "材料星",
+      "aliases": [
+        "材料星",
+        "材料星AI"
+      ],
+      "slug": "cailiaoxing-secretarial-writing",
+      "discoveredSeq": 154,
+      "status": "active",
+      "firstSeen": "2026-04-16",
+      "lastUpdated": "2026-04-16",
+      "productForm": "秘书工作与公文材料 AI 写作工作台",
+      "targetCustomers": "党政机关、事业单位、国企和学校里的办公室秘书、公文专员、综合文字岗，以及需要高频产出讲话稿、汇报材料、通知总结和制度文书的小团队",
+      "painPoint": "秘书和综合文字岗常常要在很短时间内产出公文、讲话稿、汇报和总结材料，既要贴合体制内格式和措辞，又要反复改标题、润色、纠错和排版，人工写作和校对成本高，交付节奏也容易被临时任务打断。",
+      "monetization": "主要靠公开会员订阅、终身会员和团队套餐变现。官方 pricing 页直接公开了季度会员 169 元、SVIP 半年 259 元、SVIP 1年 389 元、终身会员 Pro 1399 元，以及 5 人团队终身 1300 元/人、10 人团队终身 1200 元/人等方案；同页 FAQ 还明确写出可开正规电子发票、购买后不支持 7 天无理由退款，并提供客服与课程讲解支持。",
+      "barriers": "公文语料和秘书工作模板积累、体制内材料风格控制、AI 步骤写作与对话写作协同、长文档纠错与润色稳定性，以及围绕文稿生产建立知识库、PPT 和私有化部署等扩展能力。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页明确写出“专为秘书工作设计的 AI 写作工具”，并把公文搜索、知识库、文思泉涌、纠错、PPT 等能力指向同一秘书材料工作流",
+          "官方 pricing 页公开个人和团队多档金额，包括季度、半年、年、终身和团队终身方案",
+          "同域 FAQ、contact 和 privacy 页面公开退款边界、发票支持、公司主体、电话、邮箱和文档处理范围"
+        ],
+        "note": "材料星的官方商业化证据已经足够完整：官网首页把买方和工作流说清楚，pricing 页直接公开多档个人与团队价格，FAQ 又补齐发票、退款和售后支持，contact/privacy 进一步补上公司主体和产品处理范围。它不是泛 AI 写作站，而是更垂直的秘书公文材料生产工具，因此按 strong 收录。"
+      },
+      "benchmarks": [
+        "新华妙笔",
+        "星火文书"
+      ],
+      "sources": [
+        "https://www.cailiaoxing.com/",
+        "https://www.cailiaoxing.com/pricing",
+        "https://www.cailiaoxing.com/contact",
+        "https://www.cailiaoxing.com/legal/privacy"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-16",
+          "kind": "New",
+          "summary": "这是一个面向秘书、公文专员和综合文字岗的公文材料 AI 写作工作台，主要靠会员订阅、终身会员和团队套餐变现。",
+          "update": "新增材料星，作为秘书工作 / 公文材料生产工作流样本收录；官网已经公开个人档、团队档、发票与退款边界，商业化证据完整，按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.taitoubiao-bid-workflow",
       "canonicalName": "钛投标",
       "aliases": [
