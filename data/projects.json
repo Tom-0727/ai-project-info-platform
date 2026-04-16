@@ -1,6 +1,54 @@
 {
   "projects": [
     {
+      "id": "proj.larkagent-verified-inquiry-sdr",
+      "canonicalName": "LarkAgent AI",
+      "aliases": [
+        "百雀智能",
+        "百雀AI",
+        "LarkAgent",
+        "AI外贸员"
+      ],
+      "slug": "larkagent-verified-inquiry-sdr",
+      "discoveredSeq": 151,
+      "status": "active",
+      "firstSeen": "2026-04-16",
+      "lastUpdated": "2026-04-16",
+      "productForm": "外贸 AI SDR 精准询盘交付平台",
+      "targetCustomers": "外贸工厂、出口销售团队、需要低成本持续获客的 B2B 出海商家，以及想把找客户外包给 AI SDR 的小型外贸团队",
+      "painPoint": "很多外贸团队买海关数据、跑展会、发开发信和跟销售人工筛线索要投入大量时间和差旅成本，但拿到的往往只是联系人而不是可跟进的真实采购意向，获客链路长且转化波动大。",
+      "monetization": "主要靠按精准询盘付费和按数量采购的交付模式变现。官网首页直接写出 Pay per verified inquiry、不达标不收费、7 项验证标准、Contact sales manager for inquiry pricing estimate 和 Direct purchase billed by quantity，说明其收费逻辑不是单纯留资，而是围绕 verified inquiry 数量与质量做采购。",
+      "barriers": "需要把全球买家数据采集、AI 多语言触达、询盘真实性验证、客户画像筛选和外贸销售交接做成稳定闭环，同时处理跨境数据来源、触达合规和交付标准一致性。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页明确把产品定位为外贸 AI SDR，并公开 Pay per verified inquiry、7 项验证标准和不达标不收费",
+          "官网同页公开 Contact sales manager for inquiry pricing estimate 和 Direct purchase billed by quantity 两种购买路径",
+          "同域服务协议与隐私政策可访问，能确认产品、反馈邮箱和中国公司主体信息"
+        ],
+        "note": "LarkAgent 的官方链路已经足以证明这不是泛外贸营销叙事，而是一种按 verified inquiry 交付的 AI 外贸获客服务：官网把 7 项验证、按数量采购、ROI 和采购入口放在同一产品面上，服务协议也明确存在收费项目且默认不退款。但它仍未公开单条询盘或套餐单价，且服务协议与隐私政策里的主体口径不完全一致，因此先按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "OKKI",
+        "Apollo.io"
+      ],
+      "sources": [
+        "https://ai-bot.cn/larkagent/",
+        "https://www.larkagent.cn/",
+        "https://www.larkagent.cn/static/agreement.html",
+        "https://www.larkagent.cn/static/privacy.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-16",
+          "kind": "New",
+          "summary": "这是一个面向外贸工厂和出口销售团队的外贸 AI SDR 精准询盘交付平台，主要靠按精准询盘付费和按数量采购变现。",
+          "update": "新增 LarkAgent AI，作为 verified inquiry delivery 样本收录；它和 OKKI 的区别在于卖的不是 CRM 工作台，而是按 7 项标准验证后的询盘交付，但官网尚未公开单价，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.quickcreator-seo-growth-workflow",
       "canonicalName": "QuickCreator",
       "aliases": [
