@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.taitoubiao-bid-workflow",
+      "canonicalName": "钛投标",
+      "aliases": [
+        "钛投标",
+        "AI标书工具"
+      ],
+      "slug": "taitoubiao-bid-workflow",
+      "discoveredSeq": 153,
+      "status": "active",
+      "firstSeen": "2026-04-16",
+      "lastUpdated": "2026-04-16",
+      "productForm": "AI招投标标书生成与审查工作台",
+      "targetCustomers": "需要频繁参与政府采购、工程项目或企业招投标的中小企业投标团队、标书专员、售前支持和代理编标服务团队，以及想把标书制作流程标准化的小型企业团队",
+      "painPoint": "很多投标团队要先人工读招标文件、摘资质和评分点，再拼商务标、技术标、业绩和格式要求，过程既耗时又容易漏项；一旦格式不合规、资质不匹配或风险点漏检，就可能直接废标。",
+      "monetization": "主要靠套餐购买和增值支付链路变现。官方 bundle 已稳定暴露套餐列表、价格计算、订单创建、支付宝/微信二维码支付、订单查询、退款申请、资源消耗和发票申请接口；同时同域用户协议明确存在付费服务与退款边界，说明这不是单纯留资页，而是可下单的数字化标书服务。",
+      "barriers": "招标文件结构化解析、评分标准抽取、商务技术标书生成、投标资料复用、自有库管理、废标风险检查，以及围绕招投标场景的行业模板与合规细节沉淀。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页和 bundle 的路由 metadata 都把产品明确描述为招标文件解析、标书生成、标书检查的一站式招投标工作流工具",
+          "同域 sitemap 与 bundle 公开了 uploadfile、filelist、bidCheck、resources、自有库、payment、mine orders 等完整业务路由",
+          "同域 bundle 稳定暴露套餐列表、订单创建、支付宝/微信支付、退款申请、发票申请和公司主体信息"
+        ],
+        "note": "钛投标的官方链路明显强于最近被 defer 的招投标候选：根站、sitemap 和同域 bundle 能同时证明产品边界、公司主体和真实支付链存在，连退款与发票逻辑都可恢复。但公开金额仍主要来自运行时套餐接口，静态页面能直接复述的套餐价并不完整，因此按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "智标领航",
+        "Microsoft Copilot"
+      ],
+      "sources": [
+        "https://ai-bot.cn/taitoubiao/",
+        "https://taitoubiao.com/",
+        "https://taitoubiao.com/sitemap.xml",
+        "https://taitoubiao.com/js/index.bb2b3f62.js"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-16",
+          "kind": "New",
+          "summary": "这是一个面向招投标团队的 AI 标书生成与审查工作台，主要靠套餐购买和订单支付链路变现。",
+          "update": "新增钛投标，作为招投标/标书工作流样本收录；官方证据已经覆盖招标解析、标书生成、标书检查、自有库、支付、退款和发票链，但公开静态价目表还不够完整，因此先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.chatexcel-spreadsheet-analysis",
       "canonicalName": "ChatExcel",
       "aliases": [
