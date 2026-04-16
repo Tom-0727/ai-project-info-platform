@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.chatexcel-spreadsheet-analysis",
+      "canonicalName": "ChatExcel",
+      "aliases": [
+        "ChatExcel",
+        "元空AI Claw"
+      ],
+      "slug": "chatexcel-spreadsheet-analysis",
+      "discoveredSeq": 152,
+      "status": "active",
+      "firstSeen": "2026-04-16",
+      "lastUpdated": "2026-04-16",
+      "productForm": "AI表格处理与数据分析工具",
+      "targetCustomers": "运营、财务、数据分析、行政、人力和需要频繁处理 Excel 表格的小团队与个人用户，以及想降低表格函数门槛的轻量企业团队",
+      "painPoint": "很多人处理 Excel 时需要反复写函数、做批量清洗、生成图表和整理分析结论，但并不熟悉复杂公式和脚本，导致表格处理效率低、出错率高，临时做汇总或演示材料也很费时间。",
+      "monetization": "主要靠会员订阅和企业版/本地部署方案变现。官方 bundle 当前能稳定恢复出中文会员梯度如 1个月 25.9 元、1年 99 元、买2年送12个月 159 元，并带有支付下单、支付状态、订单生效接口；同一官方 bundle 也出现了“会员权益已升级为通用积分权益”的提示，说明其商业化正在从单纯会员订阅向会员+积分权益迁移。",
+      "barriers": "自然语言转表格操作、批量数据清洗、函数替代、图表与可视化、PPT 辅助生成，以及在复杂表格场景下保持结果稳定性和低误差率。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页 metadata 明确把产品描述为 AI Excel 数据处理、数据分析、图表处理与生成 PPT 工具",
+          "同域官方 bundle 公开中文会员梯度、会员协议文案和支付/订单接口",
+          "同域企业解决方案页可访问，并明确出现企业版与本地部署"
+        ],
+        "note": "ChatExcel 的官方站和同域 bundle 已经足以证明它在卖一个真实的 AI 表格处理工具，并且存在公开会员梯度、购买二维码和支付状态接口；但同一官方 bundle 里同时出现英文旧梯度、中文现行梯度，以及“会员权益升级为通用积分权益”的迁移提示，价格口径还不够干净，因此按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "WPS AI",
+        "Microsoft Copilot for Excel"
+      ],
+      "sources": [
+        "https://ai-bot.cn/sites/69072.html",
+        "https://www.chatexcel.com/",
+        "https://www.chatexcel.com/member",
+        "https://www.chatexcel.com/js/app.81c4fa93.js",
+        "https://chatexcel.com/blog/tob/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-16",
+          "kind": "New",
+          "summary": "这是一个面向运营、财务和数据分析岗位的 AI 表格处理与数据分析工具，主要靠会员订阅和企业版/本地部署方案变现。",
+          "update": "新增 ChatExcel，作为表格处理工作流样本收录；官方面已经能恢复会员和支付链，但现行会员价与积分迁移口径并不完全一致，因此先按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.larkagent-verified-inquiry-sdr",
       "canonicalName": "LarkAgent AI",
       "aliases": [
