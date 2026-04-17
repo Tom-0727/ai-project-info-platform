@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.dezhu-sales-service-training",
+      "canonicalName": "得助智能陪练",
+      "aliases": [
+        "得助智能陪练",
+        "AI陪练系统",
+        "中关村科金得助智能AI陪练系统"
+      ],
+      "slug": "dezhu-sales-service-training",
+      "discoveredSeq": 155,
+      "status": "active",
+      "firstSeen": "2026-04-17",
+      "lastUpdated": "2026-04-17",
+      "productForm": "销售与客服员工 AI 陪练培训系统",
+      "targetCustomers": "金融、证券、保险、客服中心和需要批量培训一线员工的话术团队，以及想把新人训练、考核和复盘标准化的企业培训负责人",
+      "painPoint": "很多企业培训销售和客服时，高度依赖线下带教和主管抽查，训练成本高、反馈慢、效果难量化；新人上手速度、话术合规性和复盘质量也容易因为带教水平不同而波动。",
+      "monetization": "主要靠企业方案咨询、预约演示和项目制交付变现。官方产品页和结构化数据已把 AI 陪练系统作为独立方案页公开，页面提供预约演示入口、咨询电话，并在 schema 中直接把 Offer 标成“咨询获取”，说明这不是免费工具，而是典型的企业售前成交模式。",
+      "barriers": "真实业务场景模拟、销售/客服话术对练、培训考核闭环、多维能力测评、行业合规知识沉淀，以及把大模型能力稳定嵌入金融和客服训练流程。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官方产品页明确把方案定义为销售客服员工大模型陪练系统，并给出学、练、考、评一站式训练闭环",
+          "官方页展示 AI 话术对练、多维能力测评、预约演示、客户案例和咨询电话等完整售前要素",
+          "官方 schema offer 直接写明价格为“咨询获取”，与企业方案售卖模式一致"
+        ],
+        "note": "得助智能陪练的官方证据已经足以证明它不是泛培训叙事，而是一个面向销售与客服训练的企业 AI 陪练产品：产品页、案例、预约演示和咨询电话都在同一官方链路上。但它没有公开套餐价格或标准化订阅档位，更多是企业咨询成交，因此按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "平安知鸟",
+        "Udesk AI智能陪练"
+      ],
+      "sources": [
+        "https://www.51ima.com/AItraining.html",
+        "https://www.51ima.com/",
+        "https://www.51ima.com/aboutUs.html",
+        "https://www.51ima.com/msg/appointment.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-17",
+          "kind": "New",
+          "summary": "这是一个面向销售和客服团队的 AI 陪练培训系统，主要靠企业咨询、预约演示和项目制交付变现。",
+          "update": "新增得助智能陪练，作为销售培训 / 客服训练工作流样本收录；官方页已公开训练闭环、案例、电话和预约演示入口，但没有公开套餐价，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.cailiaoxing-secretarial-writing",
       "canonicalName": "材料星",
       "aliases": [
