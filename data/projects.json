@@ -1,6 +1,55 @@
 {
   "projects": [
     {
+      "id": "proj.wandianzhang-ai-store-ops",
+      "canonicalName": "万店掌",
+      "aliases": [
+        "万店掌",
+        "万店掌-人工智能新零售运营平台",
+        "OVO Park"
+      ],
+      "slug": "wandianzhang-ai-store-ops",
+      "discoveredSeq": 156,
+      "status": "active",
+      "firstSeen": "2026-04-18",
+      "lastUpdated": "2026-04-18",
+      "productForm": "连锁门店 AI 巡店与标准化运营平台",
+      "targetCustomers": "连锁零售品牌总部、区域督导、门店运营负责人，以及需要统一多店巡检、陈列、培训、客流和协同流程的零售与连锁服务企业。",
+      "painPoint": "连锁门店一多，传统人工巡店就会出现差旅成本高、覆盖面窄、抽查主观、整改反馈慢和标准难落地的问题；总部也很难实时看清门店陈列、员工规范、客流变化和异常情况，导致多店标准化运营效率低。",
+      "monetization": "主要靠企业咨询成交、Demo 试用和项目式软件/硬件交付变现。官网和产品页同时公开了 `体验DEMO`、`免费体验`、`申请使用`、`用户登录`、`咨询电话 400-666-3626` 以及正式服务协议，说明它不是纯内容页，而是典型的连锁零售企业方案售卖模式；但官网未公开标准套餐金额或自助付费档位。",
+      "barriers": "多门店巡检流程建模、AI 图像识别检测、客流与门店经营数据联动、远程协同与培训闭环、软硬件一体交付，以及在零售连锁场景下把标准化巡店规则真正落到系统里。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "App Store 与官网对产品边界表述一致，都指向远程巡店、AI巡店、客流统计和连锁门店运营",
+          "官网首页与 `AI巡店机器人` 产品页已明确公开独立产品能力、体验DEMO、免费体验、申请使用和咨询电话",
+          "同域 `service.html`、`privacy` 和 `login` 可正常访问，能确认正式服务关系、公司主体、邮箱和电话等基础商业链路"
+        ],
+        "note": "万店掌已经足以证明它是一个真实的连锁门店 AI 巡店与标准化运营产品，而不是空泛的新零售叙事：官方首页、独立产品页、登录页、隐私页和服务协议都可正常读取，且共同指向同一条巡店工作流。但公开商业化深度仍停留在 Demo、试用和咨询成交，没有公开套餐价或标准化自助购买档位，因此按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "汇纳科技",
+        "石基零售"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id1116662738",
+        "https://www.ovopark.com/",
+        "https://www.ovopark.com/product/AI-shop-robot",
+        "https://www.ovopark.com/login",
+        "https://www.ovopark.com/privacy",
+        "https://www.ovopark.com/service.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-18",
+          "kind": "New",
+          "summary": "这是一个面向连锁零售总部和督导团队的 AI 巡店与门店标准化运营平台，主要靠企业咨询成交、Demo 试用和项目式软硬件交付变现。",
+          "update": "新增万店掌，作为 `连锁门店 AI 巡店 / 标准化运营` 工作流样本收录；官方链已经覆盖产品页、Demo、试用、登录、服务协议和公司信息，但没有公开套餐价格，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.dezhu-sales-service-training",
       "canonicalName": "得助智能陪练",
       "aliases": [
