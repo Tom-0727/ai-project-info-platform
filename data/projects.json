@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.chanbiaoai-bid-writing",
+      "canonicalName": "蝉标 AI",
+      "aliases": [
+        "蝉标 AI",
+        "蝉标AI",
+        "标智联"
+      ],
+      "slug": "chanbiaoai-bid-writing",
+      "discoveredSeq": 158,
+      "status": "active",
+      "firstSeen": "2026-04-18",
+      "lastUpdated": "2026-04-18",
+      "productForm": "AI 标书制作与投标方案生成软件",
+      "targetCustomers": "需要频繁制作技术标、商务标和投标响应文件的中小企业投标团队、售前支持、招投标代理团队，以及想把标书制作标准化的小型项目团队。",
+      "painPoint": "传统标书制作要先人工读招标文件、搭框架、补商务资质、生成技术方案、配图排版并反复核对，既耗时又容易漏项；很多团队还缺少可复用的商务资质库和稳定的格式化能力，导致投标响应质量波动大。",
+      "monetization": "主要靠公开字数包充值和企业版方案变现。官网首页直接公开 `20 万字 ¥29`、`50 万字 ¥138`、`150 万字 ¥398`、`250 万字 ¥499`、`500 万字 ¥990` 等充值档，并说明 `用多少扣多少、充值字数永久有效`；同页还公开 `支持对公转账`、`可开增值税专用发票`。所有 CTA 都指向 `ai.chanbiaoai.com` 软件入口，bundle 还能验证存在登录、注册、充值、微信、支付宝和发票等真实软件面。",
+      "barriers": "招标文件结构化解析、技术标与商务标自动生成、商务资质库沉淀与匹配、图文自动排版、企业协同，以及把自助充值和项目化企业交付统一到同一套标书工作流里。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页、FAQ、企业版区和软件入口都围绕同一条 `AI 标书制作 / 投标方案生成` 工作流，没有出现明显工具箱式产品分叉",
+          "同域首页直接公开多档字数包价格、充值规则、对公转账和增值税专票边界",
+          "软件域名 `ai.chanbiaoai.com` 可正常返回应用壳和 bundle，bundle 内存在登录、注册、上传招标文件、充值、微信、支付宝、发票等真实软件信号"
+        ],
+        "note": "蝉标 AI 的官方证据已经超过普通 `medium` 门槛：主页把 workflow 讲清楚，同页价格区直接公开具体充值档和商业边界，FAQ 还把注册后进入控制台、新建项目、上传招标文件的使用路径讲明，软件域 bundle 进一步印证了登录、充值、支付和发票能力。虽然部分假设性的独立协议路由返回 404，但主页、价格面、公司页脚和软件入口在同一 owned domain 上足够一致，因此按 strong 收录。"
+      },
+      "benchmarks": [
+        "钛投标",
+        "智标领航"
+      ],
+      "sources": [
+        "https://chanbiaoai.com/",
+        "https://ai.chanbiaoai.com/",
+        "https://ai.chanbiaoai.com/assets/index-CTUluk4s.js"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-18",
+          "kind": "New",
+          "summary": "这是一个面向投标团队的 AI 标书制作与投标方案生成软件，主要靠公开字数包充值和企业版方案变现。",
+          "update": "新增蝉标 AI，作为 `AI 标书制作 / 投标方案生成` 工作流样本收录；官网已公开充值档、发票与对公转账边界，且软件入口 bundle 能验证登录、充值和支付信号，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.sietoo-chronic-followup",
       "canonicalName": "思途云",
       "aliases": [
