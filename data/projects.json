@@ -1,6 +1,53 @@
 {
   "projects": [
     {
+      "id": "proj.sietoo-chronic-followup",
+      "canonicalName": "思途云",
+      "aliases": [
+        "思途云",
+        "思途云慢病随访系统"
+      ],
+      "slug": "sietoo-chronic-followup",
+      "discoveredSeq": 157,
+      "status": "active",
+      "firstSeen": "2026-04-18",
+      "lastUpdated": "2026-04-18",
+      "productForm": "慢病随访与慢病管理 SaaS 平台",
+      "targetCustomers": "需要长期管理糖尿病、高血压等慢病患者的基层医疗机构、门诊部、诊所和医护团队，以及需要把患者随访流程标准化的医疗服务机构。",
+      "painPoint": "慢病管理高度依赖持续随访、提醒、数据记录和复诊转化，但很多基层医疗机构仍靠人工电话、微信和表格维护患者，导致随访效率低、信息分散、漏随访率高，也难把患者档案、统计分析和多端协同真正连起来。",
+      "monetization": "主要靠免费试用后转 SaaS 订阅或买断式方案变现。官网首页直接公开 `免费试用`、`演示预约` 和 demo 入口，FAQ 还明确写出试用期结束后会根据患者管理量、座席数和是否需要私有化部署来定制 `SaaS 订阅或买断式方案`，并强调 `无乱收费及隐形消费`；但官网没有公开标准金额。",
+      "barriers": "慢病患者分层管理、随访计划与提醒流程编排、患者健康档案和统计分析、多端同步、医疗数据隐私保护，以及在医疗场景下兼顾 SaaS 和私有化部署能力。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页标题和描述直接把产品定义为 `慢病随访系统`，而不是泛诊所数字化平台",
+          "首页同时公开免费试用、demo 入口、演示预约以及 `SaaS 订阅或买断式方案` 的 FAQ 计费口径",
+          "同域隐私政策和服务协议都可正常访问，并明确写出深圳思途科技有限公司、服务范围和 SaaS 服务关系"
+        ],
+        "note": "思途云的官方证据已经足够证明它在卖一个真实的慢病随访软件产品：官网首页把 workflow 讲清楚，FAQ 公开了试用后转 `SaaS 订阅或买断式方案` 的商业口径，隐私政策和服务协议又补齐了公司主体、用户范围和服务边界。但它没有公开标准价格表或自助支付金额，因此按 medium 收录，不升 strong。"
+      },
+      "benchmarks": [
+        "微脉",
+        "智云健康"
+      ],
+      "sources": [
+        "https://www.sietoo.com/",
+        "https://demo.sietoo.top/portal/suifang",
+        "https://www.sietoo.com/list-12-1.html",
+        "https://www.sietoo.com/list-13-1.html",
+        "https://www.sietoo.com/list-14-1.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-18",
+          "kind": "New",
+          "summary": "这是一个面向基层医疗机构和诊所的慢病随访与慢病管理 SaaS 平台，主要靠免费试用后转 SaaS 订阅或买断式方案变现。",
+          "update": "新增思途云，作为 `慢病随访 / 慢病管理随访` 工作流样本收录；官网已公开 demo、免费试用、FAQ 计费口径、隐私政策和服务协议，但没有标准价格表，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.wandianzhang-ai-store-ops",
       "canonicalName": "万店掌",
       "aliases": [
