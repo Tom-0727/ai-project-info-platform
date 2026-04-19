@@ -1,6 +1,52 @@
 {
   "projects": [
     {
+      "id": "proj.ai-interior-design-master",
+      "canonicalName": "AI室内设计大师",
+      "aliases": [
+        "AI室内设计大师",
+        "AI室内设计大师：一键改造房屋-生成装修效果图-房间定制软件",
+        "com.heven.aidesigner"
+      ],
+      "slug": "ai-interior-design-master",
+      "discoveredSeq": 162,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "AI 室内设计与装修效果图生成 App",
+      "targetCustomers": "想快速预览房间装修效果的家居改造者、装修小白、自建房或别墅业主、店铺经营者，以及需要低成本生成空间风格方案和装修沟通图的个人用户与小型商业空间经营者。",
+      "painPoint": "传统室内设计和装修效果图通常需要设计师沟通、建模、渲染和多轮修改，成本高、周期长；个人用户或小店主在正式装修前也很难低成本试错不同风格、墙面、地板、外立面和店铺空间方案。",
+      "monetization": "主要靠 App Store 内购会员订阅和永久会员变现。中国区 App Store 页面公开该 App 免费下载，同时列出 `AI室内设计大师-周会员 ¥38.00`、`AI室内设计大师-年会员 ¥198.00`、另一组 `周会员 ¥28.00`、`年会员 ¥98.00`，以及 `永久会员 ¥298.00` 等内购项；iTunes Lookup 确认开发者/提供者为 `翠霞 郭`，sellerUrl 指向腾讯文档隐私政策。",
+      "barriers": "房间照片理解、空间风格迁移、家具/灯光/软装生成、墙面与地板材质替换、室外立面改造、商铺空间设计提示词和渲染质量控制，以及把生成结果包装成移动端订阅产品并持续获客。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "iTunes Lookup 和 App Store 页面都能直接对应 `AI室内设计大师`，描述覆盖上传房间照片生成室内设计、店铺设计、建筑外观、改墙和换地板等空间改造工作流",
+          "App Store 页面公开多档内购价格，包括周会员、年会员和永久会员，说明存在清晰的订阅/买断式变现路径",
+          "sellerUrl 指向腾讯文档隐私政策，页面标题可对应 `AI室内设计大师-隐私政策`，能补充最基本的产品归属与隐私合规面"
+        ],
+        "note": "AI室内设计大师适合作为小型 AI 家装/装修效果图 App 样本：App Store 产品页和 Lookup 数据能证明具体工作流、个人开发者和内购价格。但它缺少独立官网或更强的开发者主体页，seller surface 只是腾讯文档隐私政策，页面还可见多条订阅相关负评，因此不升 strong，按 medium/high 收录。"
+      },
+      "benchmarks": [
+        "酷家乐",
+        "新境 - 用AI让装修更简单"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6749881079",
+        "https://itunes.apple.com/lookup?id=6749881079&country=cn",
+        "https://docs.qq.com/doc/DWVNDd1dQUWpuYk5I"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向家居改造者、小店主和装修小白的 AI 室内设计与装修效果图生成 App，主要靠 App Store 周会员、年会员和永久会员内购变现。",
+          "update": "新增 AI室内设计大师，作为 `AI 家装 / 室内设计效果图生成` 工作流样本收录；App Store 公开多档会员价格，隐私政策能对应同名产品，但缺少独立官网且用户评价风险较高，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.yunwo-ai-inspection-system",
       "canonicalName": "云上蜗牛 AI质检系统",
       "aliases": [
