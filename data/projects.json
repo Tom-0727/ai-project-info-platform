@@ -1,6 +1,56 @@
 {
   "projects": [
     {
+      "id": "proj.tongyanxingqiu-ai-storybook",
+      "canonicalName": "童言星球",
+      "aliases": [
+        "童言星球-AI儿童故事／睡前绘本创作",
+        "YayMoon",
+        "myliltalk",
+        "com.angyee.liltalk",
+        "AI儿童故事"
+      ],
+      "slug": "tongyanxingqiu-ai-storybook",
+      "discoveredSeq": 164,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "AI 儿童故事与个性化绘本创作 App",
+      "targetCustomers": "想给孩子生成个性化睡前故事、亲子共读绘本和成长记录内容的年轻父母，以及需要低成本儿童故事素材和插画陪伴内容的家庭用户。",
+      "painPoint": "家长每天讲睡前故事容易内容重复、临场创作成本高，也很难把孩子的名字、兴趣、语言表达和成长片段变成可持续收藏的绘本内容；传统绘本购买和有声故事库通常缺少高度个性化和家庭记忆属性。",
+      "monetization": "主要靠 App Store 内购、单篇故事付费和订阅会员变现。iTunes Lookup 显示该 App 免费下载且 App Store 页面标注 `In-App Purchases`；App Store 描述写明 `单个故事仅0.5元起`、`月会员8.8元，享受每月100+精选故事`、`一次购买，永久收听，无广告干扰`。官网和条款页也提供 App Store 下载、安卓 APK 下载入口，并说明订阅按本地货币计费、自动续订、退款按平台政策处理。",
+      "barriers": "儿童故事生成、按孩子姓名和兴趣做个性化叙事、AI 插画生成、语音/文字输入处理、故事播放和永久收藏、儿童成长记录与兴趣分析、内容安全审核、未成年人数据保护、移动端订阅和小额付费转化。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "iTunes Lookup 和 App Store 页面都能对应 `童言星球-AI儿童故事／睡前绘本创作`，显示 bundleId `com.angyee.liltalk`、卖方 `Angyee Information Technology Co., Ltd`、开发者 `Bob Yao`、教育分类、4+ 年龄分级和免费下载安装到内购模式",
+          "App Store 描述和版本记录明确写出 AI 个性化绘本、30 秒生成故事和配图、成长记录、每月精选故事、故事音色选择、故事洞察、积分/订阅支付优化等具体工作流",
+          "官网 `myliltalk.cn` 与 App Store 隐私政策链接同域，页面标题和下载入口匹配童言星球，隐私政策覆盖儿童信息、语音记录、文字输入、生成图片、AI插画、儿童隐私保护，使用条款说明 AI故事创作、配图生成、儿童发展追踪、AI生成内容审核、订阅和支付"
+        ],
+        "note": "童言星球适合作为 `AI 儿童故事 / 个性化绘本 / 亲子睡前内容` 的小型移动应用样本。App Store、iTunes、官网、隐私政策和条款页能共同证明产品形态、目标用户、生成内容和付费方向。但 iTunes `sellerUrl` 为空，官网没有独立价格页或可验证账户/购买面，0.5 元单故事和 8.8 元月会员主要来自 App Store 描述；同时儿童数据、语音、图片和 AI 生成内容带来较高合规风险，因此按 medium/high 收录。"
+      },
+      "benchmarks": [
+        "BabyStoryAI",
+        "Readkidz"
+      ],
+      "sources": [
+        "https://apps.apple.com/cn/app/id6737849997",
+        "https://itunes.apple.com/lookup?id=6737849997&country=cn",
+        "https://myliltalk.cn/",
+        "https://www.myliltalk.cn/privacy",
+        "https://www.myliltalk.cn/terms"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向年轻父母的 AI 儿童故事与个性化绘本 App，按单篇故事、小额会员订阅和移动端内购变现。",
+          "update": "新增童言星球，作为 `AI 睡前故事 / 个性化绘本 / 亲子成长记录` 工作流样本收录；App Store 和官网能对应产品、下载、隐私与条款，描述中出现 0.5 元单故事和 8.8 元月会员，但缺少独立价格页且涉及儿童数据，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.qingshiyun-renovation-management",
       "canonicalName": "青石云",
       "aliases": [
