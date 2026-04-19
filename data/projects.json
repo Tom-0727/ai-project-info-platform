@@ -1,6 +1,55 @@
 {
   "projects": [
     {
+      "id": "proj.yunwo-ai-inspection-system",
+      "canonicalName": "云上蜗牛 AI质检系统",
+      "aliases": [
+        "AI质检系统",
+        "云上蜗牛",
+        "云上蜗牛AI质检",
+        "Yunwo AI Inspection"
+      ],
+      "slug": "yunwo-ai-inspection-system",
+      "discoveredSeq": 161,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "工业视觉 AI 质检系统",
+      "targetCustomers": "需要在汽车零部件、电子零件、生产环境和仓储管理等场景中做缺陷瑕疵检测、生产安全识别和质检数据管理的中小制造企业、工厂负责人、质检主管和数字化改造服务商。",
+      "painPoint": "传统工业质检依赖人工抽检或固定规则机器视觉，面对高速生产、多品类零件和复杂瑕疵时容易漏检、误检或统计滞后；中小工厂还常缺少能按场景部署、能开票采购、能让供应商交付落地的一体化 AI 质检方案。",
+      "monetization": "主要靠百度 AI 市场上的套装式项目交付收费。百度 AI 市场商品页公开 `AI质检系统` 轻量版、独立版、高端版三档 SKU，交付清单均为 `AI质检系统 1套`，含税价分别为 `￥138000/套`、`￥198000/套`、`￥268000/套`，并标注人工交付、按需确认、支持增值税专用发票和普通发票、质保期 1 年；服务商页也把该商品列为云上蜗牛（上海）数字科技有限公司在售服务。",
+      "barriers": "工业视觉数据采集、缺陷瑕疵样本积累、视觉模型训练和部署、边缘/摄像头/产线环境适配、误报漏报控制、工厂现场交付、发票和售后服务，以及把 AI 识别能力包装成可采购的套装式质检系统。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "百度 AI 市场商品页公开了 `AI质检系统` 的三档 SKU、含税价格、交付说明、发票类型、质保期、购买/咨询链路和服务商名称",
+          "百度 AI 市场服务商页确认云上蜗牛（上海）数字科技有限公司，并把 `AI质检系统` 列为在售 AI/视觉类服务之一",
+          "云上蜗牛官网可验证同一公司主体，并说明其主营数字货架、智能仓库、算法盒子、视觉算法开发和 AI 应用定制开发"
+        ],
+        "note": "云上蜗牛 AI质检系统有清晰的市场定价和采购链路，适合作为工业视觉质检的中小企业项目交付样本。但证据主要来自百度 AI 市场，厂商官网只支撑公司主体和视觉算法/智能硬件方向，没有直接展示同名 `AI质检系统` SKU；商品详情也存在较多图片化和泛化工业质检描述，因此按 medium 收录，并将营销风险标为 high。"
+      },
+      "benchmarks": [
+        "阿丘科技 AIDI",
+        "创新奇智 ManuVision"
+      ],
+      "sources": [
+        "https://aim.baidu.com/product/20b2621d-e137-44ee-a1eb-307df03b9446",
+        "https://aim.baidu.com/provider/e1fddb41-74af-4946-a86c-013154595d5c",
+        "https://www.yunwo.space/",
+        "https://www.yunwo.space/?aboutus",
+        "https://www.yunwo.space/?product/154.html"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向中小制造企业和工厂质检场景的工业视觉 AI 质检系统，主要靠百度 AI 市场上的套装式项目交付收费变现。",
+          "update": "新增云上蜗牛 AI质检系统，作为 `工业视觉 AI 质检 / 缺陷瑕疵检测` 工作流样本收录；百度 AI 市场公开三档含税价格、发票、质保和交付信息，但厂商官网未直接展示同名 SKU，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.sjms-bimai-formwork",
       "canonicalName": "神机妙算 BimAi",
       "aliases": [
