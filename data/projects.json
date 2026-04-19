@@ -1,6 +1,55 @@
 {
   "projects": [
     {
+      "id": "proj.sjms-bimai-formwork",
+      "canonicalName": "神机妙算 BimAi",
+      "aliases": [
+        "神机妙算BimAi",
+        "神机妙算配模",
+        "BimAi一键配模",
+        "神机配模APP"
+      ],
+      "slug": "sjms-bimai-formwork",
+      "discoveredSeq": 160,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "AI 一键配模与模板工程三维 ERP 软件",
+      "targetCustomers": "铝模板、钢模板、木模板、塑料模板和脚手架相关的模板厂、周转材料租赁企业、施工深化设计团队、生产加工管理团队，以及需要把配模、出图、清单、库存、扫码拼装和现场周转流程数字化的建筑模板工程企业。",
+      "painPoint": "模板工程的配模、深化、出图、生产清单、旧板库存复用、打包发货和现场拼装长期依赖设计师经验、CAD/Revit 插件、Excel 清单和人工核对；一旦项目结构复杂、非标楼层多或库存旧板多，就容易出现配模周期长、补料多、材料浪费、生产和拼装错误难追溯等问题。",
+      "monetization": "主要靠一次性软件/系统授权、模块化报价、定制算法和培训服务变现。官网首页直接写出 `神机妙算BimAi配模软件和ERP系统报价单（人民币）2026年有效`，列出铝模板/钢模板配模软件、智能木模板无人工厂系统、铝钢木塑混合配模 CNC 切割、钢框木/塑料模板/工字梁/台模/脚手架软件、物料管理+成本财务+业务流程 ERP、手机 App 三维看图等模块，并说明 `以上报价是一次性收费、没有后续其他费用、免费ai算法定制`；但具体价格格子以 `X万`、`XX万` 展示，没有公开透明金额，因此不升 strong。",
+      "barriers": "建筑结构图纸识别、模板构件规则库、钢铝木塑混合材料配模算法、旧模板库存复用、CNC 下料排版、Revit/三维模型数据互通、二维码扫码生产和拼装、周转材料 ERP，以及把施工现场、仓储、生产、财务成本和手机端三维看图接入同一条模板工程链路。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "官网是可访问的旧式静态页，标题和主体都聚焦 `神机妙算BimAi人工智能一键配模软件报价单`，不是泛 BIM 或泛工程造价页面",
+          "同页列出一键配模、BIM 三维 ERP、库存旧模板复用、CNC 切割、扫码三维看图、出图、清单、生产入库、出库打包、施工进度和财务成本等完整模板工程工作流",
+          "官网提供 Windows 安装包、安卓 APK、操作说明书、简介 PDF 和教学视频压缩包等可访问资产，销售服务手机号、上海神机软件有限公司地址和备案入口也在同页出现"
+        ],
+        "note": "神机妙算 BimAi 是一个罕见的 `AI 配模 / 模板工程自动化` 垂直样本，官方页把买方、工作流、模块报价和软件交付物讲得很具体，且下载资产真实可访问。但页面包含大量未外部验证的效率、客户数和性能宣称，报价金额也以 `X万/XX万` 占位，商业透明度不足，因此按 medium 收录，并将营销风险标为 high。"
+      },
+      "benchmarks": [
+        "广联达智能模板无人工厂",
+        "盈建科铝模板设计软件 YJK-LMB"
+      ],
+      "sources": [
+        "https://www.onlineys.com/",
+        "https://www.onlineys.com/%E7%A5%9E%E6%9C%BAai%E7%AE%97%E9%87%8F%E9%85%8D%E6%A8%A1-SETUP.exe",
+        "https://www.onlineys.com/%E7%A5%9E%E6%9C%BA%E5%A6%99%E7%AE%97app%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA.apk",
+        "https://www.onlineys.com/%E7%A5%9E%E6%9C%BA%E5%A6%99%E7%AE%97BimAi%E9%85%8D%E6%A8%A1%E8%BD%AF%E4%BB%B6_%E6%93%8D%E4%BD%9C%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf",
+        "https://apps.apple.com/lt/app/%E7%A5%9E%E6%9C%BA%E9%85%8D%E6%A8%A1app/id1551569972"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向模板厂、周转材料企业和施工深化团队的 AI 一键配模与模板工程三维 ERP 软件，主要靠一次性软件授权、模块化报价和定制算法服务变现。",
+          "update": "新增神机妙算 BimAi，作为 `AI 一键配模 / 模板工程三维 ERP` 工作流样本收录；官网公开模块报价口径、一次性收费说明和多类下载资产，但具体价格以 `X万/XX万` 占位且营销宣称较重，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.opencpai-audit-workflow",
       "canonicalName": "审小匠 OpenCPAi",
       "aliases": [
