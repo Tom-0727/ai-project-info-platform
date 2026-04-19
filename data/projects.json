@@ -1,6 +1,57 @@
 {
   "projects": [
     {
+      "id": "proj.opencpai-audit-workflow",
+      "canonicalName": "审小匠 OpenCPAi",
+      "aliases": [
+        "审小匠",
+        "OpenCPAi",
+        "AI审计",
+        "审计底稿自动生成"
+      ],
+      "slug": "opencpai-audit-workflow",
+      "discoveredSeq": 159,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "AI 审计底稿与审计工作流助手",
+      "targetCustomers": "会计师事务所、税务师事务所、审计项目经理、审计助理、复核人员，以及需要把预审检查、底稿编制、审计报告和归档材料生成流程标准化的财税专业服务机构。",
+      "painPoint": "审计团队在项目交付中要反复清洗财务数据、做预审检查、编制审计底稿、生成报告和整理归档材料，流程高度依赖人工模板、Excel 操作和复核经验；忙季时容易出现底稿编制耗时长、风险点漏查、项目沟通反复和新人产能不足的问题。",
+      "monetization": "主要靠按年订阅套餐、月度点数和付费权益包变现。官方定价页说明 `年费买功能权限 + 月度点数`、正式功能统一 `1 点/次`、权益包用于补充点数且 30 天内有效；同域 `/api/v1/plans` 返回免费版、普通版、专业版、尊享版、旗舰版等具体套餐，其中普通版为 `¥1,280/年` 或 `¥199/月`，专业版为 `¥2,980/年` 且首次购买 `¥1,980/年`，尊享版为 `¥12,800/年` 且首次购买 `¥6,980/年`，旗舰版为 `¥26,800/年` 且首次购买 `¥13,800/年`。官网还提供桌面客户端下载、注册登录、定制需求提交和企业级部署/模板定制报价入口。",
+      "barriers": "审计工作流知识、财务数据清洗与科目适配、审计底稿和报告模板生成、预审风险识别、专业复核边界、敏感财务数据安全、会计师事务所数据合规要求，以及把桌面客户端、云端服务、点数计费和机构定制交付整合到同一套产品体系中。",
+      "evidenceQuality": {
+        "level": "strong",
+        "marketingRisk": "medium",
+        "signals": [
+          "官网首页、定价页、下载页和定制页都围绕 `AI 审计底稿 / 预审检查 / 审计报告 / 归档材料` 这一条审计工作流展开，目标客群明确指向会计师事务所、税务师事务所和审计人员",
+          "同域 `/api/v1/plans` 返回可机器读取的真实套餐价格、点数、并发、上传容量、存储、留存天数和成员数，定价页还说明年费、点数和权益包的关系",
+          "同域下载接口可直接返回 `审小匠_云端版_Setup_v1.0.0.exe`，服务协议和隐私政策补齐公司主体、AI 辅助工具定位、计费边界、退款边界和审计数据安全责任"
+        ],
+        "note": "审小匠 OpenCPAi 的证据链超过普通 `medium`：官方页面展示清晰的审计工作流，定价 API 提供具体付费套餐和资源限制，下载接口返回真实安装包，法律页又确认公司主体、服务范围和专业责任边界。营销用语较多且客户评价仍需外部验证，因此营销风险不降到 low，但作为应用层 AI 审计软件样本可按 strong 收录。"
+      },
+      "benchmarks": [
+        "用友审计作业平台",
+        "金蝶云·星瀚审计"
+      ],
+      "sources": [
+        "https://www.opencpai.com/",
+        "https://www.opencpai.com/pricing/",
+        "https://www.opencpai.com/download/",
+        "https://www.opencpai.com/api/v1/plans",
+        "https://www.opencpai.com/legal/terms.html",
+        "https://www.opencpai.com/legal/privacy.html",
+        "https://www.opencpai.com/custom/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向会计师事务所、税务师事务所和审计人员的 AI 审计底稿与审计工作流助手，主要靠年费套餐、月度点数和权益包变现。",
+          "update": "新增审小匠 OpenCPAi，作为 `AI 审计底稿 / 预审检查 / 审计报告生成` 工作流样本收录；官方定价 API 公开具体套餐金额、点数和资源限制，下载接口可返回桌面安装包，法律页补齐公司主体与合规边界，因此按 strong 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.chanbiaoai-bid-writing",
       "canonicalName": "蝉标 AI",
       "aliases": [
