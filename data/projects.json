@@ -1,6 +1,56 @@
 {
   "projects": [
     {
+      "id": "proj.qingshiyun-renovation-management",
+      "canonicalName": "青石云",
+      "aliases": [
+        "青石云AI系统",
+        "青石云 AI装修建造营销+管理系统",
+        "AI装修建造营销+管理系统",
+        "qingshi.xyz",
+        "qingshiyun.cn"
+      ],
+      "slug": "qingshiyun-renovation-management",
+      "discoveredSeq": 163,
+      "status": "active",
+      "firstSeen": "2026-04-19",
+      "lastUpdated": "2026-04-19",
+      "productForm": "AI 装修建造营销、设计与项目管理 SaaS",
+      "targetCustomers": "小型装修公司、独立设计工作室、中型装饰公司、区域型连锁装修公司，以及需要把获客、设计效果图、报价、工地进度、材料供应链和人员劳务统一管理的装企经营者。",
+      "painPoint": "很多装企的获客、量房设计、预算报价、工地进度、材料采购、劳务排班和客户沟通分散在微信群、Excel、CAD/效果图工具和人工流程里，导致销售线索流失、报价不透明、施工进度难追踪、材料成本难控，也很难用可视化方案提升签单效率。",
+      "monetization": "主要靠按智慧项目额度打包售卖的 B2B 套餐、项目消耗额度和私有化定制变现。官网价格页公开 `基础套餐 ￥6,000`、`专业套餐 ￥10,000`、`兴隆套餐 ￥100,000`，分别对应 65、120、1500 个智慧项目额度，并列出 AI 设计方案、智慧供应链、全景可视化施工图纸、全景可视化报价、人员劳务管理等权益；同页还提供私有化定制、联系销售和自定义充值入口，JSON-LD 标注 AggregateOffer 价格区间为 CNY 6000-100000。",
+      "barriers": "装修户型图和空间需求理解、AI 效果图生成、VR/全景报价与施工图可视化、项目进度和延期风险预警、材料供应链和供应商匹配、工地监控和安全隐患识别、人员工时排班，以及把设计、营销、报价、工地和供应链数据打通成装企可用的 SaaS 流程。",
+      "evidenceQuality": {
+        "level": "medium",
+        "marketingRisk": "high",
+        "signals": [
+          "官网首页和产品页都围绕 `装修建造行业营销、设计、管理一体化` 展开，明确列出 AI 营销获客、一键 AI 生成效果图、AI 全景可视化报价、智慧工地、供应链材料调配和人员工时管理等模块",
+          "价格页公开三档固定金额套餐、智慧项目额度、适用团队规模、权益清单、私有化定制和联系销售信息，JSON-LD 也标注 6000-100000 元价格区间",
+          "关于我们页面给出公司主体 `北京聚星未来科技有限公司`、联系地址、电话、邮箱；页脚显示 `京ICP备2024056272号-2` 和公安备案号，登录入口 `app.qingshiyun.cn` 可访问到同名 SPA 应用壳"
+        ],
+        "note": "青石云适合作为 `B2B 装修公司 AI 管理/营销/设计 SaaS` 样本，而不是消费者端 AI 效果图 App。它的买方、价格和工作流比较清楚，但关键 AI 能力、服务企业数、客户案例和效率提升数据主要来自官网自述，购买按钮也只是弹窗/销售线索入口，不是可验证结账链路，因此按 medium 收录并标 high 风险。"
+      },
+      "benchmarks": [
+        "装修云管家",
+        "云立方云装天下"
+      ],
+      "sources": [
+        "https://qingshi.xyz/",
+        "https://qingshi.xyz/product.html",
+        "https://qingshi.xyz/price.html",
+        "https://qingshi.xyz/abot.html",
+        "https://app.qingshiyun.cn/"
+      ],
+      "dailyNotes": [
+        {
+          "date": "2026-04-19",
+          "kind": "New",
+          "summary": "这是一个面向装修公司和设计工作室的 AI 装修建造营销、设计与项目管理 SaaS，主要靠 6000 元、10000 元、100000 元项目额度套餐和私有化定制变现。",
+          "update": "新增青石云，作为 `装企 AI 营销获客 / 效果图与报价 / 工地供应链管理` 工作流样本收录；官网公开套餐价格、项目额度、公司主体和备案信息，但 AI 能力与客户案例主要来自自述，因此按 medium 入库。"
+        }
+      ]
+    },
+    {
       "id": "proj.ai-interior-design-master",
       "canonicalName": "AI室内设计大师",
       "aliases": [
